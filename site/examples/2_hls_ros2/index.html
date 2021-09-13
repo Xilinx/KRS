@@ -1,0 +1,1448 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.4">
+    
+    
+      
+        <title>2. HLS in ROS 2 - Kria Robotics Stack</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.15aa0b43.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.75751829.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../css/style.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#prepare-the-environment-and-fetch-the-example" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="Kria Robotics Stack" class="md-header-nav__button md-logo" aria-label="Kria Robotics Stack">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            Kria Robotics Stack
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              2. HLS in ROS 2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Kria Robotics Stack" class="md-nav__button md-logo" aria-label="Kria Robotics Stack">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Kria Robotics Stack
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../.." class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+    
+    <label class="md-nav__link" for="nav-2">
+      Features
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Features" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Features
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../features/ros2centric/" class="md-nav__link">
+      ROS 2-centric
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../features/realtime_ros2/" class="md-nav__link">
+      Real-time ROS 2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../features/accelerated_apps_ros2/" class="md-nav__link">
+      ROS 2 Accelerated Apps
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../features/contributing_ros2/" class="md-nav__link">
+      Contributing back
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../../hardware/" class="md-nav__link">
+      Hardware
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../../install/" class="md-nav__link">
+      Install
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    
+    <label class="md-nav__link" for="nav-5">
+      Examples
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Examples" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Examples
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../0_ros2_publisher/" class="md-nav__link">
+      0. ROS 2 publisher
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../1_hello_xilinx/" class="md-nav__link">
+      1. Hello Xilinx
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        2. HLS in ROS 2
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      2. HLS in ROS 2
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prepare-the-environment-and-fetch-the-example" class="md-nav__link">
+    Prepare the environment and fetch the example
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-bit-of-background-on-hls-rtl-and-fpgas" class="md-nav__link">
+    A bit of background on HLS, RTL and FPGAs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simple_adder1-a-quick-look-into-the-flow" class="md-nav__link">
+    simple_adder1: a quick look into the flow
+  </a>
+  
+    <nav class="md-nav" aria-label="simple_adder1: a quick look into the flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-the-vitis-hls-gui" class="md-nav__link">
+    Using the Vitis HLS GUI
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simple_adder2-optimizing-fpga-synthesis-for-lower-latency-responses" class="md-nav__link">
+    simple_adder2: optimizing FPGA synthesis for lower latency responses
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../3_offloading_ros2_publisher/" class="md-nav__link">
+      3. Offloading ROS 2 publisher
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../4_accelerated_ros2_publisher/" class="md-nav__link">
+      4. Accelerated ROS 2 publisher
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../5_faster_ros2_publisher/" class="md-nav__link">
+      5. Faster ROS 2 publisher
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../../howto/" class="md-nav__link">
+      HowTo
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" >
+    
+    <label class="md-nav__link" for="nav-7">
+      Other
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Other" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon"></span>
+        Other
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../other/definitions/" class="md-nav__link">
+      Definitions
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prepare-the-environment-and-fetch-the-example" class="md-nav__link">
+    Prepare the environment and fetch the example
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-bit-of-background-on-hls-rtl-and-fpgas" class="md-nav__link">
+    A bit of background on HLS, RTL and FPGAs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simple_adder1-a-quick-look-into-the-flow" class="md-nav__link">
+    simple_adder1: a quick look into the flow
+  </a>
+  
+    <nav class="md-nav" aria-label="simple_adder1: a quick look into the flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-the-vitis-hls-gui" class="md-nav__link">
+    Using the Vitis HLS GUI
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simple_adder2-optimizing-fpga-synthesis-for-lower-latency-responses" class="md-nav__link">
+    simple_adder2: optimizing FPGA synthesis for lower latency responses
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset"><a class="md-content__button md-icon" download href="../../pdf/combined.pdf" title="PDF Export"><svg style="height: 1.2rem; width: 1.2rem;" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path d="M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm76.45 211.36l-96.42 95.7c-6.65 6.61-17.39 6.61-24.04 0l-96.42-95.7C73.42 337.29 80.54 320 94.82 320H160v-80c0-8.84 7.16-16 16-16h32c8.84 0 16 7.16 16 16v80h65.18c14.28 0 21.4 17.29 11.27 27.36zM377 105L279.1 7c-4.5-4.5-10.6-7-17-7H256v128h128v-6.1c0-6.3-2.5-12.4-7-16.9z"></path></svg></a>
+              
+                
+                
+                  <h1>2. HLS in ROS 2</h1>
+                
+                <table>
+<thead>
+<tr>
+<th></th>
+<th>Source code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/ros-acceleration/acceleration_examples/tree/main/simple_adder"><code>simple_adder</code></a></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>adder1</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>kernel 1</td>
+<td><a href="https://github.com/ros-acceleration/acceleration_examples/blob/main/simple_adder/src/adder1.cpp"><code>adder1.cpp</code></a></td>
+</tr>
+<tr>
+<td>testbench 1</td>
+<td><a href="https://github.com/ros-acceleration/acceleration_examples/blob/main/simple_adder/src/testbench1.cpp"><code>testbench1.cpp</code></a></td>
+</tr>
+<tr>
+<td><strong>adder2</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>kernel 2</td>
+<td><a href="https://github.com/ros-acceleration/acceleration_examples/blob/main/simple_adder/src/adder2.cpp"><code>adder2.cpp</code></a></td>
+</tr>
+<tr>
+<td>testbench 2</td>
+<td><a href="https://github.com/ros-acceleration/acceleration_examples/blob/main/simple_adder/src/testbench2.cpp"><code>testbench2.cpp</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>HLS is at the core of C++ hardware acceleration. KRS allows to maintain a ROS 2-centric view while leveraging HLS, optimizing the flow and empowering roboticists toperform everything from the CLI, attaching nicely to the ROS 2 meta build system (<code>ament</code>) and the ROS 2 meta build tools (<code>colcon</code>).</p>
+<p>This example demonstrates how KRS helps to transition from the Xilinx's Vitis-centric flow to the ROS 2 flow.  The source code performs a trivial add operation. HLS is used directly from the ROS 2 CLI build tools. We explore the possiblities of offloading this operation to the Programmable Logic (PL). The latencies derived from the offloading operation are then analyzed both with the ROS 2 CLI tooling, and later, with the Vitis HLS GUI.</p>
+<p><strong>Though we'll be targeting KV260 hardware platform, no physical hardware is needed for this example.</strong></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The examples assume you've already installed KRS. If not, refer to <a href="/install">install</a>.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><a href="https://docs.ros.org/">Learn ROS 2</a> before trying this out first.</p>
+</div>
+<h2 id="prepare-the-environment-and-fetch-the-example">Prepare the environment and fetch the example</h2>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> ~/krs_ws  <span class="c1"># head to your KRS workspace</span>
+
+<span class="c1"># prepare the environment</span>
+$ <span class="nb">source</span> /tools/Xilinx/Vitis/2020.2/settings64.sh  <span class="c1"># source Xilinx tools</span>
+$ <span class="nb">source</span> /opt/ros/foxy/setup.bash  <span class="c1"># Sources system ROS 2 installation</span>
+$ <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/bin&quot;</span>:<span class="nv">$PATH</span>  <span class="c1"># FIXME: adjust path for CMake 3.5+</span>
+
+<span class="c1"># fetch the source code of examples</span>
+$ git clone https://github.com/ros-acceleration/acceleration_examples src/acceleration_examples
+
+<span class="c1"># build the workspace</span>
+$ colcon build --merge-install  <span class="c1"># about 2 mins</span>
+
+<span class="c1"># source the workspace as an overlay</span>
+$ <span class="nb">source</span> install/setup.bash
+</code></pre></div>
+<h2 id="a-bit-of-background-on-hls-rtl-and-fpgas">A bit of background on HLS, RTL and FPGAs</h2>
+<div class="admonition tip">
+<p class="admonition-title">About C simulation</p>
+<p>HLS C Simulation performs a pre-synthesis validation and checks that that the C program correctly implements the required functionality. This allows you to compile, simulate, and debug the C/C++ algorithm. C simulation allows for the function to be synthesized (e.g. <code>simple_adder</code> above) to be validated with a test bench using C simulation. A C test bench includes a main() top-level function, that calls the function to be synthesized by the Vitis HLS project. The test bench can also include other functions.</p>
+<p>Refer to <a href="https://www.xilinx.com/html_docs/xilinx2020_2/vitis_doc/verifyingcodecsimulation.html#amz1583532308782">Verifying Code with C Simulation</a> for more.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">About Synthesis</p>
+<p>Synthesis transforms the C or C++ function into RTL code for acceleration in programmable logic. HLS allows you to control synthesis process using optimization pragmas to create high-performance implementations.</p>
+<p>Refer to <a href="https://www.xilinx.com/html_docs/xilinx2020_2/vitis_doc/synthesizingcode.html#dtu1584226824270">Synthesizing the Code</a> for more.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">A further understanding of the <em>synthesis summary view</em></p>
+<p>The <em>synthesis summary view</em> provides lots of information with different fields which may not always be self-explanatory. The list below tries to clarify some of the most relevant ones:</p>
+<ul>
+<li><strong>Slack</strong>: displays any timing issues in the implementation.</li>
+<li><strong>Latency(cycles)/Latency(ns)</strong>: displays the number of cycles it takes to produce the output. The same information is also displayed in ns.</li>
+<li><strong>Iteration Latency</strong>: latency of a single iteration for a loop.</li>
+<li><strong>Interval</strong>: Interval or Initiation Interval (II) is the number of clock cycles before new inputs can be applied.</li>
+<li><strong>Trip Count</strong>: displays the number of iterations of a specific loop in the implemented hardware. This reflects any unrolling of the loop in hardware.</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">A quick review of the resources in an FPGA</p>
+<p>Xilinx FPGA designs contain the following core components: Configurable Logic Blocks (CLBs), Programmable Routing Blocks (PRBs), I/O Blocks (IOBs) and Digital Signal Processors (DSPs). Within CLBs we have 4 sub-components: Flip-flops (FFs), Loop-up-tables (LUTs), multiplexers (MUXs) and SRAM.</p>
+<p>When accounting for resources consumed, we focus particularly on the following which are further defined below:</p>
+<ul>
+<li><strong>DSP</strong>: DSPs have been optimized to implement various common digital signal processing functions with maximum performance and minimum logic resource utilization. They have functions to provide multipliers, adders, substractors, accumulators, coefficient register storage or a summation unit, amongst others.</li>
+<li><strong>FF</strong>: they are the smallest storage resource on the FPGA and each FF within a CLB is a binary register used to save logic states between clock cycles on an FPGA circuit.</li>
+<li><strong>LUT</strong>: stores a predefined list of outputs for every combination of inputs. LUTs provide a fast way to retrieve the output of a logic operation because possible results are stored and then referenced, rather than calculated.</li>
+<li><strong>URAM</strong>: UltraRAM is a large, lightweight memory block intended to allow the replacement of off-board memories enabling better overall performance.</li>
+</ul>
+</div>
+<h2 id="simple_adder1-a-quick-look-into-the-flow"><code>simple_adder1</code>: a quick look into the flow</h2>
+<p><a href="https://github.com/ros-acceleration/acceleration_examples/blob/main/simple_adder/src/adder1.cpp"><code>simple_adder</code></a> is pretty straightforward:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">simple_adder</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">c</span><span class="p">;</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">c</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<p>We can build this example packaged as a ROS package (though it doesn't interact with the computational graph) as follows:</p>
+<div class="highlight"><pre><span></span><code>$ colcon acceleration <span class="k">select</span> kv260  <span class="c1"># select the KV260 firmware</span>
+$ colcon build  --merge-install --build-base<span class="o">=</span>build-kv260 --install-base<span class="o">=</span>install-kv260 --mixin kv260 --packages-select simple_adder
+</code></pre></div>
+<p>The <code>simple_adder</code> package uses the <code>vitis_hls_generate_tcl</code> macro on its CMakeLists.txt. This macro commands the build system (<code>ament</code>) that when the package is built it should generate a Tcl script for <code>simple_adder</code>. This Tcl script will allow architects with HLS experience to use the traditional HLS interface to further optimize and investigate the kernel through C simulation, synthesis, RTL simulation, etc.</p>
+<p>Here's a peek to the macro syntax used:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">vitis_hls_generate_tcl</span><span class="p">(</span>
+  <span class="s">PROJECT</span> 
+    <span class="s">project_simpleadder1</span>
+  <span class="s">SRC</span> 
+    <span class="s">src/adder1.cpp</span>
+  <span class="s">HEADERS</span>
+    <span class="s">include</span>
+  <span class="s">TESTBENCH</span> 
+    <span class="s">src/testbench.cpp</span>
+  <span class="s">TOPFUNCTION</span> 
+    <span class="s">simple_adder</span>
+  <span class="s">CLOCK</span> 
+    <span class="s">4</span>
+  <span class="s">SYNTHESIS</span>
+<span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<details class="note"><summary>The Xilinx Tcl traditional path</summary><p>When using the <code>vitis_hls_generate_tcl</code> macro above, a script is automatically generated under <code>~/krs_ws/build-kv60/simple_adder/project_simpleadder1.tcl</code>:
+<div class="highlight"><pre><span></span><code>open_project -reset project_simpleadder1
+add_files  /home/xilinx/ros2_ws/src/xilinx/xilinx_examples/simple_adder/src/adder1.cpp
+add_files -tb /home/xilinx/ros2_ws/src/xilinx/xilinx_examples/simple_adder/src/testbench.cpp -cflags &quot;-isystem  /home/xilinx/ros2_ws/src/xilinx/xilinx_examples/simple_adder/include&quot;
+set_top simple_adder
+# solution_4ns
+open_solution solution_4ns
+set_part {xczu9eg-ffvb1156-2-e}
+create_clock -period 4
+csim_design -ldflags &quot;-lOpenCL&quot; -profile
+csynth_design
+
+# solution_10ns
+open_solution solution_10ns
+set_part {xczu9eg-ffvb1156-2-e}
+create_clock -period 10
+csim_design -ldflags &quot;-lOpenCL&quot; -profile
+csynth_design
+
+exit
+</code></pre></div>
+The resulting Tcl script can directly be launched with <code>vitis_hls -f &lt;file-name&gt;</code> allowing to perform C simulation and synthesis (in this particular case).</p>
+<div class="highlight"><pre><span></span><code>$ vitis_hls -f project_simpleadder1.tcl
+
+****** Vitis HLS - High-Level Synthesis from C, C++ and OpenCL v2020.2.2 <span class="o">(</span><span class="m">64</span>-bit<span class="o">)</span>
+**** SW Build <span class="m">3118627</span> on Tue Feb  <span class="m">9</span> <span class="m">05</span>:13:49 MST <span class="m">2021</span>
+**** IP Build <span class="m">3115676</span> on Tue Feb  <span class="m">9</span> <span class="m">10</span>:48:11 MST <span class="m">2021</span>
+    ** Copyright <span class="m">1986</span>-2021 Xilinx, Inc. All Rights Reserved.
+
+<span class="nb">source</span> /tools/Xilinx/Vitis_HLS/2020.2/scripts/vitis_hls/hls.tcl -notrace
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-10<span class="o">]</span> Running <span class="s1">&#39;/tools/Xilinx/Vitis_HLS/2020.2/bin/unwrapped/lnx64.o/vitis_hls&#39;</span>
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-10<span class="o">]</span> For user <span class="s1">&#39;xilinx&#39;</span> on host <span class="s1">&#39;xilinx&#39;</span> <span class="o">(</span>Linux_x86_64 version <span class="m">5</span>.10.37-rt39-tsn-measurements<span class="o">)</span> on Sat Jul <span class="m">10</span> <span class="m">07</span>:39:11 CEST <span class="m">2021</span>
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-10<span class="o">]</span> On os Ubuntu <span class="m">20</span>.04.2 LTS
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-10<span class="o">]</span> In directory <span class="s1">&#39;/home/xilinx/ros2_ws/build-zcu102/simple_adder&#39;</span>
+Sourcing Tcl script <span class="s1">&#39;project_simpleadder1.tcl&#39;</span>
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-1510<span class="o">]</span> Running: open_project -reset project_simpleadder1
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-10<span class="o">]</span> Opening and resetting project <span class="s1">&#39;/home/xilinx/ros2_ws/build-zcu102/simple_adder/project_simpleadder1&#39;</span>.
+WARNING: <span class="o">[</span>HLS <span class="m">200</span>-40<span class="o">]</span> No /home/xilinx/ros2_ws/build-zcu102/simple_adder/project_simpleadder1/solution_4ns/solution_4ns.aps file found.
+WARNING: <span class="o">[</span>HLS <span class="m">200</span>-40<span class="o">]</span> No /home/xilinx/ros2_ws/build-zcu102/simple_adder/project_simpleadder1/solution_10ns/solution_10ns.aps file found.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-1510<span class="o">]</span> Running: add_files /home/xilinx/ros2_ws/src/xilinx/xilinx_examples/simple_adder/src/adder1.cpp
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-10<span class="o">]</span> Adding design file <span class="s1">&#39;/home/xilinx/ros2_ws/src/xilinx/xilinx_examples/simple_adder/src/adder1.cpp&#39;</span> to the project
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-1510<span class="o">]</span> Running: add_files -tb /home/xilinx/ros2_ws/src/xilinx/xilinx_examples/simple_adder/src/testbench.cpp -cflags -isystem  /home/xilinx/ros2_ws/src/xilinx/xilinx_examples/simple_adder/include
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-10<span class="o">]</span> Adding <span class="nb">test</span> bench file <span class="s1">&#39;/home/xilinx/ros2_ws/src/xilinx/xilinx_examples/simple_adder/src/testbench.cpp&#39;</span> to the project
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-1510<span class="o">]</span> Running: set_top simple_adder
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-1510<span class="o">]</span> Running: open_solution solution_4ns
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-10<span class="o">]</span> Creating and opening solution <span class="s1">&#39;/home/xilinx/ros2_ws/build-zcu102/simple_adder/project_simpleadder1/solution_4ns&#39;</span>.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-1505<span class="o">]</span> Using default flow_target <span class="s1">&#39;vivado&#39;</span>
+Resolution: For <span class="nb">help</span> on HLS <span class="m">200</span>-1505 see www.xilinx.com/cgi-bin/docs/rdoc?v<span class="o">=</span><span class="m">2020</span>.2<span class="p">;</span><span class="nv">t</span><span class="o">=</span>hls+guidance<span class="p">;</span><span class="nv">d</span><span class="o">=</span><span class="m">200</span>-1505.html
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-1510<span class="o">]</span> Running: set_part xczu9eg-ffvb1156-2-e
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-10<span class="o">]</span> Setting target device to <span class="s1">&#39;xczu9eg-ffvb1156-2-e&#39;</span>
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-1510<span class="o">]</span> Running: create_clock -period <span class="m">4</span>
+INFO: <span class="o">[</span>SYN <span class="m">201</span>-201<span class="o">]</span> Setting up clock <span class="s1">&#39;default&#39;</span> with a period of 4ns.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-1510<span class="o">]</span> Running: csim_design -ldflags -lOpenCL -profile
+INFO: <span class="o">[</span>SIM <span class="m">211</span>-2<span class="o">]</span> *************** CSIM start ***************
+INFO: <span class="o">[</span>SIM <span class="m">211</span>-4<span class="o">]</span> CSIM will launch CLANG as the compiler.
+Compiling ../../../../../../src/xilinx/xilinx_examples/simple_adder/src/testbench.cpp in debug mode
+Compiling ../../../../../../src/xilinx/xilinx_examples/simple_adder/src/adder1.cpp in debug mode
+Generating csim.exe
+Expected result: <span class="m">100</span>, Got Result: <span class="m">100</span>
+Expected result: <span class="m">103</span>, Got Result: <span class="m">103</span>
+Expected result: <span class="m">106</span>, Got Result: <span class="m">106</span>
+Expected result: <span class="m">109</span>, Got Result: <span class="m">109</span>
+Expected result: <span class="m">112</span>, Got Result: <span class="m">112</span>
+Expected result: <span class="m">115</span>, Got Result: <span class="m">115</span>
+Expected result: <span class="m">118</span>, Got Result: <span class="m">118</span>
+Expected result: <span class="m">121</span>, Got Result: <span class="m">121</span>
+Expected result: <span class="m">124</span>, Got Result: <span class="m">124</span>
+Expected result: <span class="m">127</span>, Got Result: <span class="m">127</span>
+Generating dot files
+INFO: <span class="o">[</span>SIM <span class="m">211</span>-1<span class="o">]</span> CSim <span class="k">done</span> with <span class="m">0</span> errors.
+INFO: <span class="o">[</span>SIM <span class="m">211</span>-3<span class="o">]</span> *************** CSIM finish ***************
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-111<span class="o">]</span> Finished Command csim_design CPU user time: <span class="m">0</span>.65 seconds. CPU system time: <span class="m">0</span>.31 seconds. Elapsed time: <span class="m">0</span>.8 seconds<span class="p">;</span> current allocated memory: <span class="m">195</span>.056 MB.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-1510<span class="o">]</span> Running: csynth_design
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-111<span class="o">]</span> Finished File checks and directory preparation: CPU user time: <span class="m">0</span> seconds. CPU system time: <span class="m">0</span> seconds. Elapsed time: <span class="m">0</span> seconds<span class="p">;</span> current allocated memory: <span class="m">195</span>.260 MB.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-10<span class="o">]</span> Analyzing design file <span class="s1">&#39;/home/xilinx/ros2_ws/src/xilinx/xilinx_examples/simple_adder/src/adder1.cpp&#39;</span> ...
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-111<span class="o">]</span> Finished Source Code Analysis and Preprocessing: CPU user time: <span class="m">0</span>.13 seconds. CPU system time: <span class="m">0</span>.09 seconds. Elapsed time: <span class="m">0</span>.23 seconds<span class="p">;</span> current allocated memory: <span class="m">195</span>.911 MB.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-777<span class="o">]</span> Using interface defaults <span class="k">for</span> <span class="s1">&#39;Vivado&#39;</span> flow target.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-111<span class="o">]</span> Finished Compiling Optimization and Transform: CPU user time: <span class="m">2</span>.84 seconds. CPU system time: <span class="m">0</span>.26 seconds. Elapsed time: <span class="m">3</span>.23 seconds<span class="p">;</span> current allocated memory: <span class="m">196</span>.203 MB.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-111<span class="o">]</span> Finished Checking Pragmas: CPU user time: <span class="m">0</span> seconds. CPU system time: <span class="m">0</span> seconds. Elapsed time: <span class="m">0</span> seconds<span class="p">;</span> current allocated memory: <span class="m">196</span>.220 MB.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-10<span class="o">]</span> Starting code transformations ...
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-111<span class="o">]</span> Finished Standard Transforms: CPU user time: <span class="m">0</span>.01 seconds. CPU system time: <span class="m">0</span> seconds. Elapsed time: <span class="m">0</span>.01 seconds<span class="p">;</span> current allocated memory: <span class="m">197</span>.187 MB.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-10<span class="o">]</span> Checking synthesizability ...
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-111<span class="o">]</span> Finished Checking Synthesizability: CPU user time: <span class="m">0</span>.01 seconds. CPU system time: <span class="m">0</span> seconds. Elapsed time: <span class="m">0</span>.01 seconds<span class="p">;</span> current allocated memory: <span class="m">196</span>.621 MB.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-111<span class="o">]</span> Finished Loop, <span class="k">function</span> and other optimizations: CPU user time: <span class="m">0</span>.03 seconds. CPU system time: <span class="m">0</span>.01 seconds. Elapsed time: <span class="m">0</span>.04 seconds<span class="p">;</span> current allocated memory: <span class="m">216</span>.648 MB.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-111<span class="o">]</span> Finished Architecture Synthesis: CPU user time: <span class="m">0</span>.02 seconds. CPU system time: <span class="m">0</span> seconds. Elapsed time: <span class="m">0</span>.02 seconds<span class="p">;</span> current allocated memory: <span class="m">208</span>.313 MB.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-10<span class="o">]</span> Starting hardware synthesis ...
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-10<span class="o">]</span> Synthesizing <span class="s1">&#39;simple_adder&#39;</span> ...
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-10<span class="o">]</span> ----------------------------------------------------------------
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-42<span class="o">]</span> -- Implementing module <span class="s1">&#39;simple_adder&#39;</span>
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-10<span class="o">]</span> ----------------------------------------------------------------
+INFO: <span class="o">[</span>SCHED <span class="m">204</span>-11<span class="o">]</span> Starting scheduling ...
+INFO: <span class="o">[</span>SCHED <span class="m">204</span>-11<span class="o">]</span> Finished scheduling.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-111<span class="o">]</span> Finished Scheduling: CPU user time: <span class="m">0</span>.01 seconds. CPU system time: <span class="m">0</span> seconds. Elapsed time: <span class="m">0</span>.02 seconds<span class="p">;</span> current allocated memory: <span class="m">208</span>.520 MB.
+INFO: <span class="o">[</span>BIND <span class="m">205</span>-100<span class="o">]</span> Starting micro-architecture generation ...
+INFO: <span class="o">[</span>BIND <span class="m">205</span>-101<span class="o">]</span> Performing variable lifetime analysis.
+INFO: <span class="o">[</span>BIND <span class="m">205</span>-101<span class="o">]</span> Exploring resource sharing.
+INFO: <span class="o">[</span>BIND <span class="m">205</span>-101<span class="o">]</span> Binding ...
+INFO: <span class="o">[</span>BIND <span class="m">205</span>-100<span class="o">]</span> Finished micro-architecture generation.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-111<span class="o">]</span> Finished Binding: CPU user time: <span class="m">0</span>.01 seconds. CPU system time: <span class="m">0</span> seconds. Elapsed time: <span class="m">0</span>.01 seconds<span class="p">;</span> current allocated memory: <span class="m">208</span>.601 MB.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-10<span class="o">]</span> ----------------------------------------------------------------
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-10<span class="o">]</span> -- Generating RTL <span class="k">for</span> module <span class="s1">&#39;simple_adder&#39;</span>
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-10<span class="o">]</span> ----------------------------------------------------------------
+INFO: <span class="o">[</span>RTGEN <span class="m">206</span>-500<span class="o">]</span> Setting interface mode on port <span class="s1">&#39;simple_adder/a&#39;</span> to <span class="s1">&#39;ap_none&#39;</span>.
+INFO: <span class="o">[</span>RTGEN <span class="m">206</span>-500<span class="o">]</span> Setting interface mode on port <span class="s1">&#39;simple_adder/b&#39;</span> to <span class="s1">&#39;ap_none&#39;</span>.
+INFO: <span class="o">[</span>RTGEN <span class="m">206</span>-500<span class="o">]</span> Setting interface mode on <span class="k">function</span> <span class="s1">&#39;simple_adder&#39;</span> to <span class="s1">&#39;ap_ctrl_hs&#39;</span>.
+INFO: <span class="o">[</span>RTGEN <span class="m">206</span>-100<span class="o">]</span> Finished creating RTL model <span class="k">for</span> <span class="s1">&#39;simple_adder&#39;</span>.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-111<span class="o">]</span> Finished Creating RTL model: CPU user time: <span class="m">0</span>.01 seconds. CPU system time: <span class="m">0</span>.01 seconds. Elapsed time: <span class="m">0</span>.01 seconds<span class="p">;</span> current allocated memory: <span class="m">208</span>.723 MB.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-111<span class="o">]</span> Finished Generating all RTL models: CPU user time: <span class="m">0</span>.8 seconds. CPU system time: <span class="m">0</span>.01 seconds. Elapsed time: <span class="m">0</span>.82 seconds<span class="p">;</span> current allocated memory: <span class="m">214</span>.826 MB.
+INFO: <span class="o">[</span>VHDL <span class="m">208</span>-304<span class="o">]</span> Generating VHDL RTL <span class="k">for</span> simple_adder.
+INFO: <span class="o">[</span>VLOG <span class="m">209</span>-307<span class="o">]</span> Generating Verilog RTL <span class="k">for</span> simple_adder.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-789<span class="o">]</span> **** Estimated Fmax: <span class="m">984</span>.25 MHz
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-111<span class="o">]</span> Finished Command csynth_design CPU user time: <span class="m">3</span>.9 seconds. CPU system time: <span class="m">0</span>.38 seconds. Elapsed time: <span class="m">4</span>.43 seconds<span class="p">;</span> current allocated memory: <span class="m">215</span>.042 MB.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-1510<span class="o">]</span> Running: open_solution solution_10ns
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-10<span class="o">]</span> Creating and opening solution <span class="s1">&#39;/home/xilinx/ros2_ws/build-zcu102/simple_adder/project_simpleadder1/solution_10ns&#39;</span>.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-1505<span class="o">]</span> Using default flow_target <span class="s1">&#39;vivado&#39;</span>
+Resolution: For <span class="nb">help</span> on HLS <span class="m">200</span>-1505 see www.xilinx.com/cgi-bin/docs/rdoc?v<span class="o">=</span><span class="m">2020</span>.2<span class="p">;</span><span class="nv">t</span><span class="o">=</span>hls+guidance<span class="p">;</span><span class="nv">d</span><span class="o">=</span><span class="m">200</span>-1505.html
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-1510<span class="o">]</span> Running: set_part xczu9eg-ffvb1156-2-e
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-1510<span class="o">]</span> Running: create_clock -period <span class="m">10</span>
+INFO: <span class="o">[</span>SYN <span class="m">201</span>-201<span class="o">]</span> Setting up clock <span class="s1">&#39;default&#39;</span> with a period of 10ns.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-1510<span class="o">]</span> Running: csim_design -ldflags -lOpenCL -profile
+INFO: <span class="o">[</span>SIM <span class="m">211</span>-2<span class="o">]</span> *************** CSIM start ***************
+INFO: <span class="o">[</span>SIM <span class="m">211</span>-4<span class="o">]</span> CSIM will launch CLANG as the compiler.
+Compiling ../../../../../../src/xilinx/xilinx_examples/simple_adder/src/testbench.cpp in debug mode
+Compiling ../../../../../../src/xilinx/xilinx_examples/simple_adder/src/adder1.cpp in debug mode
+Generating csim.exe
+Expected result: <span class="m">100</span>, Got Result: <span class="m">100</span>
+Expected result: <span class="m">103</span>, Got Result: <span class="m">103</span>
+Expected result: <span class="m">106</span>, Got Result: <span class="m">106</span>
+Expected result: <span class="m">109</span>, Got Result: <span class="m">109</span>
+Expected result: <span class="m">112</span>, Got Result: <span class="m">112</span>
+Expected result: <span class="m">115</span>, Got Result: <span class="m">115</span>
+Expected result: <span class="m">118</span>, Got Result: <span class="m">118</span>
+Expected result: <span class="m">121</span>, Got Result: <span class="m">121</span>
+Expected result: <span class="m">124</span>, Got Result: <span class="m">124</span>
+Expected result: <span class="m">127</span>, Got Result: <span class="m">127</span>
+Generating dot files
+INFO: <span class="o">[</span>SIM <span class="m">211</span>-1<span class="o">]</span> CSim <span class="k">done</span> with <span class="m">0</span> errors.
+INFO: <span class="o">[</span>SIM <span class="m">211</span>-3<span class="o">]</span> *************** CSIM finish ***************
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-111<span class="o">]</span> Finished Command csim_design CPU user time: <span class="m">0</span>.45 seconds. CPU system time: <span class="m">0</span>.25 seconds. Elapsed time: <span class="m">0</span>.71 seconds<span class="p">;</span> current allocated memory: <span class="m">204</span>.178 MB.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-1510<span class="o">]</span> Running: csynth_design
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-111<span class="o">]</span> Finished File checks and directory preparation: CPU user time: <span class="m">0</span>.01 seconds. CPU system time: <span class="m">0</span> seconds. Elapsed time: <span class="m">0</span>.01 seconds<span class="p">;</span> current allocated memory: <span class="m">204</span>.280 MB.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-10<span class="o">]</span> Analyzing design file <span class="s1">&#39;/home/xilinx/ros2_ws/src/xilinx/xilinx_examples/simple_adder/src/adder1.cpp&#39;</span> ...
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-111<span class="o">]</span> Finished Source Code Analysis and Preprocessing: CPU user time: <span class="m">0</span>.12 seconds. CPU system time: <span class="m">0</span>.1 seconds. Elapsed time: <span class="m">0</span>.23 seconds<span class="p">;</span> current allocated memory: <span class="m">204</span>.290 MB.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-777<span class="o">]</span> Using interface defaults <span class="k">for</span> <span class="s1">&#39;Vivado&#39;</span> flow target.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-111<span class="o">]</span> Finished Compiling Optimization and Transform: CPU user time: <span class="m">2</span>.96 seconds. CPU system time: <span class="m">0</span>.28 seconds. Elapsed time: <span class="m">3</span>.41 seconds<span class="p">;</span> current allocated memory: <span class="m">204</span>.363 MB.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-111<span class="o">]</span> Finished Checking Pragmas: CPU user time: <span class="m">0</span> seconds. CPU system time: <span class="m">0</span> seconds. Elapsed time: <span class="m">0</span> seconds<span class="p">;</span> current allocated memory: <span class="m">204</span>.364 MB.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-10<span class="o">]</span> Starting code transformations ...
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-111<span class="o">]</span> Finished Standard Transforms: CPU user time: <span class="m">0</span> seconds. CPU system time: <span class="m">0</span> seconds. Elapsed time: <span class="m">0</span> seconds<span class="p">;</span> current allocated memory: <span class="m">205</span>.081 MB.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-10<span class="o">]</span> Checking synthesizability ...
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-111<span class="o">]</span> Finished Checking Synthesizability: CPU user time: <span class="m">0</span>.01 seconds. CPU system time: <span class="m">0</span> seconds. Elapsed time: <span class="m">0</span>.01 seconds<span class="p">;</span> current allocated memory: <span class="m">204</span>.483 MB.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-111<span class="o">]</span> Finished Loop, <span class="k">function</span> and other optimizations: CPU user time: <span class="m">0</span>.04 seconds. CPU system time: <span class="m">0</span>.01 seconds. Elapsed time: <span class="m">0</span>.04 seconds<span class="p">;</span> current allocated memory: <span class="m">224</span>.451 MB.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-111<span class="o">]</span> Finished Architecture Synthesis: CPU user time: <span class="m">0</span>.01 seconds. CPU system time: <span class="m">0</span> seconds. Elapsed time: <span class="m">0</span>.02 seconds<span class="p">;</span> current allocated memory: <span class="m">216</span>.047 MB.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-10<span class="o">]</span> Starting hardware synthesis ...
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-10<span class="o">]</span> Synthesizing <span class="s1">&#39;simple_adder&#39;</span> ...
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-10<span class="o">]</span> ----------------------------------------------------------------
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-42<span class="o">]</span> -- Implementing module <span class="s1">&#39;simple_adder&#39;</span>
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-10<span class="o">]</span> ----------------------------------------------------------------
+INFO: <span class="o">[</span>SCHED <span class="m">204</span>-11<span class="o">]</span> Starting scheduling ...
+INFO: <span class="o">[</span>SCHED <span class="m">204</span>-11<span class="o">]</span> Finished scheduling.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-111<span class="o">]</span> Finished Scheduling: CPU user time: <span class="m">0</span>.01 seconds. CPU system time: <span class="m">0</span> seconds. Elapsed time: <span class="m">0</span>.02 seconds<span class="p">;</span> current allocated memory: <span class="m">216</span>.082 MB.
+INFO: <span class="o">[</span>BIND <span class="m">205</span>-100<span class="o">]</span> Starting micro-architecture generation ...
+INFO: <span class="o">[</span>BIND <span class="m">205</span>-101<span class="o">]</span> Performing variable lifetime analysis.
+INFO: <span class="o">[</span>BIND <span class="m">205</span>-101<span class="o">]</span> Exploring resource sharing.
+INFO: <span class="o">[</span>BIND <span class="m">205</span>-101<span class="o">]</span> Binding ...
+INFO: <span class="o">[</span>BIND <span class="m">205</span>-100<span class="o">]</span> Finished micro-architecture generation.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-111<span class="o">]</span> Finished Binding: CPU user time: <span class="m">0</span>.01 seconds. CPU system time: <span class="m">0</span> seconds. Elapsed time: <span class="m">0</span>.01 seconds<span class="p">;</span> current allocated memory: <span class="m">216</span>.140 MB.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-10<span class="o">]</span> ----------------------------------------------------------------
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-10<span class="o">]</span> -- Generating RTL <span class="k">for</span> module <span class="s1">&#39;simple_adder&#39;</span>
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-10<span class="o">]</span> ----------------------------------------------------------------
+INFO: <span class="o">[</span>RTGEN <span class="m">206</span>-500<span class="o">]</span> Setting interface mode on port <span class="s1">&#39;simple_adder/a&#39;</span> to <span class="s1">&#39;ap_none&#39;</span>.
+INFO: <span class="o">[</span>RTGEN <span class="m">206</span>-500<span class="o">]</span> Setting interface mode on port <span class="s1">&#39;simple_adder/b&#39;</span> to <span class="s1">&#39;ap_none&#39;</span>.
+INFO: <span class="o">[</span>RTGEN <span class="m">206</span>-500<span class="o">]</span> Setting interface mode on <span class="k">function</span> <span class="s1">&#39;simple_adder&#39;</span> to <span class="s1">&#39;ap_ctrl_hs&#39;</span>.
+INFO: <span class="o">[</span>RTGEN <span class="m">206</span>-100<span class="o">]</span> Finished creating RTL model <span class="k">for</span> <span class="s1">&#39;simple_add&lt;er&#39;</span>.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-111<span class="o">]</span> Finished Creating RTL model: CPU user time: <span class="m">0</span>.01 seconds. CPU system time: <span class="m">0</span> seconds. Elapsed time: <span class="m">0</span>.01 seconds<span class="p">;</span> current allocated memory: <span class="m">216</span>.195 MB.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-111<span class="o">]</span> Finished Generating all RTL models: CPU user time: <span class="m">0</span>.75 seconds. CPU system time: <span class="m">0</span>.02 seconds. Elapsed time: <span class="m">0</span>.77 seconds<span class="p">;</span> current allocated memory: <span class="m">216</span>.821 MB.
+INFO: <span class="o">[</span>VHDL <span class="m">208</span>-304<span class="o">]</span> Generating VHDL RTL <span class="k">for</span> simple_adder.
+INFO: <span class="o">[</span>VLOG <span class="m">209</span>-307<span class="o">]</span> Generating Verilog RTL <span class="k">for</span> simple_adder.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-789<span class="o">]</span> **** Estimated Fmax: <span class="m">984</span>.25 MHz
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-111<span class="o">]</span> Finished Command csynth_design CPU user time: <span class="m">3</span>.96 seconds. CPU system time: <span class="m">0</span>.41 seconds. Elapsed time: <span class="m">4</span>.57 seconds<span class="p">;</span> current allocated memory: <span class="m">216</span>.911 MB.
+INFO: <span class="o">[</span>HLS <span class="m">200</span>-112<span class="o">]</span> Total CPU user time: <span class="m">11</span>.55 seconds. Total CPU system time: <span class="m">1</span>.84 seconds. Total elapsed time: <span class="m">12</span>.47 seconds<span class="p">;</span> peak allocated memory: <span class="m">224</span>.451 MB.
+INFO: <span class="o">[</span>Common <span class="m">17</span>-206<span class="o">]</span> Exiting vitis_hls at Sat Jul <span class="m">10</span> <span class="m">07</span>:39:24 <span class="m">2021</span>...    
+</code></pre></div>
+</details>
+<p>With KRS, we can avoid using Tcl and use instead the ROS 2 extensions to <code>colcon</code> to easily perform C simulation, synthesis, implementation and more. Before running things, ROS 2 tools will dump the following status:</p>
+<div class="highlight"><pre><span></span><code>$ colcon acceleration hls simple_adder
+ Project:  project_simpleadder2
+ Path:  /home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder2
+    - Solution:  solution_4ns
+        - C Simulation:               Not Run
+        - C Synthesis:                Not Run
+        - C/RTL Co-simulation:        Not Run
+        - Export:
+            - IP Catalog:         Not Run
+            - System Generator:   Not Run
+            - Export Evaluation:  Not Run
+    - Solution:  solution_10ns
+        - C Simulation:               Not Run
+        - C Synthesis:                Not Run
+        - C/RTL Co-simulation:        Not Run
+        - Export:
+            - IP Catalog:         Not Run
+            - System Generator:   Not Run
+            - Export Evaluation:  Not Run
+ Project:  project_simpleadder1
+ Path:  /home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder1
+    - Solution:  solution_4ns
+        - C Simulation:               Not Run
+        - C Synthesis:                Not Run
+        - C/RTL Co-simulation:        Not Run
+        - Export:
+            - IP Catalog:         Not Run
+            - System Generator:   Not Run
+            - Export Evaluation:  Not Run
+</code></pre></div>
+<p>Let's run it and get some results:</p>
+<div class="highlight"><pre><span></span><code>$ colcon acceleration hls simple_adder --run
+Found Tcl script <span class="s2">&quot;project_simpleadder2.tcl&quot;</span> <span class="k">for</span> package: simple_adder
+Executing /home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder2.tcl
+Found Tcl script <span class="s2">&quot;project_simpleadder1.tcl&quot;</span> <span class="k">for</span> package: simple_adder
+Executing /home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder1.tcl
+ Project:  project_simpleadder2
+ Path:  /home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder2
+    - Solution:  solution_4ns
+        - C Simulation:               Pass
+        - C Synthesis:                Run
+        - C/RTL Co-simulation:        Not Run
+        - Export:
+            - IP Catalog:         Not Run
+            - System Generator:   Not Run
+            - Export Evaluation:  Not Run
+    - Solution:  solution_10ns
+        - C Simulation:               Pass
+        - C Synthesis:                Run
+        - C/RTL Co-simulation:        Not Run
+        - Export:
+            - IP Catalog:         Not Run
+            - System Generator:   Not Run
+            - Export Evaluation:  Not Run
+ Project:  project_simpleadder1
+ Path:  /home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder1
+    - Solution:  solution_4ns
+        - C Simulation:               Pass
+        - C Synthesis:                Run
+        - C/RTL Co-simulation:        Not Run
+        - Export:
+            - IP Catalog:         Not Run
+            - System Generator:   Not Run
+            - Export Evaluation:  Not Run
+</code></pre></div>
+<p>If we want to inspect the results from the CLI, we can add the <code>--synthesis-report</code> flag:</p>
+<div class="highlight"><pre><span></span><code>$ colcon acceleration hls simple_adder --synthesis-report
+
+...
+
+  Project:  project_simpleadder1
+ Path:  /home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder1
+    - Solution:  solution_4ns
+        - C Simulation:               Pass
+        - C Synthesis:                Run
+        - C/RTL Co-simulation:        Not Run
+        - Export:
+            - IP Catalog:         Not Run
+            - System Generator:   Not Run
+            - Export Evaluation:  Not Run
+        - Synthesis report: /home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder1/solution_4ns/syn/report/simple_adder_csynth.rpt
+
+
+            <span class="o">================================================================</span>
+            <span class="o">==</span> Vitis HLS Report <span class="k">for</span> <span class="s1">&#39;simple_adder&#39;</span>
+            <span class="o">================================================================</span>
+            * Date:           Sun Aug <span class="m">22</span> <span class="m">15</span>:58:31 <span class="m">2021</span>
+
+            * Version:        <span class="m">2020</span>.2.2 <span class="o">(</span>Build <span class="m">3118627</span> on Tue Feb  <span class="m">9</span> <span class="m">05</span>:13:49 MST <span class="m">2021</span><span class="o">)</span>
+            * Project:        project_simpleadder1
+            * Solution:       solution_4ns <span class="o">(</span>Vitis Kernel Flow Target<span class="o">)</span>
+            * Product family: zynquplus
+            * Target device:  xck26-sfvc784-2LV-c
+
+
+            <span class="o">================================================================</span>
+            <span class="o">==</span> Performance <span class="nv">Estimates</span>
+            <span class="o">================================================================</span>
+            + Timing:
+                * Summary:
+                +--------+---------+----------+------------+
+                <span class="p">|</span>  Clock <span class="p">|</span>  Target <span class="p">|</span> Estimated<span class="p">|</span> Uncertainty<span class="p">|</span>
+                +--------+---------+----------+------------+
+                <span class="p">|</span>ap_clk  <span class="p">|</span>  <span class="m">4</span>.00 ns<span class="p">|</span>  <span class="m">2</span>.016 ns<span class="p">|</span>     <span class="m">1</span>.08 ns<span class="p">|</span>
+                +--------+---------+----------+------------+
+
+            + Latency:
+                * Summary:
+                +---------+---------+----------+----------+-----+-----+---------+
+                <span class="p">|</span>  Latency <span class="o">(</span>cycles<span class="o">)</span> <span class="p">|</span>  Latency <span class="o">(</span>absolute<span class="o">)</span> <span class="p">|</span>  Interval <span class="p">|</span> Pipeline<span class="p">|</span>
+                <span class="p">|</span>   min   <span class="p">|</span>   max   <span class="p">|</span>    min   <span class="p">|</span>    max   <span class="p">|</span> min <span class="p">|</span> max <span class="p">|</span>   Type  <span class="p">|</span>
+                +---------+---------+----------+----------+-----+-----+---------+
+                <span class="p">|</span>        <span class="m">0</span><span class="p">|</span>        <span class="m">0</span><span class="p">|</span>      <span class="m">0</span> ns<span class="p">|</span>      <span class="m">0</span> ns<span class="p">|</span>    <span class="m">1</span><span class="p">|</span>    <span class="m">1</span><span class="p">|</span>     none<span class="p">|</span>
+                +---------+---------+----------+----------+-----+-----+---------+
+
+                + Detail:
+                    * Instance:
+                    N/A
+
+                    * Loop:
+                    N/A
+
+
+
+            <span class="o">================================================================</span>
+            <span class="o">==</span> Utilization <span class="nv">Estimates</span>
+            <span class="o">================================================================</span>
+            * Summary:
+            +-----------------+---------+------+--------+--------+-----+
+            <span class="p">|</span>       Name      <span class="p">|</span> BRAM_18K<span class="p">|</span>  DSP <span class="p">|</span>   FF   <span class="p">|</span>   LUT  <span class="p">|</span> URAM<span class="p">|</span>
+            +-----------------+---------+------+--------+--------+-----+
+            <span class="p">|</span>DSP              <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       -<span class="p">|</span>       -<span class="p">|</span>    -<span class="p">|</span>
+            <span class="p">|</span>Expression       <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       <span class="m">0</span><span class="p">|</span>      <span class="m">41</span><span class="p">|</span>    -<span class="p">|</span>
+            <span class="p">|</span>FIFO             <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       -<span class="p">|</span>       -<span class="p">|</span>    -<span class="p">|</span>
+            <span class="p">|</span>Instance         <span class="p">|</span>        <span class="m">0</span><span class="p">|</span>     -<span class="p">|</span>     <span class="m">144</span><span class="p">|</span>     <span class="m">232</span><span class="p">|</span>    -<span class="p">|</span>
+            <span class="p">|</span>Memory           <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       -<span class="p">|</span>       -<span class="p">|</span>    -<span class="p">|</span>
+            <span class="p">|</span>Multiplexer      <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       -<span class="p">|</span>      <span class="m">18</span><span class="p">|</span>    -<span class="p">|</span>
+            <span class="p">|</span>Register         <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>      <span class="m">37</span><span class="p">|</span>       -<span class="p">|</span>    -<span class="p">|</span>
+            +-----------------+---------+------+--------+--------+-----+
+            <span class="p">|</span>Total            <span class="p">|</span>        <span class="m">0</span><span class="p">|</span>     <span class="m">0</span><span class="p">|</span>     <span class="m">181</span><span class="p">|</span>     <span class="m">291</span><span class="p">|</span>    <span class="m">0</span><span class="p">|</span>
+            +-----------------+---------+------+--------+--------+-----+
+            <span class="p">|</span>Available        <span class="p">|</span>      <span class="m">288</span><span class="p">|</span>  <span class="m">1248</span><span class="p">|</span>  <span class="m">234240</span><span class="p">|</span>  <span class="m">117120</span><span class="p">|</span>   <span class="m">64</span><span class="p">|</span>
+            +-----------------+---------+------+--------+--------+-----+
+            <span class="p">|</span>Utilization <span class="o">(</span>%<span class="o">)</span>  <span class="p">|</span>        <span class="m">0</span><span class="p">|</span>     <span class="m">0</span><span class="p">|</span>      ~0<span class="p">|</span>      ~0<span class="p">|</span>    <span class="m">0</span><span class="p">|</span>
+            +-----------------+---------+------+--------+--------+-----+
+...
+</code></pre></div>
+<p>Results show how the <code>simple_adder</code> function can be implemented with only a few LUTs and using only one single cycle (0 is counted as the first cycle). The FPGA can be programmed to run with a clock at <code>2.016 ns</code> (estimated). This means that <strong>by using solely 291 LUTs and 181 FFs of the FPGA to build specialized circuitry, we can get deterministic responses when launching the <code>simple_adder</code> function with a maximum response period of (<code>2.016 ns</code> (estimated) + <code>1.08 ns</code> (uncertainty)). In other words, <code>3.09600</code> ns</strong>.</p>
+<p>Let's compare this with the results we may get if we were to run this (only) on the PS system witout relying on the FPGA. The Zynq UltraScale+ MPSoC targeted uses Quad-core Arm Cortex-A53 which has a CPU frequency of up to 1.5 GHz. Since the clock of the processor can theoretically run at 1.5 GHz, this means that one cycle has a period of approximately <code>0.666 ns</code>. If the CPU were to be able to fit the whole function into one cycle, this would is indeed better than the <code>3.09600 ns</code> we estimated before when using the FPGA, however, things aren't that easy. Neither Von-Neumann-based CPU architectures can fit all operations into one cycle nor adaptive SoCs like the Zynq UltraScale+ MPSoC can leverage hardware acceleration without considering the interfacing with the FPGA. The following considerations should be taken into account:</p>
+<ol>
+<li>
+<p>CPUs control-driven machine model is based on a token of control, which indicates when a statement should be executed. This gives CPUs full control to implement easily complex data and control structures however, this also comes at the cost of being less efficient since every operation needs to push data in-and-out of ALUs (each operation needs to be managed in this control flow mechanism). Ultimately this leads to multiple cycles for even the simplest operations like what's illustrated in <code>simple_adder</code> above.</p>
+</li>
+<li>
+<p>Besides the additional cycles required for the sole computation, the PS deals with tons of complex aspects that may very easily interrupt the computation, produce a switch of context and get back to the computation of <code>simple_adder</code> afterwards. Even in a somewhat ideal scenario, with a soft/firm real-time operating system running on the PS, the kernel can incur on delays of several tenths of microseconds.</p>
+</li>
+<li>
+<p>FPGAs offer a deterministic response which can be specially exploited when relying onits resources, e.g. while driving I/O directly. In adaptive SoCs, interfacing the Processing System (PS, the CPU), with the Programmable Logic (PL, the FPGA) has a time/cycle cost which should be considered. If the output of the function/kernel is to return to the PS,  one should account for the complexity of such function/kernel. In very simple examples like the <code>simple_adder</code> above, this cost of interfacing PS-PL is generally much bigger than the optimizations one could get and the determinism is essentially degraded due to the involvement of the CPU.</p>
+</li>
+</ol>
+<h3 id="using-the-vitis-hls-gui">Using the Vitis HLS GUI</h3>
+<p>The project files generated by ROS 2 CLI tools can also be opened with <code>vitis_hls</code> GUI by pointing to the new project folder created. Within the Vitis HLS GUI, the various reports generated can be inspected graphically:</p>
+<p>(<em>click on the images to see them big</em>)</p>
+<table>
+<thead>
+<tr>
+<th>Image</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/imgs/example2/1.png"><img alt="" src="imgs/example2/1.png" /></a></td>
+<td>The <em>synthesis summary view</em> shows that the target clock is <code>10ns</code>, as specified in the first solution in the Tcl script above. Note however that the synthesized clock ends up being much lower. The <em>Performance &amp; Resource Estimates</em> section summarizes that overall timing characteristics. Note that the timing characteristics show a 0 latency</td>
+</tr>
+<tr>
+<td><a href="/imgs/example2/2.png"><img alt="" src="imgs/example2/2.png" /></a></td>
+<td>The <em>schedule viewer view</em> shows how the two read operation are executed in the same clock and then get fed into the add operation. Everything gets executed in the same cycle.</td>
+</tr>
+<tr>
+<td><a href="/imgs/example2/3.png"><img alt="" src="imgs/example2/3.png" /></a></td>
+<td>The <em>pre-synthesis control flow view</em> shows that this function has a trivial control flow.</td>
+</tr>
+<tr>
+<td><a href="/imgs/example2/4.png"><img alt="" src="imgs/example2/4.png" /></a></td>
+<td>The <em>synthesis details view</em> shows a summary of the latency and also the resources consumed to synthesis the function. In this case only 39 LUTs.</td>
+</tr>
+</tbody>
+</table>
+<p>The data that we just inspected through Vitis HLS GUI is available in reports which can be parsed and exposed in a CLI interface. KRS does exactly this. KRS provides a series of CLI verbs and subverbs that allow to fetch this information directly from the CLI allowing ROS developers to create their own development flows.</p>
+<p>Let's now complicate a bit more the <code>simple_adder</code> function and see how faster clocks aren't alwasy better. Specially, we show how FPGAs can be optimized to fit operations in less cycles delivering lower latencies.</p>
+<h2 id="simple_adder2-optimizing-fpga-synthesis-for-lower-latency-responses"><code>simple_adder2</code>: optimizing FPGA synthesis for lower latency responses</h2>
+<p>The source code of <code>simple_adder2</code> will now be the following:</p>
+<div class="admonition tip">
+<p class="admonition-title">simple_adder source code</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kt">int</span> <span class="nf">simple_adder</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">c</span><span class="p">;</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">b</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">c</span><span class="p">;</span>
+<span class="p">}</span>    
+</code></pre></div>
+</td></tr></table>
+</div>
+<p>The CMakeLists.txt file uses now a different testbench and kernel source code:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">vitis_hls_generate_tcl</span><span class="p">(</span>
+  <span class="s">PROJECT</span> 
+    <span class="s">project_simpleadder2</span>
+  <span class="s">SRC</span> 
+    <span class="s">src/adder2.cpp</span>
+  <span class="s">HEADERS</span>
+    <span class="s">include</span>
+  <span class="s">TESTBENCH</span> 
+    <span class="s">src/testbench2.cpp</span>
+  <span class="s">TOPFUNCTION</span> 
+    <span class="s">simple_adder</span>
+  <span class="s">CLOCK</span> 
+    <span class="s">4</span> <span class="s">5</span> <span class="s">6</span> <span class="s">7</span> <span class="s">8</span> <span class="s">9</span> <span class="s">10</span>
+  <span class="s">SYNTHESIS</span>
+<span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>Note that the macro will generate one solution per each <code>CLOCK</code> (in ns) argument provided. </p>
+<p>Let's compare the <em>Schedule Viewer</em> of the <code>4 ns</code> and <code>10 ns</code> clock solutions. <em>These were generated with a different firmware (<code>zcu102</code>). Similar ones can be also obtained with the KV260 board. See <a href="examples/1_hello_xilinx/">Hello Xilinx example</a> if you need to recap on how to switch between multiple firmware options ;)</em>.</p>
+<p>(<em>Click on each image to see it big</em>)</p>
+<table>
+<thead>
+<tr>
+<th>Image</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/imgs/example2/5.png"><img alt="" src="imgs/example2/5.png" /></a></td>
+<td>Targeting <code>4 ns</code> clock. Note the whole operation takes 4 cycles.</td>
+</tr>
+<tr>
+<td><a href="/imgs/example2/6.png"><img alt="" src="imgs/example2/6.png" /></a></td>
+<td>Targeting <code>10 ns</code> clock. Note the whole operation takes 2 cycles.</td>
+</tr>
+</tbody>
+</table>
+<p>Futher inspecting the solutions with <code>colcon</code> CLI extensions:</p>
+<div class="highlight"><pre><span></span><code>$ colcon krs hls simple_adder --synthesis-report
+ Project:  project_simpleadder2
+ Path:  /home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder2
+    - Solution:  solution_4ns
+        - C Simulation:               Pass
+        - C Synthesis:                Run
+        - C/RTL Co-simulation:        Not Run
+        - Export:
+            - IP Catalog:         Not Run
+            - System Generator:   Not Run
+            - Export Evaluation:  Not Run
+        - Synthesis report: /home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder2/solution_4ns/syn/report/simple_adder_csynth.rpt
+
+
+            <span class="o">================================================================</span>
+            <span class="o">==</span> Vitis HLS Report <span class="k">for</span> <span class="s1">&#39;simple_adder&#39;</span>
+            <span class="o">================================================================</span>
+            * Date:           Sun Aug <span class="m">22</span> <span class="m">15</span>:58:17 <span class="m">2021</span>
+
+            * Version:        <span class="m">2020</span>.2.2 <span class="o">(</span>Build <span class="m">3118627</span> on Tue Feb  <span class="m">9</span> <span class="m">05</span>:13:49 MST <span class="m">2021</span><span class="o">)</span>
+            * Project:        project_simpleadder2
+            * Solution:       solution_4ns <span class="o">(</span>Vitis Kernel Flow Target<span class="o">)</span>
+            * Product family: zynquplus
+            * Target device:  xck26-sfvc784-2LV-c
+
+
+            <span class="o">================================================================</span>
+            <span class="o">==</span> Performance <span class="nv">Estimates</span>
+            <span class="o">================================================================</span>
+            + Timing:
+                * Summary:
+                +--------+---------+----------+------------+
+                <span class="p">|</span>  Clock <span class="p">|</span>  Target <span class="p">|</span> Estimated<span class="p">|</span> Uncertainty<span class="p">|</span>
+                +--------+---------+----------+------------+
+                <span class="p">|</span>ap_clk  <span class="p">|</span>  <span class="m">4</span>.00 ns<span class="p">|</span>  <span class="m">2</span>.365 ns<span class="p">|</span>     <span class="m">1</span>.08 ns<span class="p">|</span>
+                +--------+---------+----------+------------+
+
+            + Latency:
+                * Summary:
+                +---------+---------+-----------+-----------+-----+-----+---------+
+                <span class="p">|</span>  Latency <span class="o">(</span>cycles<span class="o">)</span> <span class="p">|</span>   Latency <span class="o">(</span>absolute<span class="o">)</span>  <span class="p">|</span>  Interval <span class="p">|</span> Pipeline<span class="p">|</span>
+                <span class="p">|</span>   min   <span class="p">|</span>   max   <span class="p">|</span>    min    <span class="p">|</span>    max    <span class="p">|</span> min <span class="p">|</span> max <span class="p">|</span>   Type  <span class="p">|</span>
+                +---------+---------+-----------+-----------+-----+-----+---------+
+                <span class="p">|</span>        <span class="m">5</span><span class="p">|</span>        <span class="m">5</span><span class="p">|</span>  <span class="m">20</span>.000 ns<span class="p">|</span>  <span class="m">20</span>.000 ns<span class="p">|</span>    <span class="m">6</span><span class="p">|</span>    <span class="m">6</span><span class="p">|</span>     none<span class="p">|</span>
+                +---------+---------+-----------+-----------+-----+-----+---------+
+
+                + Detail:
+                    * Instance:
+                    N/A
+
+                    * Loop:
+                    N/A
+
+
+
+            <span class="o">================================================================</span>
+            <span class="o">==</span> Utilization <span class="nv">Estimates</span>
+            <span class="o">================================================================</span>
+            * Summary:
+            +-----------------+---------+------+--------+--------+-----+
+            <span class="p">|</span>       Name      <span class="p">|</span> BRAM_18K<span class="p">|</span>  DSP <span class="p">|</span>   FF   <span class="p">|</span>   LUT  <span class="p">|</span> URAM<span class="p">|</span>
+            +-----------------+---------+------+--------+--------+-----+
+            <span class="p">|</span>DSP              <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       -<span class="p">|</span>       -<span class="p">|</span>    -<span class="p">|</span>
+            <span class="p">|</span>Expression       <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       <span class="m">0</span><span class="p">|</span>      <span class="m">41</span><span class="p">|</span>    -<span class="p">|</span>
+            <span class="p">|</span>FIFO             <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       -<span class="p">|</span>       -<span class="p">|</span>    -<span class="p">|</span>
+            <span class="p">|</span>Instance         <span class="p">|</span>        <span class="m">0</span><span class="p">|</span>     <span class="m">0</span><span class="p">|</span>     <span class="m">639</span><span class="p">|</span>     <span class="m">379</span><span class="p">|</span>    -<span class="p">|</span>
+            <span class="p">|</span>Memory           <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       -<span class="p">|</span>       -<span class="p">|</span>    -<span class="p">|</span>
+            <span class="p">|</span>Multiplexer      <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       -<span class="p">|</span>      <span class="m">46</span><span class="p">|</span>    -<span class="p">|</span>
+            <span class="p">|</span>Register         <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>     <span class="m">106</span><span class="p">|</span>       -<span class="p">|</span>    -<span class="p">|</span>
+            +-----------------+---------+------+--------+--------+-----+
+            <span class="p">|</span>Total            <span class="p">|</span>        <span class="m">0</span><span class="p">|</span>     <span class="m">0</span><span class="p">|</span>     <span class="m">745</span><span class="p">|</span>     <span class="m">466</span><span class="p">|</span>    <span class="m">0</span><span class="p">|</span>
+            +-----------------+---------+------+--------+--------+-----+
+            <span class="p">|</span>Available        <span class="p">|</span>      <span class="m">288</span><span class="p">|</span>  <span class="m">1248</span><span class="p">|</span>  <span class="m">234240</span><span class="p">|</span>  <span class="m">117120</span><span class="p">|</span>   <span class="m">64</span><span class="p">|</span>
+            +-----------------+---------+------+--------+--------+-----+
+            <span class="p">|</span>Utilization <span class="o">(</span>%<span class="o">)</span>  <span class="p">|</span>        <span class="m">0</span><span class="p">|</span>     <span class="m">0</span><span class="p">|</span>      ~0<span class="p">|</span>      ~0<span class="p">|</span>    <span class="m">0</span><span class="p">|</span>
+            +-----------------+---------+------+--------+--------+-----+
+
+...
+
+    - Solution:  solution_10ns
+        - C Simulation:               Pass
+        - C Synthesis:                Run
+        - C/RTL Co-simulation:        Not Run
+        - Export:
+            - IP Catalog:         Not Run
+            - System Generator:   Not Run
+            - Export Evaluation:  Not Run
+        - Synthesis report: /home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder2/solution_10ns/syn/report/simple_adder_csynth.rpt
+
+
+            <span class="o">================================================================</span>
+            <span class="o">==</span> Vitis HLS Report <span class="k">for</span> <span class="s1">&#39;simple_adder&#39;</span>
+            <span class="o">================================================================</span>
+            * Date:           Sun Aug <span class="m">22</span> <span class="m">15</span>:58:23 <span class="m">2021</span>
+
+            * Version:        <span class="m">2020</span>.2.2 <span class="o">(</span>Build <span class="m">3118627</span> on Tue Feb  <span class="m">9</span> <span class="m">05</span>:13:49 MST <span class="m">2021</span><span class="o">)</span>
+            * Project:        project_simpleadder2
+            * Solution:       solution_10ns <span class="o">(</span>Vitis Kernel Flow Target<span class="o">)</span>
+            * Product family: zynquplus
+            * Target device:  xck26-sfvc784-2LV-c
+
+
+            <span class="o">================================================================</span>
+            <span class="o">==</span> Performance <span class="nv">Estimates</span>
+            <span class="o">================================================================</span>
+            + Timing:
+                * Summary:
+                +--------+----------+----------+------------+
+                <span class="p">|</span>  Clock <span class="p">|</span>  Target  <span class="p">|</span> Estimated<span class="p">|</span> Uncertainty<span class="p">|</span>
+                +--------+----------+----------+------------+
+                <span class="p">|</span>ap_clk  <span class="p">|</span>  <span class="m">10</span>.00 ns<span class="p">|</span>  <span class="m">5</span>.436 ns<span class="p">|</span>     <span class="m">2</span>.70 ns<span class="p">|</span>
+                +--------+----------+----------+------------+
+
+            + Latency:
+                * Summary:
+                +---------+---------+-----------+-----------+-----+-----+---------+
+                <span class="p">|</span>  Latency <span class="o">(</span>cycles<span class="o">)</span> <span class="p">|</span>   Latency <span class="o">(</span>absolute<span class="o">)</span>  <span class="p">|</span>  Interval <span class="p">|</span> Pipeline<span class="p">|</span>
+                <span class="p">|</span>   min   <span class="p">|</span>   max   <span class="p">|</span>    min    <span class="p">|</span>    max    <span class="p">|</span> min <span class="p">|</span> max <span class="p">|</span>   Type  <span class="p">|</span>
+                +---------+---------+-----------+-----------+-----+-----+---------+
+                <span class="p">|</span>        <span class="m">1</span><span class="p">|</span>        <span class="m">1</span><span class="p">|</span>  <span class="m">10</span>.000 ns<span class="p">|</span>  <span class="m">10</span>.000 ns<span class="p">|</span>    <span class="m">2</span><span class="p">|</span>    <span class="m">2</span><span class="p">|</span>     none<span class="p">|</span>
+                +---------+---------+-----------+-----------+-----+-----+---------+
+
+                + Detail:
+                    * Instance:
+                    N/A
+
+                    * Loop:
+                    N/A
+
+
+
+            <span class="o">================================================================</span>
+            <span class="o">==</span> Utilization <span class="nv">Estimates</span>
+            <span class="o">================================================================</span>
+            * Summary:
+            +-----------------+---------+------+--------+--------+-----+
+            <span class="p">|</span>       Name      <span class="p">|</span> BRAM_18K<span class="p">|</span>  DSP <span class="p">|</span>   FF   <span class="p">|</span>   LUT  <span class="p">|</span> URAM<span class="p">|</span>
+            +-----------------+---------+------+--------+--------+-----+
+            <span class="p">|</span>DSP              <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       -<span class="p">|</span>       -<span class="p">|</span>    -<span class="p">|</span>
+            <span class="p">|</span>Expression       <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       <span class="m">0</span><span class="p">|</span>      <span class="m">41</span><span class="p">|</span>    -<span class="p">|</span>
+            <span class="p">|</span>FIFO             <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       -<span class="p">|</span>       -<span class="p">|</span>    -<span class="p">|</span>
+            <span class="p">|</span>Instance         <span class="p">|</span>        <span class="m">0</span><span class="p">|</span>     <span class="m">0</span><span class="p">|</span>     <span class="m">144</span><span class="p">|</span>     <span class="m">292</span><span class="p">|</span>    -<span class="p">|</span>
+            <span class="p">|</span>Memory           <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       -<span class="p">|</span>       -<span class="p">|</span>    -<span class="p">|</span>
+            <span class="p">|</span>Multiplexer      <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       -<span class="p">|</span>      <span class="m">32</span><span class="p">|</span>    -<span class="p">|</span>
+            <span class="p">|</span>Register         <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>      <span class="m">70</span><span class="p">|</span>       -<span class="p">|</span>    -<span class="p">|</span>
+            +-----------------+---------+------+--------+--------+-----+
+            <span class="p">|</span>Total            <span class="p">|</span>        <span class="m">0</span><span class="p">|</span>     <span class="m">0</span><span class="p">|</span>     <span class="m">214</span><span class="p">|</span>     <span class="m">365</span><span class="p">|</span>    <span class="m">0</span><span class="p">|</span>
+            +-----------------+---------+------+--------+--------+-----+
+            <span class="p">|</span>Available        <span class="p">|</span>      <span class="m">288</span><span class="p">|</span>  <span class="m">1248</span><span class="p">|</span>  <span class="m">234240</span><span class="p">|</span>  <span class="m">117120</span><span class="p">|</span>   <span class="m">64</span><span class="p">|</span>
+            +-----------------+---------+------+--------+--------+-----+
+            <span class="p">|</span>Utilization <span class="o">(</span>%<span class="o">)</span>  <span class="p">|</span>        <span class="m">0</span><span class="p">|</span>     <span class="m">0</span><span class="p">|</span>      ~0<span class="p">|</span>      ~0<span class="p">|</span>    <span class="m">0</span><span class="p">|</span>
+            +-----------------+---------+------+--------+--------+-----+
+
+...
+</code></pre></div>
+<p><strong>We observe how using a target <code>10 ns</code> clock (which is slower than <code>4 ns</code>) leads to a) the use of less LUT and FF resources and b) a lower latency (due to a smaller number of cycles required)</strong>. It's pretty interesting to note that <ins>getting a higher frequency in the clock does not necesarily mean we'll obtain a lower period for the function</ins>. This happens very clearly in this case.</p>
+<p><code>colcon</code> CLI tooling also allows to obtain a quick summary of all the solutions to evaluate time and use of resources:</p>
+<div class="highlight"><pre><span></span><code>$ colcon acceleration hls simple_adder --summary
+<span class="c1"># /home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder2.tcl</span>
+Solution#   tar.clk est.clk     latency_max BRAM_18K    DSP FF      LUT
+solution_10ns   <span class="m">10</span>.00   <span class="m">5</span>.436       <span class="m">10</span>.000      <span class="m">0</span> <span class="o">(</span><span class="m">0</span>%<span class="o">)</span>      <span class="m">0</span> <span class="o">(</span><span class="m">0</span>%<span class="o">)</span>  <span class="m">214</span> <span class="o">(</span>~0%<span class="o">)</span>   <span class="m">365</span> <span class="o">(</span>~0%<span class="o">)</span>
+solution_4ns    <span class="m">4</span>.00    <span class="m">2</span>.365       <span class="m">20</span>.000      <span class="m">0</span> <span class="o">(</span><span class="m">0</span>%<span class="o">)</span>      <span class="m">0</span> <span class="o">(</span><span class="m">0</span>%<span class="o">)</span>  <span class="m">745</span> <span class="o">(</span>~0%<span class="o">)</span>   <span class="m">466</span> <span class="o">(</span>~0%<span class="o">)</span>
+<span class="c1"># /home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder1.tcl</span>
+Solution#   tar.clk est.clk     latency_max BRAM_18K    DSP FF      LUT
+solution_4ns    <span class="m">4</span>.00    <span class="m">2</span>.016       <span class="m">0</span>       <span class="m">0</span> <span class="o">(</span><span class="m">0</span>%<span class="o">)</span>      <span class="m">0</span> <span class="o">(</span><span class="m">0</span>%<span class="o">)</span>  <span class="m">181</span> <span class="o">(</span>~0%<span class="o">)</span>   <span class="m">291</span> <span class="o">(</span>~0%<span class="o">)</span>
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../1_hello_xilinx/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                1. Hello Xilinx
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../3_offloading_ros2_publisher/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                3. Offloading ROS 2 publisher
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.93c04032.min.js"></script>
+      <script src="../../assets/javascripts/bundle.83e5331e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

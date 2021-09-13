@@ -5,12 +5,13 @@ The Kria Robotics Stack (KRS) is a ROS 2 superset for industry, an integrated se
 ## [View the documentation](https://xilinx.github.io/KRS/)
 
 ### Install dependencies
+
 ```bash
 pip3 install rst2pdf sphinx
 ```
 
 ### Build html locally
+
 ```bash
 cd sphinx; mkdocs html
 ```
-
