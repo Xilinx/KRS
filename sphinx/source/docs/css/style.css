@@ -1,0 +1,12 @@
+body {
+    background-color: white;
+}
+
+.md-header {
+    background-color: #e01f27;
+}
+
+.md-typeset mark {
+    background-color: #ffff7f;
+    /* background-color: #e01f2759; */
+}
