@@ -1,0 +1,3026 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.4">
+    
+    
+      
+        <title>HowTo - Kria Robotics Stack</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.15aa0b43.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.75751829.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../css/style.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#howto" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="Kria Robotics Stack" class="md-header-nav__button md-logo" aria-label="Kria Robotics Stack">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            Kria Robotics Stack
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              HowTo
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Kria Robotics Stack" class="md-nav__button md-logo" aria-label="Kria Robotics Stack">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Kria Robotics Stack
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href=".." class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+    
+    <label class="md-nav__link" for="nav-2">
+      Features
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Features" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Features
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../features/ros2centric/" class="md-nav__link">
+      ROS 2-centric
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../features/realtime_ros2/" class="md-nav__link">
+      Real-time ROS 2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../features/accelerated_apps_ros2/" class="md-nav__link">
+      ROS 2 Accelerated Apps
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../features/contributing_ros2/" class="md-nav__link">
+      Contributing back
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../hardware/" class="md-nav__link">
+      Hardware
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../install/" class="md-nav__link">
+      Install
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+    
+    <label class="md-nav__link" for="nav-5">
+      Examples
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Examples" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Examples
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../examples/0_ros2_publisher/" class="md-nav__link">
+      0. ROS 2 publisher
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../examples/1_hello_xilinx/" class="md-nav__link">
+      1. Hello Xilinx
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../examples/2_hls_ros2/" class="md-nav__link">
+      2. HLS in ROS 2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../examples/3_offloading_ros2_publisher/" class="md-nav__link">
+      3. Offloading ROS 2 publisher
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../examples/4_accelerated_ros2_publisher/" class="md-nav__link">
+      4. Accelerated ROS 2 publisher
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../examples/5_faster_ros2_publisher/" class="md-nav__link">
+      5. Faster ROS 2 publisher
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        HowTo
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      HowTo
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#kv260" class="md-nav__link">
+    KV260
+  </a>
+  
+    <nav class="md-nav" aria-label="KV260">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-update-the-kv260-firmware" class="md-nav__link">
+    How do I update the KV260 firmware ?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-emulate-kv260-images" class="md-nav__link">
+    How do I emulate KV260 images?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-configure-the-kv260-to-jtag-boot-mode" class="md-nav__link">
+    How do I configure the KV260 to JTAG boot mode?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-cant-set-jtag-boot-mode-because-xsct-is-not-behaving-as-expected" class="md-nav__link">
+    I can't set JTAG boot mode because xsct is not behaving as expected?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-can-i-deal-with-xrt-error-no-devices-found-issues-when-launching-an-accelerated-app" class="md-nav__link">
+    How can I deal with "[XRT] ERROR: No devices found" issues when launching an accelerated app?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-embedded" class="md-nav__link">
+    Basic embedded
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic embedded">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-install-a-package-built-with-petalinux-in-my-embedded-target" class="md-nav__link">
+    How do I install a package built with PetaLinux in my embedded target?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-get-the-sources-dts-from-a-device-tree-blob-dtb" class="md-nav__link">
+    How do I get the sources (.dts) from a device tree blob (.dtb)?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-build-a-device-tree-blob-dtb-from-the-sources-dts" class="md-nav__link">
+    How do I build a device tree blob (.dtb) from the sources (.dts)?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-get-a-better-gdb-debugging-environment" class="md-nav__link">
+    How do I get a better gdb debugging environment?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-do-i-get-a-serial-to-zcu10x-boards" class="md-nav__link">
+    Get do I get a serial to ZCU10X boards?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-hdmi-in-my-zcu10x-boards" class="md-nav__link">
+    Get HDMI in my ZCU10X boards?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-calculate-the-offsets-for-the-raw-img-images-so-that-i-can-mount-them" class="md-nav__link">
+    How do I calculate the offsets for the raw .img images, so that I can mount them?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-mount-a-img-file-for-inspection" class="md-nav__link">
+    How do I mount a .img file for inspection?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-create-an-initramfs-from-an-rootfs-partition" class="md-nav__link">
+    How do I create an initramfs from an rootfs partition?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-handle-corrupted-sd_cardimg-files" class="md-nav__link">
+    How do I handle corrupted sd_card.img files?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extracting-bitstream-from-xclbin-file" class="md-nav__link">
+    Extracting bitstream from xclbin file:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-figure-out-version-of-a-kernel-binary" class="md-nav__link">
+    How do I figure out version of a kernel binary?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-copy-an-image-to-the-sd-card-in-os-x-from-cli" class="md-nav__link">
+    How do I copy an image to the SD card in OS X from CLI?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-increase-swap-in-linux-for-vitisvivado-builds" class="md-nav__link">
+    How do I increase swap in Linux for Vitis/Vivado builds?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-boot" class="md-nav__link">
+    Network boot
+  </a>
+  
+    <nav class="md-nav" aria-label="Network boot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tftp-server" class="md-nav__link">
+    TFTP server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ipxe" class="md-nav__link">
+    iPXE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-create-boot-scripts-from-their-sources" class="md-nav__link">
+    How do I create boot scripts from their sources?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-cant-boot-my-image-because-i-get-a-kernel-panic-like-the-following-one" class="md-nav__link">
+    I can't boot my image because I get a kernel panic like the following one
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#petalinux" class="md-nav__link">
+    PetaLinux
+  </a>
+  
+    <nav class="md-nav" aria-label="PetaLinux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-setup-the-ros-2-bsp" class="md-nav__link">
+    How do I setup the ROS 2 BSP?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-deal-with-the-following-error-could-not-inherit-file-classesros_distro_ros_distrobbclass" class="md-nav__link">
+    How do I deal with the following error: Could not inherit file classes/ros_distro_${ROS_DISTRO}.bbclass?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-update-the-pre-built-directory-in-a-petalinuxyocto-project" class="md-nav__link">
+    How to update the pre-built directory in a PetaLinux/Yocto project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-create-a-project-out-of-the-bsp" class="md-nav__link">
+    How to create a project out of the BSP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-generate-a-bsp-out-of-a-petalinuxyocto-project" class="md-nav__link">
+    How to generate a BSP (out of a PetaLinux/Yocto project):
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-launch-a-quick-emulation-from-the-bsp-pre-built-packages" class="md-nav__link">
+    How to launch a quick emulation from the BSP pre-built packages:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-launch-a-quick-emulation-from-imageslinux-folder-just-built-artifacts" class="md-nav__link">
+    How to launch a quick emulation from images/linux folder (just built artifacts):
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-launch-a-quick-emulation-from-a-built-petalinuxyocto-project-using-a-tftp-directory-fetching-things-from-tftp" class="md-nav__link">
+    How to launch a quick emulation from a built PetaLinux/Yocto project using a TFTP directory (fetching things from TFTP):
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-add-the-rootfs-resulting-from-a-new-build-to-a-pre-built-img" class="md-nav__link">
+    How to add the rootfs resulting from a new build to a pre-built .img?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-find-linux-kernel-latencies" class="md-nav__link">
+    How to find Linux Kernel Latencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-generate-the-bootbin-file" class="md-nav__link">
+    How to generate the BOOT.BIN file?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-compile-a-preempt_rt-patched-environment" class="md-nav__link">
+    How do I compile a PREEMPT_RT patched environment?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-set-up-tsn-in-a-yoctopetalinux-project" class="md-nav__link">
+    How do I set up TSN in a Yocto/PetaLinux project?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-set-up-xen-in-petalinux" class="md-nav__link">
+    How do I set up Xen in PetaLinux?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-set-up-xrt-in-petalinux" class="md-nav__link">
+    How do I set up XRT in PetaLinux?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-clean-up-a-petalinux-component" class="md-nav__link">
+    How do I clean up a PetaLinux component?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-build-an-sdk-out-of-a-petalinux-project" class="md-nav__link">
+    How do I build an SDK out of a PetaLinux project?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xen-and-mixed-criticality" class="md-nav__link">
+    Xen and mixed-criticality
+  </a>
+  
+    <nav class="md-nav" aria-label="Xen and mixed-criticality">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-switch-in-between-consolesserial-inputs-dom0-dom1-xen" class="md-nav__link">
+    How do I switch in between consoles/serial inputs (Dom0, Dom1, Xen)?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-connect-to-a-vm-from-dom0" class="md-nav__link">
+    How do I connect to a VM from Dom0?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-theres-no-prompt-in-dom0-after-boot" class="md-nav__link">
+    Why there's no prompt in Dom0 after boot?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-create-a-dom0less-setup" class="md-nav__link">
+    How do I create a Dom0less setup?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-create-domu-machines-then" class="md-nav__link">
+    How do I create DomU machines then?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-are-vms-with-no-name" class="md-nav__link">
+    What are VMs with no name?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-exit-from-a-domu-without-stopping-it-and-get-back-to-dom0" class="md-nav__link">
+    How do I exit from a DomU without stopping it and get back to Dom0?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#domu-vms-are-not-initiating-with-an-error-like-the-following" class="md-nav__link">
+    DomU VMs are not initiating with an error like the following
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-deal-with-kernel-errors-while-building-xen-with-petalinux" class="md-nav__link">
+    How do I deal with kernel errors while building Xen with PetaLinux?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#domus-stored-in-sd-partitions-create-a-kernel-panic-when-launching" class="md-nav__link">
+    DomUs stored in SD partitions create a kernel panic when Launching
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#krs" class="md-nav__link">
+    KRS
+  </a>
+  
+    <nav class="md-nav" aria-label="KRS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-ssh-into-an-emulation-through-krs-tools-eg-colcon-krs-emulation" class="md-nav__link">
+    How do I ssh into an emulation through KRS tools (e.g. colcon krs emulation)?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-scp-files-frominto-an-emulation-launched-through-krs-tools-eg-colcon-krs-emulation" class="md-nav__link">
+    How do I scp files from/into an emulation launched through KRS tools (e.g. colcon krs emulation)?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-rebuild-ros-2-packages-without-the-acceleration-kernels" class="md-nav__link">
+    How do I rebuild ROS 2 packages without the acceleration kernels?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-port-krs-to-a-new-board" class="md-nav__link">
+    How do I port KRS to a new board?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-build-several-accelerators-when-invoking-colcon-build" class="md-nav__link">
+    How do I build several accelerators when invoking colcon build?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-handle-device-mapper-issues" class="md-nav__link">
+    How do I handle device-mapper issues?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-handle-board_part-definition-was-not-found-type-of-issues" class="md-nav__link">
+    How do I handle "board_part definition was not found" type of issues?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ros" class="md-nav__link">
+    ROS
+  </a>
+  
+    <nav class="md-nav" aria-label="ROS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-change-the-install-path-whereto-search-for-libraries" class="md-nav__link">
+    How do I change the install path whereto search for libraries?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-add-additional-verbosity-to-the-build-process-with-colcon" class="md-nav__link">
+    How do I add additional verbosity to the build process with colcon?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-add-debugging-symbols-to-ros-2-builds" class="md-nav__link">
+    How do I add debugging symbols to ROS 2 builds?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vitis" class="md-nav__link">
+    Vitis
+  </a>
+  
+    <nav class="md-nav" aria-label="Vitis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#whats-the-boot-image-format-bif-files-and-where-do-i-learn-more-about-it" class="md-nav__link">
+    What's the Boot Image Format (.bif files) and where do I learn more about it?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-generate-a-bootbin-from-a-bif-file-and-its-related-artifacts" class="md-nav__link">
+    How do I generate a boot.bin from a .bif file and its related artifacts?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-introspect-a-bootbin-file" class="md-nav__link">
+    How do I introspect a BOOT.BIN file?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-execute-a-tcl-script-from-cli" class="md-nav__link">
+    How do I execute a Tcl script from CLI?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vivado" class="md-nav__link">
+    Vivado
+  </a>
+  
+    <nav class="md-nav" aria-label="Vivado">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-map-an-soc-featured-in-datasheets-to-the-part-for-hls" class="md-nav__link">
+    How do I map an SoC featured in datasheets to the part for HLS?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" >
+    
+    <label class="md-nav__link" for="nav-7">
+      Other
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Other" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon"></span>
+        Other
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../other/definitions/" class="md-nav__link">
+      Definitions
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#kv260" class="md-nav__link">
+    KV260
+  </a>
+  
+    <nav class="md-nav" aria-label="KV260">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-update-the-kv260-firmware" class="md-nav__link">
+    How do I update the KV260 firmware ?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-emulate-kv260-images" class="md-nav__link">
+    How do I emulate KV260 images?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-configure-the-kv260-to-jtag-boot-mode" class="md-nav__link">
+    How do I configure the KV260 to JTAG boot mode?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-cant-set-jtag-boot-mode-because-xsct-is-not-behaving-as-expected" class="md-nav__link">
+    I can't set JTAG boot mode because xsct is not behaving as expected?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-can-i-deal-with-xrt-error-no-devices-found-issues-when-launching-an-accelerated-app" class="md-nav__link">
+    How can I deal with "[XRT] ERROR: No devices found" issues when launching an accelerated app?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-embedded" class="md-nav__link">
+    Basic embedded
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic embedded">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-install-a-package-built-with-petalinux-in-my-embedded-target" class="md-nav__link">
+    How do I install a package built with PetaLinux in my embedded target?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-get-the-sources-dts-from-a-device-tree-blob-dtb" class="md-nav__link">
+    How do I get the sources (.dts) from a device tree blob (.dtb)?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-build-a-device-tree-blob-dtb-from-the-sources-dts" class="md-nav__link">
+    How do I build a device tree blob (.dtb) from the sources (.dts)?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-get-a-better-gdb-debugging-environment" class="md-nav__link">
+    How do I get a better gdb debugging environment?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-do-i-get-a-serial-to-zcu10x-boards" class="md-nav__link">
+    Get do I get a serial to ZCU10X boards?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-hdmi-in-my-zcu10x-boards" class="md-nav__link">
+    Get HDMI in my ZCU10X boards?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-calculate-the-offsets-for-the-raw-img-images-so-that-i-can-mount-them" class="md-nav__link">
+    How do I calculate the offsets for the raw .img images, so that I can mount them?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-mount-a-img-file-for-inspection" class="md-nav__link">
+    How do I mount a .img file for inspection?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-create-an-initramfs-from-an-rootfs-partition" class="md-nav__link">
+    How do I create an initramfs from an rootfs partition?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-handle-corrupted-sd_cardimg-files" class="md-nav__link">
+    How do I handle corrupted sd_card.img files?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extracting-bitstream-from-xclbin-file" class="md-nav__link">
+    Extracting bitstream from xclbin file:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-figure-out-version-of-a-kernel-binary" class="md-nav__link">
+    How do I figure out version of a kernel binary?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-copy-an-image-to-the-sd-card-in-os-x-from-cli" class="md-nav__link">
+    How do I copy an image to the SD card in OS X from CLI?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-increase-swap-in-linux-for-vitisvivado-builds" class="md-nav__link">
+    How do I increase swap in Linux for Vitis/Vivado builds?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-boot" class="md-nav__link">
+    Network boot
+  </a>
+  
+    <nav class="md-nav" aria-label="Network boot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tftp-server" class="md-nav__link">
+    TFTP server
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ipxe" class="md-nav__link">
+    iPXE
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-create-boot-scripts-from-their-sources" class="md-nav__link">
+    How do I create boot scripts from their sources?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-cant-boot-my-image-because-i-get-a-kernel-panic-like-the-following-one" class="md-nav__link">
+    I can't boot my image because I get a kernel panic like the following one
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#petalinux" class="md-nav__link">
+    PetaLinux
+  </a>
+  
+    <nav class="md-nav" aria-label="PetaLinux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-setup-the-ros-2-bsp" class="md-nav__link">
+    How do I setup the ROS 2 BSP?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-deal-with-the-following-error-could-not-inherit-file-classesros_distro_ros_distrobbclass" class="md-nav__link">
+    How do I deal with the following error: Could not inherit file classes/ros_distro_${ROS_DISTRO}.bbclass?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-update-the-pre-built-directory-in-a-petalinuxyocto-project" class="md-nav__link">
+    How to update the pre-built directory in a PetaLinux/Yocto project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-create-a-project-out-of-the-bsp" class="md-nav__link">
+    How to create a project out of the BSP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-generate-a-bsp-out-of-a-petalinuxyocto-project" class="md-nav__link">
+    How to generate a BSP (out of a PetaLinux/Yocto project):
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-launch-a-quick-emulation-from-the-bsp-pre-built-packages" class="md-nav__link">
+    How to launch a quick emulation from the BSP pre-built packages:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-launch-a-quick-emulation-from-imageslinux-folder-just-built-artifacts" class="md-nav__link">
+    How to launch a quick emulation from images/linux folder (just built artifacts):
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-launch-a-quick-emulation-from-a-built-petalinuxyocto-project-using-a-tftp-directory-fetching-things-from-tftp" class="md-nav__link">
+    How to launch a quick emulation from a built PetaLinux/Yocto project using a TFTP directory (fetching things from TFTP):
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-add-the-rootfs-resulting-from-a-new-build-to-a-pre-built-img" class="md-nav__link">
+    How to add the rootfs resulting from a new build to a pre-built .img?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-find-linux-kernel-latencies" class="md-nav__link">
+    How to find Linux Kernel Latencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-generate-the-bootbin-file" class="md-nav__link">
+    How to generate the BOOT.BIN file?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-compile-a-preempt_rt-patched-environment" class="md-nav__link">
+    How do I compile a PREEMPT_RT patched environment?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-set-up-tsn-in-a-yoctopetalinux-project" class="md-nav__link">
+    How do I set up TSN in a Yocto/PetaLinux project?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-set-up-xen-in-petalinux" class="md-nav__link">
+    How do I set up Xen in PetaLinux?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-set-up-xrt-in-petalinux" class="md-nav__link">
+    How do I set up XRT in PetaLinux?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-clean-up-a-petalinux-component" class="md-nav__link">
+    How do I clean up a PetaLinux component?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-build-an-sdk-out-of-a-petalinux-project" class="md-nav__link">
+    How do I build an SDK out of a PetaLinux project?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xen-and-mixed-criticality" class="md-nav__link">
+    Xen and mixed-criticality
+  </a>
+  
+    <nav class="md-nav" aria-label="Xen and mixed-criticality">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-switch-in-between-consolesserial-inputs-dom0-dom1-xen" class="md-nav__link">
+    How do I switch in between consoles/serial inputs (Dom0, Dom1, Xen)?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-connect-to-a-vm-from-dom0" class="md-nav__link">
+    How do I connect to a VM from Dom0?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-theres-no-prompt-in-dom0-after-boot" class="md-nav__link">
+    Why there's no prompt in Dom0 after boot?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-create-a-dom0less-setup" class="md-nav__link">
+    How do I create a Dom0less setup?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-create-domu-machines-then" class="md-nav__link">
+    How do I create DomU machines then?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-are-vms-with-no-name" class="md-nav__link">
+    What are VMs with no name?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-exit-from-a-domu-without-stopping-it-and-get-back-to-dom0" class="md-nav__link">
+    How do I exit from a DomU without stopping it and get back to Dom0?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#domu-vms-are-not-initiating-with-an-error-like-the-following" class="md-nav__link">
+    DomU VMs are not initiating with an error like the following
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-deal-with-kernel-errors-while-building-xen-with-petalinux" class="md-nav__link">
+    How do I deal with kernel errors while building Xen with PetaLinux?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#domus-stored-in-sd-partitions-create-a-kernel-panic-when-launching" class="md-nav__link">
+    DomUs stored in SD partitions create a kernel panic when Launching
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#krs" class="md-nav__link">
+    KRS
+  </a>
+  
+    <nav class="md-nav" aria-label="KRS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-ssh-into-an-emulation-through-krs-tools-eg-colcon-krs-emulation" class="md-nav__link">
+    How do I ssh into an emulation through KRS tools (e.g. colcon krs emulation)?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-scp-files-frominto-an-emulation-launched-through-krs-tools-eg-colcon-krs-emulation" class="md-nav__link">
+    How do I scp files from/into an emulation launched through KRS tools (e.g. colcon krs emulation)?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-rebuild-ros-2-packages-without-the-acceleration-kernels" class="md-nav__link">
+    How do I rebuild ROS 2 packages without the acceleration kernels?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-port-krs-to-a-new-board" class="md-nav__link">
+    How do I port KRS to a new board?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-build-several-accelerators-when-invoking-colcon-build" class="md-nav__link">
+    How do I build several accelerators when invoking colcon build?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-handle-device-mapper-issues" class="md-nav__link">
+    How do I handle device-mapper issues?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-handle-board_part-definition-was-not-found-type-of-issues" class="md-nav__link">
+    How do I handle "board_part definition was not found" type of issues?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ros" class="md-nav__link">
+    ROS
+  </a>
+  
+    <nav class="md-nav" aria-label="ROS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-change-the-install-path-whereto-search-for-libraries" class="md-nav__link">
+    How do I change the install path whereto search for libraries?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-add-additional-verbosity-to-the-build-process-with-colcon" class="md-nav__link">
+    How do I add additional verbosity to the build process with colcon?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-add-debugging-symbols-to-ros-2-builds" class="md-nav__link">
+    How do I add debugging symbols to ROS 2 builds?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vitis" class="md-nav__link">
+    Vitis
+  </a>
+  
+    <nav class="md-nav" aria-label="Vitis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#whats-the-boot-image-format-bif-files-and-where-do-i-learn-more-about-it" class="md-nav__link">
+    What's the Boot Image Format (.bif files) and where do I learn more about it?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-generate-a-bootbin-from-a-bif-file-and-its-related-artifacts" class="md-nav__link">
+    How do I generate a boot.bin from a .bif file and its related artifacts?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-introspect-a-bootbin-file" class="md-nav__link">
+    How do I introspect a BOOT.BIN file?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-execute-a-tcl-script-from-cli" class="md-nav__link">
+    How do I execute a Tcl script from CLI?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vivado" class="md-nav__link">
+    Vivado
+  </a>
+  
+    <nav class="md-nav" aria-label="Vivado">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-do-i-map-an-soc-featured-in-datasheets-to-the-part-for-hls" class="md-nav__link">
+    How do I map an SoC featured in datasheets to the part for HLS?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset"><a class="md-content__button md-icon" download href="../pdf/combined.pdf" title="PDF Export"><svg style="height: 1.2rem; width: 1.2rem;" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path d="M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm76.45 211.36l-96.42 95.7c-6.65 6.61-17.39 6.61-24.04 0l-96.42-95.7C73.42 337.29 80.54 320 94.82 320H160v-80c0-8.84 7.16-16 16-16h32c8.84 0 16 7.16 16 16v80h65.18c14.28 0 21.4 17.29 11.27 27.36zM377 105L279.1 7c-4.5-4.5-10.6-7-17-7H256v128h128v-6.1c0-6.3-2.5-12.4-7-16.9z"></path></svg></a>
+              
+                
+                
+                <h1 id="howto">HOWTO</h1>
+<!-- ////////// -->
+<!-- ////////// -->
+<!--     KV260  -->
+<!-- ////////// -->
+<!-- ////////// -->
+<h2 id="kv260">KV260</h2>
+<h4 id="how-do-i-update-the-kv260-firmware">How do I update the KV260 firmware ?</h4>
+<p>According to <a href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/1641152513/Kria+K26+SOM#Boot-FW-via-xmutil">https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/1641152513/Kria+K26+SOM#Boot-FW-via-xmutil</a> initial KV260 boards were shipped with a firmware that requires an update for <code>xmutil</code> tools to work appropriately. The corresponding firmware can be fetched from <a href="https://www.xilinx.com/member/forms/download/xef.html?filename=XilinxSom_QspiImage_v1.1_20210422.bin">https://www.xilinx.com/member/forms/download/xef.html?filename=XilinxSom_QspiImage_v1.1_20210422.bin</a>.</p>
+<h4 id="how-do-i-emulate-kv260-images">How do I emulate KV260 images?</h4>
+<p>In Vitis 2020.2 there's a bug which limits the emulation capabilities with KV260. The current images are able to boot only up until the ramfs and end up in something like:</p>
+<div class="highlight"><pre><span></span><code>...
+SOM: CARRIER_CARD: REVISION:
+NO CARRIER DTBO FOUND, PLEASE CHECK /boot/devicetree/
+Waiting <span class="k">for</span> /dev/mmcblk0p2 to pop up <span class="o">(</span>attempt <span class="m">1</span><span class="o">)</span>
+Waiting <span class="k">for</span> /dev/mmcblk0p2 to pop up <span class="o">(</span>attempt <span class="m">2</span><span class="o">)</span>
+Waiting <span class="k">for</span> /dev/mmcblk0p2 to pop up <span class="o">(</span>attempt <span class="m">3</span><span class="o">)</span>
+Waiting <span class="k">for</span> /dev/mmcblk0p2 to pop up <span class="o">(</span>attempt <span class="m">4</span><span class="o">)</span>
+Waiting <span class="k">for</span> /dev/mmcblk0p2 to pop up <span class="o">(</span>attempt <span class="m">5</span><span class="o">)</span>
+Waiting <span class="k">for</span> /dev/mmcblk0p2 to pop up <span class="o">(</span>attempt <span class="m">6</span><span class="o">)</span>
+Waiting <span class="k">for</span> /dev/mmcblk0p2 to pop up <span class="o">(</span>attempt <span class="m">7</span><span class="o">)</span>
+Waiting <span class="k">for</span> /dev/mmcblk0p2 to pop up <span class="o">(</span>attempt <span class="m">8</span><span class="o">)</span>
+Waiting <span class="k">for</span> /dev/mmcblk0p2 to pop up <span class="o">(</span>attempt <span class="m">9</span><span class="o">)</span>
+Waiting <span class="k">for</span> /dev/mmcblk0p2 to pop up <span class="o">(</span>attempt <span class="m">10</span><span class="o">)</span>
+Device /dev/mmcblk0p2 not found
+ERROR: There<span class="s1">&#39;s no &#39;</span>/dev<span class="err">&#39;</span> on rootfs.
+</code></pre></div>
+<p>To finalize the boot, manually type the following:</p>
+<div class="highlight"><pre><span></span><code>mkdir /configfs
+mount -t configfs configfs /configfs
+<span class="nb">cd</span> /configfs/device-tree/overlays/
+mkdir full
+mkdir /lib/firmware/
+cp /boot/devicetree/zynqmp-sck-kv-g-qemu.dtbo /lib/firmware/.
+<span class="nb">echo</span> -n <span class="s2">&quot;zynqmp-sck-kv-g-qemu.dtbo&quot;</span> &gt; full/path
+<span class="nb">exec</span> /init
+</code></pre></div>
+<p>this should lead you all the way down to the prompt:</p>
+<div class="highlight"><pre><span></span><code>...
+Starting system log daemon...0
+Starting kernel log daemon...0
+Starting crond: OK
+Starting tcf-agent: OK
+Starting TCG TSS2 Access Broker and Resource Management daemon: device driver not loaded, skipping.
+
+PetaLinux <span class="m">2020</span>.2.2 xilinx-k26-starterkit-2020_2.2 ttyPS0
+
+xilinx-k26-starterkit-2020_2 login:
+</code></pre></div>
+<h4 id="how-do-i-configure-the-kv260-to-jtag-boot-mode">How do I configure the KV260 to JTAG boot mode?</h4>
+<p>The easiest way to do so is through a Tcl script and the Xilinx Software Commandline Tool (<code>xsct</code>). Connect the board to the computer via its USB/UART/JTAG FTDI adapter and power it on:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">source</span> /tools/Xilinx/Vitis/2020.2/settings64.sh  <span class="c1"># path might be different in your machine</span>
+cat <span class="s">&lt;&lt; &#39;EOF&#39; &gt; som_bootmode.tcl</span>
+
+<span class="s">proc boot_jtag { } {</span>
+<span class="s">############################</span>
+<span class="s"># Switch to JTAG boot mode #</span>
+<span class="s">############################</span>
+<span class="s">targets -set -nocase -filter {name =~ &quot;PSU&quot;}</span>
+<span class="s">stop</span>
+<span class="s"># update multiboot to ZERO</span>
+<span class="s">mwr 0xffca0010 0x0</span>
+<span class="s"># change boot mode to JTAG</span>
+<span class="s">mwr 0xff5e0200 0x0100</span>
+<span class="s"># reset</span>
+<span class="s">rst -system</span>
+
+<span class="s">}</span>
+<span class="s">EOF</span>
+
+xsct
+...
+
+xsct%
+xsct%
+xsct%
+xsct% <span class="nb">source</span> som_bootmode.tcl
+xsct% connect
+attempting to launch hw_server
+
+****** Xilinx hw_server v2020.2.2
+  **** Build date : Feb  <span class="m">9</span> <span class="m">2021</span> at <span class="m">05</span>:51:02
+    ** Copyright <span class="m">1986</span>-2021 Xilinx, Inc. All Rights Reserved.
+
+INFO: hw_server application started
+INFO: Use Ctrl-C to <span class="nb">exit</span> hw_server application
+
+INFO: To connect to this hw_server instance use url: TCP:127.0.0.1:3121
+
+tcfchan#0
+xsct%
+xsct% ta
+  <span class="m">2</span>  PS TAP
+     <span class="m">3</span>  PMU
+     <span class="m">4</span>  PL
+  <span class="m">6</span>  PSU
+     <span class="m">7</span>  RPU
+        <span class="m">8</span>  Cortex-R5 <span class="c1">#0 (Halted)</span>
+        <span class="m">9</span>  Cortex-R5 <span class="c1">#1 (Lock Step Mode)</span>
+    <span class="m">10</span>  APU
+       <span class="m">11</span>  Cortex-A53 <span class="c1">#0 (Running)</span>
+       <span class="m">12</span>  Cortex-A53 <span class="c1">#1 (Power On Reset)</span>
+       <span class="m">13</span>  Cortex-A53 <span class="c1">#2 (Power On Reset)</span>
+       <span class="m">14</span>  Cortex-A53 <span class="c1">#3 (Power On Reset)</span>
+xsct%
+xsct% boot_jtag
+xsct% <span class="nb">exit</span>
+</code></pre></div>
+<p>That's it, now JTAG boot mode is set :).</p>
+<h4 id="i-cant-set-jtag-boot-mode-because-xsct-is-not-behaving-as-expected">I can't set JTAG boot mode because xsct is not behaving as expected?</h4>
+<p>If you're getting the following behavior:</p>
+<div class="highlight"><pre><span></span><code>xsct  <span class="c1"># enter the Xilinx Software Command-Line Tool</span>
+xsct% <span class="nb">source</span> ./som_bootmode.tcl
+xsct%
+xsct%
+xsct% connect
+attempting to launch hw_server
+
+****** Xilinx hw_server v2020.2.2
+  **** Build date : Feb  <span class="m">9</span> <span class="m">2021</span> at <span class="m">05</span>:51:02
+    ** Copyright <span class="m">1986</span>-2021 Xilinx, Inc. All Rights Reserved.
+
+INFO: hw_server application started
+INFO: Use Ctrl-C to <span class="nb">exit</span> hw_server application
+
+INFO: To connect to this hw_server instance use url: TCP:127.0.0.1:3121
+
+tcfchan#0
+xsct% ta
+xsct% boot_jtag
+no targets found with <span class="s2">&quot;name =~ &quot;</span>PSU<span class="s2">&quot;&quot;</span>. available targets: none
+xsct%
+</code></pre></div>
+<p>Chances are you've got the wrong drivers. Install the ones that come with Vivado as documented at https://forums.xilinx.com/t5/Xilinx-Evaluation-Boards/Unable-to-connect-to-ZCU104-with-Ubuntu-16-04LTS/td-p/889856:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> /tools/Xilinx/Vivado/2020.2/data/xicom/cable_drivers/lin64/install_script/install_drivers
+sudo ./install_drivers
+<span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> xilinx:
+INFO: Installing cable drivers.
+INFO: Script <span class="nv">name</span> <span class="o">=</span> ./install_drivers
+INFO: <span class="nv">HostName</span> <span class="o">=</span> xilinx
+INFO: Current working <span class="nv">dir</span> <span class="o">=</span> /tools/Xilinx/Vivado/2020.2/data/xicom/cable_drivers/lin64/install_script/install_drivers
+INFO: Kernel <span class="nv">version</span> <span class="o">=</span> <span class="m">5</span>.10.37-rt39-tsn-measurements.
+INFO: <span class="nv">Arch</span> <span class="o">=</span> x86_64.
+Successfully installed Digilent Cable Drivers
+--File /etc/udev/rules.d/52-xilinx-ftdi-usb.rules does not exist.
+--File version of /etc/udev/rules.d/52-xilinx-ftdi-usb.rules <span class="o">=</span> <span class="m">0000</span>.
+--Updating rules file.
+--File /etc/udev/rules.d/52-xilinx-pcusb.rules does not exist.
+--File version of /etc/udev/rules.d/52-xilinx-pcusb.rules <span class="o">=</span> <span class="m">0000</span>.
+--Updating rules file.
+
+INFO: Digilent Return <span class="nv">code</span> <span class="o">=</span> <span class="m">0</span>
+INFO: Xilinx Return <span class="nv">code</span> <span class="o">=</span> <span class="m">0</span>
+INFO: Xilinx FTDI Return <span class="nv">code</span> <span class="o">=</span> <span class="m">0</span>
+INFO: Return <span class="nv">code</span> <span class="o">=</span> <span class="m">0</span>
+INFO: Driver installation successful.
+CRITICAL WARNING: Cable<span class="o">(</span>s<span class="o">)</span> on the system must be unplugged <span class="k">then</span> plugged back in order <span class="k">for</span> the driver scripts to update the cables.
+</code></pre></div>
+<h4 id="how-can-i-deal-with-xrt-error-no-devices-found-issues-when-launching-an-accelerated-app">How can I deal with "[XRT] ERROR: No devices found" issues when launching an accelerated app?</h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is caused by issues within the <code>2020.2.2</code> PetaLinux BSP release. <code>2021.1</code> should address these issues.</p>
+</div>
+<p>If when launching accelerated applications you observe the following</p>
+<div class="highlight"><pre><span></span><code>XRT build version: <span class="m">2</span>.8.0
+Build hash: b94857f15ba8c8251df446e8c51af7e0a7c9e061
+Build date: <span class="m">2021</span>-06-11 <span class="m">07</span>:18:33
+Git branch: <span class="m">2020</span>.2
+PID: <span class="m">1694</span>
+UID: <span class="m">0</span>
+<span class="o">[</span>Sat Jul <span class="m">31</span> <span class="m">16</span>:33:09 <span class="m">2021</span> GMT<span class="o">]</span>
+HOST: xilinx-k26-starterkit-2020_2.2
+EXE: /ros2_ws/lib/faster_vadd_publisher/faster_vadd
+<span class="o">[</span>XRT<span class="o">]</span> ERROR: No devices found
+<span class="o">[</span>XRT<span class="o">]</span> ERROR: No devices found
+<span class="o">[</span>XRT<span class="o">]</span> ERROR: No devices found
+ERROR: Failed to find Xilinx platform
+</code></pre></div>
+<p>And <code>xbutil</code> shows an error like the following one:</p>
+<div class="highlight"><pre><span></span><code>xilinx-k26-starterkit-2020_2:/ros2_ws/lib/faster_vadd_publisher# xbutil list
+INFO: Found total <span class="m">1</span> card<span class="o">(</span>s<span class="o">)</span>, <span class="m">1</span> are usable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+System Configuration
+OS name:    Linux
+Release:    <span class="m">5</span>.4.0-xilinx-v2020.2
+Version:    <span class="c1">#1 SMP Thu Jun 10 22:03:38 UTC 2021</span>
+Machine:    aarch64
+Glibc:      <span class="m">2</span>.30
+Distribution:   N/A
+Now:        Sat Jul <span class="m">31</span> <span class="m">16</span>:40:06 <span class="m">2021</span> GMT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+XRT Information
+Version:    <span class="m">2</span>.8.0
+Git Hash:   b94857f15ba8c8251df446e8c51af7e0a7c9e061
+Git Branch: <span class="m">2020</span>.2
+Build Date: <span class="m">2021</span>-06-11 <span class="m">07</span>:18:33
+ZOCL:       <span class="m">2</span>.8.0,b94857f15ba8c8251df446e8c51af7e0a7c9e061
+Failed to open device<span class="o">[</span><span class="m">0</span><span class="o">]</span>
+ERROR: Card index <span class="m">0</span> is out of range
+</code></pre></div>
+<p>then, chances are your device tree does not include the corresponding <code>zocl</code> entry. A quick fix to to manually add it and rebuild the blob. To do so, get the sources from the device tree blob:
+<div class="highlight"><pre><span></span><code>dtc -I dtb -O dts -o system.dts system.dtb
+</code></pre></div>
+Edit <code>system.dts</code> and add the following:
+<div class="highlight"><pre><span></span><code>                zyxclmm_drm {
+                        compatible = &quot;xlnx,zocl&quot;;
+                        status = &quot;okay&quot;;
+                };
+</code></pre></div>
+Build again the device tree into its blob:
+<div class="highlight"><pre><span></span><code>dtc -I dts -O dtb -o system.dtb system.dts
+</code></pre></div></p>
+<p>After this, a good looking tree should have the following response:</p>
+<div class="highlight"><pre><span></span><code>xbutil list
+INFO: Found total <span class="m">1</span> card<span class="o">(</span>s<span class="o">)</span>, <span class="m">1</span> are usable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+System Configuration
+OS name:    Linux
+Release:    <span class="m">5</span>.4.0-xilinx-v2020.2
+Version:    <span class="c1">#1 SMP Thu Jun 10 22:03:38 UTC 2021</span>
+Machine:    aarch64
+Glibc:      <span class="m">2</span>.30
+Distribution:   N/A
+Now:        Wed Aug  <span class="m">4</span> <span class="m">14</span>:49:47 <span class="m">2021</span> GMT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+XRT Information
+Version:    <span class="m">2</span>.8.0
+Git Hash:   b94857f15ba8c8251df446e8c51af7e0a7c9e061
+Git Branch: <span class="m">2020</span>.2
+Build Date: <span class="m">2021</span>-06-11 <span class="m">07</span>:18:33
+ZOCL:       <span class="m">2</span>.8.0,b94857f15ba8c8251df446e8c51af7e0a7c9e061
+ <span class="o">[</span><span class="m">0</span><span class="o">]</span>:edge
+</code></pre></div>
+<h2 id="basic-embedded">Basic embedded</h2>
+<h4 id="how-do-i-install-a-package-built-with-petalinux-in-my-embedded-target">How do I install a package built with PetaLinux in my embedded target?</h4>
+<p>You can build individual packages with PetaLinux using the following syntax:</p>
+<p><div class="highlight"><pre><span></span><code>petalinux-build -c &lt;package&gt;  <span class="c1"># e.g. petalinux-build -c dfx-mgr</span>
+</code></pre></div>
+the resulting package will be built and archived, resulting in an <code>.rpm</code> file which you can often find at <code>build/tmp/deploy/rpm/aarch64/dfx-mgr*.rpm</code>.</p>
+<p>We can install this in the embedded target as follows:
+<div class="highlight"><pre><span></span><code><span class="c1"># host</span>
+scp build/tmp/deploy/rpm/aarch64/dfx-mgr*.rpm root@192.168.1.86:~/  <span class="c1"># copy them</span>
+
+<span class="c1"># embedded target</span>
+rpm -i --force dfx-mgr-1.0-r0.aarch64.rpm  <span class="c1"># force install to overwrite same version</span>
+</code></pre></div></p>
+<h4 id="how-do-i-get-the-sources-dts-from-a-device-tree-blob-dtb">How do I get the sources (.dts) from a device tree blob (.dtb)?</h4>
+<div class="highlight"><pre><span></span><code>dtc -I dtb -O dts -o system.dts system.dtb
+</code></pre></div>
+<h4 id="how-do-i-build-a-device-tree-blob-dtb-from-the-sources-dts">How do I build a device tree blob (.dtb) from the sources (.dts)?</h4>
+<div class="highlight"><pre><span></span><code>dtc -I dts -O dtb -o system.dtb system.dts
+</code></pre></div>
+<h4 id="how-do-i-get-a-better-gdb-debugging-environment">How do I get a better gdb debugging environment?</h4>
+<div class="highlight"><pre><span></span><code>wget -P ~ https://git.io/.gdbinit
+</code></pre></div>
+<h4 id="get-do-i-get-a-serial-to-zcu10x-boards">Get do I get a serial to ZCU10X boards?</h4>
+<p>Use a simple TTY terminal application. There're various you could use: <code>minicom</code>, <code>picocom</code>, etc.</p>
+<p>I like <a href="https://tio.github.io/">tio</a>:</p>
+<div class="highlight"><pre><span></span><code>sudo apt-get install tio
+sudo tio /dev/ttyUSB0
+</code></pre></div>
+<h4 id="get-hdmi-in-my-zcu10x-boards">Get HDMI in my ZCU10X boards?</h4>
+<p>Through the DisplayPort port. We support selected connectors. The following have been tested:</p>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Works</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JSAUX JSESNZ4KDP2HDF</td>
+<td><mark>Yes</mark></td>
+</tr>
+<tr>
+<td>J5create JDA158</td>
+<td> <mark>Yes</mark></td>
+</tr>
+<tr>
+<td>IVANKY-DP11</td>
+<td>No</td>
+</tr>
+<tr>
+<td>ICZI  IZEC-A10-IT</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Snowkids cable</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h4 id="how-do-i-calculate-the-offsets-for-the-raw-img-images-so-that-i-can-mount-them">How do I calculate the offsets for the raw <code>.img</code> images, so that I can mount them?</h4>
+<p>Offsets can be inspected in the following manner:
+<div class="highlight"><pre><span></span><code>fdisk -l &lt;path-to-img&gt;/sd_card.img
+Disk /home/xilinx/ros2_ws/acceleration/firmware/xilinx/sd_card.img: <span class="m">2</span>.47 GiB, <span class="m">2635071488</span> bytes, <span class="m">5146624</span> sectors
+Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
+Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+Disklabel type: dos
+Disk identifier: 0xe29caf3d
+
+Device                                          Boot   Start     End Sectors  Size Id Type
+/home/xilinx/ros2_ws/acceleration/firmware/xilinx/sd_card.img1 *       <span class="m">2048</span> <span class="m">2000895</span> <span class="m">1998848</span>  976M <span class="m">83</span> Linux
+/home/xilinx/ros2_ws/acceleration/firmware/xilinx/sd_card.img2      <span class="m">2000896</span> <span class="m">5146623</span> <span class="m">3145728</span>  <span class="m">1</span>.5G <span class="m">83</span> Linux
+</code></pre></div></p>
+<p>To calculate them, multiple the <code>End</code> by the <code>Units</code>. For example, for the second partition:
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span> <span class="k">$(($(</span>fdisk -l /home/xilinx/ros2_ws/acceleration/firmware/xilinx/sd_card.img <span class="p">|</span> grep <span class="s1">&#39;img2&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;{print $2}&#39;</span><span class="k">)</span> <span class="o">*</span> <span class="k">$(</span>fdisk -l /home/xilinx/ros2_ws/acceleration/firmware/xilinx/sd_card.img <span class="p">|</span> grep <span class="s1">&#39;Units&#39;</span> <span class="p">|</span> awk <span class="s1">&#39;{print $8}&#39;</span><span class="k">)))</span>
+<span class="m">1024458752</span>
+</code></pre></div></p>
+<h4 id="how-do-i-mount-a-img-file-for-inspection">How do I mount a <code>.img</code> file for inspection?</h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The offsets need to be calculated first.</p>
+</div>
+<p>Raw image files contain several partitions. The first one is often the boot partition and the second one typically contains the file system. The following two commands will help mount the first two:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># mount boot partition</span>
+mkdir -p /tmp/sdcard_img_p1 <span class="o">&amp;&amp;</span> sudo mount -o loop,offset<span class="o">=</span><span class="m">1048576</span> /home/xilinx/ros2_ws/acceleration/firmware/xilinx/sd_card.img /tmp/sdcard_img_p1
+
+<span class="c1"># mount rootfs partition</span>
+mkdir -p /tmp/sdcard_img_p2 <span class="o">&amp;&amp;</span> sudo mount -o loop,offset<span class="o">=</span><span class="m">588251136</span> /home/xilinx/ros2_ws/acceleration/firmware/xilinx/sd_card.img /tmp/sdcard_img_p2
+</code></pre></div>
+<p>To umount:</p>
+<div class="highlight"><pre><span></span><code>sudo umount /tmp/sdcard_img_p1  <span class="c1"># or *_p2, as appropriate</span>
+</code></pre></div>
+<h4 id="how-do-i-create-an-initramfs-from-an-rootfs-partition">How do I create an initramfs from an rootfs partition?</h4>
+<p>See <sup id="fnref:32"><a class="footnote-ref" href="#fn:32">32</a></sup> for more details:</p>
+<div class="highlight"><pre><span></span><code>colcon krs mkinitramfs out.cpio.gz
+</code></pre></div>
+<p>Alternatively:
+<div class="highlight"><pre><span></span><code><span class="c1"># mount sd card rootfs partition</span>
+sudo mount -o loop,offset<span class="o">=</span><span class="m">1024458752</span> /home/xilinx/ros2_ws/acceleration/firmware/xilinx/sd_card.img /tmp/sdcard_img_p2
+<span class="c1"># create script, no variable expansion</span>
+cat <span class="s">&lt;&lt; &#39;EOF&#39; &gt; mkinitramfs.sh</span>
+<span class="s">#!/bin/sh</span>
+
+<span class="s"># Copyright 2006 Rob Landley &lt;rob@landley.net&gt; and TimeSys Corporation.</span>
+<span class="s"># Licensed under GPL version 2</span>
+
+<span class="s">if [ $# -ne 2 ]</span>
+<span class="s">then</span>
+<span class="s">    echo &quot;usage: mkinitramfs directory imagename.cpio.gz&quot;</span>
+<span class="s">    exit 1</span>
+<span class="s">fi</span>
+
+<span class="s">if [ -d &quot;$1&quot; ]</span>
+<span class="s">then</span>
+<span class="s">    echo &quot;creating $2 from $1&quot;</span>
+<span class="s">    (cd &quot;$1&quot;; find . | cpio -o -H newc | gzip) &gt; &quot;$2&quot;</span>
+<span class="s">else</span>
+<span class="s">    echo &quot;First argument must be a directory&quot;</span>
+<span class="s">    exit 1</span>
+<span class="s">fi</span>
+<span class="s">EOF</span>
+chmod +x mkinitramfs.sh
+<span class="c1"># create initramfs</span>
+sudo ./mkinitramfs.sh /tmp/sdcard_img_p2 test.cpio.gz
+</code></pre></div></p>
+<h4 id="how-do-i-handle-corrupted-sd_cardimg-files">How do I handle corrupted sd_card.img files?</h4>
+<p>It's been observed that <code>sd_card.img</code> files get sometimes corrupted but neither <code>ddrescue</code> nor <code>testdisk</code> helped recovering them. The typicaly behavior observed in a corrupted image can be reproduced by trying to mount its second partition:</p>
+<div class="highlight"><pre><span></span><code>mkdir -p /tmp/sdcard_img_p2 <span class="o">&amp;&amp;</span> sudo mount -o loop,offset<span class="o">=</span><span class="m">1024458752</span> /home/xilinx/ros2_ws/acceleration/firmware/xilinx/sd_card.img /tmp/sdcard_img_p2
+<span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> xilinx:
+NTFS signature is missing.
+Failed to mount <span class="s1">&#39;/dev/loop1&#39;</span>: Invalid argument
+The device <span class="s1">&#39;/dev/loop1&#39;</span> doesn<span class="err">&#39;</span>t seem to have a valid NTFS.
+Maybe the wrong device is used? Or the whole disk instead of a
+partition <span class="o">(</span>e.g. /dev/sda, not /dev/sda1<span class="o">)</span>? Or the other way around?
+</code></pre></div>
+<details class="warning"><summary>Reproduce this behavior with krs hypervisor functionality</summary><div class="highlight"><pre><span></span><code><span class="nb">cd</span> ~/ros2_ws/xilinx/firmware
+tar -xzf sd_card.img.tar.gz  <span class="c1"># decompress the image</span>
+<span class="nb">cd</span> ~/ros2_ws/
+colcon krs hypervisor --dom0 vanilla --domU vanilla --ramdisk initrd.cpio  <span class="c1"># this works just fine, can mount afterwards</span>
+colcon krs hypervisor --dom0 vanilla --domU vanilla --ramdisk initrd.cpio.gz  <span class="c1"># this works just fine, can mount afterwards</span>
+colcon krs hypervisor --dom0 vanilla --domU vanilla --ramdisk rootfs.cpio.gz  <span class="c1"># this works just fine, can mount afterwards</span>
+colcon krs hypervisor --dom0 vanilla --domU vanilla --ramdisk test.cpio.gz
+</code></pre></div>
+</details>
+<p>The current solution for this issue is to discard the sd_card.img file and create a new one from the <code>sd_card.img.tar.gz</code> file.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This might be related to the fact that p1 in the sd_card is filling and overloading p2.</p>
+</div>
+<h4 id="extracting-bitstream-from-xclbin-file">Extracting bitstream from xclbin file:</h4>
+<div class="highlight"><pre><span></span><code>xclbinutil --dump-section BITSTREAM:RAW:bitstream.bit --input vadd.xclbin
+</code></pre></div>
+<h4 id="how-do-i-figure-out-version-of-a-kernel-binary">How do I figure out version of a kernel binary?</h4>
+<div class="highlight"><pre><span></span><code>strings Image <span class="p">|</span> grep <span class="s2">&quot;Linux version&quot;</span>
+Linux version <span class="m">5</span>.4.0-xilinx-v2020.2 <span class="o">(</span>oe-user@oe-host<span class="o">)</span> <span class="o">(</span>gcc version <span class="m">9</span>.2.0 <span class="o">(</span>GCC<span class="o">))</span> <span class="c1">#1 SMP Thu Jun 10 22:03:38 UTC 2021</span>
+Linux version %s <span class="o">(</span>%s<span class="o">)</span>
+</code></pre></div>
+<p>or more elaborated:
+<div class="highlight"><pre><span></span><code>strings Image <span class="p">|</span> grep <span class="s2">&quot;5\.[0123456789]\.[0123456789]&quot;</span> <span class="p">|</span> grep <span class="s2">&quot;Linux version&quot;</span>
+Linux version <span class="m">5</span>.4.0-xilinx-v2020.2 <span class="o">(</span>oe-user@oe-host<span class="o">)</span> <span class="o">(</span>gcc version <span class="m">9</span>.2.0 <span class="o">(</span>GCC<span class="o">))</span> <span class="c1">#1 SMP Thu Jun 10 22:03:38 UTC 2021</span>
+</code></pre></div></p>
+<h4 id="how-do-i-copy-an-image-to-the-sd-card-in-os-x-from-cli">How do I copy an image to the SD card in OS X from CLI?</h4>
+<div class="highlight"><pre><span></span><code>sudo diskutil unmount /dev/rdisk2s1
+pv sd_card.img <span class="p">|</span> sudo dd <span class="nv">of</span><span class="o">=</span>/dev/rdisk2 <span class="nv">bs</span><span class="o">=</span>4m
+</code></pre></div>
+<h4 id="how-do-i-increase-swap-in-linux-for-vitisvivado-builds">How do I increase swap in Linux for Vitis/Vivado builds?</h4>
+<p>For a 30G swap:</p>
+<div class="highlight"><pre><span></span><code>sudo swapoff -a
+sudo dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>/swapfile <span class="nv">bs</span><span class="o">=</span>1G <span class="nv">count</span><span class="o">=</span><span class="m">30</span>
+sudo chmod <span class="m">600</span> /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+</code></pre></div>
+<p>To fix things at boot, edit <code>/etc/fstab</code> and add:
+<div class="highlight"><pre><span></span><code>/swapfile none swap sw 0 0
+</code></pre></div></p>
+<h2 id="network-boot">Network boot</h2>
+<h4 id="tftp-server">TFTP server</h4>
+<div class="highlight"><pre><span></span><code>cat <span class="s">&lt;&lt; EOF &gt; /etc/xinetd.d/tftp</span>
+<span class="s">service tftp</span>
+<span class="s">{</span>
+<span class="s">    protocol        = udp</span>
+<span class="s">    port            = 69</span>
+<span class="s">    socket_type     = dgram</span>
+<span class="s">    wait            = yes</span>
+<span class="s">    user            = xilinx</span>
+<span class="s">    server          = /usr/sbin/in.tftpd</span>
+<span class="s">    server_args     = /srv/tftp</span>
+<span class="s">    disable         = no</span>
+<span class="s">}</span>
+<span class="s">EOF</span>
+sudo systemctl status xinetd.service
+setenv ipaddr <span class="m">192</span>.168.1.86
+setenv serverip <span class="m">192</span>.168.1.33
+tftpb 0xC00000 xen_boot_tftp.scr  <span class="c1"># fetch one file in address 0xC00000</span>
+<span class="nb">source</span> 0xC00000
+</code></pre></div>
+<h4 id="ipxe">iPXE</h4>
+<p>iPXE is the "swiss army knife" of network booting. It supports both HTTPS and iSCSI. In addition, it has a script engine for fine grained control of the boot process and can provide a command shell. iPXE can be built as an EFI application (named snp.efi) which can be loaded and run by U-Boot:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># compile iPXE</span>
+git clone http://git.ipxe.org/ipxe.git
+<span class="nb">cd</span> ipxe/src/
+cat <span class="s">&lt;&lt; EOF &gt; myscript.ipxe</span>
+<span class="s">#!ipxe</span>
+
+<span class="s">dhcp</span>
+<span class="s">:loop</span>
+<span class="s">echo Hello world</span>
+<span class="s">goto loop</span>
+<span class="s">EOF</span>
+make <span class="nv">CROSS_COMPILE</span><span class="o">=</span>aarch64-linux-gnu- <span class="nv">ARCH</span><span class="o">=</span>arm64 bin-arm64-efi/snp.efi -j6 <span class="nv">EMBED</span><span class="o">=</span>myscript.ipxe
+
+<span class="c1"># copy to tftp folder</span>
+cp bin-arm64-efi/snp.efi /srv/tftp
+
+<span class="c1"># in the embedded board, fetch result</span>
+setenv ipaddr <span class="m">192</span>.168.1.86
+setenv serverip <span class="m">192</span>.168.1.33
+tftpb 0xC00000 snp.efi
+bootefi 0xc00000
+</code></pre></div>
+<p>that'll get us something like:</p>
+<div class="highlight"><pre><span></span><code>ZynqMP&gt; tftpb 0xC00000 snp.efi
+Using ethernet@ff0e0000 device
+TFTP from server <span class="m">192</span>.168.1.33<span class="p">;</span> our IP address is <span class="m">192</span>.168.1.86
+Filename <span class="s1">&#39;snp.efi&#39;</span>.
+Load address: 0xc00000
+Loading: <span class="c1">#######################################</span>
+     <span class="m">3</span>.7 MiB/s
+<span class="k">done</span>
+Bytes <span class="nv">transferred</span> <span class="o">=</span> <span class="m">197632</span> <span class="o">(</span><span class="m">30400</span> hex<span class="o">)</span>
+ZynqMP&gt; bootefi 0xc00000
+Scanning disk mmc@ff170000.blk...
+Found <span class="m">3</span> disks
+efi_load_pe: Invalid DOS Signature
+iPXE initialising devices...ok
+
+
+
+iPXE <span class="m">1</span>.21.1+ <span class="o">(</span>g3ae83<span class="o">)</span> -- Open Source Network Boot Firmware -- http://ipxe.org
+Features: DNS HTTP iSCSI TFTP AoE EFI Menu
+Configuring <span class="o">(</span>net0 <span class="m">00</span>:0a:35:00:22:01<span class="o">)</span>...... ok
+Hello world
+Hello world
+Hello world
+Hello world
+Hello world
+...
+</code></pre></div>
+<p>Alternatively, one could deposit the iPXE binary in the boot partition and create a boot script to automate it. The following example creates the boot script and fetches it over TFTP (it could also be pushed into the boot partition in which case will initiate automatically):</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># create source file and compile it as a script for u-boot</span>
+cat <span class="s">&lt;&lt; EOF &gt; boot.source</span>
+<span class="s">load mmc 0:1 0xE00000 snp.efi</span>
+<span class="s">bootefi 0xE00000</span>
+<span class="s">EOF</span>
+mkimage -A arm -O linux -T script -C none -n <span class="s2">&quot;u-boot commands&quot;</span> -d boot.source boot.scr
+<span class="c1"># copy to tftp directory and test it manually</span>
+cp boot.scr /srv/tftp
+
+<span class="c1"># within u-boot</span>
+tftpb 0xC00000 boot.scr
+<span class="nb">source</span> 0xC00000
+<span class="c1">## Executing script at 00c00000</span>
+<span class="m">197632</span> bytes <span class="nb">read</span> in <span class="m">39</span> ms <span class="o">(</span><span class="m">4</span>.8 MiB/s<span class="o">)</span>
+Scanning disk mmc@ff170000.blk...
+** Unrecognized filesystem <span class="nb">type</span> **
+Found <span class="m">3</span> disks
+efi_load_pe: Invalid DOS Signature
+iPXE initialising devices...ok
+
+
+
+iPXE <span class="m">1</span>.21.1+ <span class="o">(</span>g3ae83<span class="o">)</span> -- Open Source Network Boot Firmware -- http://ipxe.org
+Features: DNS HTTP iSCSI TFTP AoE EFI Menu
+Configuring <span class="o">(</span>net0 <span class="m">00</span>:0a:35:00:22:01<span class="o">)</span>...... ok
+Hello world
+Hello world
+Hello world
+Hello world
+Hello world
+...
+</code></pre></div>
+<h4 id="how-do-i-create-boot-scripts-from-their-sources">How do I create boot scripts from their sources?</h4>
+<div class="highlight"><pre><span></span><code>mkimage -c none -A arm -T script -d boot.source boot.scr
+</code></pre></div>
+<h4 id="i-cant-boot-my-image-because-i-get-a-kernel-panic-like-the-following-one">I can't boot my image because I get a kernel panic like the following one</h4>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>    <span class="m">4</span>.549695<span class="o">]</span> cfg80211: Loaded X.509 cert <span class="s1">&#39;sforshee: 00b28ddf47aef9cea7&#39;</span>
+<span class="o">[</span>    <span class="m">4</span>.550434<span class="o">]</span> clk: Not disabling unused clocks
+<span class="o">[</span>    <span class="m">4</span>.579404<span class="o">]</span> ALSA device list:
+<span class="o">[</span>    <span class="m">4</span>.579697<span class="o">]</span>   No soundcards found.
+<span class="o">[</span>    <span class="m">4</span>.589301<span class="o">]</span> platform regulatory.0: Direct firmware load <span class="k">for</span> regulatory.db failed with error -2
+<span class="o">[</span>    <span class="m">4</span>.590014<span class="o">]</span> cfg80211: failed to load regulatory.db
+<span class="o">[</span>    <span class="m">4</span>.609105<span class="o">]</span> List of all partitions:
+<span class="o">[</span>    <span class="m">4</span>.610016<span class="o">]</span> <span class="m">0100</span>           <span class="m">65536</span> ram0
+<span class="o">[</span>    <span class="m">4</span>.610034<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">4</span>.610678<span class="o">]</span> <span class="m">0101</span>           <span class="m">65536</span> ram1
+<span class="o">[</span>    <span class="m">4</span>.610683<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">4</span>.611911<span class="o">]</span> <span class="m">0102</span>           <span class="m">65536</span> ram2
+<span class="o">[</span>    <span class="m">4</span>.611915<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">4</span>.612126<span class="o">]</span> <span class="m">0103</span>           <span class="m">65536</span> ram3
+<span class="o">[</span>    <span class="m">4</span>.612129<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">4</span>.612401<span class="o">]</span> <span class="m">0104</span>           <span class="m">65536</span> ram4
+<span class="o">[</span>    <span class="m">4</span>.612405<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">4</span>.612617<span class="o">]</span> <span class="m">0105</span>           <span class="m">65536</span> ram5
+<span class="o">[</span>    <span class="m">4</span>.612620<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">4</span>.613813<span class="o">]</span> <span class="m">0106</span>           <span class="m">65536</span> ram6
+<span class="o">[</span>    <span class="m">4</span>.613817<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">4</span>.614004<span class="o">]</span> <span class="m">0107</span>           <span class="m">65536</span> ram7
+<span class="o">[</span>    <span class="m">4</span>.614055<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">4</span>.614430<span class="o">]</span> <span class="m">0108</span>           <span class="m">65536</span> ram8
+<span class="o">[</span>    <span class="m">4</span>.614435<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">4</span>.614645<span class="o">]</span> <span class="m">0109</span>           <span class="m">65536</span> ram9
+<span class="o">[</span>    <span class="m">4</span>.614649<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">4</span>.614953<span class="o">]</span> 010a           <span class="m">65536</span> ram10
+<span class="o">[</span>    <span class="m">4</span>.614958<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">4</span>.615299<span class="o">]</span> 010b           <span class="m">65536</span> ram11
+<span class="o">[</span>    <span class="m">4</span>.615305<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">4</span>.615627<span class="o">]</span> 010c           <span class="m">65536</span> ram12
+<span class="o">[</span>    <span class="m">4</span>.615631<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">4</span>.615957<span class="o">]</span> 010d           <span class="m">65536</span> ram13
+<span class="o">[</span>    <span class="m">4</span>.615961<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">4</span>.616295<span class="o">]</span> 010e           <span class="m">65536</span> ram14
+<span class="o">[</span>    <span class="m">4</span>.616298<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">4</span>.616614<span class="o">]</span> 010f           <span class="m">65536</span> ram15
+<span class="o">[</span>    <span class="m">4</span>.616618<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">4</span>.617030<span class="o">]</span> 1f00           <span class="m">30720</span> mtdblock0
+<span class="o">[</span>    <span class="m">4</span>.617054<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">4</span>.617373<span class="o">]</span> 1f01             <span class="m">256</span> mtdblock1
+<span class="o">[</span>    <span class="m">4</span>.617379<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">4</span>.617653<span class="o">]</span> 1f02           <span class="m">36864</span> mtdblock2
+<span class="o">[</span>    <span class="m">4</span>.617666<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">4</span>.618745<span class="o">]</span> b300         <span class="m">2573312</span> mmcblk0
+<span class="o">[</span>    <span class="m">4</span>.618774<span class="o">]</span>  driver: mmcblk
+<span class="o">[</span>    <span class="m">4</span>.619190<span class="o">]</span>   b301          <span class="m">999424</span> mmcblk0p1 e29caf3d-01
+<span class="o">[</span>    <span class="m">4</span>.619204<span class="o">]</span>
+<span class="o">[</span>    <span class="m">4</span>.619532<span class="o">]</span>   b302         <span class="m">1572864</span> mmcblk0p2 e29caf3d-02
+<span class="o">[</span>    <span class="m">4</span>.619536<span class="o">]</span>
+<span class="o">[</span>    <span class="m">4</span>.619883<span class="o">]</span> No filesystem could mount root, tried:
+<span class="o">[</span>    <span class="m">4</span>.619909<span class="o">]</span>  ext3
+<span class="o">[</span>    <span class="m">4</span>.620114<span class="o">]</span>  ext2
+<span class="o">[</span>    <span class="m">4</span>.620170<span class="o">]</span>  ext4
+<span class="o">[</span>    <span class="m">4</span>.620222<span class="o">]</span>  cramfs
+<span class="o">[</span>    <span class="m">4</span>.620274<span class="o">]</span>  vfat
+<span class="o">[</span>    <span class="m">4</span>.620326<span class="o">]</span>  msdos
+<span class="o">[</span>    <span class="m">4</span>.620375<span class="o">]</span>  iso9660
+<span class="o">[</span>    <span class="m">4</span>.620427<span class="o">]</span>  btrfs
+<span class="o">[</span>    <span class="m">4</span>.620486<span class="o">]</span>
+<span class="o">[</span>    <span class="m">4</span>.620735<span class="o">]</span> Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block<span class="o">(</span><span class="m">1</span>,0<span class="o">)</span>
+<span class="o">[</span>    <span class="m">4</span>.620979<span class="o">]</span> CPU: <span class="m">0</span> PID: <span class="m">1</span> Comm: swapper/0 Tainted: G        W         <span class="m">5</span>.4.0-xilinx-v2020.2 <span class="c1">#1</span>
+<span class="o">[</span>    <span class="m">4</span>.621158<span class="o">]</span> Hardware name: ZynqMP ZCU102 Rev1.0 <span class="o">(</span>DT<span class="o">)</span>
+<span class="o">[</span>    <span class="m">4</span>.621283<span class="o">]</span> Call trace:
+<span class="o">[</span>    <span class="m">4</span>.621374<span class="o">]</span>  dump_backtrace+0x0/0x140
+<span class="o">[</span>    <span class="m">4</span>.621462<span class="o">]</span>  show_stack+0x14/0x20
+<span class="o">[</span>    <span class="m">4</span>.621553<span class="o">]</span>  dump_stack+0xac/0xd0
+<span class="o">[</span>    <span class="m">4</span>.621713<span class="o">]</span>  panic+0x140/0x30c
+<span class="o">[</span>    <span class="m">4</span>.621884<span class="o">]</span>  mount_block_root+0x254/0x284
+<span class="o">[</span>    <span class="m">4</span>.622123<span class="o">]</span>  mount_root+0x124/0x158
+<span class="o">[</span>    <span class="m">4</span>.622338<span class="o">]</span>  prepare_namespace+0x15c/0x1a4
+<span class="o">[</span>    <span class="m">4</span>.622561<span class="o">]</span>  kernel_init_freeable+0x234/0x258
+<span class="o">[</span>    <span class="m">4</span>.622815<span class="o">]</span>  kernel_init+0x10/0xfc
+<span class="o">[</span>    <span class="m">4</span>.623047<span class="o">]</span>  ret_from_fork+0x10/0x18
+<span class="o">[</span>    <span class="m">4</span>.623774<span class="o">]</span> Kernel Offset: disabled
+<span class="o">[</span>    <span class="m">4</span>.624068<span class="o">]</span> CPU features: 0x0002,24002004
+<span class="o">[</span>    <span class="m">4</span>.624218<span class="o">]</span> Memory Limit: none
+<span class="o">[</span>    <span class="m">4</span>.624790<span class="o">]</span> ---<span class="o">[</span> end Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block<span class="o">(</span><span class="m">1</span>,0<span class="o">)</span> <span class="o">]</span>---
+</code></pre></div>
+<p>This is often indicator that the kernel's not finding the root file system. This might be caused by tools to generate boot scripts (<code>boot.scr</code>) automatically. Make sure the boot line of your boot scripts points to your rootfs partition (e.g. <code>/dev/mmcblk0p2</code>).</p>
+<!-- ////////// -->
+
+<h2 id="petalinux">PetaLinux</h2>
+<h4 id="how-do-i-setup-the-ros-2-bsp">How do I setup the ROS 2 BSP?</h4>
+<div class="highlight"><pre><span></span><code>git clone https://gitlab.com/xilinxrobotics/zcu102/bsp
+<span class="nb">source</span> /tools/Xilinx/PetaLinux/2020.2/bin/settings.sh
+petalinux-create -t project -s bsp/xilinx-zcu102-2020.2-ros2-foxy.bsp
+<span class="nb">cd</span> xilinx-zcu102-2020.2
+mkdir -p build/conf
+cp project-spec/configs/plnxtool.conf build/conf/
+cp project-spec/configs/bblayers.conf build/conf/
+
+<span class="c1"># IMPORTANT: fix bug manually</span>
+<span class="c1"># Edit build/conf/bblayers.conf and remove the last workspace line</span>
+<span class="c1">#</span>
+
+petalinux-config --silentconfig  <span class="c1"># generate additional files</span>
+<span class="nb">echo</span> <span class="s1">&#39;ROS_DISTRO = &quot;foxy&quot;&#39;</span> &gt;&gt; build/conf/bblayers.conf
+
+<span class="c1"># NOTE: you might need to do what&#39;s described in:</span>
+<span class="c1">#  How do I deal with the following error: Could not inherit file classes/ros_distro_${ROS_DISTRO}.bbclass</span>
+
+petalinux-build  <span class="c1"># takes about 30 mins</span>
+</code></pre></div>
+<h4 id="how-do-i-deal-with-the-following-error-could-not-inherit-file-classesros_distro_ros_distrobbclass">How do I deal with the following error: Could not inherit file classes/ros_distro_${ROS_DISTRO}.bbclass?</h4>
+<p>When building the Yocto project with ROS, you may face:
+<div class="highlight"><pre><span></span><code>petalinux-build  <span class="c1"># takes about 30 mins</span>
+INFO: Sourcing build tools
+<span class="o">[</span>INFO<span class="o">]</span> Building project
+<span class="o">[</span>INFO<span class="o">]</span> Sourcing build environment
+<span class="o">[</span>INFO<span class="o">]</span> Generating workspace directory
+INFO: bitbake petalinux-image-minimal
+WARNING: Layer example should <span class="nb">set</span> LAYERSERIES_COMPAT_example in its conf/layer.conf file to list the core layer names it is compatible with.
+WARNING: Host distribution <span class="s2">&quot;ubuntu-20.04&quot;</span> has not been validated with this version of the build system<span class="p">;</span> you may possibly experience unexpected failures. It is recommended that you use a tested distribution.
+ERROR: ParseError at /home/xilinx/xilinx-zcu102-2020.2/project-spec/meta-user/recipes-images/images/petalinux-image-ros2-basic.bb:6: Could not inherit file classes/ros_distro_<span class="si">${</span><span class="nv">ROS_DISTRO</span><span class="si">}</span>.bbclass40
+
+Summary: There were <span class="m">2</span> WARNING messages shown.
+Summary: There was <span class="m">1</span> ERROR message shown, returning a non-zero <span class="nb">exit</span> code.
+ERROR: Failed to build project
+</code></pre></div></p>
+<p>Add the following to the <code>BBLAYERS</code> variable in the <code>build/conf/bblayers.conf</code> file:</p>
+<div class="highlight"><pre><span></span><code>  <span class="si">${</span><span class="nv">SDKBASEMETAPATH</span><span class="si">}</span>/../../project-spec/meta-ros/meta-ros2-foxy <span class="se">\</span>
+  <span class="si">${</span><span class="nv">SDKBASEMETAPATH</span><span class="si">}</span>/../../project-spec/meta-ros/meta-ros2 <span class="se">\</span>
+  <span class="si">${</span><span class="nv">SDKBASEMETAPATH</span><span class="si">}</span>/../../project-spec/meta-ros/meta-ros-common <span class="se">\</span>
+  <span class="si">${</span><span class="nv">SDKBASEMETAPATH</span><span class="si">}</span>/../../project-spec/meta-ros/meta-ros-backports-dunfell <span class="se">\</span>
+  <span class="si">${</span><span class="nv">SDKBASEMETAPATH</span><span class="si">}</span>/../../project-spec/meta-user <span class="se">\</span>
+</code></pre></div>
+<h4 id="how-to-update-the-pre-built-directory-in-a-petalinuxyocto-project">How to update the pre-built directory in a PetaLinux/Yocto project</h4>
+<div class="highlight"><pre><span></span><code>petalinux-package --prebuilt
+</code></pre></div>
+<h4 id="how-to-create-a-project-out-of-the-bsp">How to create a project out of the BSP</h4>
+<p>E.g. from <a href="https://gitlab.com/xilinxrobotics/zcu102/bsp">ZCU102 Robotics BSP</a>:</p>
+<div class="highlight"><pre><span></span><code>petalinux-create -t project -s &lt;location-to&gt;/xilinx-zcu102-2020.2-ros2-foxy.bsp
+</code></pre></div>
+<h4 id="how-to-generate-a-bsp-out-of-a-petalinuxyocto-project">How to generate a BSP (out of a PetaLinux/Yocto project):</h4>
+<div class="highlight"><pre><span></span><code>petalinux-package --bsp --o /tmp/xilinx-zcu102-2020.2-ros2-foxy.bsp -p <span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>
+</code></pre></div>
+<h4 id="how-to-launch-a-quick-emulation-from-the-bsp-pre-built-packages">How to launch a quick emulation from the BSP pre-built packages:</h4>
+<div class="highlight"><pre><span></span><code>petalinux-boot --qemu --prebuilt <span class="m">3</span>
+</code></pre></div>
+<h4 id="how-to-launch-a-quick-emulation-from-imageslinux-folder-just-built-artifacts">How to launch a quick emulation from images/linux folder (just built artifacts):</h4>
+<div class="highlight"><pre><span></span><code>petalinux-boot --qemu --kernel
+</code></pre></div>
+<h4 id="how-to-launch-a-quick-emulation-from-a-built-petalinuxyocto-project-using-a-tftp-directory-fetching-things-from-tftp">How to launch a quick emulation from a built PetaLinux/Yocto project using a TFTP directory (fetching things from TFTP):</h4>
+<div class="highlight"><pre><span></span><code>petalinux-boot --qemu --prebuilt <span class="m">2</span> --qemu-args <span class="s2">&quot;-net nic -net nic -net nic -net nic -net user,tftp=images/linux/tftpboot,hostfwd=tcp:127.0.0.1:2222-10.0.2.15:22&quot;</span>
+</code></pre></div>
+<h4 id="how-to-add-the-rootfs-resulting-from-a-new-build-to-a-pre-built-img">How to add the rootfs resulting from a new build to a pre-built <code>.img</code>?</h4>
+<p>Partially inspired by <sup id="fnref:26"><a class="footnote-ref" href="#fn:26">26</a></sup>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># mount p2, which contains the rootfs</span>
+sudo mount -o loop,offset<span class="o">=</span><span class="m">1024458752</span> /home/xilinx/ros2_ws/acceleration/firmware/xilinx/sd_card.img /tmp/sdcard_img_p2
+<span class="c1"># extract new rootfs on .cpio format</span>
+<span class="nb">cd</span> /tmp/sdcard_img_p2
+sudo cpio -idv &lt; /media/xilinx/hd/xilinx-zcu102-2020.2/images/linux/rootfs.cpio
+</code></pre></div>
+<p>or if the file available is gzipped:</p>
+<div class="highlight"><pre><span></span><code>cat /home/xilinx/ros2_ws/acceleration/firmware/xilinx/rootfs.cpio.gz <span class="p">|</span> gunzip <span class="p">|</span> sudo cpio -idv
+</code></pre></div>
+<h4 id="how-to-find-linux-kernel-latencies">How to find Linux Kernel Latencies</h4>
+<p>Inspired by <sup id="fnref2:26"><a class="footnote-ref" href="#fn:26">26</a></sup>:
+<div class="highlight"><pre><span></span><code><span class="c1"># run cyclictests for 10 seconds</span>
+<span class="c1"># NOTE: you should run benchmarks for a much longer time</span>
+cyclictest --smp -p95 -m -D <span class="m">10</span>
+</code></pre></div></p>
+<h4 id="how-to-generate-the-bootbin-file">How to generate the <code>BOOT.BIN</code> file?</h4>
+<div class="highlight"><pre><span></span><code>petalinux-package --boot <span class="se">\</span>
+   --fsbl images/linux/zynqmp_fsbl.elf <span class="se">\</span>
+   --u-boot images/linux/u-boot.elf <span class="se">\</span>
+   --pmufw images/linux/pmufw.elf <span class="se">\</span>
+   --atf images/linux/bl31.elf
+</code></pre></div>
+<h4 id="how-do-i-compile-a-preempt_rt-patched-environment">How do I compile a PREEMPT_RT patched environment?</h4>
+<div class="highlight"><pre><span></span><code>petalinux-build -c linux-xlnx -x distclean  <span class="c1"># clean up kernel build files</span>
+petalinux-config -c kernel  <span class="c1"># get the kernel under components for configuration, do not modify anything</span>
+<span class="nb">cd</span> components/yocto/workspace/sources/linux-xlnx/  <span class="c1"># head to the kernel source tree</span>
+wget http://cdn.kernel.org/pub/linux/kernel/projects/rt/5.4/older/patch-5.4.10-rt4.patch.gz  <span class="c1"># fetch patches</span>
+zcat patch-5.4.10-rt4.patch.gz <span class="p">|</span> patch -p1  <span class="c1"># apply patches</span>
+
+<span class="c1"># manual fixes, unfortunately patches are a hack and not meant for this version. Need to:</span>
+<span class="c1">#   Change instances of spin_lock for raw_spin_lock in function rescuer_thread(). See </span>
+<span class="c1">#   https://gitlab.com/xilinxrobotics/docs/-/issues/11#note_523328000 for the actual fixes.</span>
+
+<span class="nb">cd</span> ../../../../.. <span class="c1"># then back to the root of the project and:</span>
+petalinux-config -c kernel  <span class="c1"># configure PREEMPT_RT options, setting to =y the following</span>
+<span class="c1"># CONFIG_PREEMPT_RT</span>
+<span class="c1"># CONFIG_HIGH_RES_TIMERS</span>
+<span class="c1"># CONFIG_NO_HZ_FULL</span>
+<span class="c1"># CONFIG_HZ_1000</span>
+<span class="c1"># CPU_FREQ_DEFAULT_GOV_PERFORMANCE</span>
+petalinux-build
+</code></pre></div>
+<p><em>Done with 2020.2</em></p>
+<h4 id="how-do-i-set-up-tsn-in-a-yoctopetalinux-project">How do I set up TSN in a Yocto/PetaLinux project?</h4>
+<ol>
+<li><code>git clone https://gitlab.com/xilinxrobotics/meta-tsn</code> under project*</li>
+<li><code>build/conf/local.conf</code> as in https://gist.github.com/vmayoral/f93d0070b93d9a7f43756ae9ae9c0bc3</li>
+<li>Edit <code>build/conf/bblayers.conf</code> and add</li>
+</ol>
+<div class="highlight"><pre><span></span><code>  <span class="si">${</span><span class="nv">SDKBASEMETAPATH</span><span class="si">}</span>/../../project-spec/meta-tsn/meta-xilinx-tsn <span class="se">\</span>
+</code></pre></div>
+<ol>
+<li>Also, change the machine name in <code>petalinux-config</code> to match the one matching the config of the TSN IP core. Use <code>zcu102-zynqmp</code> instead (Yocto Seetings --&gt; <code>YOCTO_MACHINE_NAME</code>)</li>
+<li>Pick up the right hardware description file so that the right <code>dtb</code> is generated. E.g.:</li>
+</ol>
+<p><div class="highlight"><pre><span></span><code>petalinux-config --get-hw-description project-spec/meta-tsn/tsn-packages/design/zcu102-zynqmp/
+</code></pre></div>
+6. <code>petalinux-build</code></p>
+<h4 id="how-do-i-set-up-xen-in-petalinux">How do I set up Xen in PetaLinux?</h4>
+<p>To set up Xen hypervisor in PetaLinux, follow the <a href="https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/384663561/Building+Xen+Hypervisor+with+Petalinux+2020.1+and+2020.2#BuildingXenHypervisorwithPetalinux2020.1and2020.2-RunXendom0onQEMU">Confluence instructions</a>.</p>
+<h4 id="how-do-i-set-up-xrt-in-petalinux">How do I set up XRT in PetaLinux?</h4>
+<p>To set up XRT in PetaLinux, follow <a href="https://xilinx.github.io/XRT/2020.2/html/yocto.html#create-petalinux-project-with-xrt">these instructions</a>.</p>
+<h4 id="how-do-i-clean-up-a-petalinux-component">How do I clean up a PetaLinux component?</h4>
+<p>There're different ways to do. See PetaLinux Command Line Reference UG1157 for more details:</p>
+<div class="highlight"><pre><span></span><code>petalinux-buid -c &lt;component&gt; -x &lt;verb&gt; 
+</code></pre></div>
+<p>wherein <code>&lt;component&gt;</code> corresponds with one of the recipes, e.g. <code>u-boot</code>.</p>
+<table>
+<thead>
+<tr>
+<th>verb</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>clean</code></td>
+<td>Cleans build data for the target component.</td>
+</tr>
+<tr>
+<td><code>cleansstate</code></td>
+<td>This removes the sstate cache of the corresponding component.</td>
+</tr>
+<tr>
+<td><code>distclean</code></td>
+<td>This removes the sstate cache of the corresponding component.</td>
+</tr>
+<tr>
+<td><code>cleanall</code></td>
+<td>This removes the downloads, sstate cache and cleans the work directory of a component.</td>
+</tr>
+<tr>
+<td><code>mrproper</code></td>
+<td>Cleans the build area. This removes the <code>&lt;plnx-proj-root&gt;/build/</code> and <code>&lt;plnx-proj-root&gt;/images/directories</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="how-do-i-build-an-sdk-out-of-a-petalinux-project">How do I build an <abbr title="Software Development Kit">SDK</abbr> out of a PetaLinux project?</h4>
+<p>The following command builds <abbr title="Software Development Kit">SDK</abbr> and copies it at <code>&lt;proj_root&gt;/images/linux/sdk.sh</code>:
+<div class="highlight"><pre><span></span><code>petalinux-build --sdk
+</code></pre></div>
+The following is the equivalent bitbake command bitbake 
+<div class="highlight"><pre><span></span><code>petalinux-user-image -c do_populate_sdk
+</code></pre></div></p>
+<!-- /////////////// -->
+<h2 id="xen-and-mixed-criticality">Xen and mixed-criticality</h2>
+<h4 id="how-do-i-switch-in-between-consolesserial-inputs-dom0-dom1-xen">How do I switch in between consoles/serial inputs (Dom0, Dom1, Xen)?</h4>
+<p>Press Ctrl-aaa <strong>twice</strong>.</p>
+<h4 id="how-do-i-connect-to-a-vm-from-dom0">How do I connect to a VM from Dom0?</h4>
+<div class="highlight"><pre><span></span><code>xl console domU0  <span class="c1"># or whatever the domain name is</span>
+</code></pre></div>
+<h4 id="why-theres-no-prompt-in-dom0-after-boot">Why there's no prompt in Dom0 after boot?</h4>
+<p>The default FS built with PetaLinux may contain a wrong configuration. Make sure that the following is set appropriately in <code>/etc/inittab</code>
+<div class="highlight"><pre><span></span><code>#PS0:12345:respawn:/bin/start_getty 115200 ttyPS0 vt102
+X0:12345:respawn:/sbin/getty 115200 hvc0
+</code></pre></div></p>
+<h4 id="how-do-i-create-a-dom0less-setup">How do I create a Dom0less setup?</h4>
+<p>By default, VMs created with the Imagebuilder tool (e.g. <code>uboot-script-gen</code>) through configuration scripts are dom0less at the time of writing. For example, in the following piece, Dom1 is Dom0less:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">MEMORY_START</span><span class="o">=</span><span class="s2">&quot;0x0&quot;</span>
+<span class="nv">MEMORY_END</span><span class="o">=</span><span class="s2">&quot;0x80000000&quot;</span>
+
+<span class="nv">DEVICE_TREE</span><span class="o">=</span><span class="s2">&quot;system.dtb&quot;</span>
+<span class="nv">XEN</span><span class="o">=</span><span class="s2">&quot;xen&quot;</span>
+<span class="nv">DOM0_KERNEL</span><span class="o">=</span><span class="s2">&quot;Image&quot;</span>
+<span class="nv">DOM0_RAMDISK</span><span class="o">=</span><span class="s2">&quot;initrd.cpio&quot;</span>
+
+<span class="nv">NUM_DOMUS</span><span class="o">=</span><span class="m">1</span>
+DOMU_KERNEL<span class="o">[</span><span class="m">0</span><span class="o">]=</span><span class="s2">&quot;Image&quot;</span>
+DOMU_RAMDISK<span class="o">[</span><span class="m">0</span><span class="o">]=</span><span class="s2">&quot;initrd.cpio&quot;</span>
+
+<span class="nv">UBOOT_SOURCE</span><span class="o">=</span><span class="s2">&quot;boot.source&quot;</span>
+<span class="nv">UBOOT_SCRIPT</span><span class="o">=</span><span class="s2">&quot;boot.scr&quot;</span>
+</code></pre></div>
+<h4 id="how-do-i-create-domu-machines-then">How do I create DomU machines then?</h4>
+<p>Through the <code>xl</code> tooling. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># create config file and launch VM</span>
+<span class="nb">cd</span> /etc/xen
+cat <span class="s">&lt;&lt; EOF &gt; example-minimalistic.cfg</span>
+<span class="s">name = &quot;guest0&quot;</span>
+<span class="s">kernel = &quot;/media/sd-mmcblk0p1/Image&quot;</span>
+<span class="s">ramdisk = &quot;/media/sd-mmcblk0p1/initrd.cpio&quot;</span>
+<span class="s">memory = 256</span>
+<span class="s">EOF</span>
+xl create -c example-minimalistic.cfg
+</code></pre></div>
+<p>You can exit Xen pressing <code>Ctrl-]</code> and then check that the VM is running:</p>
+<div class="highlight"><pre><span></span><code>root@xilinx-zcu102-2020_2-ros2-foxy:/etc/xen# xl list
+Name                                        ID   Mem VCPUs  State   Time<span class="o">(</span>s<span class="o">)</span>
+Domain-0                                     <span class="m">0</span>  <span class="m">1024</span>     <span class="m">1</span>     r-----     <span class="m">206</span>.3
+guest0                                       <span class="m">2</span>   <span class="m">255</span>     <span class="m">1</span>     r-----       <span class="m">9</span>.0
+</code></pre></div>
+<h4 id="what-are-vms-with-no-name">What are VMs with no name?</h4>
+<p>When VMs are dom0less, they will get presented as follows:</p>
+<div class="highlight"><pre><span></span><code>root@xilinx-zcu102-2020_2-ros2-foxy:/# xl list
+Name                                        ID   Mem VCPUs  State   Time<span class="o">(</span>s<span class="o">)</span>
+<span class="o">(</span>null<span class="o">)</span>                                       <span class="m">0</span>  <span class="m">1024</span>     <span class="m">1</span>     r-----     <span class="m">722</span>.6
+<span class="o">(</span>null<span class="o">)</span>                                       <span class="m">1</span>   <span class="m">512</span>     <span class="m">1</span>     r-----     <span class="m">722</span>.6
+</code></pre></div>
+<p>One way to attempt to access these VMs is by switching between serials/consoles as described above.</p>
+<h4 id="how-do-i-exit-from-a-domu-without-stopping-it-and-get-back-to-dom0">How do I exit from a DomU without stopping it and get back to Dom0?</h4>
+<p>Press <code>Ctrl-]</code>. That'll exit from the DomU console.</p>
+<h4 id="domu-vms-are-not-initiating-with-an-error-like-the-following">DomU VMs are not initiating with an error like the following</h4>
+<p>It's been observe that PetaLinux creates file systems that miss some Xen-related folders. This leads to issues initiating DomUs:</p>
+<div class="highlight"><pre><span></span><code>xl create -c example-minimalistic.c
+Parsing config from example-minimalistic.cfg
+libxl: error: libxl_domain.c:1405:libxl__get_domid: failed to get own domid <span class="o">(</span>domid<span class="o">)</span>
+libxl: error: libxl_dm.c:3415:libxl__need_xenpv_qemu: unable to get domain id
+libxl: error: libxl_domain.c:1405:libxl__get_domid: failed to get own domid <span class="o">(</span>domid<span class="o">)</span>
+libxl: error: libxl_internal.c:421:libxl__lock_domain_userdata: Domain <span class="m">2</span>:cannot open lockfile /var/lib/xen/userdata-l.2.f10ed589-4870-40d0-a4cc-758e10e8c9e3.domain-userdata-lock, <span class="nv">errno</span><span class="o">=</span><span class="m">2</span>: No such file or directory
+libxl: error: libxl_domain.c:1131:domain_destroy_callback: Domain <span class="m">2</span>:Unable to destroy guest
+libxl: error: libxl_create.c:1826:domcreate_destruction_cb: Domain <span class="m">2</span>:unable to destroy domain following failed creation
+libxl: error: libxl_xshelp.c:201:libxl__xs_read_mandatory: xenstore <span class="nb">read</span> failed: <span class="sb">`</span>/libxl/2/type<span class="err">&#39;</span>: No such file or directory
+libxl: warning: libxl_dom.c:52:libxl__domain_type: unable to get domain <span class="nb">type</span> <span class="k">for</span> <span class="nv">domid</span><span class="o">=</span><span class="m">2</span>, assuming HVM
+libxl: error: libxl_internal.c:421:libxl__lock_domain_userdata: Domain <span class="m">2</span>:cannot open lockfile /var/lib/xen/userdata-l.2.f10ed589-4870-40d0-a4cc-758e10e8c9e3.domain-userdata-lock, <span class="nv">errno</span><span class="o">=</span><span class="m">2</span>: No such file or directory
+libxl: error: libxl_domain.c:1131:domain_destroy_callback: Domain <span class="m">2</span>:Unable to destroy guest
+libxl: error: libxl_domain.c:1058:domain_destroy_cb: Domain <span class="m">2</span>:Destruction of domain failed
+</code></pre></div>
+<p>The reason why this is happening is because Xen is missing some folders which block from it to behave normally. This is illustrated also by the following error present in the boot log:
+<div class="highlight"><pre><span></span><code>libxl: error: libxl_internal.c:421:libxl__lock_domain_userdata: Domain <span class="m">0</span>:cannot open lockfile /var/lib/xen/userdata-l.0.00000000-0000-0000-0000-000000000000.domain-userdata-lock, <span class="nv">errno</span><span class="o">=</span><span class="m">2</span>: No such file or directory
+</code></pre></div></p>
+<p>The solution is to manually create the missing folder and reboot:</p>
+<div class="highlight"><pre><span></span><code>mkdir /var/lib/xen
+reboot
+</code></pre></div>
+<h4 id="how-do-i-deal-with-kernel-errors-while-building-xen-with-petalinux">How do I deal with kernel errors while building Xen with PetaLinux?</h4>
+<p>When facing the following error:</p>
+<div class="highlight"><pre><span></span><code>NOTE: Setscene tasks completed
+ERROR: petalinux-image-minimal-1.0-r0 do_rootfs: Could not invoke dnf. Command <span class="s1">&#39;/home/xilinx/xilinx-zcu102-2020.2/build/tmp/work/zcu102_zynqmp-xilinx-linux/petalinux-image-minimal/1.0-r0/recipe-sysroot-native/usr/bin/dnf -v --rpmverbosity=info -y -c /home/xilinx/xilinx-zcu102-2020.2/build/tmp/work/zcu102_zynqmp-xilinx-linux/petalinux-image-minimal/1.0-r0/rootfs/etc/dnf/dnf.conf --setopt=reposdir=/home/xilinx/xilinx-zcu102-2020.2/build/tmp/work/zcu102_zynqmp-xilinx-linux/petalinux-image-minimal/1.0-r0/rootfs/etc/yum.repos.d --installroot=/home/xilinx/xilinx-zcu102-2020.2/build/tmp/work/zcu102_zynqmp-xilinx-linux/petalinux-image-minimal/1.0-r0/rootfs --setopt=logdir=/home/xilinx/xilinx-zcu102-2020.2/build/tmp/work/zcu102_zynqmp-xilinx-linux/petalinux-image-minimal/1.0-r0/temp --repofrompath=oe-repo,/home/xilinx/xilinx-zcu102-2020.2/build/tmp/work/zcu102_zynqmp-xilinx-linux/petalinux-image-minimal/1.0-r0/oe-rootfs-repo --nogpgcheck install base-passwd bridge-utils byobu can-utils cyclonedds demo-nodes-cpp demo-nodes-cpp-rosnative demo-nodes-py ethtool examples-rclcpp-minimal-action-client examples-rclcpp-minimal-action-server examples-rclcpp-minimal-client examples-rclcpp-minimal-composition examples-rclcpp-minimal-publisher examples-rclcpp-minimal-service examples-rclcpp-minimal-subscriber examples-rclcpp-minimal-timer examples-rclcpp-multithreaded-executor examples-rclpy-executors examples-rclpy-minimal-action-client examples-rclpy-minimal-action-server examples-rclpy-minimal-client examples-rclpy-minimal-publisher examples-rclpy-minimal-service examples-rclpy-minimal-subscriber fpga-manager-script gdb libc6-utils haveged hellopm kernel-modules localedef mtd-utils opencl-clhpp opencl-clhpp-dev opencl-headers opencl-headers-dev openssh openssh-scp openssh-sftp-server openssh-ssh openssh-sshd packagegroup-core-boot packagegroup-core-ssh-openssh packagegroup-petalinux-xen packagegroup-petalinux-xrt pciutils python3-argcomplete rmw-cyclonedds-cpp ros-base rpm rt-tests run-postinsts shadow stress tcf-agent tmux udev-extraconf watchdog-init xrt xrt-dev zocl&#39;</span> returned <span class="m">1</span>:
+DNF version: <span class="m">4</span>.2.2
+cachedir: /home/xilinx/xilinx-zcu102-2020.2/build/tmp/work/zcu102_zynqmp-xilinx-linux/petalinux-image-minimal/1.0-r0/rootfs/var/cache/dnf
+Added oe-repo repo from /home/xilinx/xilinx-zcu102-2020.2/build/tmp/work/zcu102_zynqmp-xilinx-linux/petalinux-image-minimal/1.0-r0/oe-rootfs-repo
+repo: using cache <span class="k">for</span>: oe-repo
+not found other <span class="k">for</span>:
+not found modules <span class="k">for</span>:
+not found deltainfo <span class="k">for</span>:
+not found updateinfo <span class="k">for</span>:
+oe-repo: using metadata from Wed <span class="m">26</span> May <span class="m">2021</span> <span class="m">03</span>:15:15 PM UTC.
+Last metadata expiration check: <span class="m">0</span>:00:01 ago on Wed <span class="m">26</span> May <span class="m">2021</span> <span class="m">03</span>:15:15 PM UTC.
+No module defaults found
+--&gt; Starting dependency resolution
+--&gt; Finished dependency resolution
+Error:
+ Problem: conflicting requests
+  - nothing provides kernel-module-xen-blkback needed by packagegroup-petalinux-xen-1.0-r0.noarch
+  - nothing provides kernel-module-xen-gntalloc needed by packagegroup-petalinux-xen-1.0-r0.noarch
+  - nothing provides kernel-module-xen-gntdev needed by packagegroup-petalinux-xen-1.0-r0.noarch
+  - nothing provides kernel-module-xen-netback needed by packagegroup-petalinux-xen-1.0-r0.noarch
+  - nothing provides kernel-module-xen-wdt needed by packagegroup-petalinux-xen-1.0-r0.noarch
+<span class="o">(</span>try to add <span class="s1">&#39;--skip-broken&#39;</span> to skip uninstallable packages or <span class="s1">&#39;--nobest&#39;</span> to use not only best candidate packages<span class="o">)</span>
+
+ERROR: Logfile of failure stored in: /home/xilinx/xilinx-zcu102-2020.2/build/tmp/work/zcu102_zynqmp-xilinx-linux/petalinux-image-minimal/1.0-r0/temp/log.do_rootfs.1714208
+ERROR: Task <span class="o">(</span>/home/xilinx/xilinx-zcu102-2020.2/components/yocto/layers/meta-petalinux/recipes-core/images/petalinux-image-minimal.bb:do_rootfs<span class="o">)</span> failed with <span class="nb">exit</span> code <span class="s1">&#39;1&#39;</span>
+NOTE: Tasks Summary: Attempted <span class="m">9800</span> tasks of which <span class="m">9498</span> didn<span class="err">&#39;</span>t need to be rerun and <span class="m">1</span> failed.
+</code></pre></div>
+<h4 id="domus-stored-in-sd-partitions-create-a-kernel-panic-when-launching">DomUs stored in SD partitions create a kernel panic when Launching</h4>
+<p>If you're running Vitis <code>2020.2</code> or earlier and observe something like when creating DomUs:</p>
+<div class="highlight"><pre><span></span><code>...
+<span class="o">[</span>    <span class="m">3</span>.257786<span class="o">]</span> cfg80211: Loaded X.509 cert <span class="s1">&#39;sforshee: 00b28ddf47aef9cea7&#39;</span>
+<span class="o">[</span>    <span class="m">3</span>.258491<span class="o">]</span> ALSA device list:
+<span class="o">[</span>    <span class="m">3</span>.258603<span class="o">]</span>   No soundcards found.
+<span class="o">[</span>    <span class="m">3</span>.264081<span class="o">]</span> platform regulatory.0: Direct firmware load <span class="k">for</span> regulatory.db failed with error -2
+<span class="o">[</span>    <span class="m">3</span>.264785<span class="o">]</span> cfg80211: failed to load regulatory.db
+<span class="o">[</span>    <span class="m">3</span>.318562<span class="o">]</span> random: fast init <span class="k">done</span>
+<span class="o">[</span>    <span class="m">3</span>.389439<span class="o">]</span> List of all partitions:
+<span class="o">[</span>    <span class="m">3</span>.389763<span class="o">]</span> <span class="m">0100</span>           <span class="m">65536</span> ram0
+<span class="o">[</span>    <span class="m">3</span>.389800<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">3</span>.389941<span class="o">]</span> <span class="m">0101</span>           <span class="m">65536</span> ram1
+<span class="o">[</span>    <span class="m">3</span>.389949<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">3</span>.390181<span class="o">]</span> <span class="m">0102</span>           <span class="m">65536</span> ram2
+<span class="o">[</span>    <span class="m">3</span>.390185<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">3</span>.390318<span class="o">]</span> <span class="m">0103</span>           <span class="m">65536</span> ram3
+<span class="o">[</span>    <span class="m">3</span>.390324<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">3</span>.390420<span class="o">]</span> <span class="m">0104</span>           <span class="m">65536</span> ram4
+<span class="o">[</span>    <span class="m">3</span>.390424<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">3</span>.390510<span class="o">]</span> <span class="m">0105</span>           <span class="m">65536</span> ram5
+<span class="o">[</span>    <span class="m">3</span>.390514<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">3</span>.390926<span class="o">]</span> <span class="m">0106</span>           <span class="m">65536</span> ram6
+<span class="o">[</span>    <span class="m">3</span>.390931<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">3</span>.391029<span class="o">]</span> <span class="m">0107</span>           <span class="m">65536</span> ram7
+<span class="o">[</span>    <span class="m">3</span>.391032<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">3</span>.391112<span class="o">]</span> <span class="m">0108</span>           <span class="m">65536</span> ram8
+<span class="o">[</span>    <span class="m">3</span>.391115<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">3</span>.391301<span class="o">]</span> <span class="m">0109</span>           <span class="m">65536</span> ram9
+<span class="o">[</span>    <span class="m">3</span>.391305<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">3</span>.391395<span class="o">]</span> 010a           <span class="m">65536</span> ram10
+<span class="o">[</span>    <span class="m">3</span>.391398<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">3</span>.391484<span class="o">]</span> 010b           <span class="m">65536</span> ram11
+<span class="o">[</span>    <span class="m">3</span>.391487<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">3</span>.391573<span class="o">]</span> 010c           <span class="m">65536</span> ram12
+<span class="o">[</span>    <span class="m">3</span>.391578<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">3</span>.391680<span class="o">]</span> 010d           <span class="m">65536</span> ram13
+<span class="o">[</span>    <span class="m">3</span>.391696<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">3</span>.391924<span class="o">]</span> 010e           <span class="m">65536</span> ram14
+<span class="o">[</span>    <span class="m">3</span>.391929<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">3</span>.392739<span class="o">]</span> 010f           <span class="m">65536</span> ram15
+<span class="o">[</span>    <span class="m">3</span>.392744<span class="o">]</span>  <span class="o">(</span>driver?<span class="o">)</span>
+<span class="o">[</span>    <span class="m">3</span>.392916<span class="o">]</span> ca00         <span class="m">1656832</span> xvda
+<span class="o">[</span>    <span class="m">3</span>.392945<span class="o">]</span>  driver: vbd
+<span class="o">[</span>    <span class="m">3</span>.393071<span class="o">]</span> No filesystem could mount root, tried:
+<span class="o">[</span>    <span class="m">3</span>.393173<span class="o">]</span>  ext3
+<span class="o">[</span>    <span class="m">3</span>.393266<span class="o">]</span>  ext2
+<span class="o">[</span>    <span class="m">3</span>.393337<span class="o">]</span>  ext4
+<span class="o">[</span>    <span class="m">3</span>.393378<span class="o">]</span>  cramfs
+<span class="o">[</span>    <span class="m">3</span>.393412<span class="o">]</span>  vfat
+<span class="o">[</span>    <span class="m">3</span>.393447<span class="o">]</span>  msdos
+<span class="o">[</span>    <span class="m">3</span>.393489<span class="o">]</span>  iso9660
+<span class="o">[</span>    <span class="m">3</span>.393628<span class="o">]</span>  btrfs
+<span class="o">[</span>    <span class="m">3</span>.393681<span class="o">]</span>
+<span class="o">[</span>    <span class="m">3</span>.394073<span class="o">]</span> Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block<span class="o">(</span><span class="m">202</span>,0<span class="o">)</span>
+<span class="o">[</span>    <span class="m">3</span>.395086<span class="o">]</span> CPU: <span class="m">0</span> PID: <span class="m">1</span> Comm: swapper/0 Not tainted <span class="m">5</span>.4.0-xilinx-v2020.2 <span class="c1">#1</span>
+<span class="o">[</span>    <span class="m">3</span>.395268<span class="o">]</span> Hardware name: XENVM-4.13 <span class="o">(</span>DT<span class="o">)</span>
+<span class="o">[</span>    <span class="m">3</span>.395587<span class="o">]</span> Call trace:
+<span class="o">[</span>    <span class="m">3</span>.395667<span class="o">]</span>  dump_backtrace+0x0/0x140
+<span class="o">[</span>    <span class="m">3</span>.395859<span class="o">]</span>  show_stack+0x14/0x20
+<span class="o">[</span>    <span class="m">3</span>.396728<span class="o">]</span>  dump_stack+0xac/0xd0
+<span class="o">[</span>    <span class="m">3</span>.396825<span class="o">]</span>  panic+0x140/0x30c
+<span class="o">[</span>    <span class="m">3</span>.396912<span class="o">]</span>  mount_block_root+0x254/0x284
+<span class="o">[</span>    <span class="m">3</span>.396985<span class="o">]</span>  mount_root+0x124/0x158
+<span class="o">[</span>    <span class="m">3</span>.397061<span class="o">]</span>  prepare_namespace+0x15c/0x1a4
+<span class="o">[</span>    <span class="m">3</span>.397222<span class="o">]</span>  kernel_init_freeable+0x234/0x258
+<span class="o">[</span>    <span class="m">3</span>.397396<span class="o">]</span>  kernel_init+0x10/0xfc
+<span class="o">[</span>    <span class="m">3</span>.397532<span class="o">]</span>  ret_from_fork+0x10/0x18
+<span class="o">[</span>    <span class="m">3</span>.398088<span class="o">]</span> Kernel Offset: disabled
+<span class="o">[</span>    <span class="m">3</span>.398414<span class="o">]</span> CPU features: 0x0002,24002004
+<span class="o">[</span>    <span class="m">3</span>.398541<span class="o">]</span> Memory Limit: none
+<span class="o">[</span>    <span class="m">3</span>.399028<span class="o">]</span> ---<span class="o">[</span> end Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block<span class="o">(</span><span class="m">202</span>,0<span class="o">)</span> <span class="o">]</span>---
+</code></pre></div>
+<p>Chances are that your Xen tree doesn't include https://github.com/Xilinx/xen/commit/ab9054b8e902b0fa80af02ad1e0a8c4d383e90e1 which fixes a bug with PV drivers that causes that error. Make sure you rebuild Xen including that commit.</p>
+<h2 id="krs">KRS</h2>
+<h4 id="how-do-i-ssh-into-an-emulation-through-krs-tools-eg-colcon-krs-emulation">How do I ssh into an emulation through KRS tools (e.g. <code>colcon krs emulation</code>)?</h4>
+<p><code>colcon krs</code> extensions enable emulations which forward ports between the guest/host machines. Particularly, the following flags are passed to QEMU: <code>hostfwd=tcp:127.0.0.1:2222-10.0.2.15:22</code> (among others). To ssh into the emulation:</p>
+<div class="highlight"><pre><span></span><code>ssh -o <span class="nv">UserKnownHostsFile</span><span class="o">=</span>/dev/null -o <span class="nv">StrictHostKeyChecking</span><span class="o">=</span>no -p <span class="m">2222</span> root@localhost
+</code></pre></div>
+<h4 id="how-do-i-scp-files-frominto-an-emulation-launched-through-krs-tools-eg-colcon-krs-emulation">How do I scp files from/into an emulation launched through KRS tools (e.g. <code>colcon krs emulation</code>)?</h4>
+<p><code>colcon krs</code> extensions enable emulations which forward ports between the guest/host machines. Particularly, the following flags are passed to QEMU: <code>hostfwd=tcp:127.0.0.1:2222-10.0.2.15:22</code> (among others). E.g., to copy files from the emulation into the host machine:</p>
+<div class="highlight"><pre><span></span><code>scp -o <span class="nv">UserKnownHostsFile</span><span class="o">=</span>/dev/null -o <span class="nv">StrictHostKeyChecking</span><span class="o">=</span>no -P <span class="m">2222</span> root@localhost:/ros2_ws/lib/accelerated_vadd_publisher_once/*.csv .
+</code></pre></div>
+<h4 id="how-do-i-rebuild-ros-2-packages-without-the-acceleration-kernels">How do I rebuild ROS 2 packages without the acceleration kernels?</h4>
+<p>Just add <code>--cmake-args -DNOKERNELS=true</code> to the build command. E.g.:</p>
+<div class="highlight"><pre><span></span><code>colcon build --merge-install --mixin zcu102 --install-base install-zcu102 --build-base build-zcu102 --cmake-args -DNOKERNELS<span class="o">=</span><span class="nb">true</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This flag persists so if you wish to change it afterwards and re-build kernels, you'll need to set it to false <code>--cmake-args -DNOKERNELS=false</code>.</p>
+</div>
+<h4 id="how-do-i-port-krs-to-a-new-board">How do I port KRS to a new board?</h4>
+<ol>
+<li>Build firmware artifacts in <code>acceleration_firmware_*</code></li>
+<li>If your board is based on a Xilinx adaptive SoC (e.g. Versal, Zynq Ultrascale+, Zynq 7000), we recommend you to clone <a href="#">acceleration_firmware_xilinx</a> and create a new branch for your board replacing all artifacts as defined in the ARTIFACTS.md file. Afterwards, submit a pull request.</li>
+<li>A minimal rootfs should be created including:<ul>
+<li>ROS 2 Foxy (at least bare bones)</li>
+<li>Xen hypervisor capabilities</li>
+<li><a href="https://github.com/Xilinx/XRT">Xilinx Runtime</a> (XRT)</li>
+<li><code>vanilla</code> and <code>PREEMPT_RT</code> patched kernels including:</li>
+<li>LTTng kernel support</li>
+<li>U-boot with PXE support</li>
+</ul>
+</li>
+<li>
+<p>Create a sysroot (or an <abbr title="Software Development Kit">SDK</abbr> that produces such sysroot) for the target rootfs. NOTE that this sysroot might differ across different file systems (e.g. Ubuntu-based vs Yocto-based).</p>
+</li>
+<li>
+<p>Add custom mixins in <code>acceleration_firmware_*</code> for the new board. See <code>xilinx.mixin.template</code> for an example.</p>
+</li>
+<li></li>
+</ol>
+<h4 id="how-do-i-build-several-accelerators-when-invoking-colcon-build">How do I build several accelerators when invoking <code>colcon build</code>?</h4>
+<p>The current implementation of KRS leverages Vitis Unified platform and compiler which expects to build one accelerator at a time. If two are being built simultaneously, undefined behaviour is triggered and typically, only one of the accelerators will finalize while the other one won't (and thereby no <code>xclbin</code> file will be generated as a result).</p>
+<p>The solution to this is to serialize the generation of acceleration kernels using colcon arguments as follows:</p>
+<div class="highlight"><pre><span></span><code>colcon build --executor sequential --merge-install --mixin kv260 --install-base install-kv260 --build-base build-kv260
+</code></pre></div>
+<p>For more, review <a href="https://gitlab.com/xilinxrobotics/docs/-/issues/22#note_574594754">this ticket</a>.</p>
+<h4 id="how-do-i-handle-device-mapper-issues">How do I handle device-mapper issues?</h4>
+<p>KRS relies on imagebuilder which employs <code>/dev/mapper</code>. This Linux interface is a bit sensitive and if not disabled properly in past runs will lead into:</p>
+<div class="highlight"><pre><span></span><code>colcon krs kernel --install-dir install-kv260
+SECURITY WARNING: This class invokes explicitly a shell via the <span class="nv">shell</span><span class="o">=</span>True argument of the Python subprocess library, and uses admin privileges to manage raw disk images. It is the user<span class="err">&#39;</span>s responsibility to ensure that all whitespace and metacharacters passed are quoted appropriately to avoid shell injection vulnerabilities.
+- Creating a new base image using /home/xilinx/ros2_ws/acceleration/firmware/xilinx/rootfs.cpio.gz ...
+- Detected previous sd_card.img raw image, moving to sd_card.img.old.
+device-mapper: create ioctl on diskimage  failed: Device or resource busy
+Command failed.
+...
+</code></pre></div>
+<p>To fix this:</p>
+<div class="highlight"><pre><span></span><code>sudo kpartx -d /dev/mapper/diskimage
+sudo  dmsetup remove diskimage
+sudo losetup -d <span class="k">$(($(</span>sudo losetup -f <span class="p">|</span> sed -s <span class="s1">&#39;s*/dev/loop**&#39;</span><span class="k">)</span> <span class="o">-</span> <span class="m">1</span><span class="k">))</span>
+</code></pre></div>
+<!-- where `$_loop_dev` is the loop device used (which you can figure out by substracting one to `sudo losetup -f`). -->
+
+<p><strong>A simpler approach was implemented in KRS with <code>colcon krs umount --fix</code></strong> which does exactly the same.</p>
+<h4 id="how-do-i-handle-board_part-definition-was-not-found-type-of-issues">How do I handle "board_part definition was not found" type of issues?</h4>
+<p>Consider the following error while building an acceleration kernel:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This issue was first documented at https://forums.xilinx.com/t5/Kria-SOMs/Vitis-IDE-ERROR-v-60-602-Source-file-does-not-exist/m-p/1264669/highlight/true</p>
+</div>
+<div class="highlight"><pre><span></span><code>INFO: <span class="o">[</span>VPL <span class="m">60</span>-839<span class="o">]</span> Read in kernel information from file <span class="s1">&#39;/home/xilinx/ros2_ws/build-kv260/accelerated_vadd_publisher/_x/link/int/kernel_info.dat&#39;</span>.
+INFO: <span class="o">[</span>VPL <span class="m">60</span>-423<span class="o">]</span>   Target device: kv260_ispMipiRx_vcu_DP
+INFO: <span class="o">[</span>VPL <span class="m">60</span>-1032<span class="o">]</span> Extracting hardware platform to /home/xilinx/ros2_ws/build-kv260/accelerated_vadd_publisher/_x/link/vivado/vpl/.local/hw_platform
+WARNING: /tools/Xilinx/Vitis/2020.2/tps/lnx64/jre9.0.4 does not exist.
+<span class="o">[</span><span class="m">19</span>:52:08<span class="o">]</span> Run vpl: Step create_project: Started
+Creating Vivado project.
+<span class="o">[</span><span class="m">19</span>:52:10<span class="o">]</span> Run vpl: Step create_project: Failed
+<span class="o">[</span><span class="m">19</span>:52:11<span class="o">]</span> Run vpl: FINISHED. Run Status: create_project ERROR
+ERROR: <span class="o">[</span>VPL <span class="m">60</span>-773<span class="o">]</span> In <span class="s1">&#39;/home/xilinx/ros2_ws/build-kv260/accelerated_vadd_publisher/_x/link/vivado/vpl/runme.log&#39;</span>, caught Tcl error:  ERROR: <span class="o">[</span>Board <span class="m">49</span>-71<span class="o">]</span> The board_part definition was not found <span class="k">for</span> xilinx.com:kv260:part0:1.1. The project<span class="s1">&#39;s board_part property was not set, but the project&#39;</span>s part property was <span class="nb">set</span> to xck26-sfvc784-2LV-c. Valid board_part values can be retrieved with the <span class="s1">&#39;get_board_parts&#39;</span> Tcl command. Check <span class="k">if</span> board.repoPaths parameter is <span class="nb">set</span> and the board_part is installed from the tcl app store.
+ERROR: <span class="o">[</span>VPL <span class="m">60</span>-704<span class="o">]</span> Integration error, Failed to rebuild a project required <span class="k">for</span> hardware synthesis. The project is <span class="s1">&#39;prj&#39;</span>. The rebuild script is <span class="s1">&#39;.local/hw_platform/prj/rebuild.tcl&#39;</span>. The rebuild script was delivered as part of the hardware platform. Consult with the hardware platform provider to investigate the rebuild script contents. An error stack with <span class="k">function</span> names and arguments may be available in the <span class="s1">&#39;vivado.log&#39;</span>.
+ERROR: <span class="o">[</span>VPL <span class="m">60</span>-1328<span class="o">]</span> Vpl run <span class="s1">&#39;vpl&#39;</span> failed
+WARNING: <span class="o">[</span>VPL <span class="m">60</span>-1142<span class="o">]</span> Unable to <span class="nb">read</span> data from <span class="s1">&#39;/home/xilinx/ros2_ws/build-kv260/accelerated_vadd_publisher/_x/link/vivado/vpl/output/generated_reports.log&#39;</span>, generated reports will not be copied.
+ERROR: <span class="o">[</span>VPL <span class="m">60</span>-806<span class="o">]</span> Failed to finish platform linker
+INFO: <span class="o">[</span>v++ <span class="m">60</span>-1442<span class="o">]</span> <span class="o">[</span><span class="m">19</span>:52:11<span class="o">]</span> Run run_link: Step vpl: Failed
+Time <span class="o">(</span>s<span class="o">)</span>: <span class="nv">cpu</span> <span class="o">=</span> <span class="m">00</span>:00:05 <span class="p">;</span> <span class="nv">elapsed</span> <span class="o">=</span> <span class="m">00</span>:00:15 . Memory <span class="o">(</span>MB<span class="o">)</span>: <span class="nv">peak</span> <span class="o">=</span> <span class="m">1574</span>.906 <span class="p">;</span> <span class="nv">gain</span> <span class="o">=</span> <span class="m">0</span>.000 <span class="p">;</span> free <span class="nv">physical</span> <span class="o">=</span> <span class="m">1594</span> <span class="p">;</span> free <span class="nv">virtual</span> <span class="o">=</span> <span class="m">20748</span>
+ERROR: <span class="o">[</span>v++ <span class="m">60</span>-661<span class="o">]</span> v++ link run <span class="s1">&#39;run_link&#39;</span> failed
+ERROR: <span class="o">[</span>v++ <span class="m">60</span>-626<span class="o">]</span> Kernel link failed to <span class="nb">complete</span>
+ERROR: <span class="o">[</span>v++ <span class="m">60</span>-703<span class="o">]</span> Failed to finish linking
+INFO: <span class="o">[</span>v++ <span class="m">60</span>-1653<span class="o">]</span> Closing dispatch client.
+</code></pre></div>
+<p>In this case, Vivado's not able to find the <code>xilinx.com:kv260:part0:1.1</code> board part. We can verify this manually through Vivado CLI:</p>
+<div class="highlight"><pre><span></span><code>vivado -mode tcl
+Vivado% get_board_parts xilinx.com:kv*
+WARNING: <span class="o">[</span>Vivado <span class="m">12</span>-4842<span class="o">]</span> No board parts matched <span class="s1">&#39;get_board_parts xilinx.com:kv*&#39;</span>.
+</code></pre></div>
+<div class="admonition todo">
+<p class="admonition-title">Figure out if this can be automated via scripting</p>
+<p>This could likely be automated through Tcl or similar. Find out if time allows for it in the future.</p>
+</div>
+<p>To fetch these, one needs to go ahead and install the corresponding files. This can be done through Vivado's XHub Stores:</p>
+<p><img alt="" src="../imgs/vivado1.png" />
+<img alt="" src="../imgs/vivado2.png" />
+<img alt="" src="../imgs/vivado3.png" /></p>
+<p>And then add a script that gets them automatically:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># create a file that loads 2020.2.2 board files at vivado init</span>
+cat <span class="s">&lt;&lt; &#39;EOF&#39; &gt; ~/.Xilinx/Vivado/Vivado_init.tcl</span>
+<span class="s">set_param board.repoPaths {\</span>
+<span class="s">    /home/xilinx/.Xilinx/Vivado/2020.2.2/xhub/board_store/xilinx_board_store \</span>
+<span class="s">}</span>
+<span class="s">EOF</span>
+
+<span class="c1"># then search again</span>
+vivado -mode tcl
+...
+Vivado% get_board_parts xilinx.com:kv*
+xilinx.com:kv260:part0:1.1
+</code></pre></div>
+<!-- /////////////// -->
+<!-- /////////////// -->
+<!-- /////////////// -->
+
+<h2 id="ros">ROS</h2>
+<h4 id="how-do-i-change-the-install-path-whereto-search-for-libraries">How do I change the install path whereto search for libraries?</h4>
+<p>Using the <code>--cmake-args -DCMAKE_FIND_ROOT_PATH=$(pwd)/install-kv260</code> argument. E.g.</p>
+<div class="highlight"><pre><span></span><code>colcon build --build-base<span class="o">=</span>build-kv260 --install-base<span class="o">=</span>install-kv260 --merge-install --mixin kv260 --cmake-args -DNOKERNELS<span class="o">=</span><span class="nb">true</span> -DCMAKE_FIND_ROOT_PATH<span class="o">=</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>/install-kv260
+</code></pre></div>
+<h4 id="how-do-i-add-additional-verbosity-to-the-build-process-with-colcon">How do I add additional verbosity to the build process with <code>colcon</code>?</h4>
+<div class="highlight"><pre><span></span><code>colcon --log-level <span class="m">10</span> build --merge-install
+</code></pre></div>
+<h4 id="how-do-i-add-debugging-symbols-to-ros-2-builds">How do I add debugging symbols to ROS 2 builds?</h4>
+<p>Add <code>--cmake-args -DCMAKE_BUILD_TYPE=Debug</code>:
+<div class="highlight"><pre><span></span><code>colcon build --merge-install --cmake-args -DCMAKE_BUILD_TYPE<span class="o">=</span>Debug
+</code></pre></div></p>
+<p>or alternative, if all mixins are installed, you can:</p>
+<div class="highlight"><pre><span></span><code>colcon build --merge-install --mixin debug
+</code></pre></div>
+<!-- /////////////// -->
+<!-- /////////////// -->
+<!-- /////////////// -->
+
+<h2 id="vitis">Vitis</h2>
+<h4 id="whats-the-boot-image-format-bif-files-and-where-do-i-learn-more-about-it">What's the Boot Image Format (<code>.bif</code> files) and where do I learn more about it?</h4>
+<p>From <sup id="fnref:33"><a class="footnote-ref" href="#fn:33">33</a></sup></p>
+<blockquote>
+<p>The Xilinx® boot image layout has multiple files, file types, and supporting headers to parse those files by boot loaders. Bootgen defines multiple attributes for generating the boot images and interprets and generates the boot images, based on what is passed in the files. Because there are multiple commands and attributes available, Bootgen defines a boot image format (BIF) to contain those inputs. A BIF comprises of the following:</p>
+<div class="highlight"><pre><span></span><code>- Configuration attributes to create secure/non-secure boot images
+- Bootloader
+    - First stage boot loader (FSBL) for Zynq® devices and Zynq® UltraScale+™ MPSoCs
+    - Platform loader and manager (PLM) for Versal™ ACAP
+- One or more Partition Images
+</code></pre></div>
+</blockquote>
+<p>To learn more, refer to:
+- <a href="https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug1283-bootgen-user-guide.pdf">UG1283</a>
+- <a href="https://www.xilinx.com/html_docs/xilinx2020_2/vitis_doc/bootimagelayout.html">Bootgen tool documentation</a></p>
+<h4 id="how-do-i-generate-a-bootbin-from-a-bif-file-and-its-related-artifacts">How do I generate a boot.bin from a <code>.bif</code> file and its related artifacts?</h4>
+<p>Let's assume:
+<div class="highlight"><pre><span></span><code>xilinx@xilinx:/tmp/latebinding$ ls
+arm-trusted-firmware.elf  fsbl-zcu102-zynqmp.elf          tsn.bit
+bootgen.bif               pmu-firmware-zcu102-zynqmp.elf  u-boot-zcu102-zynqmp.elf
+</code></pre></div></p>
+<p>where <code>bootgen.bif</code> contains:</p>
+<div class="highlight"><pre><span></span><code>cat bootgen.bif
+the_ROM_image:
+<span class="o">{</span>
+     <span class="o">[</span>bootloader,  <span class="nv">destination_cpu</span><span class="o">=</span>a53-0<span class="o">]</span> fsbl-zcu102-zynqmp.elf
+     <span class="o">[</span><span class="nv">destination_device</span><span class="o">=</span>pl<span class="o">]</span> tsn.bit
+     <span class="o">[</span><span class="nv">destination_cpu</span><span class="o">=</span>pmu<span class="o">]</span> pmu-firmware-zcu102-zynqmp.elf
+     <span class="o">[</span><span class="nv">destination_cpu</span><span class="o">=</span>a53-0, <span class="nv">exception_level</span><span class="o">=</span>el-3, trustzone<span class="o">]</span> arm-trusted-firmware.elf
+     <span class="o">[</span><span class="nv">destination_cpu</span><span class="o">=</span>a53-0, <span class="nv">exception_level</span><span class="o">=</span>el-2<span class="o">]</span> u-boot-zcu102-zynqmp.elf
+<span class="o">}</span>
+</code></pre></div>
+<p>Building <code>boot.bin</code> can be accomplished with:
+<div class="highlight"><pre><span></span><code>bootgen -arch zynqmp -image bootgen.bif -o boot.bin
+
+
+****** Xilinx Bootgen v2020.2
+  **** Build date : Nov 18 2020-09:50:31
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+
+[INFO]   : Bootimage generated successfully
+</code></pre></div></p>
+<h4 id="how-do-i-introspect-a-bootbin-file">How do I introspect a BOOT.BIN file?</h4>
+<p>The <code>bootgen_utility</code> is a tool used to dump the contents of a Boot Image generated by Bootgen, into a human-readable log file. This is useful in debugging and understanding the contents of the different header tables of a boot image. More at <a href="https://www.xilinx.com/html_docs/xilinx2020_2/vitis_doc/nps1533233478931.html">the documentation</a>.</p>
+<div class="highlight"><pre><span></span><code>bootgen_utility -arch zynqmp -bin boot.bin -out boot.bin.info
+</code></pre></div>
+<h4 id="how-do-i-execute-a-tcl-script-from-cli">How do I execute a Tcl script from CLI?</h4>
+<ol>
+<li>Source Vitis platform environment</li>
+<li><code>vivado -mode batch -source &lt;script.tcl&gt;</code></li>
+</ol>
+<!--  -->
+<!--  -->
+<!--  -->
+<h2 id="vivado">Vivado</h2>
+<h4 id="how-do-i-map-an-soc-featured-in-datasheets-to-the-part-for-hls">How do I map an SoC featured in datasheets to the part for HLS?</h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The part listed in datasheets is sometimes different from the one that can be used in <code>Tcl</code> scripts. E.g.:</p>
+<ul>
+<li>ZCU102:<ul>
+<li>datasheet: XCZU9EG-2FFVB1156</li>
+<li>part: xczu9eg-ffvb1156-2-e</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>To figure things out, use vivado “get_parts” command and match the closes. E.g.:</p>
+<div class="highlight"><pre><span></span><code>get_parts xczu9eg*
+
+xczu9eg-ffvb1156-1-e xczu9eg-ffvb1156-1-i xczu9eg-ffvb1156-1L-i xczu9eg-ffvb1156-1LV-i xczu9eg-ffvb1156-2-e xczu9eg-ffvb1156-2-i xczu9eg-ffvb1156-2L-e xczu9eg-ffvb1156-2LV-e xczu9eg-ffvb1156-3-e xczu9eg-ffvc900-1-e xczu9eg-ffvc900-1-i xczu9eg-ffvc900-1L-i xczu9eg-ffvc900-1LV-i xczu9eg-ffvc900-2-e xczu9eg-ffvc900-2-i xczu9eg-ffvc900-2L-e xczu9eg-ffvc900-2LV-e xczu9eg-ffvc900-3-e
+</code></pre></div>
+<!-- abbreviations -->
+<!-- references -->
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Rifenbark, S. (2015). Yocto Project Mega-Manual. Retrieved from: https://www.yoctoproject.org/docs/current/mega-manual/mega-manual.html.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>Xilinx (2016). <em>Zynq UltraScale+ MPSoC product brief</em>. Xilinx. Retrieved from https://www.xilinx.com/support/documentation/product-briefs/zynq-ultrascale-plus-product-brief.pdf.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>Xilinx (2020). <em>Zynq UltraScale+ Device Technical Reference Manual</em>. Xilinx. Retrieved from https://www.xilinx.com/support/documentation/user_guides/ug1085-zynq-ultrascale-trm.pdf.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>Xilinx (2020). <em>UltraScale Architecture and Product Data Sheet: Overview</em>. Xilinx. Retrieved from https://www.xilinx.com/support/documentation/data_sheets/ds890-ultrascale-overview.pdf.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>Xilinx (2019). <em>Zynq UltraScale+ MPSoC Data Sheet:Overview</em>. Xilinx. Retrieved from https://www.xilinx.com/support/documentation/data_sheets/ds891-zynq-ultrascale-plus-overview.pdf.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>Xilinx (2020). <em>Zynq UltraScale+ MPSoC Data Sheet:DC and AC Switching Characteristics</em>. Xilinx. Retrieved from https://www.xilinx.com/support/documentation/data_sheets/ds925-zynq-ultrascale-plus.pdf.&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>Xilinx (2016). <em>Unleash the Unparalleled Power and Flexibility of Zynq UltraScale+ MPSoCs</em>. Xilinx. Retrieved from https://www.xilinx.com/support/documentation/white_papers/wp470-ultrascale-plus-power-flexibility.pdf.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p>Xilinx (2016). <em>Managing Power and Performance with the Zynq UltraScale+ MPSoC</em>. Xilinx. Retrieved from https://www.xilinx.com/support/documentation/white_papers/wp482-zu-pwr-perf.pdf.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+<li id="fn:9">
+<p>Xilinx (2021). <em>Zynq UltraScale+ MPSoC Software Developer Guide</em>. Xilinx. Retrieved from https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug1137-zynq-ultrascale-mpsoc-swdev.pdf.&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+</li>
+<li id="fn:10">
+<p>Xilinx (2020). <em>Xilinx Quick Emulator User Guide</em>. Xilinx. Retrieved from https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug1169-xilinx-qemu.pdf.&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+</li>
+<li id="fn:11">
+<p>Xilinx (2020). <em>UltraScale Architecture Memory Resources</em>. Xilinx. Retrieved from https://www.xilinx.com/support/documentation/user_guides/ug573-ultrascale-memory-resources.pdf.&#160;<a class="footnote-backref" href="#fnref:11" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+</li>
+<li id="fn:12">
+<p>Xilinx (2020). <em>UltraScale Architecture System Monitor</em>. Xilinx. Retrieved from https://www.xilinx.com/support/documentation/user_guides/ug580-ultrascale-sysmon.pdf.&#160;<a class="footnote-backref" href="#fnref:12" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+</li>
+<li id="fn:13">
+<p>Xilinx (2020). <em>Zynq UltraScale+ Device Packaging and Pinouts</em>. Xilinx. Retrieved from https://www.xilinx.com/support/documentation/user_guides/ug1075-zynq-ultrascale-pkg-pinout.pdf.&#160;<a class="footnote-backref" href="#fnref:13" title="Jump back to footnote 13 in the text">&#8617;</a></p>
+</li>
+<li id="fn:14">
+<p>Xilinx (2016). <em>Software Migration to 64-bit ARM Heterogeneous Platforms</em>. Xilinx. Retrieved from https://www.xilinx.com/support/documentation/white_papers/wp473-migration-to-64-bit-arm.pdf.&#160;<a class="footnote-backref" href="#fnref:14" title="Jump back to footnote 14 in the text">&#8617;</a></p>
+</li>
+<li id="fn:15">
+<p>Xilinx (2016). <em>Enabling Virtualization with Xen Hypervisor on Zynq UltraScale+ MPSoCs</em>. Xilinx. Retrieved from https://www.xilinx.com/support/documentation/white_papers/wp474-xen-hypervisor.pdf.&#160;<a class="footnote-backref" href="#fnref:15" title="Jump back to footnote 15 in the text">&#8617;</a></p>
+</li>
+<li id="fn:16">
+<p>Xilinx (2016). <em>Toward 5G Xilinx Solutions and Enablers for Next-Generation Wireless Systems</em>. Xilinx. Retrieved from https://www.xilinx.com/support/documentation/white_papers/wp476-toward-5g.pdf.&#160;<a class="footnote-backref" href="#fnref:16" title="Jump back to footnote 16 in the text">&#8617;</a></p>
+</li>
+<li id="fn:17">
+<p>Khona, C. (2017). <em>Key Attributes of an Intelligent IIoT Edge Platform</em>. Xilinx. Retrieved from https://www.xilinx.com/support/documentation/white_papers/wp493-iiot-edge-platforms.pdf.&#160;<a class="footnote-backref" href="#fnref:17" title="Jump back to footnote 17 in the text">&#8617;</a></p>
+</li>
+<li id="fn:18">
+<p>Xilinx (2020). <em>Isolate Security-Critical Applications on Zynq UltraScale+ Devices</em>. Xilinx. Retrieved from https://www.xilinx.com/support/documentation/white_papers/wp516-security-apps.pdf.&#160;<a class="footnote-backref" href="#fnref:18" title="Jump back to footnote 18 in the text">&#8617;</a></p>
+</li>
+<li id="fn:19">
+<p>Xilinx (2020). <em>Key Revocation Lab</em>. Xilinx. Retrieved from https://www.xilinx.com/support/documentation/application_notes/xapp1344-key-revocation-lab.pdf.&#160;<a class="footnote-backref" href="#fnref:19" title="Jump back to footnote 19 in the text">&#8617;</a></p>
+</li>
+<li id="fn:20">
+<p>Xilinx (2020). <em>UltraFast Design Methodology Guide for the Vivado Design Suite</em>. Xilinx. Retrieved from https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_1/ug949-vivado-design-methodology.pdf.&#160;<a class="footnote-backref" href="#fnref:20" title="Jump back to footnote 20 in the text">&#8617;</a></p>
+</li>
+<li id="fn:21">
+<p>Xilinx (2018). <em>UltraFast Embedded Design Methodology Guide</em>. Xilinx. Retrieved from https://www.xilinx.com/support/documentation/sw_manuals/ug1046-ultrafast-design-methodology-guide.pdf.&#160;<a class="footnote-backref" href="#fnref:21" title="Jump back to footnote 21 in the text">&#8617;</a></p>
+</li>
+<li id="fn:22">
+<p>Xilinx (2017). <em>Zynq UltraScale+ MPSoC Embedded Design Methodology Guide</em>. Xilinx. Retrieved from https://www.xilinx.com/content/dam/xilinx/support/documentation/sw_manuals/ug1228-ultrafast-embedded-design-methodology-guide.pdf.&#160;<a class="footnote-backref" href="#fnref:22" title="Jump back to footnote 22 in the text">&#8617;</a></p>
+</li>
+<li id="fn:23">
+<p>Xilinx (2018). <em>Zynq UltraScale+ MPSoC: Embedded Design Tutorial</em>. Xilinx. Retrieved from https://www.xilinx.com/content/dam/xilinx/support/documentation/sw_manuals/xilinx2018_2/ug1209-embedded-design-tutorial.pdf.&#160;<a class="footnote-backref" href="#fnref:23" title="Jump back to footnote 23 in the text">&#8617;</a></p>
+</li>
+<li id="fn:24">
+<p>Xilinx (2020). <em>PetaLinux Tools Documentation. Reference Guide</em>. Xilinx. UG1144 (v2020.2) November 24, 2020. Retrieved from https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug1144-petalinux-tools-reference-guide.pdf.&#160;<a class="footnote-backref" href="#fnref:24" title="Jump back to footnote 24 in the text">&#8617;</a></p>
+</li>
+<li id="fn:25">
+<p>Apertis. <em>Sysroots and Devroots</em>. Retrieved from https://www.apertis.org/architecture/sysroots-and-devroots/.&#160;<a class="footnote-backref" href="#fnref:25" title="Jump back to footnote 25 in the text">&#8617;</a></p>
+</li>
+<li id="fn:26">
+<p>Arief Wicaksana. <em>Booting Xen Hypervisor with Petalinux on Zynq Ultrascale+</em> .Retrieved from https://witjaksana.github.io/2018/02/12/booting-xen-on-zcu102/.&#160;<a class="footnote-backref" href="#fnref:26" title="Jump back to footnote 26 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:26" title="Jump back to footnote 26 in the text">&#8617;</a></p>
+</li>
+<li id="fn:27">
+<p>Retrieved from http://people.redhat.com/williams/latency-howto/rt-latency-howto.txt.&#160;<a class="footnote-backref" href="#fnref:27" title="Jump back to footnote 27 in the text">&#8617;</a></p>
+</li>
+<li id="fn:28">
+<p>Zynq UltraScale+ MPSoC ZCU102 Evaluation Kit. Retrieved from https://www.xilinx.com/support/documentation/boards_and_kits/zcu102/xtp426-zcu102-quickstart.pdf&#160;<a class="footnote-backref" href="#fnref:28" title="Jump back to footnote 28 in the text">&#8617;</a></p>
+</li>
+<li id="fn:29">
+<p>ZCU102 Evaluation Board. Retrieved from https://www.xilinx.com/support/documentation/boards_and_kits/zcu102/ug1182-zcu102-eval-bd.pdf&#160;<a class="footnote-backref" href="#fnref:29" title="Jump back to footnote 29 in the text">&#8617;</a></p>
+</li>
+<li id="fn:30">
+<p>Xilinx ZCU102. Erika Enterprise. Retrieved from http://www.erika-enterprise.com/wiki/index.php?title=Xilinx_ZCU102&#160;<a class="footnote-backref" href="#fnref:30" title="Jump back to footnote 30 in the text">&#8617;</a></p>
+</li>
+<li id="fn:31">
+<p>Zynq UltraScale＋ MPSoC Ubuntu part 2 - Building and Running the Ubuntu Desktop From Sources. Xilinx Confluence. Retrieved from https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841937/Zynq+UltraScale+MPSoC+Ubuntu+part+2+-+Building+and+Running+the+Ubuntu+Desktop+From+Sources&#160;<a class="footnote-backref" href="#fnref:31" title="Jump back to footnote 31 in the text">&#8617;</a></p>
+</li>
+<li id="fn:32">
+<p>ramfs, rootfs and initramfs. Rob Landley. Retrieved from https://www.kernel.org/doc/Documentation/filesystems/ramfs-rootfs-initramfs.txt.&#160;<a class="footnote-backref" href="#fnref:32" title="Jump back to footnote 32 in the text">&#8617;</a></p>
+</li>
+<li id="fn:33">
+<p>Creating Boot Images. Xilinx. Retrieved from https://www.xilinx.com/html_docs/xilinx2020_2/vitis_doc/creatingbootimages.html#rsz1534706729087.&#160;<a class="footnote-backref" href="#fnref:33" title="Jump back to footnote 33 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../examples/5_faster_ros2_publisher/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                5. Faster ROS 2 publisher
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../other/definitions/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Definitions
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.93c04032.min.js"></script>
+      <script src="../assets/javascripts/bundle.83e5331e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

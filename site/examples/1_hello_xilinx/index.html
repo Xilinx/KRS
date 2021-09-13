@@ -1,0 +1,1060 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.4">
+    
+    
+      
+        <title>1. Hello Xilinx - Kria Robotics Stack</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.15aa0b43.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.75751829.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../css/style.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/mermaid@8.5.1/dist/mermaid.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#launch-hello_xilinx-example-in-the-workstation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="Kria Robotics Stack" class="md-header-nav__button md-logo" aria-label="Kria Robotics Stack">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            Kria Robotics Stack
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              1. Hello Xilinx
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Kria Robotics Stack" class="md-nav__button md-logo" aria-label="Kria Robotics Stack">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Kria Robotics Stack
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../.." class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+    
+    <label class="md-nav__link" for="nav-2">
+      Features
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Features" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon"></span>
+        Features
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../features/ros2centric/" class="md-nav__link">
+      ROS 2-centric
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../features/realtime_ros2/" class="md-nav__link">
+      Real-time ROS 2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../features/accelerated_apps_ros2/" class="md-nav__link">
+      ROS 2 Accelerated Apps
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../features/contributing_ros2/" class="md-nav__link">
+      Contributing back
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../../hardware/" class="md-nav__link">
+      Hardware
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../../install/" class="md-nav__link">
+      Install
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    
+    <label class="md-nav__link" for="nav-5">
+      Examples
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Examples" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        Examples
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../0_ros2_publisher/" class="md-nav__link">
+      0. ROS 2 publisher
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        1. Hello Xilinx
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      1. Hello Xilinx
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#launch-hello_xilinx-example-in-the-workstation" class="md-nav__link">
+    Launch hello_xilinx example in the workstation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#launch-hello_xilinx-example-in-the-kv260-hardware" class="md-nav__link">
+    Launch hello_xilinx example in the KV260 hardware
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#launch-hello_xilinx-example-in-an-emulated-kv260" class="md-nav__link">
+    Launch hello_xilinx example in an emulated KV260
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bonus-launch-hello_xilinx-example-in-emulation-with-another-firmware" class="md-nav__link">
+    Bonus: Launch hello_xilinx example in emulation with another firmware
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../2_hls_ros2/" class="md-nav__link">
+      2. HLS in ROS 2
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../3_offloading_ros2_publisher/" class="md-nav__link">
+      3. Offloading ROS 2 publisher
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../4_accelerated_ros2_publisher/" class="md-nav__link">
+      4. Accelerated ROS 2 publisher
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../5_faster_ros2_publisher/" class="md-nav__link">
+      5. Faster ROS 2 publisher
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../../howto/" class="md-nav__link">
+      HowTo
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" >
+    
+    <label class="md-nav__link" for="nav-7">
+      Other
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Other" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon"></span>
+        Other
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../other/definitions/" class="md-nav__link">
+      Definitions
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#launch-hello_xilinx-example-in-the-workstation" class="md-nav__link">
+    Launch hello_xilinx example in the workstation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#launch-hello_xilinx-example-in-the-kv260-hardware" class="md-nav__link">
+    Launch hello_xilinx example in the KV260 hardware
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#launch-hello_xilinx-example-in-an-emulated-kv260" class="md-nav__link">
+    Launch hello_xilinx example in an emulated KV260
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bonus-launch-hello_xilinx-example-in-emulation-with-another-firmware" class="md-nav__link">
+    Bonus: Launch hello_xilinx example in emulation with another firmware
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset"><a class="md-content__button md-icon" download href="../../pdf/combined.pdf" title="PDF Export"><svg style="height: 1.2rem; width: 1.2rem;" viewBox="0 0 384 512" xmlns="http://www.w3.org/2000/svg"><path d="M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm76.45 211.36l-96.42 95.7c-6.65 6.61-17.39 6.61-24.04 0l-96.42-95.7C73.42 337.29 80.54 320 94.82 320H160v-80c0-8.84 7.16-16 16-16h32c8.84 0 16 7.16 16 16v80h65.18c14.28 0 21.4 17.29 11.27 27.36zM377 105L279.1 7c-4.5-4.5-10.6-7-17-7H256v128h128v-6.1c0-6.3-2.5-12.4-7-16.9z"></path></svg></a>
+              
+                
+                
+                  <h1>1. Hello Xilinx</h1>
+                
+                <table>
+<thead>
+<tr>
+<th></th>
+<th>Source code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/ros-acceleration/acceleration_examples/tree/main/publisher_xilinx"><code>publisher_xilinx</code></a></td>
+<td></td>
+</tr>
+<tr>
+<td>publisher</td>
+<td><a href="https://github.com/ros-acceleration/acceleration_examples/blob/main/publisher_xilinx/member_function_publisher.cpp"><code>member_function_publisher.cpp</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>This example lets you experience KRS further, walking you through the process of building and launching a ROS 2 package across different targets: in the workstation, in the real hardware and in an emulation.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The examples assume you've already installed KRS. If not, refer to <a href="/install">install</a>.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><a href="https://docs.ros.org/">Learn ROS 2</a> before trying this out first.</p>
+</div>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> ~/krs_ws  <span class="c1"># head to your KRS workspace</span>
+
+<span class="c1"># prepare the environment</span>
+$ <span class="nb">source</span> /tools/Xilinx/Vitis/2020.2/settings64.sh  <span class="c1"># source Xilinx tools</span>
+$ <span class="nb">source</span> /opt/ros/foxy/setup.bash  <span class="c1"># Sources system ROS 2 installation</span>
+$ <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/bin&quot;</span>:<span class="nv">$PATH</span>  <span class="c1"># FIXME: adjust path for CMake 3.5+</span>
+
+<span class="c1"># fetch the source code of examples</span>
+$ git clone https://github.com/ros-acceleration/acceleration_examples src/acceleration_examples
+
+<span class="c1"># build the workspace</span>
+$ colcon build --merge-install  <span class="c1"># about 2 mins</span>
+
+<span class="c1"># source the workspace as an overlay</span>
+$ <span class="nb">source</span> install/setup.bash
+</code></pre></div>
+<details class="tip"><summary>Source code of the publisher</summary><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="cm">/*</span>
+<span class="cm">     ____  ____</span>
+<span class="cm">    /   /\/   /</span>
+<span class="cm">    /___/  \  /   Copyright (c) 2021, Xilinx®.</span>
+<span class="cm">    \   \   \/    Author: Víctor Mayoral Vilches &lt;victorma@xilinx.com&gt;</span>
+<span class="cm">    \   \</span>
+<span class="cm">    /   /</span>
+<span class="cm">    /___/   /\</span>
+<span class="cm">    \   \  /  \</span>
+<span class="cm">    \___\/\___\</span>
+
+<span class="cm">*/</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;chrono&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;functional&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&quot;rclcpp/rclcpp.hpp&quot;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;std_msgs/msg/string.hpp&quot;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="o">::</span><span class="n">chrono_literals</span><span class="p">;</span>
+
+<span class="cm">/* This example creates a subclass of Node and uses std::bind() to register a</span>
+<span class="cm">* member function as a callback from the timer. */</span>
+
+<span class="k">class</span> <span class="nc">MinimalPublisher</span> <span class="o">:</span> <span class="k">public</span> <span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="n">MinimalPublisher</span><span class="p">()</span>
+<span class="o">:</span> <span class="n">Node</span><span class="p">(</span><span class="s">&quot;minimal_publisher&quot;</span><span class="p">),</span> <span class="n">count_</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">publisher_</span> <span class="o">=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">create_publisher</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;topic&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+    <span class="n">timer_</span> <span class="o">=</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">create_wall_timer</span><span class="p">(</span>
+    <span class="mi">500</span><span class="n">ms</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">MinimalPublisher</span><span class="o">::</span><span class="n">timer_callback</span><span class="p">,</span> <span class="k">this</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="k">private</span><span class="o">:</span>
+<span class="kt">void</span> <span class="n">timer_callback</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">auto</span> <span class="n">message</span> <span class="o">=</span> <span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="p">();</span>
+    <span class="n">message</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="s">&quot;Hello, Xilinx! &quot;</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">count_</span><span class="o">++</span><span class="p">);</span>
+    <span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span> <span class="s">&quot;Publishing: &#39;%s&#39;&quot;</span><span class="p">,</span> <span class="n">message</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+    <span class="n">publisher_</span><span class="o">-&gt;</span><span class="n">publish</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">rclcpp</span><span class="o">::</span><span class="n">TimerBase</span><span class="o">::</span><span class="n">SharedPtr</span> <span class="n">timer_</span><span class="p">;</span>
+<span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;::</span><span class="n">SharedPtr</span> <span class="n">publisher_</span><span class="p">;</span>
+<span class="kt">size_t</span> <span class="n">count_</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span> <span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+<span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
+<span class="n">rclcpp</span><span class="o">::</span><span class="n">spin</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">MinimalPublisher</span><span class="o">&gt;</span><span class="p">());</span>
+<span class="n">rclcpp</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span>
+<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+</details>
+<h2 id="launch-hello_xilinx-example-in-the-workstation">Launch <code>hello_xilinx</code> example in the workstation</h2>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">source</span> install/setup.bash  <span class="c1"># source the overlay workspace</span>
+$ ros2 run publisher_xilinx member_function_publisher
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1618407842</span>.800443167<span class="o">]</span> <span class="o">[</span>minimal_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello, Xilinx! 0&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1618407843</span>.300407127<span class="o">]</span> <span class="o">[</span>minimal_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello, Xilinx! 1&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1618407843</span>.800389187<span class="o">]</span> <span class="o">[</span>minimal_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello, Xilinx! 2&#39;</span>
+...
+</code></pre></div>
+<h2 id="launch-hello_xilinx-example-in-the-kv260-hardware">Launch <code>hello_xilinx</code> example in the KV260 hardware</h2>
+<p>First, let's select the firmware for the target hardware, <a href="https://www.xilinx.com/products/som/kria/kv260-vision-starter-kit.html"><code>KV260</code></a>:</p>
+<div class="highlight"><pre><span></span><code>$ colcon acceleration <span class="k">select</span> kv260
+</code></pre></div>
+<p>To verify that we indeed that the right firmware selected, look for the one marked with a "*" at the end of its name:
+<div class="highlight"><pre><span></span><code>$ colcon acceleration list
+kv260*
+</code></pre></div></p>
+<p>Let's now build the package targeting the KV260:</p>
+<div class="highlight"><pre><span></span><code>$ colcon build --build-base<span class="o">=</span>build-kv260 --install-base<span class="o">=</span>install-kv260 --merge-install --mixin kv260 --packages-select publisher_xilinx
+</code></pre></div>
+<p>Let's now create a raw disk image for the SD card with PetaLinux's rootfs, a vanilla Linux 5.4.0 kernel and the ROS 2 overlay workspace we've just created for the KV260:
+<div class="highlight"><pre><span></span><code>$ colcon acceleration linux vanilla --install-dir install-kv260
+</code></pre></div></p>
+<p>We're now ready to run it on hardware. For that, we need to flash the <code>~/krs_ws/acceleration/firmware/select/sd_card.img</code> file into the SD card. If you need help doing so, check out <a href="https://www.xilinx.com/products/som/kria/kv260-vision-starter-kit/kv260-getting-started/setting-up-the-sd-card-image.html">these instructions</a> for different OSs. <strong>Make sure to flash <code>~/krs_ws/acceleration/firmware/select/sd_card.img</code> we just generated, and not some other image</strong>. </p>
+<p>Once flashed, connect the board to the computer via its USB/UART/JTAG FTDI adapter and power it on. Then, launch your favority serial console (e.g. <code>sudo tio /dev/ttyUSB1</code>). You should get to the following prompt where you can use the <code>petalinux</code> username and define your own password:
+<div class="highlight"><pre><span></span><code>PetaLinux <span class="m">2020</span>.2.2 xilinx-k26-starterkit-2020_2.2 ttyPS0
+
+xilinx-k26-starterkit-2020_2 login:
+</code></pre></div></p>
+<p>To launch the <code>hello_xilinx</code> package:</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">source</span> /usr/bin/ros_setup.bash  <span class="c1"># source the ROS 2 installation</span>
+$ . /ros2_ws/local_setup.bash   <span class="c1"># source the ROS 2 overlay workspace</span>
+$ ros2 run publisher_xilinx member_function_publisher  <span class="c1"># launch the hello_xilinx example</span>
+
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1618478074</span>.116887661<span class="o">]</span> <span class="o">[</span>minimal_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello, Xilinx! 0&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1618478074</span>.611878275<span class="o">]</span> <span class="o">[</span>minimal_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello, Xilinx! 1&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1618478075</span>.112175121<span class="o">]</span> <span class="o">[</span>minimal_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello, Xilinx! 2&#39;</span>
+...
+</code></pre></div>
+<h2 id="launch-hello_xilinx-example-in-an-emulated-kv260">Launch <code>hello_xilinx</code> example in an emulated KV260</h2>
+<p>First, let's select the firmware for the target hardware, <a href="https://www.xilinx.com/products/som/kria/kv260-vision-starter-kit.html"><code>KV260</code></a>:</p>
+<div class="highlight"><pre><span></span><code>$ colcon acceleration <span class="k">select</span> kv260
+</code></pre></div>
+<p>Build the package for the KV260:</p>
+<div class="highlight"><pre><span></span><code>$ colcon build --build-base<span class="o">=</span>build-kv260 --install-base<span class="o">=</span>install-kv260 --merge-install --mixin kv260 --packages-select publisher_xilinx
+</code></pre></div>
+<p>Create a raw disk image for the SD card with PetaLinux's rootfs and a Linux 5.4.0 vanilla kernel:
+<div class="highlight"><pre><span></span><code>$ colcon acceleration linux vanilla
+</code></pre></div></p>
+<p>Then use the <code>acceleration</code> extensions to the ROS 2 <code>colcon</code> meta-build system to launch an emulation:
+<div class="highlight"><pre><span></span><code>$ colcon acceleration emulation sw_emu install-kv260
+</code></pre></div></p>
+<p>This will trigger the emulation with a prompt like what follows:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>To be fixed in future releases</strong>.</p>
+<p>Due to some issues with KV260, the current emulation capabilities only brings you to ramfs. To finalize booting the board it's necessary to manually introduce the following in ramfs:</p>
+<div class="highlight"><pre><span></span><code>mkdir /configfs
+mount -t configfs configfs /configfs
+<span class="nb">cd</span> /configfs/device-tree/overlays/
+mkdir full
+mkdir /lib/firmware/
+cp /boot/devicetree/zynqmp-sck-kv-g-qemu.dtbo /lib/firmware/.
+<span class="nb">echo</span> -n <span class="s2">&quot;zynqmp-sck-kv-g-qemu.dtbo&quot;</span> &gt; full/path
+<span class="nb">exec</span> /init
+</code></pre></div>
+</div>
+<div class="highlight"><pre><span></span><code>$ colcon acceleration emulation sw_emu install-kv260
+SECURITY WARNING: This class invokes explicitly a shell via the <span class="nv">shell</span><span class="o">=</span>True argument of the Python subprocess library, and uses admin privileges to manage raw disk images. It is the user<span class="s1">&#39;s responsibility to ensure that all whitespace and metacharacters passed are quoted appropriately to avoid shell injection vulnerabilities.</span>
+<span class="s1">- Verified that install/ is available in the current ROS 2 workspace</span>
+<span class="s1">- Confirmed availability of raw image file at: /home/xilinx/krs_ws/acceleration/firmware/select/sd_card.img</span>
+<span class="s1">- Finished inspecting raw image, obtained UNITS and STARTSECTOR P1/P2</span>
+<span class="s1">- Image mounted successfully at: /tmp/sdcard_img_p2</span>
+<span class="s1">- Successfully cleaned up prior overlay ROS 2 workspace at: /tmp/sdcard_img_p2/ros2_ws</span>
+<span class="s1">- Copied &#39;</span>install-kv260<span class="s1">&#39; directory as a ROS 2 overlay workspace in the raw image.</span>
+<span class="s1">- Umounted the raw image.</span>
+<span class="s1">- Generated PMU and QEMU files.</span>
+<span class="s1">- Launching emulation...</span>
+<span class="s1">cd /home/xilinx/krs_ws/acceleration/firmware/select/emulation &amp;&amp; /tools/Xilinx/Vitis/2020.2/bin/launch_emulator -device-family ultrascale -target sw_emu -qemu-args-file /home/xilinx/krs_ws/acceleration/firmware/select/emulation/qemu_args.txt -pmc-args-file /home/xilinx/krs_ws/acceleration/firmware/select/emulation/pmu_args.txt -sd-card-image /home/xilinx/krs_ws/acceleration/firmware/select/sd_card.img -enable-prep-target $*</span>
+<span class="s1">Running SW Emulation</span>
+<span class="s1">INFO :  [LAUNCH_EMULATOR] pl_sim_dir option is not provided.</span>
+<span class="s1">Starting QEMU</span>
+<span class="s1"> - Press &lt;Ctrl-a h&gt; for help</span>
+<span class="s1">Waiting for QEMU to start. qemu_port 9720</span>
+<span class="s1">Qemu_pids 601788 601789</span>
+<span class="s1">qemu-system-aarch64: -chardev socket,path=./qemu-rport-_pmu@0,server,id=pmu-apu-rp: info: QEMU waiting for connection on: disconnected:unix:./qemu-rport-_pmu@0,server</span>
+<span class="s1">QEMU started. qemu_pid=601788.</span>
+<span class="s1">Waiting for PMU to start. Qemu_pids 601792 601793</span>
+<span class="s1">qemu-system-aarch64: -chardev socket,id=pl-rp,host=127.0.0.1,port=8500,server: info: QEMU waiting for connection on: disconnected:tcp:127.0.0.1:8500,server</span>
+<span class="s1">PMC started. pmc_pid=601792</span>
+<span class="s1">Starting PL simulation.Generating PLLauncher commandline</span>
+<span class="s1">running PLL Launcher</span>
+<span class="s1">PMU Firmware 2020.2 Jun 10 2021   22:45:10</span>
+<span class="s1">PMU_ROM Version: xpbr-v8.1.0-0</span>
+<span class="s1">NOTICE:  ATF running on XCZUUNKN/QEMU v4/RTL0.0 at 0xfffea000</span>
+<span class="s1">NOTICE:  BL31: v2.2(release):xilinx-v2020.2.2-k26</span>
+<span class="s1">NOTICE:  BL31: Built : 22:39:14, Jun 10 2021</span>
+
+
+<span class="s1">U-Boot 2020.01 (Jun 11 2021 - 08:39:52 +0000)</span>
+
+<span class="s1">Model: ZynqMP SMK-K26 Rev1/B/A</span>
+<span class="s1">Board: Xilinx ZynqMP</span>
+<span class="s1">DRAM:  4 GiB</span>
+<span class="s1">PMUFW:  v1.1</span>
+<span class="s1">EL Level:   EL2</span>
+<span class="s1">Chip ID:    unknown</span>
+<span class="s1">NAND:  0 MiB</span>
+<span class="s1">MMC:   mmc@ff170000: 1</span>
+<span class="s1">In:    serial@ff010000</span>
+<span class="s1">Out:   serial@ff010000</span>
+<span class="s1">Err:   serial@ff010000</span>
+<span class="s1">Bootmode: JTAG_MODE</span>
+<span class="s1">Reset reason:</span>
+<span class="s1">Net:   No ethernet found.</span>
+<span class="s1">Hit any key to stop autoboot:  0</span>
+<span class="s1">switch to partitions #0, OK</span>
+<span class="s1">mmc1 is current device</span>
+<span class="s1">Scanning mmc 1:1...</span>
+<span class="s1">Found U-Boot script /boot.scr</span>
+<span class="s1">2145 bytes read in 17 ms (123 KiB/s)</span>
+<span class="s1">## Executing script at 20000000</span>
+<span class="s1">17932800 bytes read in 3251 ms (5.3 MiB/s)</span>
+<span class="s1">38045 bytes read in 26 ms (1.4 MiB/s)</span>
+<span class="s1">25150797 bytes read in 4541 ms (5.3 MiB/s)</span>
+<span class="s1">## Loading init Ramdisk from Legacy Image at 04000000 ...</span>
+<span class="s1">   Image Name:   petalinux-initramfs-image-zynqmp</span>
+<span class="s1">   Image Type:   AArch64 Linux RAMDisk Image (uncompressed)</span>
+<span class="s1">   Data Size:    25150733 Bytes = 24 MiB</span>
+<span class="s1">   Load Address: 00000000</span>
+<span class="s1">   Entry Point:  00000000</span>
+<span class="s1">   Verifying Checksum ... OK</span>
+<span class="s1">## Flattened Device Tree blob at 00100000</span>
+<span class="s1">   Booting using the fdt blob at 0x100000</span>
+<span class="s1">   Loading Ramdisk to 77803000, end 78fff50d ... OK</span>
+<span class="s1">   Loading Device Tree to 000000000fff3000, end 000000000ffff49c ... OK</span>
+
+<span class="s1">Starting kernel ...</span>
+
+<span class="s1">[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd034]</span>
+<span class="s1">[    0.000000] Linux version 5.4.0-xilinx-v2020.2 (oe-user@oe-host) (gcc version 9.2.0 (GCC)) #1 SMP Thu Jun 10 22:03:38 UTC 2021</span>
+<span class="s1">[    0.000000] Machine model: ZynqMP SMK-K26 Rev1/B/A</span>
+<span class="s1">[    0.000000] earlycon: cdns0 at MMIO 0x00000000ff010000 (options &#39;</span>115200n8<span class="s1">&#39;)</span>
+<span class="s1">[    0.000000] printk: bootconsole [cdns0] enabled</span>
+<span class="s1">[    0.000000] efi: Getting EFI parameters from FDT:</span>
+<span class="s1">[    0.000000] efi: UEFI not found.</span>
+<span class="s1">[    0.000000] cma: Reserved 1000 MiB at 0x0000000039000000</span>
+<span class="s1">[    0.000000] psci: probing for conduit method from DT.</span>
+<span class="s1">[    0.000000] psci: PSCIv1.1 detected in firmware.</span>
+<span class="s1">[    0.000000] psci: Using standard PSCI v0.2 function IDs</span>
+<span class="s1">[    0.000000] psci: MIGRATE_INFO_TYPE not supported.</span>
+<span class="s1">[    0.000000] psci: SMC Calling Convention v1.1</span>
+<span class="s1">[    0.000000] percpu: Embedded 22 pages/cpu s49880 r8192 d32040 u90112</span>
+<span class="s1">[    0.000000] Detected VIPT I-cache on CPU0</span>
+<span class="s1">[    0.000000] CPU features: detected: ARM erratum 845719</span>
+<span class="s1">[    0.000000] CPU features: detected: ARM erratum 843419</span>
+
+<span class="s1">...</span>
+
+<span class="s1">ccpath is incorrect: /sys/bus/i2c/devices/*51/eeprom</span>
+<span class="s1">[   11.106002] random: python3: uninitialized urandom read (24 bytes read)</span>
+
+<span class="s1">ccpath is incorrect: /sys/bus/i2c/devices/*51/eeprom</span>
+<span class="s1">SOM: CARRIER_CARD: REVISION:</span>
+<span class="s1">NO CARRIER DTBO FOUND, PLEASE CHECK /boot/devicetree/</span>
+<span class="s1">Waiting for /dev/mmcblk0p2 to pop up (attempt 1)</span>
+<span class="s1">Waiting for /dev/mmcblk0p2 to pop up (attempt 2)</span>
+<span class="s1">Waiting for /dev/mmcblk0p2 to pop up (attempt 3)</span>
+<span class="s1">Waiting for /dev/mmcblk0p2 to pop up (attempt 4)</span>
+<span class="s1">Waiting for /dev/mmcblk0p2 to pop up (attempt 5)</span>
+<span class="s1">Waiting for /dev/mmcblk0p2 to pop up (attempt 6)</span>
+<span class="s1">Waiting for /dev/mmcblk0p2 to pop up (attempt 7)</span>
+<span class="s1">Waiting for /dev/mmcblk0p2 to pop up (attempt 8)</span>
+<span class="s1">Waiting for /dev/mmcblk0p2 to pop up (attempt 9)</span>
+<span class="s1">Waiting for /dev/mmcblk0p2 to pop up (attempt 10)</span>
+<span class="s1">Device /dev/mmcblk0p2 not found</span>
+<span class="s1">ERROR: There&#39;</span>s no <span class="s1">&#39;/dev&#39;</span> on rootfs.
+
+sh: can<span class="err">&#39;</span>t access tty<span class="p">;</span> job control turned off
+/ <span class="c1">#</span>
+</code></pre></div>
+<p>To finalize the boot on rootfs, introduce the following:</p>
+<div class="highlight"><pre><span></span><code>mkdir /configfs
+mount -t configfs configfs /configfs
+<span class="nb">cd</span> /configfs/device-tree/overlays/
+mkdir full
+mkdir /lib/firmware/
+cp /boot/devicetree/zynqmp-sck-kv-g-qemu.dtbo /lib/firmware/.
+<span class="nb">echo</span> -n <span class="s2">&quot;zynqmp-sck-kv-g-qemu.dtbo&quot;</span> &gt; full/path
+<span class="nb">exec</span> /init
+</code></pre></div>
+<p>This should bring you all the way down to the prompt:</p>
+<div class="highlight"><pre><span></span><code>PetaLinux <span class="m">2020</span>.2.2 xilinx-k26-starterkit-2020_2.2 ttyPS0
+
+xilinx-k26-starterkit-2020_2 login:
+</code></pre></div>
+<p>Use the <code>petalinux</code> username and pick you own password. Then, inside of the emulation, launch <code>hello_xilinx</code>:</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">source</span> /usr/bin/ros_setup.bash  <span class="c1"># source the ROS 2 installation</span>
+$ . /ros2_ws/local_setup.bash   <span class="c1"># source the ROS 2 overlay workspace</span>
+$ ros2 run publisher_xilinx member_function_publisher  <span class="c1"># launch the hello_xilinx example</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1618478074</span>.116887661<span class="o">]</span> <span class="o">[</span>minimal_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello, Xilinx! 0&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1618478074</span>.611878275<span class="o">]</span> <span class="o">[</span>minimal_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello, Xilinx! 1&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1618478075</span>.112175121<span class="o">]</span> <span class="o">[</span>minimal_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello, Xilinx! 2&#39;</span>
+...
+</code></pre></div>
+<p>To exit the emulation, type <code>Ctrl-A x</code>.</p>
+<h2 id="bonus-launch-hello_xilinx-example-in-emulation-with-another-firmware"><strong>Bonus</strong>: Launch <code>hello_xilinx</code> example in emulation with another firmware</h2>
+<p>As introduced in <a href="/features/ros2centric">Features</a>, KRS is designed to be easily portable across boards. To demonstrate it, we'll now fetch the firmware for another board capable of hardware acceleration and launch <code>hello_xilinx</code> in this board using emulation.
+Let's start fetching the firmware:
+<div class="highlight"><pre><span></span><code>$ git clone --recursive https://gitlab.com/xilinxrobotics/ros2/acceleration_firmware_zcu102 src/acceleration/acceleration_firmware_zcu102
+</code></pre></div></p>
+<p>We then build the workspace to deploy the firmware:
+<div class="highlight"><pre><span></span><code><span class="c1"># build the workspace</span>
+$ colcon build --merge-install  <span class="c1"># about 2 mins</span>
+</code></pre></div></p>
+<p>Then, we select the firmware and build the workspace for the ZCU102:
+<div class="highlight"><pre><span></span><code>$ colcon acceleration <span class="k">select</span> zcu102
+$ colcon build --build-base<span class="o">=</span>build-zcu102 --install-base<span class="o">=</span>install-zcu102 --merge-install --mixin zcu102 --packages-select publisher_xilinx
+</code></pre></div></p>
+<p>We create new raw disk image for the SD card (using ZCU102's firmware) with PetaLinux's rootfs and a Linux 5.4.0 vanilla kernel:
+<div class="highlight"><pre><span></span><code>$ colcon acceleration linux vanilla --install-dir install-zcu102
+</code></pre></div></p>
+<p>Then use the <code>acceleration</code> extensions to the ROS 2 <code>colcon</code> meta-build system to launch an emulation:
+<div class="highlight"><pre><span></span><code>$ colcon acceleration emulation sw_emu --no-install
+</code></pre></div></p>
+<p>The ZCU102 rootfs should login automatically with the <code>root</code> username. 
+Inside of the emulation, launch <code>hello_xilinx</code>:</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">source</span> /usr/bin/ros_setup.bash  <span class="c1"># source the ROS 2 installation</span>
+$ . /ros2_ws/local_setup.bash   <span class="c1"># source the ROS 2 overlay workspace</span>
+$ ros2 run publisher_xilinx member_function_publisher  <span class="c1"># launch the hello_xilinx example</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1618478074</span>.116887661<span class="o">]</span> <span class="o">[</span>minimal_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello, Xilinx! 0&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1618478074</span>.611878275<span class="o">]</span> <span class="o">[</span>minimal_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello, Xilinx! 1&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1618478075</span>.112175121<span class="o">]</span> <span class="o">[</span>minimal_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello, Xilinx! 2&#39;</span>
+...
+</code></pre></div>
+<p>To exit the emulation, type <code>Ctrl-A x</code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can also try the <code>hw_emu</code> target in the ZCU102.</p>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../0_ros2_publisher/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                0. ROS 2 publisher
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../2_hls_ros2/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                2. HLS in ROS 2
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.93c04032.min.js"></script>
+      <script src="../../assets/javascripts/bundle.83e5331e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: [],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
