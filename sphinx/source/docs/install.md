@@ -11,9 +11,10 @@
 
 .. admonition:: Dependencies
 
-
   KRS is served as a group of ROS 2 packages that you can install in any arbitrary ROS 2 workspace, enhancing it with hardware acceleration capabilities. The following demonstrates how to create a new ROS 2 overlay workspace and fetch the KRS packages, including some acceleration examples:
 ```
+
+[![asciicast](https://asciinema.org/a/434953.svg)](https://asciinema.org/a/434953)
 
 ```shell
 ###################################################
