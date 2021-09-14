@@ -14,30 +14,13 @@ It does so by tightly integrating itself with ROS (lingua franca amongst robotic
 ----
 
 
-![](imgs/krs.svg)
+![](sphinx/source/docs/imgs/krs.svg)
 
 
 </br>
 </br>
 
 ## KRS capabilities
-
-<style>
-table th:first-of-type {
-    width: 15%;
-}
-table th:nth-of-type(2) {
-    width: 30%;
-}
-table th:nth-of-type(3) {
-    width: 55%;
-}
-
-.wy-table-responsive table td,
-.wy-table-responsive table th {
-    white-space: normal;
-}
-</style>
 
 | action | quick peek | description |
 |--------|-------------|------------|
