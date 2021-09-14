@@ -10,5 +10,5 @@ pip3 install rst2pdf sphinx
 ### Build html locally
 
 ```bash
-cd sphinx; mkdocs html
+cd sphinx; make html
 ```
