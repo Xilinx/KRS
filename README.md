@@ -1,7 +1,7 @@
 # Kria Robotics Stack (KRS)
 
 - **Introduction**
-  - [Kria Robotics Stack (KRS)](#)
+  - [Kria Robotics Stack (KRS)](#) (this page)
   - [Install KRS](sphinx/source/docs/install.md)
   - [Hardware supported](sphinx/source/docs/hardware.md)
 - **Features**
