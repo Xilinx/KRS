@@ -2,23 +2,23 @@ repositories:
   acceleration/acceleration_firmware:
     type: git
     url: https://github.com/ros-acceleration/acceleration_firmware
-    version: main
+    version: 0.4.0
   acceleration/acceleration_firmware_kv260:
     type: zip
     url: https://github.com/ros-acceleration/acceleration_firmware_kv260/releases/download/v0.6.0/acceleration_firmware_kv260.zip
   acceleration/colcon-acceleration:
     type: git
     url: https://github.com/ros-acceleration/colcon-acceleration
-    version: main
+    version: 0.1.0
   acceleration/ros2acceleration:
     type: git
     url: https://github.com/ros-acceleration/ros2acceleration
-    version: main
-  acceleration/acceleration_examples:
-    type: git
-    url: https://github.com/ros-acceleration/acceleration_examples
-    version: main
+    version: 0.2.0
   acceleration/ament_vitis:
     type: git
     url: https://github.com/ros-acceleration/ament_vitis
-    version: main
+    version: 0.5.0
+  acceleration/vitis_common:
+    type: git
+    url: https://github.com/ros-acceleration/vitis_common
+    version: 0.1.0

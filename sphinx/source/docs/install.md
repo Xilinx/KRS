@@ -18,6 +18,11 @@
 
 ```shell
 ###################################################
+# 0. install Vitis 2020.2.2, and ROS 2 Foxy,
+      #  see above
+###################################################
+
+###################################################
 # 1. install some dependencies you might be missing
 ###################################################
 sudo apt-get -y install curl build-essential libssl-dev git wget \
@@ -56,12 +61,16 @@ repositories:
     type: git
     url: https://github.com/ros-acceleration/ament_vitis
     version: 0.5.0
+  acceleration/vitis_common:
+    type: git
+    url: https://github.com/ros-acceleration/vitis_common
+    version: 0.1.0
 EOF
 
 ###################################################
 # 4. import repos of KRS alpha release
 ###################################################
-vcs import src --recursive < krs_alpha.repos  # about 5 mins
+vcs import src --recursive < krs_alpha.repos  # about 3 mins
 
 ###################################################
 # 5. build the workspace and deploy firmware for hardware acceleration
