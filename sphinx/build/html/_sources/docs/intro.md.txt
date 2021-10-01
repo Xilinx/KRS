@@ -5,7 +5,7 @@
    
    KRS builds on ROS 2.
 
-   If you're not familiar, before continuing, learn more about ROS 2 from its `official documentation <https://docs.ros.org/>`_.
+   If you're not familiar with it, before continuing, learn more about ROS 2 from its `official documentation <https://docs.ros.org/>`_.
 ```
 
 The **Kria Robotics Stack (KRS)** is a ROS 2 superset for industry, an integrated set of robot libraries and utilities to accelerate the development, maintenance and commercialization of industrial-grade robotic solutions while using [adaptive computing](https://www.xilinx.com/applications/adaptive-computing.html). KRS provides to ROS 2 users an easy and robust path to hardware acceleration. It allow ROS 2 roboticists to create custom secure compute architectures with higher productivity. KRS leverages Xilinx technology targeting the [Kria SOM portfolio](https://www.xilinx.com/products/som/kria.html) to deliver low latency (real-fast), determinism (predictable), real-time (on-time), security and high throughput to robotics.
@@ -23,3 +23,33 @@ It does so by tightly integrating itself with ROS (lingua franca amongst robotic
 ```
 
 ![](imgs/krs.svg)
+
+
+</br>
+</br>
+
+## KRS capabilities
+
+<style>
+table th:first-of-type {
+    width: 15%;
+}
+table th:nth-of-type(2) {
+    width: 30%;
+}
+table th:nth-of-type(3) {
+    width: 55%;
+}
+
+.wy-table-responsive table td,
+.wy-table-responsive table th {
+    white-space: normal;
+}
+</style>
+
+| action | quick peek | description |
+|--------|-------------|------------|
+| *install KRS* | [![asciicast](https://asciinema.org/a/434953.svg)](https://asciinema.org/a/434953) | Installing KRS is just about creating a ROS 2 workspace, fetching the `krs.repos` of the corresponding release (e.g. [alpha release](https://github.com/vmayoral/KRS/releases/tag/alpha)) and built it using the common ROS flow, with the option of leveraging ament and colcon extensions for additional hardware acceleration capabilities. |
+| `colcon acceleration select` | [![asciicast](https://asciinema.org/a/434781.svg)](https://asciinema.org/a/434781) | The `select` verb allows to easily select and configure a specific target firmware for hardware acceleration, and default to it while producing binaries and accelerators.  |
+| `colcon acceleration list` | [![asciicast](https://asciinema.org/a/434781.svg)](https://asciinema.org/a/434781) | The `list` verb  allows to inspect the acceleration firmware available in the ROS workspace, marking with a `*` the currently selected option.  |
+| `colcon acceleration linux` | [![asciicast](https://asciinema.org/a/scOognokU4wt0PW3E1N4F0jCe.svg)](https://asciinema.org/a/scOognokU4wt0PW3E1N4F0jCe) | The `linux` verb helps configure the Linux kernel in the raw SD card image produced by the firmware. E.g. `colcon acceleration linux vanilla` will produce a Linux vanilla kernel, whereas `colcon acceleration linux preempt_rt` will instead use a pre-built kernel and kernel modules for improved determinism (fully preemptible kernel). |
