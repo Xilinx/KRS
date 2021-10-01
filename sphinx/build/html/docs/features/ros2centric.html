@@ -1,0 +1,723 @@
+
+
+
+<!DOCTYPE HTML>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+		
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+		<link rel="stylesheet" href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta name="description"/>
+		<meta name="keywords"/>
+		<meta property="og:title" content=""/>
+		<meta property="og:description"/>
+		<!-- favicon -->
+		<link rel="icon" type="image/vnd.microsoft.icon" href="../../_static/favicon.ico"/>
+		<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="../../_static/favicon.ico"/>
+		<!-- Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" type="text/css"/>
+
+  
+  
+  
+  
+
+  
+      <script type="text/javascript" src="../../_static/js/jquery.min.js"></script>
+	  <script type="text/javascript" src="../../_static/js/gtm.js"></script>
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/d3dd8c60ed.js"></script>
+    <script type="text/javascript" src="../../_static/js/common-ui-all.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/CoveoJsSearch.Lazy.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/linkid.js"></script>
+	    <script type="text/javascript" src="../../_static/js/header-footer.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/Searchbox.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/common-ui-all.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/header-footer.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/pro.min.css" media="all" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Real-time ROS 2" href="realtime_ros2.html" />
+    <link rel="prev" title="Hardware supported" href="../hardware.html" /> 
+	</head>
+	<body>
+		<div class="xilinx-bs3"/>
+		<div class="root responsivegrid">
+			<div class="aem-Grid aem-Grid--16 aem-Grid--default--16 aem-Grid--large--16 aem-Grid--xlarge--16 aem-Grid--xxlarge--16 aem-Grid--xxxlarge--16 ">
+				<div class="xilinxExperienceFragments experiencefragment aem-GridColumn aem-GridColumn--default--12">
+					<div class="xf-content-height">
+						<div class="aem-Grid aem-Grid--16 aem-Grid--default--16 ">
+							<div class="header parbase aem-GridColumn aem-GridColumn--default--12">
+								<noindex>
+									<header data-component="header">
+										<nav class="navbar navbar-default aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid main-nav">
+													<div class="row">
+														<div class="col-xs-12">
+															<div class="logo-column">
+																<div class="logo">
+																	<a href="https://www.xilinx.com/">
+																	<img src="https://github.com/Xilinx/Image-Collateral/blob/main/xilinx-header-logo.svg?raw=true" title="Xilinx Inc"/>
+																	</a>
+																</div>
+															</div>
+															<div class="navbar-column">
+																<div class="navbar navbar-collapse collapse" id="xilinx-main-menu">
+																	<div class="mobile-search-container">
+																		<div id="headerSearchBox" class="headerSearch"
+																			data-component="header-search"
+																			data-redirect-if-empty="false"
+																			data-coveo-access-token="xxa237d4dd-f0aa-47fc-9baa-af9121851b33"
+																			data-coveo-organization-id="xilinxcomprode2rjoqok">
+																			<div class='coveo-search-section'>
+																				<div class="CoveoAnalytics" data-search-hub="Site"></div>
+																				<ul class="dropdown-menu options">
+																					<li class="option" data-label="All" data-action-link="https://www.xilinx.com/search/site-keyword-search.html" data-search-hub="Site">
+																						<a href="#">
+																						All</a>
+																					</li>
+																					<li data-label="Silicon Devices" data-action-link="https://www.xilinx.com//products/silicon-devices/si-keyword-search.html" data-search-hub="Product">
+																						<a href="#">
+																						Silicon Devices</a>
+																					</li>
+																					<li data-label="Boards and Kits" data-action-link="https://www.xilinx.com//products/boards-and-kits/bk-keyword-search.html" data-search-hub="Product">
+																						<a href="#">
+																						Boards and Kits</a>
+																					</li>
+																					<li data-label="Intellectual Property" data-action-link="https://www.xilinx.com//products/intellectual-property/ip-keyword-search.html" data-search-hub="Product">
+																						<a href="#">
+																						Intellectual Property</a>
+																					</li>
+																					<li data-label="Support" class="option" data-action-link="https://www.xilinx.com/search/support-keyword-search.html" data-search-hub="Support">
+																						<a href="#">
+																						Support</a>
+																						<ul>
+																							<li data-label="Documentation" data-action-link="https://www.xilinx.com//support/documentation-navigation/documentation-keyword-search.html" data-search-hub="Document">
+																								<a href="#">
+																								Documentation</a>
+																							</li>
+																							<li data-label="Knowledge Base" data-action-link="https://www.xilinx.com//support/answer-navigation/answer-keyword-search.html" data-search-hub="AnswerRecord">
+																								<a href="#">
+																								Knowledge Base</a>
+																							</li>
+																							<li data-label="Community Forums" data-action-link="https://www.xilinx.com/search/forums-keyword-search.html" data-search-hub="Forums">
+																								<a href="#">
+																								Community Forums</a>
+																							</li>
+																						</ul>
+																					</li>
+																					<li data-label="Partners" data-action-link="https://www.xilinx.com//alliance/member-keyword-search.html" data-search-hub="Partner">
+																						<a href="#">
+																						Partners</a>
+																					</li>
+																					<li data-label="Videos" data-action-link="https://www.xilinx.com/video/video-keyword-search.html" data-search-hub="Video">
+																						<a href="#">
+																						Videos</a>
+																					</li>
+																					<li data-label="Press" data-action-link="https://www.xilinx.com/search/press-keyword-search.html" data-search-hub="Press">
+																						<a href="#">
+																						Press</a>
+																					</li>
+																				</ul>
+																				<a href="#" class="btn dropdown-toggle value" data-toggle="dropdown"></a>
+																				<div class="CoveoSearchbox" data-id="coveosearchbox" data-action-link="https://www.xilinx.com/search/site-keyword-search.html" data-placeholder="Search Xilinx"></div>
+																			</div>
+																		</div>
+																	</div>
+																	<ul class="nav navbar-nav nav-justified">
+																		<li class="accordion-toggle-icons" data-component="toggle-dropdown">
+																			<a href="https://www.xilinx.com/applications.html">
+																			Applications</a>
+																		</li>
+																		<li class="accordion-toggle-icons" data-component="toggle-dropdown">
+																			<a href="https://www.xilinx.com/products/silicon-devices.html">
+																			Products</a>
+																		</li>
+																		<li class="accordion-toggle-icons" data-component="toggle-dropdown">
+																			<a href="https://developer.xilinx.com/">
+																			Developers</a>
+																		</li>
+																		<li class="accordion-toggle-icons" data-component="toggle-dropdown">
+																			<a href="https://www.xilinx.com/support.html">
+																			Support</a>
+																		</li>
+																		<li class="accordion-toggle-icons" data-component="toggle-dropdown">
+																			<a href="https://www.xilinx.com/about/company-overview.html">
+																			About</a>
+																		</li>
+																	</ul>
+																</div>
+															</div>
+															<script type="text/javascript" src="../../_static/js/gtm.js"></script>
+															<!--<div class="mini-nav">
+																<button type="button" data-function="xilinx-mobile-menu" id="nav-toggle" class="navbar-toggle collapsed visible-xs-block" aria-expanded="false">
+																<span></span>
+																<span></span>
+																<span></span>
+																<span></span>
+																</button>
+																<ul class="list-inline">
+																	<li class="dropdown user-menu">
+																		<button data-toggle="dropdown">
+																		<span class="sr-only">Account</span>
+																		<span class="fas fa-user"></span>
+																		</button>
+																		<ul class="dropdown-menu">
+																			<li>
+																				<a href="https://www.xilinx.com/myprofile/subscriptions.html">
+																				My Account</a>
+																			</li>
+																			<li>
+																				<a href="https://www.xilinx.com/registration/create-account.html">
+																				Create Account</a>
+																			</li>
+																			<li>
+																				<a href="https://www.xilinx.com/bin/protected/en/signout">
+																				Sign Out</a>
+																			</li>
+																		</ul>
+																	</li>
+																	<li class="hidden-xs">
+																		<button data-function="search-toggle">
+																		<span class="sr-only">Search</span>
+																		<span class="far fa-search"></span>
+																		</button>
+																	</li>
+																</ul>
+															</div>
+															-->
+															<div class="search-container">
+																<div id="headerSearchBox" class="headerSearch"
+																	data-component="header-search"
+																	data-redirect-if-empty="false"
+																	data-coveo-access-token="xxa237d4dd-f0aa-47fc-9baa-af9121851b33"
+																	data-coveo-organization-id="xilinxcomprode2rjoqok">
+																	<div class='coveo-search-section'>
+																		<div class="CoveoAnalytics" data-search-hub="Site"></div>
+																		<ul class="dropdown-menu options">
+																			<li class="option" data-label="All" data-action-link="https://www.xilinx.com/search/site-keyword-search.html" data-search-hub="Site">
+																				<a href="#">
+																				All</a>
+																			</li>
+																			<li data-label="Silicon Devices" data-action-link="https://www.xilinx.com/products/silicon-devices/si-keyword-search.html" data-search-hub="Product">
+																				<a href="#">
+																				Silicon Devices</a>
+																			</li>
+																			<li data-label="Boards and Kits" data-action-link="https://www.xilinx.com/products/boards-and-kits/bk-keyword-search.html" data-search-hub="Product">
+																				<a href="#">
+																				Boards and Kits</a>
+																			</li>
+																			<li data-label="Intellectual Property" data-action-link="https://www.xilinx.com/products/intellectual-property/ip-keyword-search.html" data-search-hub="Product">
+																				<a href="#">
+																				Intellectual Property</a>
+																			</li>
+																			<li data-label="Support" class="option" data-action-link="https://www.xilinx.com/search/support-keyword-search.html" data-search-hub="Support">
+																				<a href="#">
+																				Support</a>
+																				<ul>
+																					<li data-label="Documentation" data-action-link="https://www.xilinx.com/support/documentation-navigation/documentation-keyword-search.html" data-search-hub="Document">
+																						<a href="#">
+																						Documentation</a>
+																					</li>
+																					<li data-label="Knowledge Base" data-action-link="https://www.xilinx.com/support/answer-navigation/answer-keyword-search.html" data-search-hub="AnswerRecord">
+																						<a href="#">
+																						Knowledge Base</a>
+																					</li>
+																					<li data-label="Community Forums" data-action-link="https://www.xilinx.com/search/forums-keyword-search.html" data-search-hub="Forums">
+																						<a href="#">
+																						Community Forums</a>
+																					</li>
+																				</ul>
+																			</li>
+																			<li data-label="Partners" data-action-link="https://www.xilinx.com/alliance/member-keyword-search.html" data-search-hub="Partner">
+																				<a href="#">
+																				Partners</a>
+																			</li>
+																			<li data-label="Videos" data-action-link="https://www.xilinx.com/video/video-keyword-search.html" data-search-hub="Video">
+																				<a href="#">
+																				Videos</a>
+																			</li>
+																			<li data-label="Press" data-action-link="https://www.xilinx.com/search/press-keyword-search.html" data-search-hub="Press">
+																				<a href="#">
+																				Press</a>
+																			</li>
+																		</ul>
+																		<a href="#" class="btn dropdown-toggle value" data-toggle="dropdown"></a>
+																		<div class="CoveoSearchbox" data-id="coveosearchbox" data-action-link="https://www.xilinx.com/search/site-keyword-search.html" data-placeholder="Search Xilinx"></div>
+																	</div>
+																</div>
+																<button data-function="search-toggle">
+																<span class="sr-only">Search</span>
+																<span class="far fa-times"></span>
+																</button>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</nav>
+									</header>
+								</noindex>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="parsys aem-GridColumn--xxxlarge--none aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+						<div class="container-fluid">
+							<div class="row">
+							<div class="col-xs-12">
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> KRS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                alpha
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+      
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+            
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Kria Robotics Stack (KRS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install KRS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware.html">Hardware supported</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Features</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ROS 2-centric</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pillar-i-extensions-to-ament-build-system">Pillar I - Extensions to ament build system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pillar-ii-extensions-to-colcon-build-tools">Pillar II - Extensions to colcon build tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pillar-iii-a-firmware-layer-for-portability">Pillar III - a firmware layer for portability</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="realtime_ros2.html">Real-time ROS 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accelerated_apps_ros2.html">ROS 2 Accelerated Apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing_ros2.html">Contributing back to ROS 2</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/0_ros2_publisher.html">0. ROS 2 publisher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/1_hello_xilinx.html">1. Hello Xilinx</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/2_hls_ros2.html">2. HLS in ROS 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/3_offloading_ros2_publisher.html">3. Offloading ROS 2 publisher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/4_accelerated_ros2_publisher.html">4. Accelerated ROS 2 publisher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/5_faster_ros2_publisher.html">5. Faster ROS 2 publisher</a></li>
+</ul>
+<p class="caption"><span class="caption-text">HowTo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../howto.html">HOWTO and Troubleshooting</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../other/definitions.html">Definitions</a></li>
+</ul>
+
+            
+			
+			<p class="caption"><span class="caption-text">This Page</span></p>
+				<ul class="current">
+				  <li class="toctree-l1"><a href="../../_sources/docs/features/ros2centric.md.txt"
+						rel="nofollow">Show Source</a></li>
+				</ul>
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">KRS</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>ROS 2-centric</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/docs/features/ros2centric.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ros-2-centric">
+<h1>ROS 2-centric<a class="headerlink" href="#ros-2-centric" title="Permalink to this headline">¶</a></h1>
+<p><em>ROS is to roboticists what Linux is to most computer scientists and software developers</em>. It helps roboticists build robot applications. With ROS 2, the capabilities to produce robot behaviours become production ready, with the potential to impact many industries. Opposed to reinventing the wheel with new robotics platforms that overload the space with replicas or forks of libraries and/or similar robotics simulators, Xilinx’s approach with KRS meets the ROS robotics community interests and builds on top of ROS 2, together with its tightly connected robotics simulator, <a class="reference external" href="http://gazebosim.org/">Gazebo</a>.</p>
+<p><img alt="../../_images/buildsystem.svg" src="../../_images/buildsystem.svg" /></p>
+<p>To connect Xilinx’s hardware acceleration technology with the ROS 2 world in a way that encourages package maintainers to benefit from it, Xilinx has created a series of extensions to the ROS 2 build system (<code class="docutils literal notranslate"><span class="pre">ament</span></code>) and meta build tools (<code class="docutils literal notranslate"><span class="pre">colcon</span></code>) that minimize the effort required from ROS 2 package maintainers. This architecture is based on three pillars.</p>
+<div class="section" id="pillar-i-extensions-to-ament-build-system">
+<h2>Pillar I - Extensions to ament build system<a class="headerlink" href="#pillar-i-extensions-to-ament-build-system" title="Permalink to this headline">¶</a></h2>
+<p>The first pillar represents extensions of the <code class="docutils literal notranslate"><span class="pre">ament</span></code> ROS 2 build system. These CMake extensions help achieve the objective of simplifying the creation of acceleration kernels. By providing an experience and a syntax similar to other ROS 2 libraries targeting CPUs, maintainers will be able to integrate kernels into their packages easily. The <code class="docutils literal notranslate"><span class="pre">ament_acceleration</span></code> ROS 2 package abstracts the build system extensions from technology-specific frameworks and software platforms. This allows to easily support hardware acceleration across FPGAs and GPUs while using the same syntax, simplifying the work of maintainers. The code listing below provides an example that instructs the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file of a ROS 2 package to build a <code class="docutils literal notranslate"><span class="pre">vadd</span></code> kernel with the corresponding sources and configuration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">acceleration_kernel</span><span class="p">(</span>
+      <span class="n">NAME</span> <span class="n">vadd</span>
+      <span class="n">FILE</span> <span class="n">src</span><span class="o">/</span><span class="n">vadd</span><span class="o">.</span><span class="n">cpp</span>
+      <span class="n">INCLUDE</span>
+        <span class="n">include</span>
+      <span class="n">TARGET</span> <span class="n">kv260</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+<p>Under the hood, each specialization of <code class="docutils literal notranslate"><span class="pre">ament_acceleration</span></code> should rely on the corresponding technology libraries to enable it. For example, <a class="reference external" href="https://github.com/ros-acceleration/ament_vitis/"><code class="docutils literal notranslate"><span class="pre">ament_vitis</span></code></a> relies on Vitis Unified Software Platform and on the Xilinx Runtime (XRT) library to generate acceleration kernels and facilitate OpenCL communication between the application code and the kernels. Vitis and XRT are completely hidden from the robotics engineer, simplifying the creation of kernels through simple CMake macros. The same kernel expressed with <code class="docutils literal notranslate"><span class="pre">ament_vitis</span></code> is presented below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">vitis_acceleration_kernel</span><span class="p">(</span>
+      <span class="n">NAME</span> <span class="n">vadd</span>
+      <span class="n">FILE</span> <span class="n">src</span><span class="o">/</span><span class="n">vadd</span><span class="o">.</span><span class="n">cpp</span>
+      <span class="n">CONFIG</span> <span class="n">src</span><span class="o">/</span><span class="n">kv260</span><span class="o">.</span><span class="n">cfg</span>
+      <span class="n">INCLUDE</span>
+        <span class="n">include</span>
+      <span class="n">TYPE</span>
+        <span class="n">sw_emu</span>
+        <span class="c1"># hw_emu</span>
+        <span class="c1"># hw</span>
+      <span class="n">PACKAGE</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+<p>While <code class="docutils literal notranslate"><span class="pre">ament_acceleration</span></code> CMake macros are preferred and will be encouraged, maintainers are free to choose among the CMake macros available. After all, it’ll be hard to define a generic set of macros that fits all use cases across technologies.</p>
+<p>Through <code class="docutils literal notranslate"><span class="pre">ament_acceleration</span></code> and technology-specific specializations (like <code class="docutils literal notranslate"><span class="pre">ament_vitis</span></code>), the ROS 2 build system is automatically enhanced to support producing  acceleration kernel and related artifacts as part of the build process when invoking <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span></code>. To facilitate the work of maintainers, this additional functionality is configurable through <code class="docutils literal notranslate"><span class="pre">mixins</span></code> that can be added to the build step of a ROS 2 workspace, triggering all the hardware acceleration logic only when appropriate (e.g. when <code class="docutils literal notranslate"><span class="pre">--mixin</span> <span class="pre">kv260</span></code> is appended to the build effort, it’ll trigger the build of kernels targeting the KV260 hardware solution). For a reference implementation of these enhacements, refer to <a class="reference external" href="https://github.com/ros-acceleration/ament_vitis/"><code class="docutils literal notranslate"><span class="pre">ament_vitis</span></code></a>.</p>
+</div>
+<div class="section" id="pillar-ii-extensions-to-colcon-build-tools">
+<h2>Pillar II - Extensions to colcon build tools<a class="headerlink" href="#pillar-ii-extensions-to-colcon-build-tools" title="Permalink to this headline">¶</a></h2>
+<p>The second pillar extends the <code class="docutils literal notranslate"><span class="pre">colcon</span></code> ROS 2 meta built tools to integrate hardware acceleration flows into the ROS 2 CLI tooling and allow to manage it. Examples of these extensions include emulation capabilities to speed-up the development process and/or facilitate it without access to the real hardware, or raw image production tools, which are convenient when packing together acceleration kernels for embedded targets. These extensions are implemented by the <a class="reference external" href="https://github.com/ros-acceleration/colcon_acceleration"><code class="docutils literal notranslate"><span class="pre">colcon_acceleration</span></code></a> ROS 2 package. On a preliminary implementation, these extensions are provided the following <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">acceleration</span></code> subverbs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">colcon</span> <span class="n">acceleration</span> <span class="n">subverbs</span><span class="p">:</span>
+      <span class="n">board</span>                 <span class="n">Report</span> <span class="n">the</span> <span class="n">board</span> <span class="n">supported</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">deployed</span> <span class="n">firmware</span>
+      <span class="n">emulation</span>             <span class="n">Manage</span> <span class="n">hardware</span> <span class="n">emulation</span> <span class="n">capabilities</span>
+      <span class="n">hls</span>                   <span class="n">Vitis</span> <span class="n">HLS</span> <span class="n">capabilities</span> <span class="n">management</span> <span class="n">extension</span>
+      <span class="n">hypervisor</span>            <span class="n">Configure</span> <span class="n">the</span> <span class="n">Xen</span> <span class="n">hypervisor</span>
+      <span class="n">linux</span>                 <span class="n">Configure</span> <span class="n">the</span> <span class="n">Linux</span> <span class="n">kernel</span>
+      <span class="nb">list</span>                  <span class="n">List</span> <span class="n">supported</span> <span class="n">firmware</span> <span class="k">for</span> <span class="n">hardware</span> <span class="n">acceleration</span>
+      <span class="n">mkinitramfs</span>           <span class="n">Creates</span> <span class="n">compressed</span> <span class="n">cpio</span> <span class="n">initramfs</span> <span class="p">(</span><span class="n">ramdisks</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">raw</span> <span class="n">image</span>
+      <span class="n">mount</span>                 <span class="n">Mount</span> <span class="n">raw</span> <span class="n">images</span>
+      <span class="n">package</span>               <span class="n">Packages</span> <span class="n">workspace</span> <span class="k">with</span> <span class="n">kernels</span> <span class="k">for</span> <span class="n">distribution</span>
+      <span class="n">platform</span>              <span class="n">Report</span> <span class="n">the</span> <span class="n">platform</span> <span class="n">enabled</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">deployed</span> <span class="n">firmware</span>
+      <span class="n">select</span>                <span class="n">Select</span> <span class="n">an</span> <span class="n">existing</span> <span class="n">firmware</span> <span class="ow">and</span> <span class="n">default</span> <span class="n">to</span> <span class="n">it</span><span class="o">.</span>
+      <span class="n">umount</span>                <span class="n">Umount</span> <span class="n">raw</span> <span class="n">images</span>
+      <span class="n">v</span><span class="o">++</span>                   <span class="n">Vitis</span> <span class="n">v</span><span class="o">++</span> <span class="n">compiler</span> <span class="n">wrapper</span>
+      <span class="n">version</span>               <span class="n">Report</span> <span class="n">version</span> <span class="n">of</span> <span class="n">the</span> <span class="n">tool</span>
+</pre></div>
+</div>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">select</span></code> subverbs, it’s possible to inspect and configure the different hardware acceleration solutions. The rest of the subverbs allow to manage hardware acceleration artifacts and platforms in a simplified manner.</p>
+<style>
+table th:first-of-type {
+    width: 5%;
+}
+table th:nth-of-type(2) {
+    width: 30%;
+}
+table th:nth-of-type(3) {
+    width: 65%;
+}
+
+.wy-table-responsive table td,
+.wy-table-responsive table th {
+    white-space: normal;
+}
+</style><table border="1" class="docutils">
+<thead>
+<tr>
+<th>verb</th>
+<th>quick peek</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>select</code></td>
+<td><a href="https://asciinema.org/a/434781"><img alt="asciicast" src="https://asciinema.org/a/434781.svg" /></a></td>
+<td>The <code>select</code> verb allows to easily select and configure a specific target firmware for hardware acceleration, and default to it while producing binaries and accelerators.</td>
+</tr>
+<tr>
+<td><code>list</code></td>
+<td><a href="https://asciinema.org/a/434781"><img alt="asciicast" src="https://asciinema.org/a/434781.svg" /></a></td>
+<td>The <code>list</code> verb  allows to inspect the acceleration firmware available in the ROS workspace, marking with a <code>*</code> the currently selected option.</td>
+</tr>
+<tr>
+<td><code>linux</code></td>
+<td><a href="https://asciinema.org/a/scOognokU4wt0PW3E1N4F0jCe"><img alt="asciicast" src="https://asciinema.org/a/scOognokU4wt0PW3E1N4F0jCe.svg" /></a></td>
+<td>The <code>linux</code> verb helps configure the Linux kernel in the raw SD card image produced by the firmware. E.g. <code>colcon acceleration linux vanilla</code> will produce a Linux vanilla kernel, whereas <code>colcon acceleration linux preempt_rt</code> will instead use a pre-built kernel and kernel modules for improved determinism (fully preemptible kernel).</td>
+</tr>
+</tbody>
+</table><p>In turn, the list of subverbs will improve and grow to cover other technology solutions.</p>
+</div>
+<div class="section" id="pillar-iii-a-firmware-layer-for-portability">
+<h2>Pillar III - a firmware layer for portability<a class="headerlink" href="#pillar-iii-a-firmware-layer-for-portability" title="Permalink to this headline">¶</a></h2>
+<p>The third pillar is firmware. Represented by the abstract <code class="docutils literal notranslate"><span class="pre">acceleration_firmware</span></code> package, it is meant to provide firmware artifacts for each supported technology so that the kernels can be compiled against them, simplifying the process for consumers and maintainers, and further aligning with the ROS typical development flow.</p>
+<p>Each ROS 2 workspace can have one or multiple firmware packages deployed. The selection of the active firmware in the workspace is performed by the <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">acceleration</span> <span class="pre">select</span></code> subverb (<a class="reference external" href="#pillar-ii-extensions-to-colcon-build-tools">pillarII</a>). To get a technology solution aligned with this ROS Enhancement Proposal’s (REP) architecture, each vendor should provide and maintain an <code class="docutils literal notranslate"><span class="pre">acceleration_firmware_&lt;solution&gt;</span></code> package specialization that delivers the corresponding artifacts in line with its supported categories_ and capabilities_. Firmware artifacts should be deployed at <code class="docutils literal notranslate"><span class="pre">&lt;ros2_workspace_path&gt;/acceleration/firmware/&lt;solution&gt;</span></code> and be ready to be used by the ROS 2 build system extensions at (<a class="reference external" href="#pillar-i-extensions-to-ament-build-system">pillarI</a>) . For a reference implementation of specialized vendor firmware package, see <a class="reference external" href="https://github.com/ros-acceleration/acceleration_firmware_kv260"><code class="docutils literal notranslate"><span class="pre">acceleration_firmware_kv260</span></code></a>.</p>
+<p>By splitting vendors across packages with a common front-end (<code class="docutils literal notranslate"><span class="pre">acceleration_firmware</span></code>), consumers and maintainers can easily switch between hardware acceleration solutions and benchmark their kernels across technologies.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+<!-- Atalwar: Moved the footer code to layout.html to resolve conflict with the Xilinx template -->
+</footer>
+
+        </div>
+      </div>
+
+
+	  <!-- Sphinx Page Footer block -->
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="realtime_ros2.html" class="btn btn-neutral float-right" title="Real-time ROS 2" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../hardware.html" class="btn btn-neutral float-left" title="Hardware supported" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo" class="copyright">
+    <p class="footerinfo">
+      <span class="lastupdated">
+        Last updated on September 14, 2021.
+      </span>
+
+    </p>
+	<br>
+  </div>
+      </div>
+    </section>
+
+
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+   <script type="text/javascript">
+    jQuery(function() { Search.loadIndex("searchindex.js"); });
+  </script>
+
+  <script type="text/javascript" id="searchindexloader"></script>
+
+
+  
+  
+    
+  
+
+
+
+  <!--  Xilinx template footer block -->
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="xilinxExperienceFragments experiencefragment aem-GridColumn--default--none aem-GridColumn aem-GridColumn--offset--default--0 aem-GridColumn--default--16">
+					<div class="xf-content-height">
+						<div class="aem-Grid aem-Grid--16 aem-Grid--default--16 ">
+							<div class="footer parbase aem-GridColumn--default--none aem-GridColumn aem-GridColumn--offset--default--0 aem-GridColumn--default--16">
+								<noindex>
+                  <!-- make footer fixed - NileshP -->
+                  <style>
+                        .footer {
+                        position: fixed;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        }
+                  </style>
+                  <!-- make footer fixed NileshP-->
+									<footer>
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+													<div class="row">
+														<div class="footerSocial parbase">
+															<div class="col-md-push-6 col-lg-push-6 col-md-6 col-lg-6">
+																<ul class="list-inline pull-right social-menu">
+																	<li>
+																		<a href="https://www.linkedin.com/company/xilinx">
+																		<span class="linkedin icon"></span>
+																		<span class="sr-only">Connect on LinkedIn</span>
+																		</a>
+																	</li>
+																	<li>
+																		<a href="https://www.twitter.com/XilinxInc">
+																		<span class="twitter icon"></span>
+																		<span class="sr-only">Follow us on Twitter</span>
+																		</a>
+																	</li>
+																	<li>
+																		<a href="https://www.facebook.com/XilinxInc">
+																		<span class="facebook icon"></span>
+																		<span class="sr-only">Connect on Facebook</span>
+																		</a>
+																	</li>
+																	<li>
+																		<a href="https://www.youtube.com/XilinxInc">
+																		<span class="youtube icon"></span>
+																		<span class="sr-only">Watch us on YouTube</span>
+																		</a>
+																	</li>
+																	<li>
+																		<a href="https://www.xilinx.com/registration/subscriber-signup.html">
+																		<span class="newsletter icon"></span>
+																		<span class="sr-only">Subscribe to Newsletter</span>
+																		</a>
+																	</li>
+																</ul>
+															</div>
+														</div>
+														<div class="col-md-pull-6 col-lg-pull-6 col-md-6 col-lg-6">
+															<span class="copyright">
+                                  
+                                  &copy; 2021, Xilinx, Inc.
+                              </span>
+															<ul class="list-inline sub-menu">
+																<li>
+																	<a href="https://www.xilinx.com/about/privacy-policy.html">Privacy</a>
+																</li>
+																<li>
+																	<a href="https://www.xilinx.com/about/legal.html">Legal</a>
+																</li>
+																<li>
+																	<a href="https://www.xilinx.com/about/contact.html">Contact</a>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</footer>
+								</noindex>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="quicklinks parbase aem-GridColumn--default--none aem-GridColumn aem-GridColumn--offset--default--0 aem-GridColumn--default--16">
+					<noindex>
+						<span class="quickLinks">
+							<ul>
+								<li>
+									<a href="#top" class="btn backToTop">
+									<span class="fas fa-angle-up" aria-hidden="true"></span>
+									</a>
+								</li>
+							</ul>
+						</span>
+					</noindex>
+				</div>
+			</div>
+		</div>
+		<script>window.CQ = window.CQ || {}</script>
+		<script src="https://static.cloud.coveo.com/searchui/v2.4382/js/CoveoJsSearch.Lazy.min.js"></script>
+		<script>
+			var underscoreSetup = function () {
+			  _.templateSettings.interpolate = /\{\{=([^-][\S\s]+?)\}\}/g;
+			  _.templateSettings.evaluate = /\{\{([^-=][\S\s]+?)\}\}/g;
+			  _.templateSettings.escape = /\{\{-([^=][\S\s]+?)\}\}/g;
+			}
+
+			underscoreSetup();
+		</script>
+	</body>
+</html>
