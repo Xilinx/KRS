@@ -11,11 +11,17 @@
 
 .. admonition:: Dependencies
 
-
   KRS is served as a group of ROS 2 packages that you can install in any arbitrary ROS 2 workspace, enhancing it with hardware acceleration capabilities. The following demonstrates how to create a new ROS 2 overlay workspace and fetch the KRS packages, including some acceleration examples:
 ```
 
+[![asciicast](https://asciinema.org/a/434953.svg)](https://asciinema.org/a/434953)
+
 ```shell
+###################################################
+# 0. install Vitis 2020.2.2, and ROS 2 Foxy,
+      #  see above
+###################################################
+
 ###################################################
 # 1. install some dependencies you might be missing
 ###################################################
@@ -55,18 +61,25 @@ repositories:
     type: git
     url: https://github.com/ros-acceleration/ament_vitis
     version: 0.5.0
+  acceleration/vitis_common:
+    type: git
+    url: https://github.com/ros-acceleration/vitis_common
+    version: 0.1.0
 EOF
 
 ###################################################
 # 4. import repos of KRS alpha release
 ###################################################
-vcs import src --recursive < krs_alpha.repos  # about 5 mins
+vcs import src --recursive < krs_alpha.repos  # about 3 mins
 
 ###################################################
 # 5. build the workspace and deploy firmware for hardware acceleration
 ###################################################
 source /tools/Xilinx/Vitis/2020.2/settings64.sh  # source Xilinx tools
-source /opt/ros/foxy/setup.bash  # Sources system ROS 2 installation
+source /opt/ros/foxy/setup.bash  # Sources system ROS 2 installation. 
+# Note: The path above is valid if one installs ROS 2 from a pre-built 
+# package. If one builds ROS 2 from the source the directory might 
+# vary (e.g. ~/ros2_foxy/ros2-linux).
 export PATH="/usr/bin":$PATH  # FIXME: adjust path for CMake 3.5+
 colcon build --merge-install  # about 2 mins
 

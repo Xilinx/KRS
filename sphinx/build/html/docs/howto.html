@@ -694,7 +694,7 @@ INFO: Xilinx Return <span class="nv">code</span> <span class="o">=</span> <span 
 INFO: Xilinx FTDI Return <span class="nv">code</span> <span class="o">=</span> <span class="m">0</span>
 INFO: Return <span class="nv">code</span> <span class="o">=</span> <span class="m">0</span>
 INFO: Driver installation successful.
-CRITICAL WARNING: Cable<span class="o">(</span>s<span class="o">)</span> on the system must be unplugged <span class="k">then</span> plugged back in order <span class="k">for</span> the driver scripts to update the cables.
+CRITICAL WARNING: Cable<span class="o">(</span>s<span class="o">)</span> on the system must be unplugged <span class="k">then</span> plugged back <span class="k">in</span> order <span class="k">for</span> the driver scripts to update the cables.
 </pre></div>
 </div>
 </div>
@@ -1099,7 +1099,7 @@ cp boot.scr /srv/tftp
 tftpb 0xC00000 boot.scr
 <span class="nb">source</span> 0xC00000
 <span class="c1">## Executing script at 00c00000</span>
-<span class="m">197632</span> bytes <span class="nb">read</span> in <span class="m">39</span> ms <span class="o">(</span><span class="m">4</span>.8 MiB/s<span class="o">)</span>
+<span class="m">197632</span> bytes <span class="nb">read</span> <span class="k">in</span> <span class="m">39</span> ms <span class="o">(</span><span class="m">4</span>.8 MiB/s<span class="o">)</span>
 Scanning disk mmc@ff170000.blk...
 ** Unrecognized filesystem <span class="nb">type</span> **
 Found <span class="m">3</span> disks
@@ -1247,7 +1247,7 @@ INFO: Sourcing build tools
 <span class="o">[</span>INFO<span class="o">]</span> Sourcing build environment
 <span class="o">[</span>INFO<span class="o">]</span> Generating workspace directory
 INFO: bitbake petalinux-image-minimal
-WARNING: Layer example should <span class="nb">set</span> LAYERSERIES_COMPAT_example in its conf/layer.conf file to list the core layer names it is compatible with.
+WARNING: Layer example should <span class="nb">set</span> LAYERSERIES_COMPAT_example <span class="k">in</span> its conf/layer.conf file to list the core layer names it is compatible with.
 WARNING: Host distribution <span class="s2">&quot;ubuntu-20.04&quot;</span> has not been validated with this version of the build system<span class="p">;</span> you may possibly experience unexpected failures. It is recommended that you use a tested distribution.
 ERROR: ParseError at /home/xilinx/xilinx-zcu102-2020.2/project-spec/meta-user/recipes-images/images/petalinux-image-ros2-basic.bb:6: Could not inherit file classes/ros_distro_<span class="si">${</span><span class="nv">ROS_DISTRO</span><span class="si">}</span>.bbclass40
 
@@ -1740,7 +1740,7 @@ sudo losetup -d <span class="k">$(($(</span>sudo losetup -f <span class="p">|</s
 <p>Consider the following error while building an acceleration kernel:</p>
 <p>!!! note
 This issue was first documented at https://forums.xilinx.com/t5/Kria-SOMs/Vitis-IDE-ERROR-v-60-602-Source-file-does-not-exist/m-p/1264669/highlight/true</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>INFO: <span class="o">[</span>VPL <span class="m">60</span>-839<span class="o">]</span> Read in kernel information from file <span class="s1">&#39;/home/xilinx/ros2_ws/build-kv260/accelerated_vadd_publisher/_x/link/int/kernel_info.dat&#39;</span>.
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>INFO: <span class="o">[</span>VPL <span class="m">60</span>-839<span class="o">]</span> Read <span class="k">in</span> kernel information from file <span class="s1">&#39;/home/xilinx/ros2_ws/build-kv260/accelerated_vadd_publisher/_x/link/int/kernel_info.dat&#39;</span>.
 INFO: <span class="o">[</span>VPL <span class="m">60</span>-423<span class="o">]</span>   Target device: kv260_ispMipiRx_vcu_DP
 INFO: <span class="o">[</span>VPL <span class="m">60</span>-1032<span class="o">]</span> Extracting hardware platform to /home/xilinx/ros2_ws/build-kv260/accelerated_vadd_publisher/_x/link/vivado/vpl/.local/hw_platform
 WARNING: /tools/Xilinx/Vitis/2020.2/tps/lnx64/jre9.0.4 does not exist.
@@ -1749,7 +1749,7 @@ Creating Vivado project.
 <span class="o">[</span><span class="m">19</span>:52:10<span class="o">]</span> Run vpl: Step create_project: Failed
 <span class="o">[</span><span class="m">19</span>:52:11<span class="o">]</span> Run vpl: FINISHED. Run Status: create_project ERROR
 ERROR: <span class="o">[</span>VPL <span class="m">60</span>-773<span class="o">]</span> In <span class="s1">&#39;/home/xilinx/ros2_ws/build-kv260/accelerated_vadd_publisher/_x/link/vivado/vpl/runme.log&#39;</span>, caught Tcl error:  ERROR: <span class="o">[</span>Board <span class="m">49</span>-71<span class="o">]</span> The board_part definition was not found <span class="k">for</span> xilinx.com:kv260:part0:1.1. The project<span class="s1">&#39;s board_part property was not set, but the project&#39;</span>s part property was <span class="nb">set</span> to xck26-sfvc784-2LV-c. Valid board_part values can be retrieved with the <span class="s1">&#39;get_board_parts&#39;</span> Tcl command. Check <span class="k">if</span> board.repoPaths parameter is <span class="nb">set</span> and the board_part is installed from the tcl app store.
-ERROR: <span class="o">[</span>VPL <span class="m">60</span>-704<span class="o">]</span> Integration error, Failed to rebuild a project required <span class="k">for</span> hardware synthesis. The project is <span class="s1">&#39;prj&#39;</span>. The rebuild script is <span class="s1">&#39;.local/hw_platform/prj/rebuild.tcl&#39;</span>. The rebuild script was delivered as part of the hardware platform. Consult with the hardware platform provider to investigate the rebuild script contents. An error stack with <span class="k">function</span> names and arguments may be available in the <span class="s1">&#39;vivado.log&#39;</span>.
+ERROR: <span class="o">[</span>VPL <span class="m">60</span>-704<span class="o">]</span> Integration error, Failed to rebuild a project required <span class="k">for</span> hardware synthesis. The project is <span class="s1">&#39;prj&#39;</span>. The rebuild script is <span class="s1">&#39;.local/hw_platform/prj/rebuild.tcl&#39;</span>. The rebuild script was delivered as part of the hardware platform. Consult with the hardware platform provider to investigate the rebuild script contents. An error stack with <span class="k">function</span> names and arguments may be available <span class="k">in</span> the <span class="s1">&#39;vivado.log&#39;</span>.
 ERROR: <span class="o">[</span>VPL <span class="m">60</span>-1328<span class="o">]</span> Vpl run <span class="s1">&#39;vpl&#39;</span> failed
 WARNING: <span class="o">[</span>VPL <span class="m">60</span>-1142<span class="o">]</span> Unable to <span class="nb">read</span> data from <span class="s1">&#39;/home/xilinx/ros2_ws/build-kv260/accelerated_vadd_publisher/_x/link/vivado/vpl/output/generated_reports.log&#39;</span>, generated reports will not be copied.
 ERROR: <span class="o">[</span>VPL <span class="m">60</span>-806<span class="o">]</span> Failed to finish platform linker
@@ -1875,7 +1875,7 @@ the_ROM_image:
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bootgen</span> <span class="o">-</span><span class="n">arch</span> <span class="n">zynqmp</span> <span class="o">-</span><span class="n">image</span> <span class="n">bootgen</span><span class="o">.</span><span class="n">bif</span> <span class="o">-</span><span class="n">o</span> <span class="n">boot</span><span class="o">.</span><span class="n">bin</span>
 
 
-<span class="o">******</span> <span class="n">Xilinx</span> <span class="n">Bootgen</span> <span class="n">v2020</span><span class="o">.</span><span class="mi">2</span>
+<span class="o">******</span> <span class="n">Xilinx</span> <span class="n">Bootgen</span> <span class="n">v2020</span><span class="mf">.2</span>
   <span class="o">****</span> <span class="n">Build</span> <span class="n">date</span> <span class="p">:</span> <span class="n">Nov</span> <span class="mi">18</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">09</span><span class="p">:</span><span class="mi">50</span><span class="p">:</span><span class="mi">31</span>
     <span class="o">**</span> <span class="n">Copyright</span> <span class="mi">1986</span><span class="o">-</span><span class="mi">2020</span> <span class="n">Xilinx</span><span class="p">,</span> <span class="n">Inc</span><span class="o">.</span> <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span><span class="o">.</span>
 

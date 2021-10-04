@@ -550,11 +550,11 @@ $ <span class="nb">source</span> install/setup.bash
 <div class="section" id="simple-adder1-a-quick-look-into-the-flow">
 <h2><code class="docutils literal notranslate"><span class="pre">simple_adder1</span></code>: a quick look into the flow<a class="headerlink" href="#simple-adder1-a-quick-look-into-the-flow" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-acceleration/acceleration_examples/blob/main/simple_adder/src/adder1.cpp"><code class="docutils literal notranslate"><span class="pre">simple_adder</span></code></a> is pretty straightforward:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">simple_adder</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">c</span><span class="p">;</span>
-    <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
-    <span class="k">return</span> <span class="n">c</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">simple_adder</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">c</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>We can build this example packaged as a ROS package (though it doesn’t interact with the computational graph) as follows:</p>
@@ -974,11 +974,11 @@ table th:nth-of-type(2) {
 <div class="section" id="simple-adder2-optimizing-fpga-synthesis-for-lower-latency-responses">
 <h2><code class="docutils literal notranslate"><span class="pre">simple_adder2</span></code>: optimizing FPGA synthesis for lower latency responses<a class="headerlink" href="#simple-adder2-optimizing-fpga-synthesis-for-lower-latency-responses" title="Permalink to this headline">¶</a></h2>
 <p>The source code of <code class="docutils literal notranslate"><span class="pre">simple_adder2</span></code> will now be the following:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">simple_adder</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">c</span><span class="p">;</span>
-    <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">b</span><span class="p">;</span>
-    <span class="k">return</span> <span class="n">c</span><span class="p">;</span>
-<span class="p">}</span>    
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">simple_adder</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="o">*</span><span class="n">b</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">c</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w">    </span>
 </pre></div>
 </div>
 <p>The CMakeLists.txt file uses now a different testbench and kernel source code:</p>

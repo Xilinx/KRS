@@ -500,35 +500,35 @@
 <span class="cm">Inspired by the Vector-Add example.</span>
 <span class="cm">See https://github.com/Xilinx/Vitis-Tutorials/blob/master/Getting_Started/Vitis</span>
 
-<span class="cm">*/</span>
+<span class="cm">*/</span><span class="w"></span>
 
 <span class="cp">#define DATA_SIZE 4096</span>
 <span class="c1">// TRIPCOUNT identifier</span>
-<span class="k">const</span> <span class="kt">int</span> <span class="n">c_size</span> <span class="o">=</span> <span class="n">DATA_SIZE</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">c_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DATA_SIZE</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">extern</span> <span class="s">&quot;C&quot;</span> <span class="p">{</span>
-    <span class="kt">void</span> <span class="nf">vadd</span><span class="p">(</span>
-            <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="o">*</span><span class="n">in1</span><span class="p">,</span>  <span class="c1">// Read-Only Vector 1</span>
-            <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="o">*</span><span class="n">in2</span><span class="p">,</span>  <span class="c1">// Read-Only Vector 2</span>
-            <span class="kt">unsigned</span> <span class="kt">int</span> <span class="o">*</span><span class="n">out</span><span class="p">,</span>        <span class="c1">// Output Result</span>
-            <span class="kt">int</span> <span class="n">size</span>                  <span class="c1">// Size in integer</span>
-            <span class="p">)</span>
-    <span class="p">{</span>
+<span class="k">extern</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">vadd</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">in1</span><span class="p">,</span><span class="w">  </span><span class="c1">// Read-Only Vector 1</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">in2</span><span class="p">,</span><span class="w">  </span><span class="c1">// Read-Only Vector 2</span>
+<span class="w">            </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">,</span><span class="w">        </span><span class="c1">// Output Result</span>
+<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="w">                  </span><span class="c1">// Size in integer</span>
+<span class="w">            </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
 <span class="cp">#pragma HLS INTERFACE m_axi port=in1 bundle=aximm1</span>
 <span class="cp">#pragma HLS INTERFACE m_axi port=in2 bundle=aximm2</span>
 <span class="cp">#pragma HLS INTERFACE m_axi port=out bundle=aximm1</span>
 
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span><span class="n">size</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// stupidly iterate over</span>
-                                          <span class="c1">// it to generate load</span>
-        <span class="cp">#pragma HLS loop_tripcount min = c_size max = c_size</span>
-            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="p">(</span><span class="n">size</span><span class="o">/</span><span class="mi">16</span><span class="p">)</span><span class="o">*</span><span class="mi">16</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-            <span class="cp">#pragma HLS UNROLL factor=16</span>
-            <span class="cp">#pragma HLS loop_tripcount min = c_size max = c_size</span>
-              <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">in1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">in2</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="n">size</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// stupidly iterate over</span>
+<span class="w">                                          </span><span class="c1">// it to generate load</span>
+<span class="w">        </span><span class="cp">#pragma HLS loop_tripcount min = c_size max = c_size</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="p">(</span><span class="n">size</span><span class="o">/</span><span class="mi">16</span><span class="p">)</span><span class="o">*</span><span class="mi">16</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="cp">#pragma HLS UNROLL factor=16</span>
+<span class="w">            </span><span class="cp">#pragma HLS loop_tripcount min = c_size max = c_size</span>
+<span class="w">              </span><span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">in1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">in2</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Besides the dataflow optimizations between input and output arguments in the PL-PS interaction, <em>line 37</em> utilizes a pragma to unroll the inner <code class="docutils literal notranslate"><span class="pre">for</span></code> loop by a factor of <code class="docutils literal notranslate"><span class="pre">16</span></code>, executing <code class="docutils literal notranslate"><span class="pre">16</span></code> sums <em>in parallel</em>, within the same clock cycle. The value of <code class="docutils literal notranslate"><span class="pre">16</span></code> is not arbitrary, but selected specifically to consume the whole bandwidth (<code class="docutils literal notranslate"><span class="pre">512-bits</span></code>) of the <code class="docutils literal notranslate"><span class="pre">m_axi</span></code> ports at each clock cycle available after previous dataflow optimizations (see <a class="reference internal" href="4_accelerated_ros2_publisher.html"><span class="doc">4. Accelerated ROS 2 publisher</span></a> to understand more about the dataflow optimizations). To fill in <code class="docutils literal notranslate"><span class="pre">512</span></code> bits, we pack together <code class="docutils literal notranslate"><span class="pre">16</span> <span class="pre">unsigned</span> <span class="pre">int</span></code> inputs, each of <code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">bytes</span></code>:</p>

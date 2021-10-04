@@ -521,26 +521,26 @@ The <code class="docutils literal notranslate"><span class="pre">vadd</span></co
 <span class="cm">Inspired by the Vector-Add example.</span>
 <span class="cm">See https://github.com/Xilinx/Vitis-Tutorials/blob/master/Getting_Started/Vitis</span>
 
-<span class="cm">*/</span>
+<span class="cm">*/</span><span class="w"></span>
 
 <span class="cp">#define DATA_SIZE 4096</span>
 <span class="c1">// TRIPCOUNT identifier</span>
-<span class="k">const</span> <span class="kt">int</span> <span class="n">c_size</span> <span class="o">=</span> <span class="n">DATA_SIZE</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">c_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DATA_SIZE</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">extern</span> <span class="s">&quot;C&quot;</span> <span class="p">{</span>
-    <span class="kt">void</span> <span class="nf">vadd</span><span class="p">(</span>
-            <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="o">*</span><span class="n">in1</span><span class="p">,</span>  <span class="c1">// Read-Only Vector 1</span>
-            <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="o">*</span><span class="n">in2</span><span class="p">,</span>  <span class="c1">// Read-Only Vector 2</span>
-            <span class="kt">unsigned</span> <span class="kt">int</span> <span class="o">*</span><span class="n">out</span><span class="p">,</span>        <span class="c1">// Output Result</span>
-            <span class="kt">int</span> <span class="n">size</span>                  <span class="c1">// Size in integer</span>
-            <span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">size</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-        <span class="cp">#pragma HLS loop_tripcount min = c_size max = c_size</span>
-            <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">in1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">in2</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="k">extern</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">vadd</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">in1</span><span class="p">,</span><span class="w">  </span><span class="c1">// Read-Only Vector 1</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">in2</span><span class="p">,</span><span class="w">  </span><span class="c1">// Read-Only Vector 2</span>
+<span class="w">            </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">,</span><span class="w">        </span><span class="c1">// Output Result</span>
+<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="w">                  </span><span class="c1">// Size in integer</span>
+<span class="w">            </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="cp">#pragma HLS loop_tripcount min = c_size max = c_size</span>
+<span class="w">            </span><span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">in1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">in2</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The <a class="reference external" href="https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/hls_pragmas.html#sty1504034367099"><code class="docutils literal notranslate"><span class="pre">loop_tripcount</span></code></a> is for analysis only and the pragma doesn’t impact the function logic in any way. Instead, it allows HLS to identify how many iterations are expected in the loop to make time estimations. This will come handy if we want to run synthesis tests to estimate the timing it’ll take for this function to run on a dedicated circuit in the FPGA.</p>
@@ -744,30 +744,30 @@ Executing /home/xilinx/krs_ws/build-kv260/vadd_publisher/project_vadd_publisher.
 <span class="cm">Inspired by the Vector-Add example.</span>
 <span class="cm">See https://github.com/Xilinx/Vitis-Tutorials/blob/master/Getting_Started/Vitis</span>
 
-<span class="cm">*/</span>
+<span class="cm">*/</span><span class="w"></span>
 
 <span class="cp">#define DATA_SIZE 4096</span>
 <span class="c1">// TRIPCOUNT identifier</span>
-<span class="k">const</span> <span class="kt">int</span> <span class="n">c_size</span> <span class="o">=</span> <span class="n">DATA_SIZE</span><span class="p">;</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">c_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DATA_SIZE</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">extern</span> <span class="s">&quot;C&quot;</span> <span class="p">{</span>
-    <span class="kt">void</span> <span class="nf">vadd</span><span class="p">(</span>
-            <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="o">*</span><span class="n">in1</span><span class="p">,</span>  <span class="c1">// Read-Only Vector 1</span>
-            <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="o">*</span><span class="n">in2</span><span class="p">,</span>  <span class="c1">// Read-Only Vector 2</span>
-            <span class="kt">unsigned</span> <span class="kt">int</span> <span class="o">*</span><span class="n">out</span><span class="p">,</span>        <span class="c1">// Output Result</span>
-            <span class="kt">int</span> <span class="n">size</span>                  <span class="c1">// Size in integer</span>
-            <span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">size</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// stupidly iterate over</span>
-                                          <span class="c1">// it to generate load</span>
-        <span class="cp">#pragma HLS loop_tripcount min = c_size max = c_size</span>
-            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">size</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
-            <span class="cp">#pragma HLS loop_tripcount min = c_size max = c_size</span>
-              <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">in1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">in2</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="k">extern</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">vadd</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">in1</span><span class="p">,</span><span class="w">  </span><span class="c1">// Read-Only Vector 1</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">in2</span><span class="p">,</span><span class="w">  </span><span class="c1">// Read-Only Vector 2</span>
+<span class="w">            </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">,</span><span class="w">        </span><span class="c1">// Output Result</span>
+<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="w">                  </span><span class="c1">// Size in integer</span>
+<span class="w">            </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// stupidly iterate over</span>
+<span class="w">                                          </span><span class="c1">// it to generate load</span>
+<span class="w">        </span><span class="cp">#pragma HLS loop_tripcount min = c_size max = c_size</span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="cp">#pragma HLS loop_tripcount min = c_size max = c_size</span>
+<span class="w">              </span><span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">in1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">in2</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Note how instead of one <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, we now have two, simulating a more complex computation. Let’s try this out in hardware. Provided that the image was previously created, we just need to replace the ROS 2 workspace, the rest should be identical. You can do this in various ways (physically mounting the raw image in the SD card, <code class="docutils literal notranslate"><span class="pre">scp</span></code>-ing the ROS 2 workspace, etc.).</p>
