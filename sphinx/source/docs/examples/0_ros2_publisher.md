@@ -120,7 +120,7 @@ We're now ready to run it on hardware. For that, we need to flash the `~/krs_ws/
 ```bash
 # first, find out where your SD card has been mapped, in my case, /dev/rdisk2
 $ sudo diskutil umount /dev/rdisk2s1  # umount mounted partition
-$ pv <your-path-to>/krs_ws/acceleration/firmware/select/sd_card.img | sudo dd of=/dev/rdisk2 bs=4m  # dd the image
+$ pv <your-path-to>/krs_ws/acceleration/firmware/select/sd_card.img | sudo dd of=/dev/rdisk2 bs=4M  # dd the image
 ```
 
 There are other methods. If you need help doing so, check out [these instructions](https://www.xilinx.com/products/som/kria/kv260-vision-starter-kit/kv260-getting-started/setting-up-the-sd-card-image.html) for different OSs. **Make sure to flash `~/krs_ws/acceleration/firmware/select/sd_card.img` we just generated, and not some other image**.
@@ -140,8 +140,8 @@ Then, we can launch the example (feel free to split the actions below in various
 ```bash
 $ source /usr/bin/ros_setup.bash  # source the ROS 2 installation
 
-$ . /ros2_ws/local_setup.bash     # source the ROS 2 overlay workspace we just 
-                                  # created. Note it has been copied to the SD 
+$ . /ros2_ws/local_setup.bash     # source the ROS 2 overlay workspace we just
+                                  # created. Note it has been copied to the SD
                                   # card image while being created.
 
 $ ros2 topic hz /vector --window 10 &
@@ -178,7 +178,7 @@ average rate: 10.001
 
 You should see that the ROS 2 publisher successfully publishes at approximately 10 Hz.
 
-<!-- 
+<!--
 
 With byobu, instead:
 
@@ -192,7 +192,7 @@ split-window -h
 send-keys 'source /usr/bin/ros_setup.bash; . /ros2_ws/local_setup.bash; ros2 topic hz /vector --window 10' Enter
 EOF
 byobu -f vadd_publisher.conf attach
-``` 
+```
 -->
 
 
@@ -296,7 +296,7 @@ The output will show you that the `vadd` function with all its complexity can ru
 
 We've seen that as a simple ROS 2 package, `vadd_publisher` runs perfectly fine and meets the 10 Hz publishing objective. But what if the `vadd` has bigger vectors, or has operations that involve many more iterations? This second section explores this with a more computationally expensive publisher, the `doublevadd_publisher`. The source code of the new `vadd` function is presented below:
 
-```cpp 
+```cpp
 /*
         ____  ____
        /   /\/   /
@@ -350,8 +350,8 @@ $ scp -r install-kv260/* petalinux@192.168.1.86:/ros2_ws/
 # Launch doublevadd_publisher
 $ source /usr/bin/ros_setup.bash  # source the ROS 2 installation
 
-$ . /ros2_ws/local_setup.bash     # source the ROS 2 overlay workspace we just 
-                                # created. Note it has been copied to the SD 
+$ . /ros2_ws/local_setup.bash     # source the ROS 2 overlay workspace we just
+                                # created. Note it has been copied to the SD
                                 # card image while being created.
 
 $ ros2 topic hz /vector --window 10 &

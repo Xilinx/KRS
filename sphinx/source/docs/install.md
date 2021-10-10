@@ -28,7 +28,7 @@
 sudo apt-get -y install curl build-essential libssl-dev git wget \
                           ocl-icd-* opencl-headers python3-vcstool \
                           python3-colcon-common-extensions python3-colcon-mixin \
-                          kpartx u-boot-tools
+                          kpartx u-boot-tools pv
 
 ###################################################
 # 2. create a new ROS 2 workspace
@@ -76,9 +76,9 @@ vcs import src --recursive < krs_alpha.repos  # about 3 mins
 # 5. build the workspace and deploy firmware for hardware acceleration
 ###################################################
 source /tools/Xilinx/Vitis/2020.2/settings64.sh  # source Xilinx tools
-source /opt/ros/foxy/setup.bash  # Sources system ROS 2 installation. 
-# Note: The path above is valid if one installs ROS 2 from a pre-built 
-# package. If one builds ROS 2 from the source the directory might 
+source /opt/ros/foxy/setup.bash  # Sources system ROS 2 installation.
+# Note: The path above is valid if one installs ROS 2 from a pre-built
+# package. If one builds ROS 2 from the source the directory might
 # vary (e.g. ~/ros2_foxy/ros2-linux).
 export PATH="/usr/bin":$PATH  # FIXME: adjust path for CMake 3.5+
 colcon build --merge-install  # about 2 mins
