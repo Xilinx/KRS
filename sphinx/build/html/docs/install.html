@@ -484,7 +484,7 @@ cat <span class="s">&lt;&lt; &#39;EOF&#39; &gt; krs_alpha.repos</span>
 <span class="s">  acceleration/colcon-acceleration:</span>
 <span class="s">    type: git</span>
 <span class="s">    url: https://github.com/ros-acceleration/colcon-acceleration</span>
-<span class="s">    version: 0.1.0</span>
+<span class="s">    version: 0.2.0</span>
 <span class="s">  acceleration/ros2acceleration:</span>
 <span class="s">    type: git</span>
 <span class="s">    url: https://github.com/ros-acceleration/ros2acceleration</span>
@@ -508,9 +508,9 @@ vcs import src --recursive &lt; krs_alpha.repos  <span class="c1"># about 3 mins
 <span class="c1"># 5. build the workspace and deploy firmware for hardware acceleration</span>
 <span class="c1">###################################################</span>
 <span class="nb">source</span> /tools/Xilinx/Vitis/2020.2/settings64.sh  <span class="c1"># source Xilinx tools</span>
-<span class="nb">source</span> /opt/ros/foxy/setup.bash  <span class="c1"># Sources system ROS 2 installation. </span>
-<span class="c1"># Note: The path above is valid if one installs ROS 2 from a pre-built </span>
-<span class="c1"># package. If one builds ROS 2 from the source the directory might </span>
+<span class="nb">source</span> /opt/ros/foxy/setup.bash  <span class="c1"># Sources system ROS 2 installation.</span>
+<span class="c1"># Note: The path above is valid if one installs ROS 2 from a pre-built</span>
+<span class="c1"># package. If one builds ROS 2 from the source the directory might</span>
 <span class="c1"># vary (e.g. ~/ros2_foxy/ros2-linux).</span>
 <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/bin&quot;</span>:<span class="nv">$PATH</span>  <span class="c1"># FIXME: adjust path for CMake 3.5+</span>
 colcon build --merge-install  <span class="c1"># about 2 mins</span>
