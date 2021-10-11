@@ -567,7 +567,7 @@ kv260*
 <p>We’re now ready to run it on hardware. For that, we need to flash the <code class="docutils literal notranslate"><span class="pre">~/krs_ws/acceleration/firmware/select/sd_card.img</span></code> file into the SD card. One quick way to do it is as follows:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># first, find out where your SD card has been mapped, in my case, /dev/rdisk2</span>
 $ sudo diskutil umount /dev/rdisk2s1  <span class="c1"># umount mounted partition</span>
-$ pv &lt;your-path-to&gt;/krs_ws/acceleration/firmware/select/sd_card.img <span class="p">|</span> sudo dd <span class="nv">of</span><span class="o">=</span>/dev/rdisk2 <span class="nv">bs</span><span class="o">=</span>4m  <span class="c1"># dd the image</span>
+$ pv &lt;your-path-to&gt;/krs_ws/acceleration/firmware/select/sd_card.img <span class="p">|</span> sudo dd <span class="nv">of</span><span class="o">=</span>/dev/rdisk2 <span class="nv">bs</span><span class="o">=</span>4M  <span class="c1"># dd the image</span>
 </pre></div>
 </div>
 <p>There are other methods. If you need help doing so, check out <a class="reference external" href="https://www.xilinx.com/products/som/kria/kv260-vision-starter-kit/kv260-getting-started/setting-up-the-sd-card-image.html">these instructions</a> for different OSs. <strong>Make sure to flash <code class="docutils literal notranslate"><span class="pre">~/krs_ws/acceleration/firmware/select/sd_card.img</span></code> we just generated, and not some other image</strong>.</p>
@@ -580,8 +580,8 @@ xilinx-k26-starterkit-2020_2 login:
 <p>Then, we can launch the example (feel free to split the actions below in various terminals, for convenience <code class="docutils literal notranslate"><span class="pre">byobu</span></code> allows to run it all in one):</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">source</span> /usr/bin/ros_setup.bash  <span class="c1"># source the ROS 2 installation</span>
 
-$ . /ros2_ws/local_setup.bash     <span class="c1"># source the ROS 2 overlay workspace we just </span>
-                                  <span class="c1"># created. Note it has been copied to the SD </span>
+$ . /ros2_ws/local_setup.bash     <span class="c1"># source the ROS 2 overlay workspace we just</span>
+                                  <span class="c1"># created. Note it has been copied to the SD</span>
                                   <span class="c1"># card image while being created.</span>
 
 $ ros2 topic hz /vector --window <span class="m">10</span> <span class="p">&amp;</span>
@@ -617,7 +617,7 @@ average rate: <span class="m">10</span>.001
 </pre></div>
 </div>
 <p>You should see that the ROS 2 publisher successfully publishes at approximately 10 Hz.</p>
-<!-- 
+<!--
 
 With byobu, instead:
 
@@ -631,7 +631,7 @@ split-window -h
 send-keys 'source /usr/bin/ros_setup.bash; . /ros2_ws/local_setup.bash; ros2 topic hz /vector --window 10' Enter
 EOF
 byobu -f vadd_publisher.conf attach
-``` 
+```
 --></div>
 <div class="section" id="bonus-getting-a-time-intuition-of-a-vadd-acceleration-kernel">
 <h3>Bonus: Getting a time intuition of a <code class="docutils literal notranslate"><span class="pre">vadd</span></code> acceleration kernel<a class="headerlink" href="#bonus-getting-a-time-intuition-of-a-vadd-acceleration-kernel" title="Permalink to this headline">¶</a></h3>
@@ -781,8 +781,8 @@ $ scp -r install-kv260/* petalinux@192.168.1.86:/ros2_ws/
 <span class="c1"># Launch doublevadd_publisher</span>
 $ <span class="nb">source</span> /usr/bin/ros_setup.bash  <span class="c1"># source the ROS 2 installation</span>
 
-$ . /ros2_ws/local_setup.bash     <span class="c1"># source the ROS 2 overlay workspace we just </span>
-                                <span class="c1"># created. Note it has been copied to the SD </span>
+$ . /ros2_ws/local_setup.bash     <span class="c1"># source the ROS 2 overlay workspace we just</span>
+                                <span class="c1"># created. Note it has been copied to the SD</span>
                                 <span class="c1"># card image while being created.</span>
 
 $ ros2 topic hz /vector --window <span class="m">10</span> <span class="p">&amp;</span>
