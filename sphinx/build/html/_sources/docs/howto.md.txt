@@ -1,4 +1,4 @@
-# HOWTO and Troubleshooting
+# HowTo and Troubleshooting
 
 <!-- ////////// -->
 <!-- ////////// -->
@@ -848,7 +848,7 @@ wget http://cdn.kernel.org/pub/linux/kernel/projects/rt/5.4/older/patch-5.4.10-r
 zcat patch-5.4.10-rt4.patch.gz | patch -p1  # apply patches
 
 # manual fixes, unfortunately patches are a hack and not meant for this version. Need to:
-#   Change instances of spin_lock for raw_spin_lock in function rescuer_thread(). See 
+#   Change instances of spin_lock for raw_spin_lock in function rescuer_thread(). See
 #   https://gitlab.com/xilinxrobotics/docs/-/issues/11#note_523328000 for the actual fixes.
 
 cd ../../../../.. # then back to the root of the project and:
@@ -896,17 +896,17 @@ To set up XRT in PetaLinux, follow [these instructions](https://xilinx.github.io
 There're different ways to do. See PetaLinux Command Line Reference UG1157 for more details:
 
 ```bash
-petalinux-buid -c <component> -x <verb> 
+petalinux-buid -c <component> -x <verb>
 ```
 
 wherein `<component>` corresponds with one of the recipes, e.g. `u-boot`.
 
 | verb | Description |
 |-----------|-------------|
-| `clean` | Cleans build data for the target component.| 
+| `clean` | Cleans build data for the target component.|
 | `cleansstate` | This removes the sstate cache of the corresponding component.|
-| `distclean` | This removes the sstate cache of the corresponding component.| 
-| `cleanall` | This removes the downloads, sstate cache and cleans the work directory of a component.| 
+| `distclean` | This removes the sstate cache of the corresponding component.|
+| `cleanall` | This removes the downloads, sstate cache and cleans the work directory of a component.|
 | `mrproper` | Cleans the build area. This removes the `<plnx-proj-root>/build/` and `<plnx-proj-root>/images/directories` |
 
 #### How do I build an SDK out of a PetaLinux project?
@@ -915,7 +915,7 @@ The following command builds SDK and copies it at `<proj_root>/images/linux/sdk.
 ```bash
 petalinux-build --sdk
 ```
-The following is the equivalent bitbake command bitbake 
+The following is the equivalent bitbake command bitbake
 ```bash
 petalinux-user-image -c do_populate_sdk
 ```
@@ -1199,7 +1199,7 @@ colcon build --merge-install --mixin zcu102 --install-base install-zcu102 --buil
   - Create a sysroot (or an SDK that produces such sysroot) for the target rootfs. NOTE that this sysroot might differ across different file systems (e.g. Ubuntu-based vs Yocto-based).
 
 2. Add custom mixins in `acceleration_firmware_*` for the new board. See `xilinx.mixin.template` for an example.
-3. 
+3.
 
 
 #### How do I build several accelerators when invoking `colcon build`?
@@ -1354,6 +1354,28 @@ or alternative, if all mixins are installed, you can:
 colcon build --merge-install --mixin debug
 ```
 
+#### How do I enable/disable tracing for benchmarking purposes?
+
+```eval_rst
+.. admonition:: Available from KRS *beta* release, and on.
+
+    Tracing and benchmarking capabilities in KRS are available from *beta* release, and on.
+    *Check the `official releases <https://github.com/Xilinx/KRS/releases>`_ for more*.
+```
+
+
+Tracing is **enabled by default in KRS** provided [LTTng](https://lttng.org/docs/v2.11/) (>=2.11.1) is found installed in the file system and the [`TRACETOOLS_DISABLED`](https://gitlab.com/ros-tracing/ros2_tracing/-/tree/master#disabling-tracing) option is not set.
+
+To **disable**, either uninstall LTTng or pass the `-DTRACETOOLS_DISABLED=ON` CMake argument while building the ROS 2 workspace as follows:
+
+```bash
+# while building packages for the workstation
+colcon build --merge-install --cmake-args " -DTRACETOOLS_DISABLED=ON"
+
+# while building packages for embedded, e.g. KV260
+colcon build --build-base=build-kv260 --install-base=install-kv260 --merge-install --mixin kv260 --cmake-args " -DTRACETOOLS_DISABLED=ON"
+```
+
 
 <!-- /////////////// -->
 <!-- /////////////// -->
@@ -1438,9 +1460,9 @@ bootgen_utility -arch zynqmp -bin boot.bin -out boot.bin.info
 ## Vivado
 #### How do I map an SoC featured in datasheets to the part for HLS?
 
-!!! note 
+!!! note
     The part listed in datasheets is sometimes different from the one that can be used in `Tcl` scripts. E.g.:
-    
+
     - ZCU102:
         - datasheet: XCZU9EG-2FFVB1156
         - part: xczu9eg-ffvb1156-2-e

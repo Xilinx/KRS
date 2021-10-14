@@ -357,7 +357,7 @@
 </ul>
 <p class="caption"><span class="caption-text">HowTo</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">HOWTO and Troubleshooting</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">HowTo and Troubleshooting</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#kv260">KV260</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#how-do-i-update-the-kv260-firmware">How do I update the KV260 firmware ?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#how-do-i-emulate-kv260-images">How do I emulate KV260 images?</a></li>
@@ -438,6 +438,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#how-do-i-change-the-install-path-whereto-search-for-libraries">How do I change the install path whereto search for libraries?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#how-do-i-add-additional-verbosity-to-the-build-process-with-colcon">How do I add additional verbosity to the build process with <code class="docutils literal notranslate"><span class="pre">colcon</span></code>?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#how-do-i-add-debugging-symbols-to-ros-2-builds">How do I add debugging symbols to ROS 2 builds?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-do-i-enable-disable-tracing-for-benchmarking-purposes">How do I enable/disable tracing for benchmarking purposes?</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#vitis">Vitis</a><ul>
@@ -510,7 +511,7 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>HOWTO and Troubleshooting</li>
+      <li>HowTo and Troubleshooting</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -530,7 +531,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="howto-and-troubleshooting">
-<h1>HOWTO and Troubleshooting<a class="headerlink" href="#howto-and-troubleshooting" title="Permalink to this headline">¶</a></h1>
+<h1>HowTo and Troubleshooting<a class="headerlink" href="#howto-and-troubleshooting" title="Permalink to this headline">¶</a></h1>
 <!-- ////////// --><!-- ////////// --><!--     KV260  --><!-- ////////// --><!-- ////////// --><div class="section" id="kv260">
 <h2>KV260<a class="headerlink" href="#kv260" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="how-do-i-update-the-kv260-firmware">
@@ -1345,7 +1346,7 @@ wget http://cdn.kernel.org/pub/linux/kernel/projects/rt/5.4/older/patch-5.4.10-r
 zcat patch-5.4.10-rt4.patch.gz <span class="p">|</span> patch -p1  <span class="c1"># apply patches</span>
 
 <span class="c1"># manual fixes, unfortunately patches are a hack and not meant for this version. Need to:</span>
-<span class="c1">#   Change instances of spin_lock for raw_spin_lock in function rescuer_thread(). See </span>
+<span class="c1">#   Change instances of spin_lock for raw_spin_lock in function rescuer_thread(). See</span>
 <span class="c1">#   https://gitlab.com/xilinxrobotics/docs/-/issues/11#note_523328000 for the actual fixes.</span>
 
 <span class="nb">cd</span> ../../../../.. <span class="c1"># then back to the root of the project and:</span>
@@ -1392,7 +1393,7 @@ petalinux-build
 <div class="section" id="how-do-i-clean-up-a-petalinux-component">
 <h3>How do I clean up a PetaLinux component?<a class="headerlink" href="#how-do-i-clean-up-a-petalinux-component" title="Permalink to this headline">¶</a></h3>
 <p>There’re different ways to do. See PetaLinux Command Line Reference UG1157 for more details:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>petalinux-buid -c &lt;component&gt; -x &lt;verb&gt; 
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>petalinux-buid -c &lt;component&gt; -x &lt;verb&gt;
 </pre></div>
 </div>
 <p>wherein <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;</span></code> corresponds with one of the recipes, e.g. <code class="docutils literal notranslate"><span class="pre">u-boot</span></code>.</p>
@@ -1826,6 +1827,23 @@ sudo ln -s /lib/x86_64-linux-gnu/libtinfo.so.6 /lib/x86_64-linux-gnu/libtinfo.so
 </div>
 <p>or alternative, if all mixins are installed, you can:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>colcon build --merge-install --mixin debug
+</pre></div>
+</div>
+</div>
+<div class="section" id="how-do-i-enable-disable-tracing-for-benchmarking-purposes">
+<h3>How do I enable/disable tracing for benchmarking purposes?<a class="headerlink" href="#how-do-i-enable-disable-tracing-for-benchmarking-purposes" title="Permalink to this headline">¶</a></h3>
+<div class="admonition-available-from-krs-beta-release-and-on admonition">
+<p class="admonition-title">Available from KRS <em>beta</em> release, and on.</p>
+<p>Tracing and benchmarking capabilities in KRS are available from <em>beta</em> release, and on.
+<em>Check the `official releases &lt;https://github.com/Xilinx/KRS/releases&gt;`_ for more</em>.</p>
+</div>
+<p>Tracing is <strong>enabled by default in KRS</strong> provided <a class="reference external" href="https://lttng.org/docs/v2.11/">LTTng</a> (&gt;=2.11.1) is found installed in the file system and the <a class="reference external" href="https://gitlab.com/ros-tracing/ros2_tracing/-/tree/master#disabling-tracing"><code class="docutils literal notranslate"><span class="pre">TRACETOOLS_DISABLED</span></code></a> option is not set.</p>
+<p>To <strong>disable</strong>, either uninstall LTTng or pass the <code class="docutils literal notranslate"><span class="pre">-DTRACETOOLS_DISABLED=ON</span></code> CMake argument while building the ROS 2 workspace as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># while building packages for the workstation</span>
+colcon build --merge-install --cmake-args <span class="s2">&quot; -DTRACETOOLS_DISABLED=ON&quot;</span>
+
+<span class="c1"># while building packages for embedded, e.g. KV260</span>
+colcon build --build-base<span class="o">=</span>build-kv260 --install-base<span class="o">=</span>install-kv260 --merge-install --mixin kv260 --cmake-args <span class="s2">&quot; -DTRACETOOLS_DISABLED=ON&quot;</span>
 </pre></div>
 </div>
 <!-- /////////////// --><!-- /////////////// --><!-- /////////////// --></div>
