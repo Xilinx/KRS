@@ -533,6 +533,31 @@ table th:nth-of-type(3) {
 <td><a href="https://asciinema.org/a/scOognokU4wt0PW3E1N4F0jCe"><img alt="asciicast" src="https://asciinema.org/a/scOognokU4wt0PW3E1N4F0jCe.svg" /></a></td>
 <td>The <code>linux</code> verb helps configure the Linux kernel in the raw SD card image produced by the firmware. E.g. <code>colcon acceleration linux vanilla</code> will produce a Linux vanilla kernel, whereas <code>colcon acceleration linux preempt_rt</code> will instead use a pre-built kernel and kernel modules for improved determinism (fully preemptible kernel).</td>
 </tr>
+<tr>
+<td><code>hypervisor</code></td>
+<td><a href="https://asciinema.org/a/443406"><img alt="asciicast" src="https://asciinema.org/a/443406.svg" /></a></td>
+<td>The <code>hypervisor</code> verb helps configure the <a href="https://xenproject.org/">Xen</a> hypervisor in the raw SD card image produced by the firmware. E.g. <code>colcon acceleration hypervisor --dom0 vanilla --domU vanilla --dom0less preempt_rt</code> will produce a raw image leveraging Xen with 3 VMs. The first, <code>dom0</code>, uses a vanilla  kernel. The second, <code>domU</code>, uses a vanilla kernel. The third is a   <code>dom0less</code> VM and uses a fully preemtible kernel   (<em>preemt_rt</em>). Unless otherwise specified, all VMs use  the default ROS 2 configuration, PetaLinux-based  rootfs, the LNS and an Ethernet link layer.</td>
+</tr>
+<tr>
+<td><code>emulation</code></td>
+<td><a href="https://asciinema.org/a/443408"><img alt="asciicast" src="https://asciinema.org/a/443408.svg" /></a></td>
+<td>The <code>emulation</code> verb helps manage the emulation capabilities with <a href="https://www.qemu.org/">QEMU</a> open source machine emulator and virtualizer. This way, developers can test their setups and algorithms without the hardware, which facilitates testing and speeds up the development process allowing for CI/CD pipelines.  Emulation boots the same SD card image produced by previous commands and including the ROS 2 development workspace, providing a unified development approach.</td>
+</tr>
+<tr>
+<td><code>platform</code></td>
+<td><a href="https://asciinema.org/a/443410"><img alt="asciicast" src="https://asciinema.org/a/443410.svg" /></a></td>
+<td>The <code>platform</code> verb helps reports Vitis platform enabled in the firmware deployed in the ROS 2 workspace.</td>
+</tr>
+<tr>
+<td><code>mkinitramfs</code></td>
+<td><a href="https://asciinema.org/a/443412"><img alt="asciicast" src="https://asciinema.org/a/443412.svg" /></a></td>
+<td>The <code>mkinitramfs</code> verb creates compressed cpio initramfs (ramdisks). These can then be used to back up the current rootfs or to create dom0less VMs in Xen easily.</td>
+</tr>
+<tr>
+<td><code>mount</code> / <code>umount</code></td>
+<td><a href="https://asciinema.org/a/443414"><img alt="asciicast" src="https://asciinema.org/a/443414.svg" /></a></td>
+<td>The <code>mount</code> and <code>umount</code> verbs help mount/umount the raw SD card image produced by previous steps. This way, developers can easily access the embedded rootfs directly, across the various partitions of the raw image (e.g. as in the case of multi-VMs in Xen).</td>
+</tr>
 </tbody>
 </table><p>In turn, the list of subverbs will improve and grow to cover other technology solutions.</p>
 </div>
