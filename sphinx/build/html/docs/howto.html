@@ -424,8 +424,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#krs">KRS</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#how-do-i-ssh-into-an-emulation-through-krs-tools-e-g-colcon-krs-emulation">How do I ssh into an emulation through KRS tools (e.g. <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">krs</span> <span class="pre">emulation</span></code>)?</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#how-do-i-scp-files-from-into-an-emulation-launched-through-krs-tools-e-g-colcon-krs-emulation">How do I scp files from/into an emulation launched through KRS tools (e.g. <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">krs</span> <span class="pre">emulation</span></code>)?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-do-i-ssh-into-an-emulation-through-krs-tools-e-g-colcon-acceleration-emulation">How do I ssh into an emulation through KRS tools (e.g. <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">acceleration</span> <span class="pre">emulation</span></code>)?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-do-i-scp-files-from-into-an-emulation-launched-through-krs-tools-e-g-colcon-acceleration-emulation">How do I scp files from/into an emulation launched through KRS tools (e.g. <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">acceleration</span> <span class="pre">emulation</span></code>)?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#how-do-i-rebuild-ros-2-packages-without-the-acceleration-kernels">How do I rebuild ROS 2 packages without the acceleration kernels?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#how-do-i-port-krs-to-a-new-board">How do I port KRS to a new board?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#how-do-i-build-several-accelerators-when-invoking-colcon-build">How do I build several accelerators when invoking <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span></code>?</a></li>
@@ -901,7 +901,7 @@ mkdir -p /tmp/sdcard_img_p2 <span class="o">&amp;&amp;</span> sudo mount -o loop
 <div class="section" id="how-do-i-create-an-initramfs-from-an-rootfs-partition">
 <h3>How do I create an initramfs from an rootfs partition?<a class="headerlink" href="#how-do-i-create-an-initramfs-from-an-rootfs-partition" title="Permalink to this headline">¶</a></h3>
 <p>See [^32] for more details:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>colcon krs mkinitramfs out.cpio.gz
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>colcon acceleration mkinitramfs out.cpio.gz
 </pre></div>
 </div>
 <p>Alternatively:</p>
@@ -947,15 +947,15 @@ Maybe the wrong device is used? Or the whole disk instead of a
 partition (e.g. /dev/sda, not /dev/sda1)? Or the other way around?
 </pre></div>
 </div>
-<p>??? warning “Reproduce this behavior with krs hypervisor functionality”</p>
+<p>??? warning “Reproduce this behavior with KRS hypervisor functionality”</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```bash
 cd ~/ros2_ws/xilinx/firmware
 tar -xzf sd_card.img.tar.gz  # decompress the image
 cd ~/ros2_ws/
-colcon krs hypervisor --dom0 vanilla --domU vanilla --ramdisk initrd.cpio  # this works just fine, can mount afterwards
-colcon krs hypervisor --dom0 vanilla --domU vanilla --ramdisk initrd.cpio.gz  # this works just fine, can mount afterwards
-colcon krs hypervisor --dom0 vanilla --domU vanilla --ramdisk rootfs.cpio.gz  # this works just fine, can mount afterwards
-colcon krs hypervisor --dom0 vanilla --domU vanilla --ramdisk test.cpio.gz
+colcon acceleration hypervisor --dom0 vanilla --domU vanilla --ramdisk initrd.cpio  # this works just fine, can mount afterwards
+colcon acceleration hypervisor --dom0 vanilla --domU vanilla --ramdisk initrd.cpio.gz  # this works just fine, can mount afterwards
+colcon acceleration hypervisor --dom0 vanilla --domU vanilla --ramdisk rootfs.cpio.gz  # this works just fine, can mount afterwards
+colcon acceleration hypervisor --dom0 vanilla --domU vanilla --ramdisk test.cpio.gz
 
 ```
 </pre></div>
@@ -1657,16 +1657,16 @@ NOTE: Tasks Summary: Attempted 9800 tasks of which 9498 didn&#39;t need to be re
 </div>
 <div class="section" id="krs">
 <h2>KRS<a class="headerlink" href="#krs" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="how-do-i-ssh-into-an-emulation-through-krs-tools-e-g-colcon-krs-emulation">
-<h3>How do I ssh into an emulation through KRS tools (e.g. <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">krs</span> <span class="pre">emulation</span></code>)?<a class="headerlink" href="#how-do-i-ssh-into-an-emulation-through-krs-tools-e-g-colcon-krs-emulation" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">krs</span></code> extensions enable emulations which forward ports between the guest/host machines. Particularly, the following flags are passed to QEMU: <code class="docutils literal notranslate"><span class="pre">hostfwd=tcp:127.0.0.1:2222-10.0.2.15:22</span></code> (among others). To ssh into the emulation:</p>
+<div class="section" id="how-do-i-ssh-into-an-emulation-through-krs-tools-e-g-colcon-acceleration-emulation">
+<h3>How do I ssh into an emulation through KRS tools (e.g. <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">acceleration</span> <span class="pre">emulation</span></code>)?<a class="headerlink" href="#how-do-i-ssh-into-an-emulation-through-krs-tools-e-g-colcon-acceleration-emulation" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">acceleration</span></code> extensions enable emulations which forward ports between the guest/host machines. Particularly, the following flags are passed to QEMU: <code class="docutils literal notranslate"><span class="pre">hostfwd=tcp:127.0.0.1:2222-10.0.2.15:22</span></code> (among others). To ssh into the emulation:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh -o <span class="nv">UserKnownHostsFile</span><span class="o">=</span>/dev/null -o <span class="nv">StrictHostKeyChecking</span><span class="o">=</span>no -p <span class="m">2222</span> root@localhost
 </pre></div>
 </div>
 </div>
-<div class="section" id="how-do-i-scp-files-from-into-an-emulation-launched-through-krs-tools-e-g-colcon-krs-emulation">
-<h3>How do I scp files from/into an emulation launched through KRS tools (e.g. <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">krs</span> <span class="pre">emulation</span></code>)?<a class="headerlink" href="#how-do-i-scp-files-from-into-an-emulation-launched-through-krs-tools-e-g-colcon-krs-emulation" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">krs</span></code> extensions enable emulations which forward ports between the guest/host machines. Particularly, the following flags are passed to QEMU: <code class="docutils literal notranslate"><span class="pre">hostfwd=tcp:127.0.0.1:2222-10.0.2.15:22</span></code> (among others). E.g., to copy files from the emulation into the host machine:</p>
+<div class="section" id="how-do-i-scp-files-from-into-an-emulation-launched-through-krs-tools-e-g-colcon-acceleration-emulation">
+<h3>How do I scp files from/into an emulation launched through KRS tools (e.g. <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">acceleration</span> <span class="pre">emulation</span></code>)?<a class="headerlink" href="#how-do-i-scp-files-from-into-an-emulation-launched-through-krs-tools-e-g-colcon-acceleration-emulation" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">acceleration</span></code> extensions enable emulations which forward ports between the guest/host machines. Particularly, the following flags are passed to QEMU: <code class="docutils literal notranslate"><span class="pre">hostfwd=tcp:127.0.0.1:2222-10.0.2.15:22</span></code> (among others). E.g., to copy files from the emulation into the host machine:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp -o <span class="nv">UserKnownHostsFile</span><span class="o">=</span>/dev/null -o <span class="nv">StrictHostKeyChecking</span><span class="o">=</span>no -P <span class="m">2222</span> root@localhost:/ros2_ws/lib/accelerated_vadd_publisher_once/*.csv .
 </pre></div>
 </div>
@@ -1719,7 +1719,7 @@ This flag persists so if you wish to change it afterwards and re-build kernels, 
 <div class="section" id="how-do-i-handle-device-mapper-issues">
 <h3>How do I handle device-mapper issues?<a class="headerlink" href="#how-do-i-handle-device-mapper-issues" title="Permalink to this headline">¶</a></h3>
 <p>KRS relies on imagebuilder which employs <code class="docutils literal notranslate"><span class="pre">/dev/mapper</span></code>. This Linux interface is a bit sensitive and if not disabled properly in past runs will lead into:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>colcon krs kernel --install-dir install-kv260
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>colcon acceleration linux --install-dir install-kv260
 SECURITY WARNING: This class invokes explicitly a shell via the shell=True argument of the Python subprocess library, and uses admin privileges to manage raw disk images. It is the user&#39;s responsibility to ensure that all whitespace and metacharacters passed are quoted appropriately to avoid shell injection vulnerabilities.
 - Creating a new base image using /home/xilinx/ros2_ws/acceleration/firmware/xilinx/rootfs.cpio.gz ...
 - Detected previous sd_card.img raw image, moving to sd_card.img.old.
@@ -1734,7 +1734,7 @@ sudo  dmsetup remove diskimage
 sudo losetup -d <span class="k">$(($(</span>sudo losetup -f <span class="p">|</span> sed -s <span class="s1">&#39;s*/dev/loop**&#39;</span><span class="k">)</span> <span class="o">-</span> <span class="m">1</span><span class="k">))</span>
 </pre></div>
 </div>
-<!-- where `$_loop_dev` is the loop device used (which you can figure out by substracting one to `sudo losetup -f`). --><p><strong>A simpler approach was implemented in KRS with <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">krs</span> <span class="pre">umount</span> <span class="pre">--fix</span></code></strong> which does exactly the same.</p>
+<!-- where `$_loop_dev` is the loop device used (which you can figure out by substracting one to `sudo losetup -f`). --><p><strong>A simpler approach was implemented in KRS with <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">acceleration</span> <span class="pre">umount</span> <span class="pre">--fix</span></code></strong> which does exactly the same.</p>
 </div>
 <div class="section" id="how-do-i-handle-board-part-definition-was-not-found-type-of-issues">
 <h3>How do I handle “board_part definition was not found” type of issues?<a class="headerlink" href="#how-do-i-handle-board-part-definition-was-not-found-type-of-issues" title="Permalink to this headline">¶</a></h3>
