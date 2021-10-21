@@ -383,7 +383,7 @@ sudo umount /tmp/sdcard_img_p1  # or *_p2, as appropriate
 See [^32] for more details:
 
 ```bash
-colcon krs mkinitramfs out.cpio.gz
+colcon acceleration mkinitramfs out.cpio.gz
 ```
 
 Alternatively:
@@ -431,16 +431,16 @@ Maybe the wrong device is used? Or the whole disk instead of a
 partition (e.g. /dev/sda, not /dev/sda1)? Or the other way around?
 ```
 
-??? warning "Reproduce this behavior with krs hypervisor functionality"
+??? warning "Reproduce this behavior with KRS hypervisor functionality"
 
     ```bash
     cd ~/ros2_ws/xilinx/firmware
     tar -xzf sd_card.img.tar.gz  # decompress the image
     cd ~/ros2_ws/
-    colcon krs hypervisor --dom0 vanilla --domU vanilla --ramdisk initrd.cpio  # this works just fine, can mount afterwards
-    colcon krs hypervisor --dom0 vanilla --domU vanilla --ramdisk initrd.cpio.gz  # this works just fine, can mount afterwards
-    colcon krs hypervisor --dom0 vanilla --domU vanilla --ramdisk rootfs.cpio.gz  # this works just fine, can mount afterwards
-    colcon krs hypervisor --dom0 vanilla --domU vanilla --ramdisk test.cpio.gz
+    colcon acceleration hypervisor --dom0 vanilla --domU vanilla --ramdisk initrd.cpio  # this works just fine, can mount afterwards
+    colcon acceleration hypervisor --dom0 vanilla --domU vanilla --ramdisk initrd.cpio.gz  # this works just fine, can mount afterwards
+    colcon acceleration hypervisor --dom0 vanilla --domU vanilla --ramdisk rootfs.cpio.gz  # this works just fine, can mount afterwards
+    colcon acceleration hypervisor --dom0 vanilla --domU vanilla --ramdisk test.cpio.gz
 
     ```
 
@@ -1158,17 +1158,17 @@ Chances are that your Xen tree doesn't include https://github.com/Xilinx/xen/com
 
 ## KRS
 
-#### How do I ssh into an emulation through KRS tools (e.g. `colcon krs emulation`)?
+#### How do I ssh into an emulation through KRS tools (e.g. `colcon acceleration emulation`)?
 
-`colcon krs` extensions enable emulations which forward ports between the guest/host machines. Particularly, the following flags are passed to QEMU: `hostfwd=tcp:127.0.0.1:2222-10.0.2.15:22` (among others). To ssh into the emulation:
+`colcon acceleration` extensions enable emulations which forward ports between the guest/host machines. Particularly, the following flags are passed to QEMU: `hostfwd=tcp:127.0.0.1:2222-10.0.2.15:22` (among others). To ssh into the emulation:
 
 ```bash
 ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 2222 root@localhost
 ```
 
-#### How do I scp files from/into an emulation launched through KRS tools (e.g. `colcon krs emulation`)?
+#### How do I scp files from/into an emulation launched through KRS tools (e.g. `colcon acceleration emulation`)?
 
-`colcon krs` extensions enable emulations which forward ports between the guest/host machines. Particularly, the following flags are passed to QEMU: `hostfwd=tcp:127.0.0.1:2222-10.0.2.15:22` (among others). E.g., to copy files from the emulation into the host machine:
+`colcon acceleration` extensions enable emulations which forward ports between the guest/host machines. Particularly, the following flags are passed to QEMU: `hostfwd=tcp:127.0.0.1:2222-10.0.2.15:22` (among others). E.g., to copy files from the emulation into the host machine:
 
 ```bash
 scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -P 2222 root@localhost:/ros2_ws/lib/accelerated_vadd_publisher_once/*.csv .
@@ -1220,7 +1220,7 @@ For more, review [this ticket](https://gitlab.com/xilinxrobotics/docs/-/issues/2
 KRS relies on imagebuilder which employs `/dev/mapper`. This Linux interface is a bit sensitive and if not disabled properly in past runs will lead into:
 
 ```bash
-colcon krs kernel --install-dir install-kv260
+colcon acceleration linux --install-dir install-kv260
 SECURITY WARNING: This class invokes explicitly a shell via the shell=True argument of the Python subprocess library, and uses admin privileges to manage raw disk images. It is the user's responsibility to ensure that all whitespace and metacharacters passed are quoted appropriately to avoid shell injection vulnerabilities.
 - Creating a new base image using /home/xilinx/ros2_ws/acceleration/firmware/xilinx/rootfs.cpio.gz ...
 - Detected previous sd_card.img raw image, moving to sd_card.img.old.
@@ -1239,7 +1239,7 @@ sudo losetup -d $(($(sudo losetup -f | sed -s 's*/dev/loop**') - 1))
 
 <!-- where `$_loop_dev` is the loop device used (which you can figure out by substracting one to `sudo losetup -f`). -->
 
-**A simpler approach was implemented in KRS with `colcon krs umount --fix`** which does exactly the same.
+**A simpler approach was implemented in KRS with `colcon acceleration umount --fix`** which does exactly the same.
 
 
 #### How do I handle "board_part definition was not found" type of issues?
