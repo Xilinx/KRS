@@ -36,7 +36,7 @@ $ source /opt/ros/foxy/setup.bash  # Sources system ROS 2 installation
 $ export PATH="/usr/bin":$PATH  # FIXME: adjust path for CMake 3.5+
 
 # fetch the source code of examples
-$ git clone https://github.com/ros-acceleration/acceleration_examples src/acceleration_examples
+$ git clone https://github.com/ros-acceleration/acceleration_examples src/acceleration_examples -b 0.2.0
 
 # build the workspace
 $ colcon build --merge-install  # about 2 mins
