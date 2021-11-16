@@ -7,7 +7,7 @@
 
     - `Ubuntu 20.04` Focal Fossa operating system (`download <https://releases.ubuntu.com/20.04/ubuntu-20.04.2.0-desktop-amd64.iso/>`_).
     - the Vitis `2020.2.2` suite (Vitis, Vivado, Vitis HLS) (`install instructions <https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/2020-2.html/>`_)
-    - the ROS 2 Foxy distribution (`install instructions <https://docs.ros.org/en/foxy/Installation.html/>`_)
+    - the ROS 2 Foxy distribution (`install instructions <https://docs.ros.org/en/foxy/Installation.html>`_)
 
 .. admonition:: Dependencies
 
