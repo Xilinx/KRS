@@ -9,7 +9,7 @@ repositories:
   acceleration/colcon-acceleration:
     type: git
     url: https://github.com/ros-acceleration/colcon-acceleration
-    version: 0.2.0
+    version: 0.3.0
   acceleration/ros2acceleration:
     type: git
     url: https://github.com/ros-acceleration/ros2acceleration
