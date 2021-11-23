@@ -91,4 +91,4 @@ source install/setup.bash
 
 That's pretty much it, you've got now KRS installed in the `krs_ws` ROS overlay workspace.  You could also reproduce the same steps over an existing ROS 2 workspace if you'd like to avoid creating a new, or simply reusing the source code elsewhere.
 
-Now's time to build and run some [examples](features/ros2centric).
+Now's time to build and run some [examples](https://xilinx.github.io/KRS/sphinx/build/html/docs/examples/0_ros2_publisher.html).
