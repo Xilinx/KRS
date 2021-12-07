@@ -48,7 +48,7 @@ repositories:
     version: 0.4.0
   acceleration/acceleration_firmware_kv260:
     type: zip
-    url: https://github.com/ros-acceleration/acceleration_firmware_kv260/releases/download/v0.6.0/acceleration_firmware_kv260.zip
+    url: https://www.xilinx.com/bin/public/openDownload?filename=acceleration_firmware_kv260.zip
   acceleration/colcon-acceleration:
     type: git
     url: https://github.com/ros-acceleration/colcon-acceleration
