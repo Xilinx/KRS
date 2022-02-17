@@ -27,6 +27,17 @@ It does so by tightly integrating itself with ROS (lingua franca amongst robotic
 
 .. toctree::
    :maxdepth: 3
+   :caption: SOM
+   :hidden:
+
+   Home <https://xilinx.github.io/kria-apps-docs/>
+   Application Development <https://xilinx.github.io/kria-apps-docs/creating_applications/1.0/build/html/index.html>
+   Ubuntu Support <https://xilinx.github.io/kria-apps-docs/kria_som_ubuntu_support/build/html/index.html>
+   Vision AI Starter Kit Applications <https://xilinx.github.io/kria-apps-docs/main/build/html/index.html>
+
+
+.. toctree::
+   :maxdepth: 3
    :caption: Introduction
    :hidden:
 
