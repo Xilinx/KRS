@@ -565,19 +565,19 @@ $ colcon build  --merge-install --build-base<span class="o">=</span>build-kv260 
 <p>The <code class="docutils literal notranslate"><span class="pre">simple_adder</span></code> package uses the <code class="docutils literal notranslate"><span class="pre">vitis_hls_generate_tcl</span></code> macro on its CMakeLists.txt. This macro commands the build system (<code class="docutils literal notranslate"><span class="pre">ament</span></code>) that when the package is built it should generate a Tcl script for <code class="docutils literal notranslate"><span class="pre">simple_adder</span></code>. This Tcl script will allow architects with HLS experience to use the traditional HLS interface to further optimize and investigate the kernel through C simulation, synthesis, RTL simulation, etc.</p>
 <p>Here’s a peek to the macro syntax used:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">vitis_hls_generate_tcl</span><span class="p">(</span>
-  <span class="s">PROJECT</span> 
-    <span class="s">project_simpleadder1</span>
-  <span class="s">SRC</span> 
-    <span class="s">src/adder1.cpp</span>
-  <span class="s">HEADERS</span>
-    <span class="s">include</span>
-  <span class="s">TESTBENCH</span> 
-    <span class="s">src/testbench.cpp</span>
-  <span class="s">TOPFUNCTION</span> 
-    <span class="s">simple_adder</span>
-  <span class="s">CLOCK</span> 
-    <span class="s">4</span>
-  <span class="s">SYNTHESIS</span>
+<span class="w">  </span><span class="s">PROJECT</span><span class="w"> </span>
+<span class="w">    </span><span class="s">project_simpleadder1</span>
+<span class="w">  </span><span class="s">SRC</span><span class="w"> </span>
+<span class="w">    </span><span class="s">src/adder1.cpp</span>
+<span class="w">  </span><span class="s">HEADERS</span>
+<span class="w">    </span><span class="s">include</span>
+<span class="w">  </span><span class="s">TESTBENCH</span><span class="w"> </span>
+<span class="w">    </span><span class="s">src/testbench.cpp</span>
+<span class="w">  </span><span class="s">TOPFUNCTION</span><span class="w"> </span>
+<span class="w">    </span><span class="s">simple_adder</span>
+<span class="w">  </span><span class="s">CLOCK</span><span class="w"> </span>
+<span class="w">    </span><span class="s">4</span>
+<span class="w">  </span><span class="s">SYNTHESIS</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -983,19 +983,19 @@ table th:nth-of-type(2) {
 </div>
 <p>The CMakeLists.txt file uses now a different testbench and kernel source code:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">vitis_hls_generate_tcl</span><span class="p">(</span>
-  <span class="s">PROJECT</span> 
-    <span class="s">project_simpleadder2</span>
-  <span class="s">SRC</span> 
-    <span class="s">src/adder2.cpp</span>
-  <span class="s">HEADERS</span>
-    <span class="s">include</span>
-  <span class="s">TESTBENCH</span> 
-    <span class="s">src/testbench2.cpp</span>
-  <span class="s">TOPFUNCTION</span> 
-    <span class="s">simple_adder</span>
-  <span class="s">CLOCK</span> 
-    <span class="s">4</span> <span class="s">5</span> <span class="s">6</span> <span class="s">7</span> <span class="s">8</span> <span class="s">9</span> <span class="s">10</span>
-  <span class="s">SYNTHESIS</span>
+<span class="w">  </span><span class="s">PROJECT</span><span class="w"> </span>
+<span class="w">    </span><span class="s">project_simpleadder2</span>
+<span class="w">  </span><span class="s">SRC</span><span class="w"> </span>
+<span class="w">    </span><span class="s">src/adder2.cpp</span>
+<span class="w">  </span><span class="s">HEADERS</span>
+<span class="w">    </span><span class="s">include</span>
+<span class="w">  </span><span class="s">TESTBENCH</span><span class="w"> </span>
+<span class="w">    </span><span class="s">src/testbench2.cpp</span>
+<span class="w">  </span><span class="s">TOPFUNCTION</span><span class="w"> </span>
+<span class="w">    </span><span class="s">simple_adder</span>
+<span class="w">  </span><span class="s">CLOCK</span><span class="w"> </span>
+<span class="w">    </span><span class="s">4</span><span class="w"> </span><span class="s">5</span><span class="w"> </span><span class="s">6</span><span class="w"> </span><span class="s">7</span><span class="w"> </span><span class="s">8</span><span class="w"> </span><span class="s">9</span><span class="w"> </span><span class="s">10</span>
+<span class="w">  </span><span class="s">SYNTHESIS</span>
 <span class="p">)</span>
 </pre></div>
 </div>

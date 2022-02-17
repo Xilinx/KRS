@@ -524,14 +524,14 @@
 <p>The only difference in this package is that it declares a kernel on its CMakeLists.txt file using the <code class="docutils literal notranslate"><span class="pre">vitis_acceleration_kernel</span></code> CMake macro:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># vadd kernel</span>
 <span class="nb">vitis_acceleration_kernel</span><span class="p">(</span>
-  <span class="s">NAME</span> <span class="s">vadd</span>
-  <span class="s">FILE</span> <span class="s">src/vadd.cpp</span>
-  <span class="s">CONFIG</span> <span class="s">src/kv260.cfg</span>
-  <span class="s">INCLUDE</span>
-    <span class="s">include</span>
-  <span class="s">TYPE</span>
-    <span class="s">hw</span>
-  <span class="s">PACKAGE</span>
+<span class="w">  </span><span class="s">NAME</span><span class="w"> </span><span class="s">vadd</span>
+<span class="w">  </span><span class="s">FILE</span><span class="w"> </span><span class="s">src/vadd.cpp</span>
+<span class="w">  </span><span class="s">CONFIG</span><span class="w"> </span><span class="s">src/kv260.cfg</span>
+<span class="w">  </span><span class="s">INCLUDE</span>
+<span class="w">    </span><span class="s">include</span>
+<span class="w">  </span><span class="s">TYPE</span>
+<span class="w">    </span><span class="s">hw</span>
+<span class="w">  </span><span class="s">PACKAGE</span>
 <span class="p">)</span>
 </pre></div>
 </div>
