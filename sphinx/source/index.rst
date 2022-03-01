@@ -4,7 +4,7 @@ Kria Robotics Stack (KRS)
 
 
 .. sidebar:: Before you begin
-   
+
    KRS builds on ROS 2.
 
    If you're not familiar, before continuing, learn more about ROS 2 from its `official documentation <https://docs.ros.org/>`_.
@@ -50,13 +50,8 @@ It does so by tightly integrating itself with ROS (lingua franca amongst robotic
    :caption: Examples
    :hidden:
 
-   docs/examples/0_ros2_publisher
-   docs/examples/1_hello_xilinx
-   docs/examples/2_hls_ros2
-   docs/examples/3_offloading_ros2_publisher
-   docs/examples/4_accelerated_ros2_publisher
-   docs/examples/5_faster_ros2_publisher
-
+   docs/examples/nodes
+   docs/examples/benchmarking
 
 
 .. toctree::
@@ -73,5 +68,3 @@ It does so by tightly integrating itself with ROS (lingua franca amongst robotic
    :hidden:
 
    docs/other/definitions
-
-

@@ -5,7 +5,7 @@
 - **Digital Signal Processor (DSP)**: performs multiplication and other arithmetic in the FPGA
 - **Field-Programmable Gate Array (FPGA)**: semiconductor devices that are based around a matrix of configurable logic blocks (CLBs) connected via programmable interconnects. FPGAs can be reprogrammed to desired application or functionality requirements after manufacturing.
 - **Flip Flops (FF)**: control the flow of data with the clock pulse. Used to build the pipeline and achieve high throughput
-- **Hardware Description Language (HDL)**: a specialized computer language used to describe the structure and behavior of electronic circuits, and most commonly, digital logic circuits[^2]. 
+- **Hardware Description Language (HDL)**: a specialized computer language used to describe the structure and behavior of electronic circuits, and most commonly, digital logic circuits[^2].
 - **High Level Synthesis (HLS)**: compiler for C, C++, SystemC into FPGA IP cores
 - **Kernel**: An OpenCL kernel is a function declared in a program and executed on an OpenCL device. A kernel is identified by the kernel or kernel qualifier applied to any function defined in a program[^3].
 - **Look Up Table (LUT)**: generic functions on small bitwidth inputs (the logic itself). Combine many to build the algorithm.
@@ -17,6 +17,6 @@
 
 <!-- references -->
 
-[^1]: Hardware description language. Wikipedia. Retrieved from https://en.wikipedia.org/wiki/Hardware_description_language
-[^2]: Register-transfer level. Wikipedia. Retrieved from https://en.wikipedia.org/wiki/Register-transfer_level
-[^3]: The OpenCL™ Specification Version V2.2-11. Retrieved from https://www.khronos.org/registry/OpenCL/specs/2.2/html/OpenCL_API.html.
+- [^1]: Hardware description language. Wikipedia. Retrieved from https://en.wikipedia.org/wiki/Hardware_description_language
+- [^2]: Register-transfer level. Wikipedia. Retrieved from https://en.wikipedia.org/wiki/Register-transfer_level
+- [^3]: The OpenCL™ Specification Version V2.2-11. Retrieved from https://www.khronos.org/registry/OpenCL/specs/2.2/html/OpenCL_API.html.
