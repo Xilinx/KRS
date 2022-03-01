@@ -1,1 +1,71 @@
-PLACEHOLDER
+repositories:
+  ros2/ament_lint:
+    type: git
+    url: https://github.com/ament/ament_lint
+    version: master
+  ros2/launch:
+    type: git
+    url: https://github.com/ros2/launch
+    version: master
+
+  perception/image_common:
+    type: git
+    url: https://github.com/ros-perception/image_common
+    version: 9729de81f7dff6156f644d6152b200f687360f1f
+  perception/image_pipeline:
+    type: git
+    url: https://github.com/ros-acceleration/image_pipeline
+    version: ros2
+  perception/vision_opencv:
+    type: git
+    url: https://github.com/ros-perception/vision_opencv
+    version: 7bbc5ecc232e8faf36b45efaa2b6bc979b04157f
+
+  tracing/ros2_tracing:
+    type: git
+    url: https://gitlab.com/ros-tracing/ros2_tracing.git
+    version: master
+  tracing/tracetools_acceleration:
+    type: git
+    url: https://github.com/ros-acceleration/tracetools_acceleration
+    version: main
+
+  acceleration/acceleration_firmware:
+    type: git
+    url: https://github.com/ros-acceleration/acceleration_firmware
+    version: main
+  acceleration/acceleration_firmware_kv260:
+    type: zip
+    url: https://github.com/ros-acceleration/acceleration_firmware_kv260/releases/download/v0.9.0/acceleration_firmware_kv260.zip
+  acceleration/adaptive_component:
+    type: git
+    url: https://github.com/ros-acceleration/adaptive_component
+    version: main
+  acceleration/ament_acceleration:
+    type: git
+    url: https://github.com/ros-acceleration/ament_acceleration
+    version: main
+  acceleration/ament_vitis:
+    type: git
+    url: https://github.com/ros-acceleration/ament_vitis
+    version: main
+  acceleration/colcon-acceleration:
+    type: git
+    url: https://github.com/ros-acceleration/colcon-acceleration
+    version: main
+  acceleration/ros2_kria:
+    type: git
+    url: https://github.com/ros-acceleration/ros2_kria
+    version: main
+  acceleration/ros2acceleration:
+    type: git
+    url: https://github.com/ros-acceleration/ros2acceleration
+    version: main
+  acceleration/vitis_common:
+    type: git
+    url: https://github.com/ros-acceleration/vitis_common
+    version: master
+  acceleration/acceleration_examples:
+    type: git
+    url: https://github.com/ros-acceleration/acceleration_examples
+    version: main

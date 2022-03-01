@@ -31,7 +31,7 @@ We start by preparing the environment and fetching the source code of the exampl
 $ cd ~/krs_ws  # head to your KRS workspace
 
 # prepare the environment
-$ source /tools/Xilinx/Vitis/2020.2/settings64.sh  # source Xilinx tools
+$ source /tools/Xilinx/Vitis/2021.2/settings64.sh  # source Xilinx tools
 $ source /opt/ros/foxy/setup.bash  # Sources system ROS 2 installation
 $ export PATH="/usr/bin":$PATH  # FIXME: adjust path for CMake 3.5+
 

@@ -16,10 +16,14 @@ It does so by tightly integrating itself with ROS (lingua franca amongst robotic
 
 .. admonition:: Alpha Release
 
-    KRS is still on **alpha** release. Correspondingly, the documentation provided here is not intended for production environments and should be used only for evaluation purposes.
+    KRS **alpha** release documentation is available at https://github.com/vmayoral/KRS/tree/krs-alpha. 
+
+
+.. admonition:: Beta Release
+    
+    KRS is on **beta** release. Correspondingly, the documentation provided here is not intended for production environments and should be used only for evaluation purposes.
 
     *Stay tuned for upcoming official releases*.
-
 
 .. figure:: docs/imgs/krs.svg
 
@@ -62,6 +66,7 @@ It does so by tightly integrating itself with ROS (lingua franca amongst robotic
    :hidden:
 
    docs/examples/nodes
+   docs/examples/graphs
    docs/examples/benchmarking
 
 
