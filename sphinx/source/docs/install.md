@@ -5,9 +5,9 @@
 
     KRS is currently only available for Linux and **has only been tested in Ubuntu 20.04**. KRS assumes the following is installed in your workstation:
 
-    - `Ubuntu 20.04` Focal Fossa operating system (`download <https://releases.ubuntu.com/20.04/ubuntu-20.04.2.0-desktop-amd64.iso/>`_).
-    - the Vitis `2020.2.2` suite (Vitis, Vivado, Vitis HLS) (`install instructions <https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/2020-2.html/>`_)
-    - the ROS 2 Foxy distribution (`install instructions <https://docs.ros.org/en/foxy/Installation.html/>`_)
+    - `Ubuntu 20.04` Focal Fossa operating system (`download <https://releases.ubuntu.com/20.04/ubuntu-20.04.3-desktop-amd64.iso>`_).
+    - the Vitis `2020.2.2` suite (Vitis, Vivado, Vitis HLS) (`install instructions <https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/2020-2.html>`_)
+    - the ROS 2 Foxy distribution (`install instructions <https://docs.ros.org/en/foxy/Installation.html>`_)
 
 .. admonition:: Dependencies
 
@@ -48,11 +48,11 @@ repositories:
     version: 0.4.0
   acceleration/acceleration_firmware_kv260:
     type: zip
-    url: https://github.com/ros-acceleration/acceleration_firmware_kv260/releases/download/v0.6.0/acceleration_firmware_kv260.zip
+    url: https://www.xilinx.com/bin/public/openDownload?filename=acceleration_firmware_kv260.zip
   acceleration/colcon-acceleration:
     type: git
     url: https://github.com/ros-acceleration/colcon-acceleration
-    version: 0.2.0
+    version: 0.3.0
   acceleration/ros2acceleration:
     type: git
     url: https://github.com/ros-acceleration/ros2acceleration
@@ -91,4 +91,4 @@ source install/setup.bash
 
 That's pretty much it, you've got now KRS installed in the `krs_ws` ROS overlay workspace.  You could also reproduce the same steps over an existing ROS 2 workspace if you'd like to avoid creating a new, or simply reusing the source code elsewhere.
 
-Now's time to build and run some [examples](features/ros2centric).
+Now's time to build and run some [examples](https://xilinx.github.io/KRS/sphinx/build/html/docs/examples/0_ros2_publisher.html).
