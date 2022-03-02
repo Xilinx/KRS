@@ -2,10 +2,10 @@
 
 |   | Source code |
 |---|----------|
-| [`vadd_publisher`](https://github.com/ros-acceleration/acceleration_examples/tree/main/vadd_publisher) | |
-| publisher | [`vadd_publisher.cpp`](https://github.com/ros-acceleration/acceleration_examples/blob/main/vadd_publisher/src/vadd_publisher.cpp) |
-| [`doublevadd_publisher`](https://github.com/ros-acceleration/acceleration_examples/tree/main/doublevadd_publisher) | |
-| publisher | [`doublevadd_publisher.cpp`](https://github.com/ros-acceleration/acceleration_examples/blob/main/doublevadd_publisher/src/doublevadd_publisher.cpp) |
+| [`vadd_publisher`](https://github.com/ros-acceleration/acceleration_examples/tree/main/nodes/vadd_publisher) | |
+| publisher | [`vadd_publisher.cpp`](https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/vadd_publisher/src/vadd_publisher.cpp) |
+| [`doublevadd_publisher`](https://github.com/ros-acceleration/acceleration_examples/tree/main/nodes/doublevadd_publisher) | |
+| publisher | [`doublevadd_publisher.cpp`](https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/doublevadd_publisher/src/doublevadd_publisher.cpp) |
 
 
 This first example presents a trivial vector-add ROS 2 publisher, which adds two vector inputs in a loop, and tries to publish the result at 10 Hz. The ROS 2 package runs in the scalar processors (the CPUs). Step-by-step, the process is documented, walking through the different actions required to run the ROS 2 package in hardware, leveraging KRS capabilities. Afterwards, a slighly modified version of the publisher is presented which has additional computation demands. With these modifications, it becomes clear how the publisher isn't able to meet the publication goal anymore, which motivates the use of hardware acceleration.
@@ -32,14 +32,11 @@ $ cd ~/krs_ws  # head to your KRS workspace
 
 # prepare the environment
 $ source /tools/Xilinx/Vitis/2021.2/settings64.sh  # source Xilinx tools
-$ source /opt/ros/foxy/setup.bash  # Sources system ROS 2 installation
+$ source /opt/ros/rolling/setup.bash  # Sources system ROS 2 installation
 $ export PATH="/usr/bin":$PATH  # FIXME: adjust path for CMake 3.5+
 
-# fetch the source code of examples
-$ git clone https://github.com/ros-acceleration/acceleration_examples src/acceleration_examples -b 0.2.0
-
 # build the workspace
-$ colcon build --merge-install  # about 2 mins
+$ colcon build --merge-install  # about 4 mins
 
 # source the workspace as an overlay
 $ source install/setup.bash
@@ -47,7 +44,7 @@ $ source install/setup.bash
 
 ### Inspecting the ROS 2 publisher
 
-The publisher is a CPU-based average one. The source code of the publisher has been split between the `vadd` function ([vadd.cpp](https://github.com/ros-acceleration/acceleration_examples/blob/main/vadd_publisher/src/vadd.cpp)) and the rest ([vadd_publisher.cpp](https://github.com/ros-acceleration/acceleration_examples/blob/main/vadd_publisher/src/vadd_publisher.cpp)) for simplicity.
+The publisher is a CPU-based average one. The source code of the publisher has been split between the `vadd` function ([vadd.cpp](https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/vadd_publisher/src/vadd.cpp)) and the rest ([vadd_publisher.cpp](https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/vadd_publisher/src/vadd_publisher.cpp)) for simplicity.
 The `vadd` (vector-add) function is as follows:
 
 ```cpp
@@ -107,7 +104,7 @@ kv260*
 Let's now build the package targeting the KV260:
 
 ```bash
-$ colcon build --build-base=build-kv260 --install-base=install-kv260 --merge-install --mixin kv260 --packages-select ament_vitis vadd_publisher
+$ colcon build --build-base=build-kv260 --install-base=install-kv260 --merge-install --mixin kv260 --packages-select ament_acceleration ament_vitis vadd_publisher
 ```
 
 Let's now create a raw disk image for the SD card with PetaLinux's rootfs, a vanilla Linux 5.4.0 kernel and the ROS 2 overlay workspace we've just created for the KV260:
@@ -378,3 +375,10 @@ average rate: 2.226
 ```
 
 This new publisher achieves only `2.2 Hz`, quite far from the `10 Hz` targeted. Using hardware acceleration, future examples will demonstrate how to build a custom compute pipeline that offloads computations to a kernel. *If you wish to jump directly into hardware acceleration with `doublevadd_publisher`, head to: [3. Offloading ROS 2 publisher](3_offloading_ros2_publisher)*.
+
+
+## Troubleshooting
+
+### gzip: stdin: unexpected end of file
+
+See https://github.com/ros-acceleration/colcon-acceleration/issues/9.

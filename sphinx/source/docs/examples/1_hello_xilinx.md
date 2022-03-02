@@ -2,8 +2,8 @@
 
 |   | Source code |
 |---|----------|
-| [`publisher_xilinx`](https://github.com/ros-acceleration/acceleration_examples/tree/main/publisher_xilinx) | |
-| publisher | [`member_function_publisher.cpp`](https://github.com/ros-acceleration/acceleration_examples/blob/main/publisher_xilinx/member_function_publisher.cpp) |
+| [`publisher_xilinx`](https://github.com/ros-acceleration/acceleration_examples/tree/main/nodes/publisher_xilinx) | |
+| publisher | [`member_function_publisher.cpp`](https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/publisher_xilinx/member_function_publisher.cpp) |
 
 This example lets you experience KRS further, walking you through the process of building and launching a ROS 2 package across different targets: in the workstation, in the real hardware and in an emulation.
 
@@ -22,11 +22,8 @@ $ cd ~/krs_ws  # head to your KRS workspace
 
 # prepare the environment
 $ source /tools/Xilinx/Vitis/2021.2/settings64.sh  # source Xilinx tools
-$ source /opt/ros/foxy/setup.bash  # Sources system ROS 2 installation
+$ source /opt/ros/rolling/setup.bash  # Sources system ROS 2 installation
 $ export PATH="/usr/bin":$PATH  # FIXME: adjust path for CMake 3.5+
-
-# fetch the source code of examples
-$ git clone https://github.com/ros-acceleration/acceleration_examples src/acceleration_examples
 
 # build the workspace
 $ colcon build --merge-install  # about 2 mins
@@ -162,9 +159,8 @@ $ ros2 run publisher_xilinx member_function_publisher  # launch the hello_xilinx
 
 ```eval_rst
 
-.. admonition:: Install K26 and KV260 Vivado files manually
-    
-    Unfortunately, Vitis :code:`2020.2` (and :code:`2020.2.2`) do not ship Vivado with K26-related files, which is required for emulation. You need to install this manually. See https://github.com/ros-acceleration/acceleration_examples/issues/1.
+.. warning::
+    There's no support for emulation (sw_emu or hw_emu) targets in KRS beta release.
 ```
 
 
@@ -363,6 +359,12 @@ To exit the emulation, type `Ctrl-A x`.
 
 
 ## **Bonus**: Launch `hello_xilinx` example in emulation with another firmware
+
+```eval_rst
+
+.. warning::
+    There's no support for emulation (sw_emu or hw_emu) targets in KRS beta release.
+```
 
 As introduced in [Features](../features/ros2centric), KRS is designed to be easily portable across boards. To demonstrate it, we'll now fetch the firmware for another board capable of hardware acceleration and launch `hello_xilinx` in this board using emulation.
 Let's start fetching the firmware:

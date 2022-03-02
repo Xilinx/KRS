@@ -67,7 +67,6 @@ It does so by tightly integrating itself with ROS (lingua franca amongst robotic
 
    docs/examples/nodes
    docs/examples/graphs
-   docs/examples/benchmarking
 
 
 .. toctree::

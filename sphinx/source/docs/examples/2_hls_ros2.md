@@ -2,13 +2,13 @@
 
 |   | Source code |
 |---|----------|
-| [`simple_adder`](https://github.com/ros-acceleration/acceleration_examples/tree/main/simple_adder) | |
+| [`simple_adder`](https://github.com/ros-acceleration/acceleration_examples/tree/main/nodes/simple_adder) | |
 | **adder1** | |
-| kernel 1 | [`adder1.cpp`](https://github.com/ros-acceleration/acceleration_examples/blob/main/simple_adder/src/adder1.cpp) |
-| testbench 1 | [`testbench1.cpp`](https://github.com/ros-acceleration/acceleration_examples/blob/main/simple_adder/src/testbench1.cpp) |
+| kernel 1 | [`adder1.cpp`](https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/simple_adder/src/adder1.cpp) |
+| testbench 1 | [`testbench1.cpp`](https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/simple_adder/src/testbench1.cpp) |
 | **adder2** | |
-| kernel 2 | [`adder2.cpp`](https://github.com/ros-acceleration/acceleration_examples/blob/main/simple_adder/src/adder2.cpp) |
-| testbench 2 | [`testbench2.cpp`](https://github.com/ros-acceleration/acceleration_examples/blob/main/simple_adder/src/testbench2.cpp) |
+| kernel 2 | [`adder2.cpp`](https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/simple_adder/src/adder2.cpp) |
+| testbench 2 | [`testbench2.cpp`](https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/simple_adder/src/testbench2.cpp) |
 
 
 HLS is at the core of C++ hardware acceleration. KRS allows to maintain a ROS 2-centric view while leveraging HLS, optimizing the flow and empowering roboticists toperform everything from the CLI, attaching nicely to the ROS 2 meta build system (`ament`) and the ROS 2 meta build tools (`colcon`).
@@ -33,11 +33,8 @@ $ cd ~/krs_ws  # head to your KRS workspace
 
 # prepare the environment
 $ source /tools/Xilinx/Vitis/2021.2/settings64.sh  # source Xilinx tools
-$ source /opt/ros/foxy/setup.bash  # Sources system ROS 2 installation
+$ source /opt/ros/rolling/setup.bash  # Sources system ROS 2 installation
 $ export PATH="/usr/bin":$PATH  # FIXME: adjust path for CMake 3.5+
-
-# fetch the source code of examples
-$ git clone https://github.com/ros-acceleration/acceleration_examples src/acceleration_examples
 
 # build the workspace
 $ colcon build --merge-install  # about 2 mins
@@ -89,7 +86,7 @@ $ source install/setup.bash
 
 ## `simple_adder1`: a quick look into the flow
 
-[`simple_adder`](https://github.com/ros-acceleration/acceleration_examples/blob/main/simple_adder/src/adder1.cpp) is pretty straightforward:
+[`simple_adder`](https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/simple_adder/src/adder1.cpp) is pretty straightforward:
 
 ```cpp 
 int simple_adder(int a, int b) {
