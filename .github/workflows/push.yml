@@ -28,7 +28,7 @@ jobs:
     - name: Fixup
       run: |
         mkdir deploy
-        cp .nojekyll index.html LICENSE.txt README.md krs.repos deploy/
+        cp .nojekyll index.html LICENSE.txt README.md krs_rolling.repos deploy/
         cp -r sphinx site deploy/
 
     # Deploy

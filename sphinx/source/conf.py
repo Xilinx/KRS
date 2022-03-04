@@ -28,9 +28,9 @@ copyright = '2021-2022, Xilinx, Inc.'
 author = 'Xilinx, Inc.'
 
 # The short X.Y version
-version = 'alpha'
+version = 'beta'
 # The full version, including alpha/beta/rc tags
-release = 'alpha'
+release = 'beta'
 html_last_updated_fmt = 'February 17, 2022'
 
 # -- General configuration ---------------------------------------------------
