@@ -224,7 +224,7 @@
             
             
               <div class="version">
-                alpha
+                beta
               </div>
             
           
@@ -271,18 +271,22 @@
 </ul>
 <p class="caption"><span class="caption-text">Examples</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="0_ros2_publisher.html">0. ROS 2 publisher</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Hello Xilinx</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#launch-hello-xilinx-example-in-the-workstation">Launch <code class="docutils literal notranslate"><span class="pre">hello_xilinx</span></code> example in the workstation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#launch-hello-xilinx-example-in-the-kv260-hardware">Launch <code class="docutils literal notranslate"><span class="pre">hello_xilinx</span></code> example in the KV260 hardware</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#launch-hello-xilinx-example-in-an-emulated-kv260">Launch <code class="docutils literal notranslate"><span class="pre">hello_xilinx</span></code> example in an emulated KV260</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#bonus-launch-hello-xilinx-example-in-emulation-with-another-firmware"><strong>Bonus</strong>: Launch <code class="docutils literal notranslate"><span class="pre">hello_xilinx</span></code> example in emulation with another firmware</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="nodes.html">Accelerating ROS 2 Nodes</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="0_ros2_publisher.html">0. ROS 2 publisher</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1. Hello Xilinx</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#launch-hello-xilinx-example-in-the-workstation">Launch <code class="docutils literal notranslate"><span class="pre">hello_xilinx</span></code> example in the workstation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#launch-hello-xilinx-example-in-the-kv260-hardware">Launch <code class="docutils literal notranslate"><span class="pre">hello_xilinx</span></code> example in the KV260 hardware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#launch-hello-xilinx-example-in-an-emulated-kv260">Launch <code class="docutils literal notranslate"><span class="pre">hello_xilinx</span></code> example in an emulated KV260</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bonus-launch-hello-xilinx-example-in-emulation-with-another-firmware"><strong>Bonus</strong>: Launch <code class="docutils literal notranslate"><span class="pre">hello_xilinx</span></code> example in emulation with another firmware</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="2_hls_ros2.html">2. HLS in ROS 2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3_offloading_ros2_publisher.html">3. Offloading ROS 2 publisher</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4_accelerated_ros2_publisher.html">4. Accelerated ROS 2 publisher</a></li>
-<li class="toctree-l1"><a class="reference internal" href="5_faster_ros2_publisher.html">5. Faster ROS 2 publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_hls_ros2.html">2. HLS in ROS 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_offloading_ros2_publisher.html">3. Offloading ROS 2 publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_accelerated_ros2_publisher.html">4. Accelerated ROS 2 publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_faster_ros2_publisher.html">5. Faster ROS 2 publisher</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="graphs.html">Accelerating ROS 2 Graphs</a></li>
 </ul>
 <p class="caption"><span class="caption-text">HowTo</span></p>
 <ul>
@@ -343,6 +347,8 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
+          <li><a href="nodes.html">Accelerating ROS 2 Nodes</a> &raquo;</li>
+        
       <li>1. Hello Xilinx</li>
     
     
@@ -373,12 +379,12 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="https://github.com/ros-acceleration/acceleration_examples/tree/main/publisher_xilinx"><code>publisher_xilinx</code></a></td>
+<td><a href="https://github.com/ros-acceleration/acceleration_examples/tree/main/nodes/publisher_xilinx"><code>publisher_xilinx</code></a></td>
 <td></td>
 </tr>
 <tr>
 <td>publisher</td>
-<td><a href="https://github.com/ros-acceleration/acceleration_examples/blob/main/publisher_xilinx/member_function_publisher.cpp"><code>member_function_publisher.cpp</code></a></td>
+<td><a href="https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/publisher_xilinx/member_function_publisher.cpp"><code>member_function_publisher.cpp</code></a></td>
 </tr>
 </tbody>
 </table><p>This example lets you experience KRS further, walking you through the process of building and launching a ROS 2 package across different targets: in the workstation, in the real hardware and in an emulation.</p>
@@ -393,12 +399,9 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~/krs_ws  <span class="c1"># head to your KRS workspace</span>
 
 <span class="c1"># prepare the environment</span>
-$ <span class="nb">source</span> /tools/Xilinx/Vitis/2020.2/settings64.sh  <span class="c1"># source Xilinx tools</span>
-$ <span class="nb">source</span> /opt/ros/foxy/setup.bash  <span class="c1"># Sources system ROS 2 installation</span>
+$ <span class="nb">source</span> /tools/Xilinx/Vitis/2021.2/settings64.sh  <span class="c1"># source Xilinx tools</span>
+$ <span class="nb">source</span> /opt/ros/rolling/setup.bash  <span class="c1"># Sources system ROS 2 installation</span>
 $ <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/bin&quot;</span>:<span class="nv">$PATH</span>  <span class="c1"># FIXME: adjust path for CMake 3.5+</span>
-
-<span class="c1"># fetch the source code of examples</span>
-$ git clone https://github.com/ros-acceleration/acceleration_examples src/acceleration_examples
 
 <span class="c1"># build the workspace</span>
 $ colcon build --merge-install  <span class="c1"># about 2 mins</span>
@@ -517,9 +520,9 @@ $ ros2 run publisher_xilinx member_function_publisher  <span class="c1"># launch
 </div>
 <div class="section" id="launch-hello-xilinx-example-in-an-emulated-kv260">
 <h2>Launch <code class="docutils literal notranslate"><span class="pre">hello_xilinx</span></code> example in an emulated KV260<a class="headerlink" href="#launch-hello-xilinx-example-in-an-emulated-kv260" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-install-k26-and-kv260-vivado-files-manually admonition">
-<p class="admonition-title">Install K26 and KV260 Vivado files manually</p>
-<p>Unfortunately, Vitis <code class="code docutils literal notranslate"><span class="pre">2020.2</span></code> (and <code class="code docutils literal notranslate"><span class="pre">2020.2.2</span></code>) do not ship Vivado with K26-related files, which is required for emulation. You need to install this manually. See <a class="reference external" href="https://github.com/ros-acceleration/acceleration_examples/issues/1">https://github.com/ros-acceleration/acceleration_examples/issues/1</a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>There’s no support for emulation (sw_emu or hw_emu) targets in KRS beta release.</p>
 </div>
 <p>First, let’s select the firmware for the target hardware, <a class="reference external" href="https://www.xilinx.com/products/som/kria/kv260-vision-starter-kit.html"><code class="docutils literal notranslate"><span class="pre">KV260</span></code></a>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ colcon acceleration <span class="k">select</span> kv260
@@ -700,6 +703,10 @@ $ ros2 run publisher_xilinx member_function_publisher  <span class="c1"># launch
 </div>
 <div class="section" id="bonus-launch-hello-xilinx-example-in-emulation-with-another-firmware">
 <h2><strong>Bonus</strong>: Launch <code class="docutils literal notranslate"><span class="pre">hello_xilinx</span></code> example in emulation with another firmware<a class="headerlink" href="#bonus-launch-hello-xilinx-example-in-emulation-with-another-firmware" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>There’s no support for emulation (sw_emu or hw_emu) targets in KRS beta release.</p>
+</div>
 <p>As introduced in <a class="reference internal" href="../features/ros2centric.html"><span class="doc">Features</span></a>, KRS is designed to be easily portable across boards. To demonstrate it, we’ll now fetch the firmware for another board capable of hardware acceleration and launch <code class="docutils literal notranslate"><span class="pre">hello_xilinx</span></code> in this board using emulation.
 Let’s start fetching the firmware:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> src <span class="o">&amp;&amp;</span> wget https://github.com/ros-acceleration/acceleration_firmware_zcu102/releases/download/0.6.0/acceleration_firmware_zcu102.zip <span class="o">&amp;&amp;</span> unzip acceleration_firmware_zcu102.zip <span class="o">&amp;&amp;</span> rm acceleration_firmware_zcu102.zip <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..

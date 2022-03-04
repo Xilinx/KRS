@@ -224,7 +224,7 @@
             
             
               <div class="version">
-                alpha
+                beta
               </div>
             
           
@@ -271,21 +271,25 @@
 </ul>
 <p class="caption"><span class="caption-text">Examples</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="0_ros2_publisher.html">0. ROS 2 publisher</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1_hello_xilinx.html">1. Hello Xilinx</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">2. HLS in ROS 2</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#prepare-the-environment-and-fetch-the-example">Prepare the environment and fetch the example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#a-bit-of-background-on-hls-rtl-and-fpgas">A bit of background on HLS, RTL and FPGAs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#simple-adder1-a-quick-look-into-the-flow"><code class="docutils literal notranslate"><span class="pre">simple_adder1</span></code>: a quick look into the flow</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#using-the-vitis-hls-gui">Using the Vitis HLS GUI</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="nodes.html">Accelerating ROS 2 Nodes</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="0_ros2_publisher.html">0. ROS 2 publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_hello_xilinx.html">1. Hello Xilinx</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2. HLS in ROS 2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prepare-the-environment-and-fetch-the-example">Prepare the environment and fetch the example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#a-bit-of-background-on-hls-rtl-and-fpgas">A bit of background on HLS, RTL and FPGAs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simple-adder1-a-quick-look-into-the-flow"><code class="docutils literal notranslate"><span class="pre">simple_adder1</span></code>: a quick look into the flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#using-the-vitis-hls-gui">Using the Vitis HLS GUI</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#simple-adder2-optimizing-fpga-synthesis-for-lower-latency-responses"><code class="docutils literal notranslate"><span class="pre">simple_adder2</span></code>: optimizing FPGA synthesis for lower latency responses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simple-adder2-optimizing-fpga-synthesis-for-lower-latency-responses"><code class="docutils literal notranslate"><span class="pre">simple_adder2</span></code>: optimizing FPGA synthesis for lower latency responses</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="3_offloading_ros2_publisher.html">3. Offloading ROS 2 publisher</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4_accelerated_ros2_publisher.html">4. Accelerated ROS 2 publisher</a></li>
-<li class="toctree-l1"><a class="reference internal" href="5_faster_ros2_publisher.html">5. Faster ROS 2 publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_offloading_ros2_publisher.html">3. Offloading ROS 2 publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_accelerated_ros2_publisher.html">4. Accelerated ROS 2 publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_faster_ros2_publisher.html">5. Faster ROS 2 publisher</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="graphs.html">Accelerating ROS 2 Graphs</a></li>
 </ul>
 <p class="caption"><span class="caption-text">HowTo</span></p>
 <ul>
@@ -346,6 +350,8 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
+          <li><a href="nodes.html">Accelerating ROS 2 Nodes</a> &raquo;</li>
+        
       <li>2. HLS in ROS 2</li>
     
     
@@ -376,7 +382,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="https://github.com/ros-acceleration/acceleration_examples/tree/main/simple_adder"><code>simple_adder</code></a></td>
+<td><a href="https://github.com/ros-acceleration/acceleration_examples/tree/main/nodes/simple_adder"><code>simple_adder</code></a></td>
 <td></td>
 </tr>
 <tr>
@@ -385,11 +391,11 @@
 </tr>
 <tr>
 <td>kernel 1</td>
-<td><a href="https://github.com/ros-acceleration/acceleration_examples/blob/main/simple_adder/src/adder1.cpp"><code>adder1.cpp</code></a></td>
+<td><a href="https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/simple_adder/src/adder1.cpp"><code>adder1.cpp</code></a></td>
 </tr>
 <tr>
 <td>testbench 1</td>
-<td><a href="https://github.com/ros-acceleration/acceleration_examples/blob/main/simple_adder/src/testbench1.cpp"><code>testbench1.cpp</code></a></td>
+<td><a href="https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/simple_adder/src/testbench1.cpp"><code>testbench1.cpp</code></a></td>
 </tr>
 <tr>
 <td><strong>adder2</strong></td>
@@ -397,11 +403,11 @@
 </tr>
 <tr>
 <td>kernel 2</td>
-<td><a href="https://github.com/ros-acceleration/acceleration_examples/blob/main/simple_adder/src/adder2.cpp"><code>adder2.cpp</code></a></td>
+<td><a href="https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/simple_adder/src/adder2.cpp"><code>adder2.cpp</code></a></td>
 </tr>
 <tr>
 <td>testbench 2</td>
-<td><a href="https://github.com/ros-acceleration/acceleration_examples/blob/main/simple_adder/src/testbench2.cpp"><code>testbench2.cpp</code></a></td>
+<td><a href="https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/simple_adder/src/testbench2.cpp"><code>testbench2.cpp</code></a></td>
 </tr>
 </tbody>
 </table><p>HLS is at the core of C++ hardware acceleration. KRS allows to maintain a ROS 2-centric view while leveraging HLS, optimizing the flow and empowering roboticists toperform everything from the CLI, attaching nicely to the ROS 2 meta build system (<code class="docutils literal notranslate"><span class="pre">ament</span></code>) and the ROS 2 meta build tools (<code class="docutils literal notranslate"><span class="pre">colcon</span></code>).</p>
@@ -420,12 +426,9 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~/krs_ws  <span class="c1"># head to your KRS workspace</span>
 
 <span class="c1"># prepare the environment</span>
-$ <span class="nb">source</span> /tools/Xilinx/Vitis/2020.2/settings64.sh  <span class="c1"># source Xilinx tools</span>
-$ <span class="nb">source</span> /opt/ros/foxy/setup.bash  <span class="c1"># Sources system ROS 2 installation</span>
+$ <span class="nb">source</span> /tools/Xilinx/Vitis/2021.2/settings64.sh  <span class="c1"># source Xilinx tools</span>
+$ <span class="nb">source</span> /opt/ros/rolling/setup.bash  <span class="c1"># Sources system ROS 2 installation</span>
 $ <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/bin&quot;</span>:<span class="nv">$PATH</span>  <span class="c1"># FIXME: adjust path for CMake 3.5+</span>
-
-<span class="c1"># fetch the source code of examples</span>
-$ git clone https://github.com/ros-acceleration/acceleration_examples src/acceleration_examples
 
 <span class="c1"># build the workspace</span>
 $ colcon build --merge-install  <span class="c1"># about 2 mins</span>
@@ -472,7 +475,7 @@ $ <span class="nb">source</span> install/setup.bash
 </div>
 <div class="section" id="simple-adder1-a-quick-look-into-the-flow">
 <h2><code class="docutils literal notranslate"><span class="pre">simple_adder1</span></code>: a quick look into the flow<a class="headerlink" href="#simple-adder1-a-quick-look-into-the-flow" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://github.com/ros-acceleration/acceleration_examples/blob/main/simple_adder/src/adder1.cpp"><code class="docutils literal notranslate"><span class="pre">simple_adder</span></code></a> is pretty straightforward:</p>
+<p><a class="reference external" href="https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/simple_adder/src/adder1.cpp"><code class="docutils literal notranslate"><span class="pre">simple_adder</span></code></a> is pretty straightforward:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">simple_adder</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">;</span><span class="w"></span>
 <span class="w">    </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"></span>

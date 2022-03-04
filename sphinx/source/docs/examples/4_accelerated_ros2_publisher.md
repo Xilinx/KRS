@@ -2,9 +2,9 @@
 
 |   | Source code |
 |---|----------|
-| [`accelerated_doublevadd_publisher`](https://github.com/ros-acceleration/acceleration_examples/tree/main/accelerated_doublevadd_publisher) | |
-| kernel | [`vadd.cpp`](https://github.com/ros-acceleration/acceleration_examples/blob/main/accelerated_doublevadd_publisher/src/vadd.cpp) |
-| publisher | [`accelerated_doublevadd_publisher.cpp`](https://github.com/ros-acceleration/acceleration_examples/blob/main/accelerated_doublevadd_publisher/src/accelerated_doublevadd_publisher.cpp) |
+| [`accelerated_doublevadd_publisher`](https://github.com/ros-acceleration/acceleration_examples/tree/main/nodes/accelerated_doublevadd_publisher) | |
+| kernel | [`vadd.cpp`](https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/accelerated_doublevadd_publisher/src/vadd.cpp) |
+| publisher | [`accelerated_doublevadd_publisher.cpp`](https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/accelerated_doublevadd_publisher/src/accelerated_doublevadd_publisher.cpp) |
 
 
 ```eval_rst
@@ -110,12 +110,9 @@ Let's build it:
 $ cd ~/krs_ws  # head to your KRS workspace
 
 # prepare the environment
-$ source /tools/Xilinx/Vitis/2020.2/settings64.sh  # source Xilinx tools
-$ source /opt/ros/foxy/setup.bash  # Sources system ROS 2 installation
+$ source /tools/Xilinx/Vitis/2021.2/settings64.sh  # source Xilinx tools
+$ source /opt/ros/rolling/setup.bash  # Sources system ROS 2 installation
 $ export PATH="/usr/bin":$PATH  # FIXME: adjust path for CMake 3.5+
-
-# if not done before, fetch the source code of examples
-$ git clone https://github.com/ros-acceleration/acceleration_examples src/acceleration_examples
 
 # build the workspace to deploy KRS components
 $ colcon build --merge-install  # about 2 mins
@@ -127,7 +124,7 @@ $ source install/setup.bash
 $ colcon acceleration select kv260
 
 # build accelerated_doublevadd_publisher
-$ colcon build --build-base=build-kv260 --install-base=install-kv260 --merge-install --mixin kv260 --packages-select ament_vitis ros2acceleration accelerated_doublevadd_publisher
+$ colcon build --build-base=build-kv260 --install-base=install-kv260 --merge-install --mixin kv260 --packages-select ament_acceleration ament_vitis vitis_common ros2acceleration accelerated_doublevadd_publisher
 
 # copy to KV260 rootfs, e.g.
 $ scp -r install-kv260/* petalinux@192.168.1.86:/ros2_ws/

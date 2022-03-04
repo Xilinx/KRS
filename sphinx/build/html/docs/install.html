@@ -224,7 +224,7 @@
             
             
               <div class="version">
-                alpha
+                beta
               </div>
             
           
@@ -271,12 +271,8 @@
 </ul>
 <p class="caption"><span class="caption-text">Examples</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="examples/0_ros2_publisher.html">0. ROS 2 publisher</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples/1_hello_xilinx.html">1. Hello Xilinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples/2_hls_ros2.html">2. HLS in ROS 2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples/3_offloading_ros2_publisher.html">3. Offloading ROS 2 publisher</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples/4_accelerated_ros2_publisher.html">4. Accelerated ROS 2 publisher</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples/5_faster_ros2_publisher.html">5. Faster ROS 2 publisher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/nodes.html">Accelerating ROS 2 Nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/graphs.html">Accelerating ROS 2 Graphs</a></li>
 </ul>
 <p class="caption"><span class="caption-text">HowTo</span></p>
 <ul>
@@ -360,11 +356,23 @@
 <h1>Install KRS<a class="headerlink" href="#install-krs" title="Permalink to this headline">¶</a></h1>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>KRS is currently only available for Linux and <strong>has only been tested in Ubuntu 20.04</strong>. KRS assumes the following is installed in your workstation:</p>
+<p><strong>KRS “alpha” release</strong></p>
+<p>KRS alpha <strong>has only been tested in Ubuntu 20.04</strong>. It assumes the following is installed in your workstation:</p>
 <ul class="simple">
 <li><p><cite>Ubuntu 20.04</cite> Focal Fossa operating system (<a class="reference external" href="https://releases.ubuntu.com/20.04/ubuntu-20.04.3-desktop-amd64.iso">download</a>).</p></li>
 <li><p>the Vitis <cite>2020.2.2</cite> suite (Vitis, Vivado, Vitis HLS) (<a class="reference external" href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/2020-2.html">install instructions</a>)</p></li>
 <li><p>the ROS 2 Foxy distribution (<a class="reference external" href="https://docs.ros.org/en/foxy/Installation.html">install instructions</a>)</p></li>
+</ul>
+<p>For KRS alpha documentation, refer to <a class="reference external" href="https://github.com/vmayoral/KRS/tree/krs-alpha">https://github.com/vmayoral/KRS/tree/krs-alpha</a>.</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>KRS “beta” release</strong></p>
+<p>KRS beta <strong>has only been tested in Ubuntu 20.04</strong>. It assumes the following is installed in your workstation:</p>
+<ul class="simple">
+<li><p><cite>Ubuntu 20.04</cite> Focal Fossa operating system (<a class="reference external" href="https://releases.ubuntu.com/20.04/ubuntu-20.04.3-desktop-amd64.iso">download</a>).</p></li>
+<li><p>the Vitis <cite>2021.2</cite> suite (Vitis, Vivado, Vitis HLS) (<a class="reference external" href="https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis.html">install instructions</a>)</p></li>
+<li><p>the ROS 2 Rolling distribution (<a class="reference external" href="https://docs.ros.org/en/rolling/Installation.html">install instructions</a>)</p></li>
 </ul>
 </div>
 <div class="admonition-dependencies admonition">
@@ -373,7 +381,7 @@
 </div>
 <p><a class="reference external" href="https://asciinema.org/a/434953"><img alt="asciicast" src="https://asciinema.org/a/434953.svg" /></a></p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1">###################################################</span>
-<span class="c1"># 0. install Vitis 2020.2.2, and ROS 2 Foxy,</span>
+<span class="c1"># 0. install Vitis 2021.2, and ROS 2 Rolling,</span>
       <span class="c1">#  see above</span>
 <span class="c1">###################################################</span>
 
@@ -391,52 +399,100 @@ sudo apt-get -y install curl build-essential libssl-dev git wget <span class="se
 mkdir -p ~/krs_ws/src<span class="p">;</span> <span class="nb">cd</span> ~/krs_ws
 
 <span class="c1">###################################################</span>
-<span class="c1"># 3. Create file with KRS alpha release</span>
+<span class="c1"># 3. Create file with KRS beta release</span>
 <span class="c1"># TODO: this file should be fetched with wget once</span>
 <span class="c1">#       KRS repository is publicly available</span>
 <span class="c1">###################################################</span>
-cat <span class="s">&lt;&lt; &#39;EOF&#39; &gt; krs_alpha.repos</span>
+cat <span class="s">&lt;&lt; &#39;EOF&#39; &gt; krs_rolling.repos</span>
 <span class="s">repositories:</span>
+<span class="s">  ros2/ament_lint:</span>
+<span class="s">    type: git</span>
+<span class="s">    url: https://github.com/ament/ament_lint</span>
+<span class="s">    version: master</span>
+<span class="s">  ros2/launch:</span>
+<span class="s">    type: git</span>
+<span class="s">    url: https://github.com/ros2/launch</span>
+<span class="s">    version: master</span>
+
+<span class="s">  perception/image_common:</span>
+<span class="s">    type: git</span>
+<span class="s">    url: https://github.com/ros-perception/image_common</span>
+<span class="s">    version: 9729de81f7dff6156f644d6152b200f687360f1f</span>
+<span class="s">  perception/image_pipeline:</span>
+<span class="s">    type: git</span>
+<span class="s">    url: https://github.com/ros-acceleration/image_pipeline</span>
+<span class="s">    version: ros2</span>
+<span class="s">  perception/vision_opencv:</span>
+<span class="s">    type: git</span>
+<span class="s">    url: https://github.com/ros-perception/vision_opencv</span>
+<span class="s">    version: 7bbc5ecc232e8faf36b45efaa2b6bc979b04157f</span>
+
+<span class="s">  tracing/ros2_tracing:</span>
+<span class="s">    type: git</span>
+<span class="s">    url: https://gitlab.com/ros-tracing/ros2_tracing.git</span>
+<span class="s">    version: master</span>
+<span class="s">  tracing/tracetools_acceleration:</span>
+<span class="s">    type: git</span>
+<span class="s">    url: https://github.com/ros-acceleration/tracetools_acceleration</span>
+<span class="s">    version: main</span>
+
 <span class="s">  acceleration/acceleration_firmware:</span>
 <span class="s">    type: git</span>
 <span class="s">    url: https://github.com/ros-acceleration/acceleration_firmware</span>
-<span class="s">    version: 0.4.0</span>
+<span class="s">    version: main</span>
 <span class="s">  acceleration/acceleration_firmware_kv260:</span>
 <span class="s">    type: zip</span>
-<span class="s">    url: https://www.xilinx.com/bin/public/openDownload?filename=acceleration_firmware_kv260.zip</span>
-<span class="s">  acceleration/colcon-acceleration:</span>
+<span class="s">    url: https://github.com/ros-acceleration/acceleration_firmware_kv260/releases/download/v0.9.0/acceleration_firmware_kv260.zip</span>
+<span class="s">  acceleration/adaptive_component:</span>
 <span class="s">    type: git</span>
-<span class="s">    url: https://github.com/ros-acceleration/colcon-acceleration</span>
-<span class="s">    version: 0.3.0</span>
-<span class="s">  acceleration/ros2acceleration:</span>
+<span class="s">    url: https://github.com/ros-acceleration/adaptive_component</span>
+<span class="s">    version: main</span>
+<span class="s">  acceleration/ament_acceleration:</span>
 <span class="s">    type: git</span>
-<span class="s">    url: https://github.com/ros-acceleration/ros2acceleration</span>
-<span class="s">    version: 0.2.0</span>
+<span class="s">    url: https://github.com/ros-acceleration/ament_acceleration</span>
+<span class="s">    version: main</span>
 <span class="s">  acceleration/ament_vitis:</span>
 <span class="s">    type: git</span>
 <span class="s">    url: https://github.com/ros-acceleration/ament_vitis</span>
-<span class="s">    version: 0.5.0</span>
+<span class="s">    version: main</span>
+<span class="s">  acceleration/colcon-acceleration:</span>
+<span class="s">    type: git</span>
+<span class="s">    url: https://github.com/ros-acceleration/colcon-acceleration</span>
+<span class="s">    version: main</span>
+<span class="s">  acceleration/ros2_kria:</span>
+<span class="s">    type: git</span>
+<span class="s">    url: https://github.com/ros-acceleration/ros2_kria</span>
+<span class="s">    version: main</span>
+<span class="s">  acceleration/ros2acceleration:</span>
+<span class="s">    type: git</span>
+<span class="s">    url: https://github.com/ros-acceleration/ros2acceleration</span>
+<span class="s">    version: main</span>
 <span class="s">  acceleration/vitis_common:</span>
 <span class="s">    type: git</span>
 <span class="s">    url: https://github.com/ros-acceleration/vitis_common</span>
-<span class="s">    version: 0.1.0</span>
+<span class="s">    version: master</span>
+<span class="s">  acceleration/acceleration_examples:</span>
+<span class="s">    type: git</span>
+<span class="s">    url: https://github.com/ros-acceleration/acceleration_examples</span>
+<span class="s">    version: main</span>
+
 <span class="s">EOF</span>
 
 <span class="c1">###################################################</span>
-<span class="c1"># 4. import repos of KRS alpha release</span>
+<span class="c1"># 4. import repos of KRS beta release</span>
 <span class="c1">###################################################</span>
-vcs import src --recursive &lt; krs_alpha.repos  <span class="c1"># about 3 mins</span>
+vcs import src --recursive &lt; krs_rolling.repos  <span class="c1"># about 3 mins</span>
 
 <span class="c1">###################################################</span>
 <span class="c1"># 5. build the workspace and deploy firmware for hardware acceleration</span>
 <span class="c1">###################################################</span>
-<span class="nb">source</span> /tools/Xilinx/Vitis/2020.2/settings64.sh  <span class="c1"># source Xilinx tools</span>
-<span class="nb">source</span> /opt/ros/foxy/setup.bash  <span class="c1"># Sources system ROS 2 installation.</span>
+<span class="nb">source</span> /tools/Xilinx/Vitis/2021.2/settings64.sh  <span class="c1"># source Xilinx tools</span>
+<span class="nb">source</span> /opt/ros/rolling/setup.bash  <span class="c1"># Sources system ROS 2 installation.</span>
 <span class="c1"># Note: The path above is valid if one installs ROS 2 from a pre-built</span>
 <span class="c1"># package. If one builds ROS 2 from the source the directory might</span>
 <span class="c1"># vary (e.g. ~/ros2_foxy/ros2-linux).</span>
 <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/bin&quot;</span>:<span class="nv">$PATH</span>  <span class="c1"># FIXME: adjust path for CMake 3.5+</span>
-colcon build --merge-install  <span class="c1"># about 2 mins</span>
+colcon build --merge-install  <span class="c1"># about 4 mins</span>
 
 <span class="c1">###################################################</span>
 <span class="c1"># 6. source the overlay to enable all features</span>

@@ -73,7 +73,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="1. Hello Xilinx" href="1_hello_xilinx.html" />
-    <link rel="prev" title="Contributing back to ROS 2" href="../features/contributing_ros2.html" /> 
+    <link rel="prev" title="Accelerating ROS 2 Nodes" href="nodes.html" /> 
 	</head>
 	<body>
 		<div class="xilinx-bs3"/>
@@ -224,7 +224,7 @@
             
             
               <div class="version">
-                alpha
+                beta
               </div>
             
           
@@ -271,22 +271,30 @@
 </ul>
 <p class="caption"><span class="caption-text">Examples</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">0. ROS 2 publisher</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#vadd-publisher"><code class="docutils literal notranslate"><span class="pre">vadd_publisher</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#prepare-the-environment-and-fetch-the-example">Prepare the environment and fetch the example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#inspecting-the-ros-2-publisher">Inspecting the ROS 2 publisher</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#building-creating-the-raw-image-and-running-in-hardware">Building, creating the raw image and running in hardware</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#bonus-getting-a-time-intuition-of-a-vadd-acceleration-kernel">Bonus: Getting a time intuition of a <code class="docutils literal notranslate"><span class="pre">vadd</span></code> acceleration kernel</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="nodes.html">Accelerating ROS 2 Nodes</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">0. ROS 2 publisher</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#vadd-publisher"><code class="docutils literal notranslate"><span class="pre">vadd_publisher</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#prepare-the-environment-and-fetch-the-example">Prepare the environment and fetch the example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inspecting-the-ros-2-publisher">Inspecting the ROS 2 publisher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#building-creating-the-raw-image-and-running-in-hardware">Building, creating the raw image and running in hardware</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bonus-getting-a-time-intuition-of-a-vadd-acceleration-kernel">Bonus: Getting a time intuition of a <code class="docutils literal notranslate"><span class="pre">vadd</span></code> acceleration kernel</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#doublevadd-publisher"><code class="docutils literal notranslate"><span class="pre">doublevadd_publisher</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#doublevadd-publisher"><code class="docutils literal notranslate"><span class="pre">doublevadd_publisher</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#gzip-stdin-unexpected-end-of-file">gzip: stdin: unexpected end of file</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="1_hello_xilinx.html">1. Hello Xilinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2_hls_ros2.html">2. HLS in ROS 2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3_offloading_ros2_publisher.html">3. Offloading ROS 2 publisher</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4_accelerated_ros2_publisher.html">4. Accelerated ROS 2 publisher</a></li>
-<li class="toctree-l1"><a class="reference internal" href="5_faster_ros2_publisher.html">5. Faster ROS 2 publisher</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="1_hello_xilinx.html">1. Hello Xilinx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_hls_ros2.html">2. HLS in ROS 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_offloading_ros2_publisher.html">3. Offloading ROS 2 publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_accelerated_ros2_publisher.html">4. Accelerated ROS 2 publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_faster_ros2_publisher.html">5. Faster ROS 2 publisher</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="graphs.html">Accelerating ROS 2 Graphs</a></li>
 </ul>
 <p class="caption"><span class="caption-text">HowTo</span></p>
 <ul>
@@ -347,6 +355,8 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
+          <li><a href="nodes.html">Accelerating ROS 2 Nodes</a> &raquo;</li>
+        
       <li>0. ROS 2 publisher</li>
     
     
@@ -377,20 +387,20 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="https://github.com/ros-acceleration/acceleration_examples/tree/main/vadd_publisher"><code>vadd_publisher</code></a></td>
+<td><a href="https://github.com/ros-acceleration/acceleration_examples/tree/main/nodes/vadd_publisher"><code>vadd_publisher</code></a></td>
 <td></td>
 </tr>
 <tr>
 <td>publisher</td>
-<td><a href="https://github.com/ros-acceleration/acceleration_examples/blob/main/vadd_publisher/src/vadd_publisher.cpp"><code>vadd_publisher.cpp</code></a></td>
+<td><a href="https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/vadd_publisher/src/vadd_publisher.cpp"><code>vadd_publisher.cpp</code></a></td>
 </tr>
 <tr>
-<td><a href="https://github.com/ros-acceleration/acceleration_examples/tree/main/doublevadd_publisher"><code>doublevadd_publisher</code></a></td>
+<td><a href="https://github.com/ros-acceleration/acceleration_examples/tree/main/nodes/doublevadd_publisher"><code>doublevadd_publisher</code></a></td>
 <td></td>
 </tr>
 <tr>
 <td>publisher</td>
-<td><a href="https://github.com/ros-acceleration/acceleration_examples/blob/main/doublevadd_publisher/src/doublevadd_publisher.cpp"><code>doublevadd_publisher.cpp</code></a></td>
+<td><a href="https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/doublevadd_publisher/src/doublevadd_publisher.cpp"><code>doublevadd_publisher.cpp</code></a></td>
 </tr>
 </tbody>
 </table><p>This first example presents a trivial vector-add ROS 2 publisher, which adds two vector inputs in a loop, and tries to publish the result at 10 Hz. The ROS 2 package runs in the scalar processors (the CPUs). Step-by-step, the process is documented, walking through the different actions required to run the ROS 2 package in hardware, leveraging KRS capabilities. Afterwards, a slighly modified version of the publisher is presented which has additional computation demands. With these modifications, it becomes clear how the publisher isn’t able to meet the publication goal anymore, which motivates the use of hardware acceleration.</p>
@@ -411,15 +421,12 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~/krs_ws  <span class="c1"># head to your KRS workspace</span>
 
 <span class="c1"># prepare the environment</span>
-$ <span class="nb">source</span> /tools/Xilinx/Vitis/2020.2/settings64.sh  <span class="c1"># source Xilinx tools</span>
-$ <span class="nb">source</span> /opt/ros/foxy/setup.bash  <span class="c1"># Sources system ROS 2 installation</span>
+$ <span class="nb">source</span> /tools/Xilinx/Vitis/2021.2/settings64.sh  <span class="c1"># source Xilinx tools</span>
+$ <span class="nb">source</span> /opt/ros/rolling/setup.bash  <span class="c1"># Sources system ROS 2 installation</span>
 $ <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/bin&quot;</span>:<span class="nv">$PATH</span>  <span class="c1"># FIXME: adjust path for CMake 3.5+</span>
 
-<span class="c1"># fetch the source code of examples</span>
-$ git clone https://github.com/ros-acceleration/acceleration_examples src/acceleration_examples -b <span class="m">0</span>.2.0
-
 <span class="c1"># build the workspace</span>
-$ colcon build --merge-install  <span class="c1"># about 2 mins</span>
+$ colcon build --merge-install  <span class="c1"># about 4 mins</span>
 
 <span class="c1"># source the workspace as an overlay</span>
 $ <span class="nb">source</span> install/setup.bash
@@ -428,7 +435,7 @@ $ <span class="nb">source</span> install/setup.bash
 </div>
 <div class="section" id="inspecting-the-ros-2-publisher">
 <h3>Inspecting the ROS 2 publisher<a class="headerlink" href="#inspecting-the-ros-2-publisher" title="Permalink to this headline">¶</a></h3>
-<p>The publisher is a CPU-based average one. The source code of the publisher has been split between the <code class="docutils literal notranslate"><span class="pre">vadd</span></code> function (<a class="reference external" href="https://github.com/ros-acceleration/acceleration_examples/blob/main/vadd_publisher/src/vadd.cpp">vadd.cpp</a>) and the rest (<a class="reference external" href="https://github.com/ros-acceleration/acceleration_examples/blob/main/vadd_publisher/src/vadd_publisher.cpp">vadd_publisher.cpp</a>) for simplicity.
+<p>The publisher is a CPU-based average one. The source code of the publisher has been split between the <code class="docutils literal notranslate"><span class="pre">vadd</span></code> function (<a class="reference external" href="https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/vadd_publisher/src/vadd.cpp">vadd.cpp</a>) and the rest (<a class="reference external" href="https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/vadd_publisher/src/vadd_publisher.cpp">vadd_publisher.cpp</a>) for simplicity.
 The <code class="docutils literal notranslate"><span class="pre">vadd</span></code> (vector-add) function is as follows:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
 <span class="cm">        ____  ____</span>
@@ -480,7 +487,7 @@ kv260*
 </pre></div>
 </div>
 <p>Let’s now build the package targeting the KV260:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ colcon build --build-base<span class="o">=</span>build-kv260 --install-base<span class="o">=</span>install-kv260 --merge-install --mixin kv260 --packages-select ament_vitis vadd_publisher
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ colcon build --build-base<span class="o">=</span>build-kv260 --install-base<span class="o">=</span>install-kv260 --merge-install --mixin kv260 --packages-select ament_acceleration ament_vitis vadd_publisher
 </pre></div>
 </div>
 <p>Let’s now create a raw disk image for the SD card with PetaLinux’s rootfs, a vanilla Linux 5.4.0 kernel and the ROS 2 overlay workspace we’ve just created for the KV260:</p>
@@ -733,6 +740,13 @@ average rate: <span class="m">2</span>.226
 </div>
 <p>This new publisher achieves only <code class="docutils literal notranslate"><span class="pre">2.2</span> <span class="pre">Hz</span></code>, quite far from the <code class="docutils literal notranslate"><span class="pre">10</span> <span class="pre">Hz</span></code> targeted. Using hardware acceleration, future examples will demonstrate how to build a custom compute pipeline that offloads computations to a kernel. <em>If you wish to jump directly into hardware acceleration with <code class="docutils literal notranslate"><span class="pre">doublevadd_publisher</span></code>, head to: <a class="reference internal" href="3_offloading_ros2_publisher.html"><span class="doc">3. Offloading ROS 2 publisher</span></a></em>.</p>
 </div>
+<div class="section" id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="gzip-stdin-unexpected-end-of-file">
+<h3>gzip: stdin: unexpected end of file<a class="headerlink" href="#gzip-stdin-unexpected-end-of-file" title="Permalink to this headline">¶</a></h3>
+<p>See https://github.com/ros-acceleration/colcon-acceleration/issues/9.</p>
+</div>
+</div>
 </div>
 
 
@@ -754,7 +768,7 @@ average rate: <span class="m">2</span>.226
         <a href="1_hello_xilinx.html" class="btn btn-neutral float-right" title="1. Hello Xilinx" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../features/contributing_ros2.html" class="btn btn-neutral float-left" title="Contributing back to ROS 2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="nodes.html" class="btn btn-neutral float-left" title="Accelerating ROS 2 Nodes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

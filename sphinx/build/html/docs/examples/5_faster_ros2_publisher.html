@@ -73,7 +73,7 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="HowTo and Troubleshooting" href="../howto.html" />
+    <link rel="next" title="Accelerating ROS 2 Graphs" href="graphs.html" />
     <link rel="prev" title="4. Accelerated ROS 2 publisher" href="4_accelerated_ros2_publisher.html" /> 
 	</head>
 	<body>
@@ -225,7 +225,7 @@
             
             
               <div class="version">
-                alpha
+                beta
               </div>
             
           
@@ -272,15 +272,19 @@
 </ul>
 <p class="caption"><span class="caption-text">Examples</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="0_ros2_publisher.html">0. ROS 2 publisher</a></li>
-<li class="toctree-l1"><a class="reference internal" href="1_hello_xilinx.html">1. Hello Xilinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2_hls_ros2.html">2. HLS in ROS 2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3_offloading_ros2_publisher.html">3. Offloading ROS 2 publisher</a></li>
-<li class="toctree-l1"><a class="reference internal" href="4_accelerated_ros2_publisher.html">4. Accelerated ROS 2 publisher</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Faster ROS 2 publisher</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#accelerated-doublevadd-publisher"><code class="docutils literal notranslate"><span class="pre">accelerated_doublevadd_publisher</span></code></a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="nodes.html">Accelerating ROS 2 Nodes</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="0_ros2_publisher.html">0. ROS 2 publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_hello_xilinx.html">1. Hello Xilinx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_hls_ros2.html">2. HLS in ROS 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_offloading_ros2_publisher.html">3. Offloading ROS 2 publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_accelerated_ros2_publisher.html">4. Accelerated ROS 2 publisher</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5. Faster ROS 2 publisher</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#accelerated-doublevadd-publisher"><code class="docutils literal notranslate"><span class="pre">accelerated_doublevadd_publisher</span></code></a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="graphs.html">Accelerating ROS 2 Graphs</a></li>
 </ul>
 <p class="caption"><span class="caption-text">HowTo</span></p>
 <ul>
@@ -341,6 +345,8 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
+          <li><a href="nodes.html">Accelerating ROS 2 Nodes</a> &raquo;</li>
+        
       <li>5. Faster ROS 2 publisher</li>
     
     
@@ -371,16 +377,16 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="https://github.com/ros-acceleration/acceleration_examples/tree/main/faster_doublevadd_publisher"><code>faster_doublevadd_publisher</code></a></td>
+<td><a href="https://github.com/ros-acceleration/acceleration_examples/tree/main/nodes/faster_doublevadd_publisher"><code>faster_doublevadd_publisher</code></a></td>
 <td></td>
 </tr>
 <tr>
 <td>kernel</td>
-<td><a href="https://github.com/ros-acceleration/acceleration_examples/blob/main/faster_doublevadd_publisher/src/vadd.cpp"><code>vadd.cpp</code></a></td>
+<td><a href="https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/faster_doublevadd_publisher/src/vadd.cpp"><code>vadd.cpp</code></a></td>
 </tr>
 <tr>
 <td>publisher</td>
-<td><a href="https://github.com/ros-acceleration/acceleration_examples/blob/main/faster_doublevadd_publisher/src/faster_doublevadd_publisher.cpp"><code>faster_doublevadd_publisher.cpp</code></a></td>
+<td><a href="https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/faster_doublevadd_publisher/src/faster_doublevadd_publisher.cpp"><code>faster_doublevadd_publisher.cpp</code></a></td>
 </tr>
 </tbody>
 </table><div class="sidebar">
@@ -408,7 +414,7 @@
 </div>
 <div class="section" id="accelerated-doublevadd-publisher">
 <h2><code class="docutils literal notranslate"><span class="pre">accelerated_doublevadd_publisher</span></code><a class="headerlink" href="#accelerated-doublevadd-publisher" title="Permalink to this headline">¶</a></h2>
-<p>Let’s take a look at the <a class="reference external" href="https://github.com/ros-acceleration/acceleration_examples/blob/main/faster_doublevadd_publisher/src/vadd.cpp">kernel source code</a> first:</p>
+<p>Let’s take a look at the <a class="reference external" href="https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/faster_doublevadd_publisher/src/vadd.cpp">kernel source code</a> first:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
 <span class="cm">        ____  ____</span>
 <span class="cm">       /   /\/   /</span>
@@ -462,12 +468,9 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~/krs_ws  <span class="c1"># head to your KRS workspace</span>
 
 <span class="c1"># prepare the environment</span>
-$ <span class="nb">source</span> /tools/Xilinx/Vitis/2020.2/settings64.sh  <span class="c1"># source Xilinx tools</span>
-$ <span class="nb">source</span> /opt/ros/foxy/setup.bash  <span class="c1"># Sources system ROS 2 installation</span>
+$ <span class="nb">source</span> /tools/Xilinx/Vitis/2021.2/settings64.sh  <span class="c1"># source Xilinx tools</span>
+$ <span class="nb">source</span> /opt/ros/rolling/setup.bash  <span class="c1"># Sources system ROS 2 installation</span>
 $ <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/bin&quot;</span>:<span class="nv">$PATH</span>  <span class="c1"># FIXME: adjust path for CMake 3.5+</span>
-
-<span class="c1"># if not done before, fetch the source code of examples</span>
-$ git clone https://github.com/ros-acceleration/acceleration_examples src/acceleration_examples
 
 <span class="c1"># build the workspace to deploy KRS components</span>
 $ colcon build --merge-install  <span class="c1"># about 2 mins</span>
@@ -478,8 +481,8 @@ $ <span class="nb">source</span> install/setup.bash
 <span class="c1"># select kv260 firmware (in case you&#39;ve been experimenting with something else)</span>
 $ colcon acceleration <span class="k">select</span> kv260
 
-<span class="c1"># build accelerated_doublevadd_publisher</span>
-$ colcon build --build-base<span class="o">=</span>build-kv260 --install-base<span class="o">=</span>install-kv260 --merge-install --mixin kv260 --packages-select ament_vitis ros2acceleration faster_doublevadd_publisher
+<span class="c1"># build faster_doublevadd_publisher</span>
+$ colcon build --build-base<span class="o">=</span>build-kv260 --install-base<span class="o">=</span>install-kv260 --merge-install --mixin kv260 --packages-select ament_acceleration ament_vitis vitis_common ros2acceleration faster_doublevadd_publisher
 
 <span class="c1"># copy to KV260 rootfs, e.g.</span>
 $ scp -r install-kv260/* petalinux@192.168.1.86:/ros2_ws/
@@ -575,7 +578,7 @@ average rate: <span class="m">10</span>.000
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../howto.html" class="btn btn-neutral float-right" title="HowTo and Troubleshooting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="graphs.html" class="btn btn-neutral float-right" title="Accelerating ROS 2 Graphs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="4_accelerated_ros2_publisher.html" class="btn btn-neutral float-left" title="4. Accelerated ROS 2 publisher" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

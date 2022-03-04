@@ -73,7 +73,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Definitions" href="other/definitions.html" />
-    <link rel="prev" title="5. Faster ROS 2 publisher" href="examples/5_faster_ros2_publisher.html" /> 
+    <link rel="prev" title="6. Accelerating a perception computational graph" href="examples/6_perception.html" /> 
 	</head>
 	<body>
 		<div class="xilinx-bs3"/>
@@ -224,7 +224,7 @@
             
             
               <div class="version">
-                alpha
+                beta
               </div>
             
           
@@ -271,12 +271,8 @@
 </ul>
 <p class="caption"><span class="caption-text">Examples</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="examples/0_ros2_publisher.html">0. ROS 2 publisher</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples/1_hello_xilinx.html">1. Hello Xilinx</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples/2_hls_ros2.html">2. HLS in ROS 2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples/3_offloading_ros2_publisher.html">3. Offloading ROS 2 publisher</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples/4_accelerated_ros2_publisher.html">4. Accelerated ROS 2 publisher</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples/5_faster_ros2_publisher.html">5. Faster ROS 2 publisher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/nodes.html">Accelerating ROS 2 Nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/graphs.html">Accelerating ROS 2 Graphs</a></li>
 </ul>
 <p class="caption"><span class="caption-text">HowTo</span></p>
 <ul class="current">
@@ -509,7 +505,7 @@ xilinx-k26-starterkit-2020_2 login:
 <div class="section" id="how-do-i-configure-the-kv260-to-jtag-boot-mode">
 <h3>How do I configure the KV260 to JTAG boot mode?<a class="headerlink" href="#how-do-i-configure-the-kv260-to-jtag-boot-mode" title="Permalink to this headline">¶</a></h3>
 <p>The easiest way to do so is through a Tcl script and the Xilinx Software Commandline Tool (<code class="docutils literal notranslate"><span class="pre">xsct</span></code>). Connect the board to the computer via its USB/UART/JTAG FTDI adapter and power it on:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> /tools/Xilinx/Vitis/2020.2/settings64.sh  <span class="c1"># path might be different in your machine</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> /tools/Xilinx/Vitis/2021.2/settings64.sh  <span class="c1"># path might be different in your machine</span>
 cat <span class="s">&lt;&lt; &#39;EOF&#39; &gt; som_bootmode.tcl</span>
 
 <span class="s">proc boot_jtag { } {</span>
@@ -1985,7 +1981,7 @@ The part listed in datasheets is sometimes different from the one that can be us
         <a href="other/definitions.html" class="btn btn-neutral float-right" title="Definitions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="examples/5_faster_ros2_publisher.html" class="btn btn-neutral float-left" title="5. Faster ROS 2 publisher" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="examples/6_perception.html" class="btn btn-neutral float-left" title="6. Accelerating a perception computational graph" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
