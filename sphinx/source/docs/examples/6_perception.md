@@ -35,7 +35,7 @@ $ source /opt/ros/rolling/setup.bash  # Sources system ROS 2 installation
 $ export PATH="/usr/bin":$PATH  # FIXME: adjust path for CMake 3.5+
 
 # build the workspace to deploy KRS components
-$ colcon build --merge-install  # about 2 mins
+$ colcon build --merge-install  # about 2 mins in an AMD Ryzen 5 PRO 4650G
 
 # source the workspace as an overlay
 $ source install/setup.bash
@@ -43,12 +43,12 @@ $ source install/setup.bash
 # select kv260 firmware (in case you've been experimenting with something else)
 $ colcon acceleration select kv260
 
-# build all packages, without accelerators
-colcon build --build-base=build-kv260 --install-base=install-kv260 --merge-install --mixin kv260 --cmake-args -DNOKERNELS=true
+# build all packages up to perception_2nodes, without accelerators
+$ colcon build --build-base=build-kv260 --install-base=install-kv260 --merge-install --mixin kv260 --cmake-args -DNOKERNELS=true --packages-up-to perception_2nodes image_pipeline_examples
 
 # build image_proc package again, now with accelerators
 # WARNING: this will take a considerable amount of time
-$ colcon build --build-base=build-kv260 --install-base=install-kv260 --merge-install --mixin kv260 --packages-select image_proc perception_2nodes
+$ colcon build --build-base=build-kv260 --install-base=install-kv260 --merge-install --mixin kv260  --cmake-args -DNOKERNELS=false --packages-select image_proc perception_2nodes
 
 # copy to KV260 rootfs, e.g.
 $ scp -r install-kv260/* petalinux@192.168.1.86:/ros2_ws/

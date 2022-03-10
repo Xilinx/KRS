@@ -63,7 +63,11 @@ repositories:
     type: git
     url: https://github.com/ros2/launch
     version: master
-
+  ros2/gazebo_ros_pkgs:
+    type: git
+    url: https://github.com/ros-simulation/gazebo_ros_pkgs
+    version: da14a69e79502cd08064ccd261366ff023a9162a
+  
   perception/image_common:
     type: git
     url: https://github.com/ros-perception/image_common
@@ -71,7 +75,7 @@ repositories:
   perception/image_pipeline:
     type: git
     url: https://github.com/ros-acceleration/image_pipeline
-    version: ros2
+    version: beta
   perception/vision_opencv:
     type: git
     url: https://github.com/ros-perception/vision_opencv
@@ -104,7 +108,7 @@ repositories:
   acceleration/ament_vitis:
     type: git
     url: https://github.com/ros-acceleration/ament_vitis
-    version: main
+    version: beta
   acceleration/colcon-acceleration:
     type: git
     url: https://github.com/ros-acceleration/colcon-acceleration
@@ -124,14 +128,14 @@ repositories:
   acceleration/acceleration_examples:
     type: git
     url: https://github.com/ros-acceleration/acceleration_examples
-    version: main
+    version: beta
 
 EOF
 
 ###################################################
 # 4. import repos of KRS beta release
 ###################################################
-vcs import src --recursive < krs_rolling.repos  # about 3 mins
+vcs import src --recursive < krs_rolling.repos  # about 3 mins in an AMD Ryzen 5 PRO 4650G
 
 ###################################################
 # 5. build the workspace and deploy firmware for hardware acceleration
@@ -142,7 +146,7 @@ source /opt/ros/rolling/setup.bash  # Sources system ROS 2 installation.
 # package. If one builds ROS 2 from the source the directory might
 # vary (e.g. ~/ros2_foxy/ros2-linux).
 export PATH="/usr/bin":$PATH  # FIXME: adjust path for CMake 3.5+
-colcon build --merge-install  # about 4 mins
+colcon build --merge-install  # about 4 mins in an AMD Ryzen 5 PRO 4650G
 
 ###################################################
 # 6. source the overlay to enable all features
