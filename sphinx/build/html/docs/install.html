@@ -413,7 +413,11 @@ cat <span class="s">&lt;&lt; &#39;EOF&#39; &gt; krs_rolling.repos</span>
 <span class="s">    type: git</span>
 <span class="s">    url: https://github.com/ros2/launch</span>
 <span class="s">    version: master</span>
-
+<span class="s">  ros2/gazebo_ros_pkgs:</span>
+<span class="s">    type: git</span>
+<span class="s">    url: https://github.com/ros-simulation/gazebo_ros_pkgs</span>
+<span class="s">    version: da14a69e79502cd08064ccd261366ff023a9162a</span>
+<span class="s">  </span>
 <span class="s">  perception/image_common:</span>
 <span class="s">    type: git</span>
 <span class="s">    url: https://github.com/ros-perception/image_common</span>
@@ -421,7 +425,7 @@ cat <span class="s">&lt;&lt; &#39;EOF&#39; &gt; krs_rolling.repos</span>
 <span class="s">  perception/image_pipeline:</span>
 <span class="s">    type: git</span>
 <span class="s">    url: https://github.com/ros-acceleration/image_pipeline</span>
-<span class="s">    version: ros2</span>
+<span class="s">    version: beta</span>
 <span class="s">  perception/vision_opencv:</span>
 <span class="s">    type: git</span>
 <span class="s">    url: https://github.com/ros-perception/vision_opencv</span>
@@ -454,7 +458,7 @@ cat <span class="s">&lt;&lt; &#39;EOF&#39; &gt; krs_rolling.repos</span>
 <span class="s">  acceleration/ament_vitis:</span>
 <span class="s">    type: git</span>
 <span class="s">    url: https://github.com/ros-acceleration/ament_vitis</span>
-<span class="s">    version: main</span>
+<span class="s">    version: beta</span>
 <span class="s">  acceleration/colcon-acceleration:</span>
 <span class="s">    type: git</span>
 <span class="s">    url: https://github.com/ros-acceleration/colcon-acceleration</span>
@@ -474,14 +478,14 @@ cat <span class="s">&lt;&lt; &#39;EOF&#39; &gt; krs_rolling.repos</span>
 <span class="s">  acceleration/acceleration_examples:</span>
 <span class="s">    type: git</span>
 <span class="s">    url: https://github.com/ros-acceleration/acceleration_examples</span>
-<span class="s">    version: main</span>
+<span class="s">    version: beta</span>
 
 <span class="s">EOF</span>
 
 <span class="c1">###################################################</span>
 <span class="c1"># 4. import repos of KRS beta release</span>
 <span class="c1">###################################################</span>
-vcs import src --recursive &lt; krs_rolling.repos  <span class="c1"># about 3 mins</span>
+vcs import src --recursive &lt; krs_rolling.repos  <span class="c1"># about 3 mins in an AMD Ryzen 5 PRO 4650G</span>
 
 <span class="c1">###################################################</span>
 <span class="c1"># 5. build the workspace and deploy firmware for hardware acceleration</span>
@@ -492,7 +496,7 @@ vcs import src --recursive &lt; krs_rolling.repos  <span class="c1"># about 3 mi
 <span class="c1"># package. If one builds ROS 2 from the source the directory might</span>
 <span class="c1"># vary (e.g. ~/ros2_foxy/ros2-linux).</span>
 <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/bin&quot;</span>:<span class="nv">$PATH</span>  <span class="c1"># FIXME: adjust path for CMake 3.5+</span>
-colcon build --merge-install  <span class="c1"># about 4 mins</span>
+colcon build --merge-install  <span class="c1"># about 4 mins in an AMD Ryzen 5 PRO 4650G</span>
 
 <span class="c1">###################################################</span>
 <span class="c1"># 6. source the overlay to enable all features</span>

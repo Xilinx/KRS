@@ -426,7 +426,7 @@ $ <span class="nb">source</span> /opt/ros/rolling/setup.bash  <span class="c1">#
 $ <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/bin&quot;</span>:<span class="nv">$PATH</span>  <span class="c1"># FIXME: adjust path for CMake 3.5+</span>
 
 <span class="c1"># build the workspace to deploy KRS components</span>
-$ colcon build --merge-install  <span class="c1"># about 2 mins</span>
+$ colcon build --merge-install  <span class="c1"># about 2 mins in an AMD Ryzen 5 PRO 4650G</span>
 
 <span class="c1"># source the workspace as an overlay</span>
 $ <span class="nb">source</span> install/setup.bash
@@ -434,12 +434,12 @@ $ <span class="nb">source</span> install/setup.bash
 <span class="c1"># select kv260 firmware (in case you&#39;ve been experimenting with something else)</span>
 $ colcon acceleration <span class="k">select</span> kv260
 
-<span class="c1"># build all packages, without accelerators</span>
-colcon build --build-base<span class="o">=</span>build-kv260 --install-base<span class="o">=</span>install-kv260 --merge-install --mixin kv260 --cmake-args -DNOKERNELS<span class="o">=</span><span class="nb">true</span>
+<span class="c1"># build all packages up to perception_2nodes, without accelerators</span>
+$ colcon build --build-base<span class="o">=</span>build-kv260 --install-base<span class="o">=</span>install-kv260 --merge-install --mixin kv260 --cmake-args -DNOKERNELS<span class="o">=</span><span class="nb">true</span> --packages-up-to perception_2nodes image_pipeline_examples
 
 <span class="c1"># build image_proc package again, now with accelerators</span>
 <span class="c1"># WARNING: this will take a considerable amount of time</span>
-$ colcon build --build-base<span class="o">=</span>build-kv260 --install-base<span class="o">=</span>install-kv260 --merge-install --mixin kv260 --packages-select image_proc perception_2nodes
+$ colcon build --build-base<span class="o">=</span>build-kv260 --install-base<span class="o">=</span>install-kv260 --merge-install --mixin kv260  --cmake-args -DNOKERNELS<span class="o">=</span><span class="nb">false</span> --packages-select image_proc perception_2nodes
 
 <span class="c1"># copy to KV260 rootfs, e.g.</span>
 $ scp -r install-kv260/* petalinux@192.168.1.86:/ros2_ws/
