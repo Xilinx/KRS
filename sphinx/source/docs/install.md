@@ -2,37 +2,38 @@
 
 ```eval_rst
 .. important::
-    **KRS "alpha" release**
+    **KRS "1.0" release**
 
-    KRS alpha **has only been tested in Ubuntu 20.04**. It assumes the following is installed in your workstation:
+    KRS 1.0 **has only been tested in Ubuntu 22.04**. It assumes the following is installed in your workstation:
 
-    - `Ubuntu 20.04` Focal Fossa operating system (`download <https://releases.ubuntu.com/20.04/ubuntu-20.04.3-desktop-amd64.iso>`_).
-    - the Vitis `2020.2.2` suite (Vitis, Vivado, Vitis HLS) (`install instructions <https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis/2020-2.html>`_)
-    - the ROS 2 Foxy distribution (`install instructions <https://docs.ros.org/en/foxy/Installation.html>`_)
+    - `Ubuntu 22.04` Jammy Jellyfish operating system.
+    - the Vitis `2022.1` suite (Vitis, Vivado, Vitis HLS) (`install instructions <https://www.xilinx.com/support/download/index.html>`_)
+    - the ROS 2 Humble Hawksbill  distribution (`install instructions <https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html>`_)
+    - Gazebo Classic 11.0 (`install instructions <https://classic.gazebosim.org/tutorials?tut=install_ubuntu>`_)
 
-    For KRS alpha documentation, refer to https://github.com/vmayoral/KRS/tree/krs-alpha.
+    For KRS documentation, refer to https://github.com/Xilinx/KRS.
 
-.. important::
 
-    **KRS "beta" release**
+.. admonition:: Upstream integration
 
-    KRS beta **has only been tested in Ubuntu 20.04**. It assumes the following is installed in your workstation:
+    KRS is served as a group of ROS 2 packages that you can install from .deb files or from sources in any arbitrary ROS 2 workspace, enhancing it with hardware acceleration capabilities. Some of these packages have been integrated upstream to simplify the development flow into the ROS buildfarm and are available as part of ROS 2 starting from ROS 2 Humble. Some others, including *firmware* for selected boards and *examples*, need to be fetched manually at desire.
 
-    - `Ubuntu 20.04` Focal Fossa operating system (`download <https://releases.ubuntu.com/20.04/ubuntu-20.04.3-desktop-amd64.iso>`_).
-    - the Vitis `2021.2` suite (Vitis, Vivado, Vitis HLS) (`install instructions <https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vitis.html>`_)
-    - the ROS 2 Rolling distribution (`install instructions <https://docs.ros.org/en/rolling/Installation.html>`_)
+    The following demonstrates how to create a new ROS 2 overlay workspace and fetch the KRS packages, including some acceleration examples:
 
-.. admonition:: Dependencies
+.. admonition:: Ignition Gazebo vs Gazebo Classic
 
-  KRS is served as a group of ROS 2 packages that you can install in any arbitrary ROS 2 workspace, enhancing it with hardware acceleration capabilities. The following demonstrates how to create a new ROS 2 overlay workspace and fetch the KRS packages, including some acceleration examples:
+    With ROS 2 Humble, Open Robotics hints again the community to align with Gazebo Ignition workflows. ROS 2 Humble ships with Ignition Gazebo (renamed to "Gazebo"). Installing Gazebo Classic (Gazebo 11.0) is still possible but requires some work-arounds. Some of the examples below were developed with Gazebo Classic. In turn, examples might be rewritten with Ignition Gazebo ("Gazebo") to facilitate the flows.
+
+
 ```
 
 [![asciicast](https://asciinema.org/a/434953.svg)](https://asciinema.org/a/434953)
 
 ```shell
 ###################################################
-# 0. install Vitis 2021.2, and ROS 2 Rolling,
-      #  see above
+# 0. install Vitis 2022.1 https://www.xilinx.com/support/download.html       
+#   and ROS 2 Rolling https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html
+#    we recommend the Desktop-Full flavour (ros-humble-desktop-full)
 ###################################################
 
 ###################################################
@@ -41,10 +42,11 @@
 sudo apt-get -y install curl build-essential libssl-dev git wget \
                           ocl-icd-* opencl-headers python3-vcstool \
                           python3-colcon-common-extensions python3-colcon-mixin \
-                          kpartx u-boot-tools pv libgazebo11-dev
+                          kpartx u-boot-tools pv
 
 ###################################################
-# 2. create a new ROS 2 workspace
+# 2. create a new ROS 2 workspace with examples and
+#    firmware for KV260
 ###################################################
 mkdir -p ~/krs_ws/src; cd ~/krs_ws
 
