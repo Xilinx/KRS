@@ -69,11 +69,23 @@ mkdir -p ~/krs_ws/src; cd ~/krs_ws
 ###################################################
 cat << 'EOF' > krs_humble.repos
 repositories:  
+  perception/image_common:
+    type: git
+    url: https://github.com/ros-perception/image_common
+    version: 9729de81f7dff6156f644d6152b200f687360f1f
   perception/image_pipeline:
     type: git
     url: https://github.com/ros-acceleration/image_pipeline
     version: ros2
+  perception/vision_opencv:
+    type: git
+    url: https://github.com/ros-perception/vision_opencv
+    version: 7bbc5ecc232e8faf36b45efaa2b6bc979b04157f
 
+  tracing/ros2_tracing:
+    type: git
+    url: https://gitlab.com/ros-tracing/ros2_tracing.git
+    version: master
   tracing/tracetools_acceleration:
     type: git
     url: https://github.com/ros-acceleration/tracetools_acceleration
@@ -97,7 +109,7 @@ repositories:
   acceleration/colcon-hardware-acceleration:
     type: git
     url: https://github.com/colcon/colcon-hardware-acceleration
-    version: main
+    version: humble
   acceleration/ros2_kria:
     type: git
     url: https://github.com/ros-acceleration/ros2_kria
