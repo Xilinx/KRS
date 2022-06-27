@@ -1,1 +1,47 @@
-PLACEHOLDER
+repositories:
+  perception/image_pipeline:
+    type: git
+    url: https://github.com/ros-acceleration/image_pipeline
+    version: ros2
+
+  tracing/tracetools_acceleration:
+    type: git
+    url: https://github.com/ros-acceleration/tracetools_acceleration
+    version: humble
+
+  firmware/acceleration_firmware_kv260:
+    type: zip
+    url: https://drive.google.com/file/d/1gzrGHB-J_fKNBmcGYhClXdWo6wGw8k43
+
+  acceleration/adaptive_component:
+    type: git
+    url: https://github.com/ros-acceleration/adaptive_component
+    version: humble
+  acceleration/ament_acceleration:
+    type: git
+    url: https://github.com/ros-acceleration/ament_acceleration
+    version: humble
+  acceleration/ament_vitis:
+    type: git
+    url: https://github.com/ros-acceleration/ament_vitis
+    version: humble
+  acceleration/colcon-hardware-acceleration:
+    type: git
+    url: https://github.com/colcon/colcon-hardware-acceleration
+    version: main
+  acceleration/ros2_kria:
+    type: git
+    url: https://github.com/ros-acceleration/ros2_kria
+    version: main
+  acceleration/ros2acceleration:
+    type: git
+    url: https://github.com/ros-acceleration/ros2acceleration
+    version: humble
+  acceleration/vitis_common:
+    type: git
+    url: https://github.com/ros-acceleration/vitis_common
+    version: humble
+  acceleration/acceleration_examples:
+    type: git
+    url: https://github.com/ros-acceleration/acceleration_examples
+    version: main

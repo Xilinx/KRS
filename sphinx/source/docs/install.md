@@ -18,11 +18,15 @@
 
     KRS is served as a group of ROS 2 packages that you can install from .deb files or from sources in any arbitrary ROS 2 workspace, enhancing it with hardware acceleration capabilities. Some of these packages have been integrated upstream to simplify the development flow into the ROS buildfarm and are available as part of ROS 2 starting from ROS 2 Humble. Some others, including *firmware* for selected boards and *examples*, need to be fetched manually at desire.
 
-    The following demonstrates how to create a new ROS 2 overlay workspace and fetch the KRS packages, including some acceleration examples:
+    The following demonstrates how to create a new ROS 2 overlay workspace, fetch the KRS packages, build them from source and run some acceleration examples:
 
 .. admonition:: Ignition Gazebo vs Gazebo Classic
 
-    With ROS 2 Humble, Open Robotics hints again the community to align with Gazebo Ignition workflows. ROS 2 Humble ships with Ignition Gazebo (renamed to "Gazebo"). Installing Gazebo Classic (Gazebo 11.0) is still possible but requires some work-arounds. Some of the examples below were developed with Gazebo Classic. In turn, examples might be rewritten with Ignition Gazebo ("Gazebo") to facilitate the flows.
+    ROS 2 Humble ships with Ignition Gazebo (renamed to "Gazebo"). Installing Gazebo Classic (Gazebo 11.0) is still possible but requires some manual work. Some of the examples below were developed with Gazebo Classic. In turn, examples might be rewritten with Ignition Gazebo ("Gazebo") to facilitate the flows.
+
+.. admonition:: Firmware artifacts download
+
+    Firmware artifacts are bigger than 2GB, which is the maximum size allowed by GitHub. The firmware artifacts have temporarily been uploaded to https://drive.google.com/file/d/1gzrGHB-J_fKNBmcGYhClXdWo6wGw8k43/view?usp=sharing and need to be manually downloaded and deployed into the workspace src directory.
 
 
 ```
@@ -79,9 +83,10 @@ repositories:
     url: https://github.com/ros-acceleration/tracetools_acceleration
     version: humble
 
-  acceleration/acceleration_firmware_kv260:
+  firmware/acceleration_firmware_kv260:
     type: zip
-    url: https://github.com/ros-acceleration/acceleration_firmware_kv260/releases/download/v0.9.0/acceleration_firmware_kv260.zip
+    url: https://drive.google.com/file/d/1gzrGHB-J_fKNBmcGYhClXdWo6wGw8k43
+
   acceleration/adaptive_component:
     type: git
     url: https://github.com/ros-acceleration/adaptive_component
@@ -124,11 +129,12 @@ vcs import src --recursive < krs_humble.repos  # about 3 mins in an AMD Ryzen 5 
 ###################################################
 # 5. build the workspace and deploy firmware for hardware acceleration
 ###################################################
-source /tools/Xilinx/Vitis/2021.2/settings64.sh  # source Xilinx tools
+source /tools/Xilinx/Vitis/2022.1/settings64.sh  # source Xilinx tools
 source /opt/ros/rolling/setup.bash  # Sources system ROS 2 installation.
-# Note: The path above is valid if one installs ROS 2 from a pre-built
-# package. If one builds ROS 2 from the source the directory might
-# vary (e.g. ~/ros2_foxy/ros2-linux).
+
+# Note: The path above is valid if one installs ROS 2 from a pre-built debian
+# packages. If one builds ROS 2 from the source the directory might
+# vary (e.g. ~/ros2_humble/ros2-linux).
 export PATH="/usr/bin":$PATH  # FIXME: adjust path for CMake 3.5+
 colcon build --merge-install  # about 4 mins in an AMD Ryzen 5 PRO 4650G
 

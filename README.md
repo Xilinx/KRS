@@ -27,7 +27,10 @@ It does so by tightly integrating itself with ROS (lingua franca amongst robotic
 
 ----
 
-`Alpha Release`. KRS is still on **alpha** release. Correspondingly, the documentation provided here is not intended for production environments and should be used only for evaluation purposes. *Stay tuned for upcoming official releases*.
+- KRS **alpha** release documentation is available at https://github.com/vmayoral/KRS/tree/krs-alpha.
+- KRS is on **beta** release documentation is available at https://github.com/vmayoral/KRS/tree/beta.
+
+
 
 :warning: *KRS builds on ROS 2. If you're not familiar with it, before continuing, learn more about ROS 2 from its [official documentation](https://docs.ros.org/)*.
 
