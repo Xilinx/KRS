@@ -1,17 +1,21 @@
 # Install KRS
 
+KRS `1.0` enables various robotic development paths:
+- **Yocto/PetaLinux**: An embedded cross-compilation-oriented path for creating production-grade OSs for robots. Leverages the Yocto project.
+- **Ubuntu 22.04**: A developer-friendly path leveraging a pre-built rootfs that allows to reproduce Desktop environments to build binaries on target, or cross-compile.
+
+Below detail the installation and setup process of each one of the development paths. Before that, some considerations worth noting that apply to all of these development paths:
+
 ```eval_rst
 .. important::
-    **KRS "1.0" release**
-
-    KRS 1.0 **has only been tested in Ubuntu 22.04**. It assumes the following is installed in your workstation:
+    **KRS 1.0 has only been tested in Ubuntu 22.04**. It assumes the following is installed in your workstation:
 
     - `Ubuntu 22.04` Jammy Jellyfish operating system.
     - the Vitis `2022.1` suite (Vitis, Vivado, Vitis HLS) (`install instructions <https://www.xilinx.com/support/download/index.html>`_)
     - the ROS 2 Humble Hawksbill  distribution (`install instructions <https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html>`_)
     - Gazebo Classic 11.0 (`install instructions <https://classic.gazebosim.org/tutorials?tut=install_ubuntu>`_)
 
-    For KRS documentation, refer to https://github.com/Xilinx/KRS.
+    For KRS documentation source code, refer to https://github.com/Xilinx/KRS.
 
 
 .. admonition:: Upstream integration
@@ -23,11 +27,20 @@
 .. admonition:: Ignition Gazebo vs Gazebo Classic
 
     ROS 2 Humble ships with Ignition Gazebo (renamed to "Gazebo"). Installing Gazebo Classic (Gazebo 11.0) is still possible but requires some manual work. Some of the examples below were developed with Gazebo Classic. In turn, examples might be rewritten with Ignition Gazebo ("Gazebo") to facilitate the flows.
+```
 
-.. admonition:: Firmware artifacts download
 
-    Firmware artifacts are bigger than 2GB, which is the maximum size allowed by GitHub. The firmware artifacts have temporarily been uploaded to https://drive.google.com/file/d/1gzrGHB-J_fKNBmcGYhClXdWo6wGw8k43/view?usp=sharing and need to be manually downloaded and deployed into the workspace src directory.
+## Yocto/PetaLinux
 
+```eval_rst
+.. admonition:: Yocto/PetaLinux firmware artifacts download
+
+    Pre-built firmware artifacts for creating robot OSs using Yocto/PetaLinux are bigger than 2GB, which is the maximum size allowed by GitHub. The firmware artifacts have temporarily been uploaded to https://drive.google.com/file/d/1gzrGHB-J_fKNBmcGYhClXdWo6wGw8k43/view?usp=sharing and need to be manually downloaded and deployed into the workspace src directory.
+
+
+.. admonition:: Yocto (Honister)
+
+    KRS 1.0 Yocto/PetaLinux development paths builds artifacts based on Yocto Honister.
 
 ```
 
@@ -147,3 +160,6 @@ source install/setup.bash
 That's pretty much it, you've got now KRS installed in the `krs_ws` ROS overlay workspace.  You could also reproduce the same steps over an existing ROS 2 workspace if you'd like to avoid creating a new, or simply reusing the source code elsewhere.
 
 Now's time to build and run some [examples](https://xilinx.github.io/KRS/sphinx/build/html/docs/examples/0_ros2_publisher.html).
+
+
+## Ubuntu 22.04
