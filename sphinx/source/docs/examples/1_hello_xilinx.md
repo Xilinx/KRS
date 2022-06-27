@@ -160,7 +160,7 @@ $ ros2 run publisher_xilinx member_function_publisher  # launch the hello_xilinx
 ```eval_rst
 
 .. warning::
-    There's no support for emulation (sw_emu or hw_emu) targets in KRS beta release.
+    There's no support for emulation (sw_emu or hw_emu) targets in KRS `beta`or `1.0` releases, refer to `alpha`.
 ```
 
 
