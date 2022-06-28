@@ -133,7 +133,7 @@ repositories:
 EOF
 
 ###################################################
-# 4. import repos of KRS beta release
+# 4. import repos of KRS 1.0 release
 ###################################################
 vcs import src --recursive < krs_humble.repos  # about 3 mins in an AMD Ryzen 5 PRO 4650G
 
@@ -187,7 +187,7 @@ sudo apt-get -y install curl build-essential libssl-dev git wget \
 
 ###################################################
 # 2. create a new ROS 2 workspace with examples and
-#    firmware for KV260
+#    firmware for KR260
 ###################################################
 mkdir -p ~/krs_ws/src; cd ~/krs_ws
 
@@ -245,7 +245,7 @@ repositories:
 EOF
 
 ###################################################
-# 4. import repos of KRS beta release
+# 4. import repos of KRS 1.0 release
 ###################################################
 vcs import src --recursive < krs_humble.repos  # about 3 mins in an AMD Ryzen 5 PRO 4650G
 
@@ -259,6 +259,20 @@ source /opt/ros/humble/setup.bash  # Sources system ROS 2 installation.
 # packages. If one builds ROS 2 from the source the directory might
 # vary (e.g. ~/ros2_humble/ros2-linux).
 export PATH="/usr/bin":$PATH  # FIXME: adjust path for CMake 3.5+
+
+```
+
+```eval_rst
+.. warning:: 
+
+    Next step is going to ask for the *sudo password*, make sure to enter it appropriately, otherwise the build
+    will go on indefinitely.
+```
+
+
+```shell
+
+
 colcon build --merge-install  # about 18 mins in an AMD Ryzen 5 PRO 4650G
 
 ###################################################
@@ -272,7 +286,7 @@ source install/setup.bash
 
     Ubuntu 22.04 sysroot is not fully prepared for cross-compilation (but for native builds instead) and thereby, while invoking FindPython, it's just picking the host resources, instead of the target/sysroot ones, which leads to ROS 2 packages relying on Python 3 getting a dependency against the host (which doesn't exist), instead of against the sysroot.
 
-    A **workaround** for this is symlinking the Python3 library of the host to the sysroot one, so that it gets picked while cross-compiling against the Ubuntu 22.04 sysroot (e.g. `sudo ln -s /home/xilinx/ros2_ws/install/../acceleration/firmware/kv260/sysroots/aarch64-xilinx-linux/usr/lib/aarch64-linux-gnu/libpython3.10.so.1.0 /usr/lib/aarch64-linux-gnu/libpython3.10.so`)
+    A **workaround** for this is symlinking the Python3 library of the host to the sysroot one, so that it gets picked while cross-compiling against the Ubuntu 22.04 sysroot. The following should do: `sudo ln -s ~/krs_ws/src/install/../acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/usr/lib/aarch64-linux-gnu/libpython3.10.so.1.0 /usr/lib/aarch64-linux-gnu/libpython3.10.so`)
 ```
 
 ``` shell
@@ -294,7 +308,7 @@ Now that we've built binaries and accelerators, next's to run some of them in ha
 ```eval_rst
 .. warning:: No accelerators produced with native (on-target) compilation
 
-    **This path is helpful only for creating CPU binaries. It's not possible to create accelerators on target** (from within the KR/KV260 boards) because Vivado and Vitis tools have only x86 support and no aarch support is planned. Refer to the cross-compilation path for jointly creating binaries and accelerators.
+    **This path is helpful only for creating CPU binaries. It's not possible to create accelerators on target** (from within the KR/KV260 boards) because Vivado and Vitis tools have only x86 support and no aarch64 support is planned. Refer to the cross-compilation path for jointly creating binaries and accelerators.
 
 ```
 
@@ -312,7 +326,7 @@ Now that we've built binaries, next's to run them in hardware. See [examples](ht
 ```eval_rst
 .. warning:: No accelerators produced with native (on-target) compilation
 
-    **This path is helpful only for creating CPU binaries. It's not possible to create accelerators on QEMU** (from within emulated rootfs') because Vivado and Vitis tools have only x86 support and no aarch support is planned. Refer to the cross-compilation path for jointly creating binaries and accelerators.
+    **This path is helpful only for creating CPU binaries. It's not possible to create accelerators on QEMU** (from within emulated rootfs') because Vivado and Vitis tools have only x86 support and no aarch64 support is planned. Refer to the cross-compilation path for jointly creating binaries and accelerators.
 
 ```
 
@@ -397,7 +411,7 @@ repositories:
 EOF
 
 ###################################################
-# 4. import repos of KRS beta release
+# 4. import repos of KRS 1.0 release
 ###################################################
 vcs import src --recursive < krs_humble.repos  # about 3 mins in an AMD Ryzen 5 PRO 4650G
 
