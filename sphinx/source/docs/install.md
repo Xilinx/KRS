@@ -470,7 +470,8 @@ apt update && apt install -y \
   wget
 
 # build overlay workspace
-cd /ros2_ws; colcon build --merge-install
+cd /ros2_ws
+colcon build --merge-install --packages-ignore acceleration_firmware_kr260
 
 ###################################################
 # 8. Run one of the packages
