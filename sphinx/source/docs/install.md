@@ -485,7 +485,7 @@ colcon build --merge-install --packages-ignore acceleration_firmware_kr260 perce
 ###################################################
 # 8. Run one of the packages
 ###################################################
-source /ros2_ws/local_setup.bash
+source /ros2_ws/install/local_setup.bash
 ros2 run publisher_xilinx member_function_publisher
 
 ###################################################
