@@ -265,8 +265,17 @@ colcon build --merge-install  # about 18 mins in an AMD Ryzen 5 PRO 4650G
 # 6. source the overlay to enable all features
 ###################################################
 source install/setup.bash
+```
 
+```eval_rst
+.. warning:: 
 
+    Ubuntu 22.04 sysroot is not fully prepared for cross-compilation (but for native builds instead) and thereby, while invoking FindPython, it's just picking the host resources, instead of the target/sysroot ones, which leads to ROS 2 packages relying on Python 3 getting a dependency against the host (which doesn't exist), instead of against the sysroot.
+
+    A **workaround** for this is symlinking the Python3 library of the host to the sysroot one, so that it gets picked while cross-compiling against the Ubuntu 22.04 sysroot (e.g. `sudo ln -s /home/xilinx/ros2_ws/install/../acceleration/firmware/kv260/sysroots/aarch64-xilinx-linux/usr/lib/aarch64-linux-gnu/libpython3.10.so.1.0 /usr/lib/aarch64-linux-gnu/libpython3.10.so`)
+```
+
+``` shell
 ###################################################
 # 7.A cross-compile and generate ONLY CPU binaries
 ###################################################
