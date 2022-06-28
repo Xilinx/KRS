@@ -30,8 +30,8 @@ Before we provide a completely walkthrough, let's build the acceleration kernels
 $ cd ~/krs_ws  # head to your KRS workspace
 
 # prepare the environment
-$ source /tools/Xilinx/Vitis/2021.2/settings64.sh  # source Xilinx tools
-$ source /opt/ros/rolling/setup.bash  # Sources system ROS 2 installation
+$ source /tools/Xilinx/Vitis/2022.1/settings64.sh  # source Xilinx tools
+$ source /opt/ros/humble/setup.bash  # Sources system ROS 2 installation
 $ export PATH="/usr/bin":$PATH  # FIXME: adjust path for CMake 3.5+
 
 # build the workspace to deploy KRS components
@@ -108,13 +108,13 @@ To generate the CPU baseline you can use the pre-cooked ROS 2 launch file which 
 # Launch Gazebo simulator in your workstation
 #  requires Gazebo installed and GUI-capabilities
 $ cd ~/krs_ws  # head to your KRS workspace
-$ source /opt/ros/rolling/setup.bash  # Sources system ROS 2 installation
+$ source /opt/ros/humble/setup.bash  # Sources system ROS 2 installation
 $ colcon build --merge-install  # build the workspace to deploy KRS components
 $ source install/setup.bash  # source the workspace as an overlay
 $ ros2 launch perception_2nodes simulation.launch.py
 
 # Launch the graph in the KV260 CPU (should be connected to the same local network)
-$ source /opt/ros/rolling/setup.bash
+$ source /opt/ros/humble/setup.bash
 $ ros2 launch perception_2nodes trace_rectify_resize.launch.py
 ```
 
@@ -143,7 +143,7 @@ To launch the perception graph with FPGA offloading using the Vitis Vision Libra
 
 ```bash
 # Launch the graph in the KV260 CPU (should be connected to the same local network as the workstation)
-$ source /opt/ros/rolling/setup.bash  # enable ROS 2 overlays
+$ source /opt/ros/humble/setup.bash  # enable ROS 2 overlays
 $ ros2 acceleration select image_proc  # select and load the accelerator
 $ ros2 launch perception_2nodes trace_rectify_resize_fpga.launch.py  # launch Nodes
 ```
@@ -180,7 +180,7 @@ To launch the *integrated* and *streamlined* approaches:
 
 ```bash
 # integrated
-$ source /opt/ros/rolling/setup.bash  # enable ROS 2 overlays
+$ source /opt/ros/humble/setup.bash  # enable ROS 2 overlays
 $ ros2 acceleration select image_proc_integrated  # select and load the accelerator
 $ ros2 launch perception_2nodes trace_rectify_resize_fpga_integrated.launch.py  # launch Nodes
 ```
@@ -189,7 +189,7 @@ $ ros2 launch perception_2nodes trace_rectify_resize_fpga_integrated.launch.py  
 
 ```bash
 # streamlined
-$ source /opt/ros/rolling/setup.bash  # enable ROS 2 overlays
+$ source /opt/ros/humble/setup.bash  # enable ROS 2 overlays
 $ ros2 acceleration select image_proc_streamlined  # select and load the accelerator
 $ ros2 launch perception_2nodes trace_rectify_resize_fpga_streamlined.launch.py  # launch Nodes
 ```

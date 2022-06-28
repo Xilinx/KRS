@@ -1,0 +1,975 @@
+﻿
+
+
+<!DOCTYPE HTML>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+		
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+		<link rel="stylesheet" href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta name="description"/>
+		<meta name="keywords"/>
+		<meta property="og:title" content=""/>
+		<meta property="og:description"/>
+		<!-- favicon -->
+		<link rel="icon" type="image/vnd.microsoft.icon" href="../../_static/favicon.ico"/>
+		<link rel="shortcut icon" type="image/vnd.microsoft.icon" href="../../_static/favicon.ico"/>
+		<!-- Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" type="text/css"/>
+
+	
+		<!-- Google Tag Manager -->
+	<script type="text/plain" class="optanon-category-C0002">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-5RHQV7');</script>
+	<!-- End Google Tag Manager -->
+	
+        <!-- Google Tag Manager -->
+        <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5RHQV7" height="0" width="0" style="display:none;visibility:hidden" class="optanon-category-C0002"></iframe></noscript>
+        <!-- End Google Tag Manager -->	
+
+  
+  
+  
+  
+
+  
+      <script type="text/javascript" src="../../_static/js/jquery.min.js"></script>
+	  <script type="text/javascript" src="../../_static/js/gtm.js"></script>
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/d3dd8c60ed.js"></script>
+    <script type="text/javascript" src="../../_static/js/common-ui-all.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/CoveoJsSearch.Lazy.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/linkid.js"></script>
+    <script type="text/javascript" src="../../_static/js/Searchbox.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/header-footer.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/common-ui-all.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/header-footer.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/pro.min.css" media="all" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1. Hello Xilinx" href="1_hello_xilinx.html" />
+    <link rel="prev" title="Accelerating ROS 2 Nodes" href="nodes.html" /> 
+	</head>
+	<body>
+		<div class="xilinx-bs3"/>
+		<div class="root responsivegrid">
+			<div class="aem-Grid aem-Grid--16 aem-Grid--default--16 aem-Grid--large--16 aem-Grid--xlarge--16 aem-Grid--xxlarge--16 aem-Grid--xxxlarge--16 ">
+ <div class="xilinxExperienceFragments experiencefragment aem-GridColumn aem-GridColumn--default--12">
+
+    
+    
+
+    
+
+
+
+<div class="xf-content-height">
+    
+
+<div class="aem-Grid aem-Grid--16 aem-Grid--default--16 ">
+    
+    <div class="header parbase aem-GridColumn aem-GridColumn--default--12"><noindex>
+	<header data-component="header" class="site-header">
+		<nav class="navbar navbar-default">
+			<div class="container-fluid main-nav">
+				<div class="row">
+					<div class="navbar-column col-xs-4 col-sm-5">
+						<ul class="nav navbar-nav hidden-xs">
+							<li>
+									<button onclick="window.location.href=&#39;https://www.xilinx.com/applications.html&#39;;">Solutions</button>
+								</li>
+							<li>
+									<button onclick="window.location.href=&#39;https://www.xilinx.com/products/silicon-devices.html&#39;;">Products</button>
+								</li>
+							<li>
+									<button onclick="window.location.href=&#39;https://www.xilinx.com/about/company-overview.html&#39;;">Company</button>
+								</li>
+							</ul>
+							
+						<ul class="nav navbar-nav hidden-sm hidden-md hidden-lg">
+							<li>
+									<button data-target="#header-container-0" data-function="toggle">Solutions</button>
+								</li>
+							<li>
+									<button data-target="#header-container-1" data-function="toggle">Products</button>
+								</li>
+							<li>
+									<button data-target="#header-container-2" data-function="toggle">Company</button>
+								</li>
+							</ul>
+							
+						<div id="header-container-0" class="menu-container">
+								<div class="navbar-nav-container">
+									<ul class="nav navbar-nav">
+										<li>
+												<button onclick="window.location.href=&#39;https://www.xilinx.com/applications.html&#39;;">Solutions</button>
+												</li>
+										<li>
+												<button onclick="window.location.href=&#39;https://www.xilinx.com/products/silicon-devices.html&#39;;">Products</button>
+												</li>
+										<li>
+												<button onclick="window.location.href=&#39;https://www.xilinx.com/about/company-overview.html&#39;;">Company</button>
+												</li>
+										</ul>
+									<button data-function="close-menu">
+										<span class="fal fa-times" aria-hidden="true"></span>
+									</button>
+								</div>
+							</div>
+							<div id="header-container-1" class="menu-container">
+								<div class="navbar-nav-container">
+									<ul class="nav navbar-nav">
+										<li>
+												<button onclick="window.location.href=&#39;https://www.xilinx.com/applications.html&#39;;">Solutions</button>
+												</li>
+										<li>
+												<button onclick="window.location.href=&#39;https://www.xilinx.com/products/silicon-devices.html&#39;;">Products</button>
+												</li>
+										<li>
+												<button onclick="window.location.href=&#39;https://www.xilinx.com/about/company-overview.html&#39;;">Company</button>
+												</li>
+										</ul>
+									<button data-function="close-menu">
+										<span class="fal fa-times" aria-hidden="true"></span>
+									</button>
+								</div>
+							</div>
+							<div id="header-container-2" class="menu-container">
+								<div class="navbar-nav-container">
+									<ul class="nav navbar-nav">
+										<li>
+												<button onclick="window.location.href=&#39;https://www.xilinx.com/applications.html&#39;;">Solutions</button>
+												</li>
+										<li>
+												<button onclick="window.location.href=&#39;https://www.xilinx.com/products/silicon-devices.html&#39;;">Products</button>
+												</li>
+										<li>
+												<button onclick="window.location.href=&#39;https://www.xilinx.com/about/company-overview.html&#39;;">Company</button>
+												</li>
+										</ul>
+									<button data-function="close-menu">
+										<span class="fal fa-times" aria-hidden="true"></span>
+									</button>
+								</div>
+							</div>
+							</div>
+					<div class="logo-column col-xs-4 col-sm-2">
+						<div class="logo">
+							<a target="_blank" href="https://www.xilinx.com/">
+								<img src="https://github.com/Xilinx/Image-Collateral/blob/main/xilinx-header-logo.svg?raw=true" title="Xilinx Inc"/>
+							</a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			</nav></header></noindex></div>
+		
+	
+</div>
+
+    
+</div>
+</div>
+
+<div class="calloutBanner parbase aem-GridColumn--default--none aem-GridColumn aem-GridColumn--offset--default--0 aem-GridColumn--default--16"><div class="callout-banner">
+    Xilinx is now a part of <a target="_blank" href="https://www.amd.com/en/corporate/xilinx-acquisition">AMD</a> |  <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Learn More</a>
+</div>
+</div>
+				<div class="parsys aem-GridColumn--xxxlarge--none aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+						<div class="container-fluid">
+							<div class="row">
+							<div class="col-xs-12">
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> KRS
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                beta
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+      
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+            
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">SOM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/">Home</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/creating_applications/1.0/build/html/index.html">Application Development</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/kria_som_ubuntu_support/build/html/index.html">Ubuntu Support</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/main/build/html/index.html">Vision AI Starter Kit Applications</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Kria Robotics Stack (KRS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install KRS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware.html">Hardware supported</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Features</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../features/ros2centric.html">ROS 2-centric</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features/realtime_ros2.html">Real-time ROS 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features/accelerated_apps_ros2.html">ROS 2 Accelerated Apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features/contributing_ros2.html">Contributing back to ROS 2</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="nodes.html">Accelerating ROS 2 Nodes</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">0. ROS 2 publisher</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#vadd-publisher"><code class="docutils literal notranslate"><span class="pre">vadd_publisher</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#prepare-the-environment-and-fetch-the-example">Prepare the environment and fetch the example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inspecting-the-ros-2-publisher">Inspecting the ROS 2 publisher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#building-creating-the-raw-image-and-running-in-hardware">Building, creating the raw image and running in hardware</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bonus-getting-a-time-intuition-of-a-vadd-acceleration-kernel">Bonus: Getting a time intuition of a <code class="docutils literal notranslate"><span class="pre">vadd</span></code> acceleration kernel</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#doublevadd-publisher"><code class="docutils literal notranslate"><span class="pre">doublevadd_publisher</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#gzip-stdin-unexpected-end-of-file">gzip: stdin: unexpected end of file</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="1_hello_xilinx.html">1. Hello Xilinx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_hls_ros2.html">2. HLS in ROS 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_offloading_ros2_publisher.html">3. Offloading ROS 2 publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_accelerated_ros2_publisher.html">4. Accelerated ROS 2 publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_faster_ros2_publisher.html">5. Faster ROS 2 publisher</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="graphs.html">Accelerating ROS 2 Graphs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">HowTo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../howto.html">HowTo and Troubleshooting</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../other/definitions.html">Definitions</a></li>
+</ul>
+
+            
+			
+			<p class="caption"><span class="caption-text">This Page</span></p>
+				<ul class="current">
+				  <li class="toctree-l1"><a href="../../_sources/docs/examples/0_ros2_publisher.md.txt"
+						rel="nofollow">Show Source</a></li>
+				</ul>
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">KRS</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="nodes.html">Accelerating ROS 2 Nodes</a> &raquo;</li>
+        
+      <li>0. ROS 2 publisher</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/docs/examples/0_ros2_publisher.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ros-2-publisher">
+<h1>0. ROS 2 publisher<a class="headerlink" href="#ros-2-publisher" title="Permalink to this headline">¶</a></h1>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th></th>
+<th>Source code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/ros-acceleration/acceleration_examples/tree/main/nodes/vadd_publisher"><code>vadd_publisher</code></a></td>
+<td></td>
+</tr>
+<tr>
+<td>publisher</td>
+<td><a href="https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/vadd_publisher/src/vadd_publisher.cpp"><code>vadd_publisher.cpp</code></a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/ros-acceleration/acceleration_examples/tree/main/nodes/doublevadd_publisher"><code>doublevadd_publisher</code></a></td>
+<td></td>
+</tr>
+<tr>
+<td>publisher</td>
+<td><a href="https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/doublevadd_publisher/src/doublevadd_publisher.cpp"><code>doublevadd_publisher.cpp</code></a></td>
+</tr>
+</tbody>
+</table><p>This first example presents a trivial vector-add ROS 2 publisher, which adds two vector inputs in a loop, and tries to publish the result at 10 Hz. The ROS 2 package runs in the scalar processors (the CPUs). Step-by-step, the process is documented, walking through the different actions required to run the ROS 2 package in hardware, leveraging KRS capabilities. Afterwards, a slighly modified version of the publisher is presented which has additional computation demands. With these modifications, it becomes clear how the publisher isn’t able to meet the publication goal anymore, which motivates the use of hardware acceleration.</p>
+<p>The ultimate objective of this example is to generate a simple ROS 2-centric example that creates a CPU baseline to understand the value of hardware acceleration and how KRS facilitates it. Next examples will build upon this one.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The examples assume you’ve already installed KRS. If not, refer to <a class="reference external" href="../install.html">install</a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference external" href="https://docs.ros.org/">Learn ROS 2</a> before trying this out first.</p>
+</div>
+<div class="section" id="vadd-publisher">
+<h2><code class="docutils literal notranslate"><span class="pre">vadd_publisher</span></code><a class="headerlink" href="#vadd-publisher" title="Permalink to this headline">¶</a></h2>
+<!-- KRS aims to provide a ROS 2-centric experience (see [here](/features/ros2centric/) for more) and instead of using external tools to build ROS 2 workspaces, extensions to ROS 2 build system (`ament`) and ROS build tools (`colcon`) are implemented which facilitate the process. --><div class="section" id="prepare-the-environment-and-fetch-the-example">
+<h3>Prepare the environment and fetch the example<a class="headerlink" href="#prepare-the-environment-and-fetch-the-example" title="Permalink to this headline">¶</a></h3>
+<p>We start by preparing the environment and fetching the source code of the example into our KRS workspace:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~/krs_ws  <span class="c1"># head to your KRS workspace</span>
+
+<span class="c1"># prepare the environment</span>
+$ <span class="nb">source</span> /tools/Xilinx/Vitis/2021.2/settings64.sh  <span class="c1"># source Xilinx tools</span>
+$ <span class="nb">source</span> /opt/ros/rolling/setup.bash  <span class="c1"># Sources system ROS 2 installation</span>
+$ <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/bin&quot;</span>:<span class="nv">$PATH</span>  <span class="c1"># FIXME: adjust path for CMake 3.5+</span>
+
+<span class="c1"># build the workspace</span>
+$ colcon build --merge-install  <span class="c1"># about 4 mins</span>
+
+<span class="c1"># source the workspace as an overlay</span>
+$ <span class="nb">source</span> install/setup.bash
+</pre></div>
+</div>
+</div>
+<div class="section" id="inspecting-the-ros-2-publisher">
+<h3>Inspecting the ROS 2 publisher<a class="headerlink" href="#inspecting-the-ros-2-publisher" title="Permalink to this headline">¶</a></h3>
+<p>The publisher is a CPU-based average one. The source code of the publisher has been split between the <code class="docutils literal notranslate"><span class="pre">vadd</span></code> function (<a class="reference external" href="https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/vadd_publisher/src/vadd.cpp">vadd.cpp</a>) and the rest (<a class="reference external" href="https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/vadd_publisher/src/vadd_publisher.cpp">vadd_publisher.cpp</a>) for simplicity.
+The <code class="docutils literal notranslate"><span class="pre">vadd</span></code> (vector-add) function is as follows:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm">        ____  ____</span>
+<span class="cm">       /   /\/   /</span>
+<span class="cm">      /___/  \  /   Copyright (c) 2021, Xilinx®.</span>
+<span class="cm">      \   \   \/    Author: Víctor Mayoral Vilches &lt;victorma@xilinx.com&gt;</span>
+<span class="cm">       \   \</span>
+<span class="cm">       /   /</span>
+<span class="cm">      /___/   /\</span>
+<span class="cm">      \   \  /  \</span>
+<span class="cm">       \___\/\___\</span>
+
+<span class="cm">Inspired by the Vector-Add example.</span>
+<span class="cm">See https://github.com/Xilinx/Vitis-Tutorials/blob/master/Getting_Started/Vitis</span>
+
+<span class="cm">*/</span>
+
+<span class="cp">#define DATA_SIZE 4096</span>
+<span class="c1">// TRIPCOUNT identifier</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">c_size</span> <span class="o">=</span> <span class="n">DATA_SIZE</span><span class="p">;</span>
+
+<span class="k">extern</span> <span class="s">&quot;C&quot;</span> <span class="p">{</span>
+    <span class="kt">void</span> <span class="n">vadd</span><span class="p">(</span>
+            <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="o">*</span><span class="n">in1</span><span class="p">,</span>  <span class="c1">// Read-Only Vector 1</span>
+            <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="o">*</span><span class="n">in2</span><span class="p">,</span>  <span class="c1">// Read-Only Vector 2</span>
+            <span class="kt">unsigned</span> <span class="kt">int</span> <span class="o">*</span><span class="n">out</span><span class="p">,</span>        <span class="c1">// Output Result</span>
+            <span class="kt">int</span> <span class="n">size</span>                  <span class="c1">// Size in integer</span>
+            <span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">size</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="cp">#pragma HLS loop_tripcount min = c_size max = c_size</span>
+            <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">in1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">in2</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <a class="reference external" href="https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/hls_pragmas.html#sty1504034367099"><code class="docutils literal notranslate"><span class="pre">loop_tripcount</span></code></a> is for analysis only and the pragma doesn’t impact the function logic in any way. Instead, it allows HLS to identify how many iterations are expected in the loop to make time estimations. This will come handy if we want to run synthesis tests to estimate the timing it’ll take for this function to run on a dedicated circuit in the FPGA.</p>
+</div>
+<div class="section" id="building-creating-the-raw-image-and-running-in-hardware">
+<h3>Building, creating the raw image and running in hardware<a class="headerlink" href="#building-creating-the-raw-image-and-running-in-hardware" title="Permalink to this headline">¶</a></h3>
+<p>Let’s build the example, create a raw SD card image and run it in the <a class="reference external" href="https://www.xilinx.com/products/som/kria/kv260-vision-starter-kit.html"><code class="docutils literal notranslate"><span class="pre">KV260</span></code></a> reference development platform. First, let’s select the firmware for the target hardware, KV260:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ colcon acceleration <span class="k">select</span> kv260
+</pre></div>
+</div>
+<p>To verify that we indeed that the right firmware selected, look for the one marked with a “*” at the end of its name:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ colcon acceleration list
+kv260*
+</pre></div>
+</div>
+<p>Let’s now build the package targeting the KV260:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ colcon build --build-base<span class="o">=</span>build-kv260 --install-base<span class="o">=</span>install-kv260 --merge-install --mixin kv260 --packages-select ament_acceleration ament_vitis vadd_publisher
+</pre></div>
+</div>
+<p>Let’s now create a raw disk image for the SD card with PetaLinux’s rootfs, a vanilla Linux 5.4.0 kernel and the ROS 2 overlay workspace we’ve just created for the KV260:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ colcon acceleration linux vanilla --install-dir install-kv260
+</pre></div>
+</div>
+<p>We’re now ready to run it on hardware. For that, we need to flash the <code class="docutils literal notranslate"><span class="pre">~/krs_ws/acceleration/firmware/select/sd_card.img</span></code> file into the SD card. One quick way to do it is as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># first, find out where your SD card has been mapped, in my case, /dev/rdisk2</span>
+$ sudo diskutil umount /dev/rdisk2s1  <span class="c1"># umount mounted partition</span>
+$ pv &lt;your-path-to&gt;/krs_ws/acceleration/firmware/select/sd_card.img <span class="p">|</span> sudo dd <span class="nv">of</span><span class="o">=</span>/dev/rdisk2 <span class="nv">bs</span><span class="o">=</span>4M  <span class="c1"># dd the image</span>
+</pre></div>
+</div>
+<p>There are other methods. If you need help doing so, check out <a class="reference external" href="https://www.xilinx.com/products/som/kria/kv260-vision-starter-kit/kv260-getting-started/setting-up-the-sd-card-image.html">these instructions</a> for different OSs. <strong>Make sure to flash <code class="docutils literal notranslate"><span class="pre">~/krs_ws/acceleration/firmware/select/sd_card.img</span></code> we just generated, and not some other image</strong>.</p>
+<p>Once flashed, connect the board to the computer via its USB/UART/JTAG FTDI adapter and power it on. Then, launch your favority serial console (e.g. <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">tio</span> <span class="pre">/dev/ttyUSB1</span></code>). You should get to the following prompt where you can use the <code class="docutils literal notranslate"><span class="pre">petalinux</span></code> username and define your own password:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>PetaLinux <span class="m">2020</span>.2.2 xilinx-k26-starterkit-2020_2.2 ttyPS0
+
+xilinx-k26-starterkit-2020_2 login:
+</pre></div>
+</div>
+<p>Then, we can launch the example (feel free to split the actions below in various terminals, for convenience <code class="docutils literal notranslate"><span class="pre">byobu</span></code> allows to run it all in one):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">source</span> /usr/bin/ros_setup.bash  <span class="c1"># source the ROS 2 installation</span>
+
+$ . /ros2_ws/local_setup.bash     <span class="c1"># source the ROS 2 overlay workspace we just</span>
+                                  <span class="c1"># created. Note it has been copied to the SD</span>
+                                  <span class="c1"># card image while being created.</span>
+
+$ ros2 topic hz /vector --window <span class="m">10</span> <span class="p">&amp;</span>
+$ ros2 run vadd_publisher vadd_publisher
+...
+average rate: <span class="m">10</span>.000
+	min: <span class="m">0</span>.100s max: <span class="m">0</span>.100s std dev: <span class="m">0</span>.00007s window: <span class="m">10</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629649453</span>.734865115<span class="o">]</span> <span class="o">[</span>vadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 37&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629649453</span>.834855650<span class="o">]</span> <span class="o">[</span>vadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 38&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629649453</span>.934853073<span class="o">]</span> <span class="o">[</span>vadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 39&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629649454</span>.034854160<span class="o">]</span> <span class="o">[</span>vadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 40&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629649454</span>.134853854<span class="o">]</span> <span class="o">[</span>vadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 41&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629649454</span>.234855027<span class="o">]</span> <span class="o">[</span>vadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 42&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629649454</span>.334856580<span class="o">]</span> <span class="o">[</span>vadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 43&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629649454</span>.434858073<span class="o">]</span> <span class="o">[</span>vadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 44&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629649454</span>.534854066<span class="o">]</span> <span class="o">[</span>vadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 45&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629649454</span>.634857869<span class="o">]</span> <span class="o">[</span>vadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 46&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629649454</span>.734853412<span class="o">]</span> <span class="o">[</span>vadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 47&#39;</span>
+average rate: <span class="m">10</span>.001
+	min: <span class="m">0</span>.100s max: <span class="m">0</span>.100s std dev: <span class="m">0</span>.00006s window: <span class="m">10</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629649454</span>.834858295<span class="o">]</span> <span class="o">[</span>vadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 48&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629649454</span>.934855449<span class="o">]</span> <span class="o">[</span>vadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 49&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629649455</span>.034850672<span class="o">]</span> <span class="o">[</span>vadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 50&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629649455</span>.134852075<span class="o">]</span> <span class="o">[</span>vadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 51&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629649455</span>.234859537<span class="o">]</span> <span class="o">[</span>vadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 52&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629649455</span>.334861150<span class="o">]</span> <span class="o">[</span>vadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 53&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629649455</span>.434863893<span class="o">]</span> <span class="o">[</span>vadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 54&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629649455</span>.534855537<span class="o">]</span> <span class="o">[</span>vadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 55&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629649455</span>.634844142<span class="o">]</span> <span class="o">[</span>vadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 56&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629649455</span>.734844195<span class="o">]</span> <span class="o">[</span>vadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 57&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629649455</span>.834858327<span class="o">]</span> <span class="o">[</span>vadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 58&#39;</span>
+...
+</pre></div>
+</div>
+<p>You should see that the ROS 2 publisher successfully publishes at approximately 10 Hz.</p>
+<!--
+
+With byobu, instead:
+
+```bash
+cat << EOF > vadd_publisher.conf
+new-session 'vadd_publisher'
+bind-key -n C-b send-prefix
+new-window -n vadd_publisher
+send-keys 'source /usr/bin/ros_setup.bash; . /ros2_ws/local_setup.bash; ros2 run vadd_publisher vadd_publisher' Enter
+split-window -h
+send-keys 'source /usr/bin/ros_setup.bash; . /ros2_ws/local_setup.bash; ros2 topic hz /vector --window 10' Enter
+EOF
+byobu -f vadd_publisher.conf attach
+```
+--></div>
+<div class="section" id="bonus-getting-a-time-intuition-of-a-vadd-acceleration-kernel">
+<h3>Bonus: Getting a time intuition of a <code class="docutils literal notranslate"><span class="pre">vadd</span></code> acceleration kernel<a class="headerlink" href="#bonus-getting-a-time-intuition-of-a-vadd-acceleration-kernel" title="Permalink to this headline">¶</a></h3>
+<p>What if instead of running the <code class="docutils literal notranslate"><span class="pre">vadd</span></code> in the scalar CPUs, we create a specific hardware circuit with the FPGA that runs this function? What’d would be the associated timing? In other words, a <em>robot chip</em> for the <code class="docutils literal notranslate"><span class="pre">vadd</span></code> computation.</p>
+<p>Though going all the way down to implementing the harware cirtuit for <code class="docutils literal notranslate"><span class="pre">vadd</span></code> is beyond the scope of this example, we can get a quick intuition with HLS capabilities integrated in KRS. Let’s get such intuition:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ colcon acceleration hls --run --synthesis-report vadd_publisher
+Found Tcl script <span class="s2">&quot;project_vadd_publisher.tcl&quot;</span> <span class="k">for</span> package: vadd_publisher
+Executing /home/xilinx/krs_ws/build-kv260/vadd_publisher/project_vadd_publisher.tcl
+ Project:  project_vadd_publisher
+ Path:  /home/xilinx/krs_ws/build-kv260/vadd_publisher/project_vadd_publisher
+ 	- Solution:  solution_4ns
+ 		- C Simulation:               Pass
+ 		- C Synthesis:                Run
+ 		- C/RTL Co-simulation:        Not Run
+		- Export:
+ 			- IP Catalog:         Not Run
+ 			- System Generator:   Not Run
+ 			- Export Evaluation:  Not Run
+		- Synthesis report: /home/xilinx/krs_ws/build-kv260/vadd_publisher/project_vadd_publisher/solution_4ns/syn/report/vadd_csynth.rpt
+
+
+  			<span class="o">================================================================</span>
+  			<span class="o">==</span> Vitis HLS Report <span class="k">for</span> <span class="s1">&#39;vadd&#39;</span>
+  			<span class="o">================================================================</span>
+  			* Date:           Sun Aug <span class="m">22</span> <span class="m">18</span>:24:43 <span class="m">2021</span>
+
+  			* Version:        <span class="m">2020</span>.2.2 <span class="o">(</span>Build <span class="m">3118627</span> on Tue Feb  <span class="m">9</span> <span class="m">05</span>:13:49 MST <span class="m">2021</span><span class="o">)</span>
+  			* Project:        project_vadd_publisher
+  			* Solution:       solution_4ns <span class="o">(</span>Vitis Kernel Flow Target<span class="o">)</span>
+  			* Product family: zynquplus
+  			* Target device:  xck26-sfvc784-2LV-c
+
+
+  			<span class="o">================================================================</span>
+  			<span class="o">==</span> Performance <span class="nv">Estimates</span>
+  			<span class="o">================================================================</span>
+  			+ Timing:
+  			    * Summary:
+  			    +--------+---------+----------+------------+
+  			    <span class="p">|</span>  Clock <span class="p">|</span>  Target <span class="p">|</span> Estimated<span class="p">|</span> Uncertainty<span class="p">|</span>
+  			    +--------+---------+----------+------------+
+  			    <span class="p">|</span>ap_clk  <span class="p">|</span>  <span class="m">4</span>.00 ns<span class="p">|</span>  <span class="m">2</span>.920 ns<span class="p">|</span>     <span class="m">1</span>.08 ns<span class="p">|</span>
+  			    +--------+---------+----------+------------+
+
+  			+ Latency:
+  			    * Summary:
+  			    +---------+---------+----------+-----------+-----+------+---------+
+  			    <span class="p">|</span>  Latency <span class="o">(</span>cycles<span class="o">)</span> <span class="p">|</span>  Latency <span class="o">(</span>absolute<span class="o">)</span>  <span class="p">|</span>  Interval  <span class="p">|</span> Pipeline<span class="p">|</span>
+  			    <span class="p">|</span>   min   <span class="p">|</span>   max   <span class="p">|</span>    min   <span class="p">|</span>    max    <span class="p">|</span> min <span class="p">|</span>  max <span class="p">|</span>   Type  <span class="p">|</span>
+  			    +---------+---------+----------+-----------+-----+------+---------+
+  			    <span class="p">|</span>        <span class="m">2</span><span class="p">|</span>     <span class="m">8334</span><span class="p">|</span>  <span class="m">8</span>.000 ns<span class="p">|</span>  <span class="m">33</span>.336 us<span class="p">|</span>    <span class="m">3</span><span class="p">|</span>  <span class="m">8335</span><span class="p">|</span>     none<span class="p">|</span>
+  			    +---------+---------+----------+-----------+-----+------+---------+
+
+  			    + Detail:
+  			        * Instance:
+  			        N/A
+
+  			        * Loop:
+  			        +-------------------+---------+---------+----------+-----------+-----------+------+----------+
+  			        <span class="p">|</span>                   <span class="p">|</span>  Latency <span class="o">(</span>cycles<span class="o">)</span> <span class="p">|</span> Iteration<span class="p">|</span>  Initiation Interval  <span class="p">|</span> Trip <span class="p">|</span>          <span class="p">|</span>
+  			        <span class="p">|</span>     Loop Name     <span class="p">|</span>   min   <span class="p">|</span>   max   <span class="p">|</span>  Latency <span class="p">|</span>  achieved <span class="p">|</span>   target  <span class="p">|</span> Count<span class="p">|</span> Pipelined<span class="p">|</span>
+  			        +-------------------+---------+---------+----------+-----------+-----------+------+----------+
+  			        <span class="p">|</span>- VITIS_LOOP_30_1  <span class="p">|</span>     <span class="m">8264</span><span class="p">|</span>     <span class="m">8264</span><span class="p">|</span>        <span class="m">75</span><span class="p">|</span>          <span class="m">2</span><span class="p">|</span>          <span class="m">1</span><span class="p">|</span>  <span class="m">4096</span><span class="p">|</span>       yes<span class="p">|</span>
+  			        +-------------------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+  			<span class="o">================================================================</span>
+  			<span class="o">==</span> Utilization <span class="nv">Estimates</span>
+  			<span class="o">================================================================</span>
+  			* Summary:
+  			+-----------------+---------+------+--------+--------+-----+
+  			<span class="p">|</span>       Name      <span class="p">|</span> BRAM_18K<span class="p">|</span>  DSP <span class="p">|</span>   FF   <span class="p">|</span>   LUT  <span class="p">|</span> URAM<span class="p">|</span>
+  			+-----------------+---------+------+--------+--------+-----+
+  			<span class="p">|</span>DSP              <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       -<span class="p">|</span>       -<span class="p">|</span>    -<span class="p">|</span>
+  			<span class="p">|</span>Expression       <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       <span class="m">0</span><span class="p">|</span>     <span class="m">280</span><span class="p">|</span>    -<span class="p">|</span>
+  			<span class="p">|</span>FIFO             <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       -<span class="p">|</span>       -<span class="p">|</span>    -<span class="p">|</span>
+  			<span class="p">|</span>Instance         <span class="p">|</span>        <span class="m">2</span><span class="p">|</span>     -<span class="p">|</span>     <span class="m">796</span><span class="p">|</span>    <span class="m">1068</span><span class="p">|</span>    -<span class="p">|</span>
+  			<span class="p">|</span>Memory           <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       -<span class="p">|</span>       -<span class="p">|</span>    -<span class="p">|</span>
+  			<span class="p">|</span>Multiplexer      <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       -<span class="p">|</span>     <span class="m">472</span><span class="p">|</span>    -<span class="p">|</span>
+  			<span class="p">|</span>Register         <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>     <span class="m">623</span><span class="p">|</span>      <span class="m">32</span><span class="p">|</span>    -<span class="p">|</span>
+  			+-----------------+---------+------+--------+--------+-----+
+  			<span class="p">|</span>Total            <span class="p">|</span>        <span class="m">2</span><span class="p">|</span>     <span class="m">0</span><span class="p">|</span>    <span class="m">1419</span><span class="p">|</span>    <span class="m">1852</span><span class="p">|</span>    <span class="m">0</span><span class="p">|</span>
+  			+-----------------+---------+------+--------+--------+-----+
+  			<span class="p">|</span>Available        <span class="p">|</span>      <span class="m">288</span><span class="p">|</span>  <span class="m">1248</span><span class="p">|</span>  <span class="m">234240</span><span class="p">|</span>  <span class="m">117120</span><span class="p">|</span>   <span class="m">64</span><span class="p">|</span>
+  			+-----------------+---------+------+--------+--------+-----+
+  			<span class="p">|</span>Utilization <span class="o">(</span>%<span class="o">)</span>  <span class="p">|</span>       ~0<span class="p">|</span>     <span class="m">0</span><span class="p">|</span>      ~0<span class="p">|</span>       <span class="m">1</span><span class="p">|</span>    <span class="m">0</span><span class="p">|</span>
+  			+-----------------+---------+------+--------+--------+-----+
+
+...
+</pre></div>
+</div>
+<p>The output will show you that the <code class="docutils literal notranslate"><span class="pre">vadd</span></code> function with all its complexity can run with a <code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">ns</span></code> clock (we could ask for other clocks) in a total of <code class="docutils literal notranslate"><span class="pre">33.336</span> <span class="pre">us</span></code>. This result is <strong>completely deterministic</strong> from the vadd viewpoint, after all, the FPGA would create a specialized hardware cirtuit for the <code class="docutils literal notranslate"><span class="pre">vadd</span></code> computations. For what concerns vadd, there’s no more deterministic execution than this. This is just a brief introduction, <em>if you wish to learn more about HLS and KRS, head to the second example: <a class="reference internal" href="1_hello_xilinx.html"><span class="doc">1. Hello Xilinx</span></a></em>.</p>
+</div>
+</div>
+<div class="section" id="doublevadd-publisher">
+<h2><code class="docutils literal notranslate"><span class="pre">doublevadd_publisher</span></code><a class="headerlink" href="#doublevadd-publisher" title="Permalink to this headline">¶</a></h2>
+<p>We’ve seen that as a simple ROS 2 package, <code class="docutils literal notranslate"><span class="pre">vadd_publisher</span></code> runs perfectly fine and meets the 10 Hz publishing objective. But what if the <code class="docutils literal notranslate"><span class="pre">vadd</span></code> has bigger vectors, or has operations that involve many more iterations? This second section explores this with a more computationally expensive publisher, the <code class="docutils literal notranslate"><span class="pre">doublevadd_publisher</span></code>. The source code of the new <code class="docutils literal notranslate"><span class="pre">vadd</span></code> function is presented below:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm">        ____  ____</span>
+<span class="cm">       /   /\/   /</span>
+<span class="cm">      /___/  \  /   Copyright (c) 2021, Xilinx®.</span>
+<span class="cm">      \   \   \/    Author: Víctor Mayoral Vilches &lt;victorma@xilinx.com&gt;</span>
+<span class="cm">       \   \</span>
+<span class="cm">       /   /</span>
+<span class="cm">      /___/   /\</span>
+<span class="cm">      \   \  /  \</span>
+<span class="cm">       \___\/\___\</span>
+
+<span class="cm">Inspired by the Vector-Add example.</span>
+<span class="cm">See https://github.com/Xilinx/Vitis-Tutorials/blob/master/Getting_Started/Vitis</span>
+
+<span class="cm">*/</span>
+
+<span class="cp">#define DATA_SIZE 4096</span>
+<span class="c1">// TRIPCOUNT identifier</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">c_size</span> <span class="o">=</span> <span class="n">DATA_SIZE</span><span class="p">;</span>
+
+<span class="k">extern</span> <span class="s">&quot;C&quot;</span> <span class="p">{</span>
+    <span class="kt">void</span> <span class="n">vadd</span><span class="p">(</span>
+            <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="o">*</span><span class="n">in1</span><span class="p">,</span>  <span class="c1">// Read-Only Vector 1</span>
+            <span class="k">const</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="o">*</span><span class="n">in2</span><span class="p">,</span>  <span class="c1">// Read-Only Vector 2</span>
+            <span class="kt">unsigned</span> <span class="kt">int</span> <span class="o">*</span><span class="n">out</span><span class="p">,</span>        <span class="c1">// Output Result</span>
+            <span class="kt">int</span> <span class="n">size</span>                  <span class="c1">// Size in integer</span>
+            <span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">size</span><span class="p">;</span> <span class="o">++</span><span class="n">j</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// stupidly iterate over</span>
+                                          <span class="c1">// it to generate load</span>
+        <span class="cp">#pragma HLS loop_tripcount min = c_size max = c_size</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">size</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+            <span class="cp">#pragma HLS loop_tripcount min = c_size max = c_size</span>
+              <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">in1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">in2</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Note how instead of one <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, we now have two, simulating a more complex computation. Let’s try this out in hardware. Provided that the image was previously created, we just need to replace the ROS 2 workspace, the rest should be identical. You can do this in various ways (physically mounting the raw image in the SD card, <code class="docutils literal notranslate"><span class="pre">scp</span></code>-ing the ROS 2 workspace, etc.).</p>
+<p>Briefly, in the workstation:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate the workspace with doublevadd_publisher (if exists already, add to it)</span>
+$ colcon build --build-base<span class="o">=</span>build-kv260 --install-base<span class="o">=</span>install-kv260 --merge-install --mixin kv260 --packages-select ament_vitis doublevadd_publisher
+
+<span class="c1"># copy to rootfs in SD card, e.g.</span>
+$ scp -r install-kv260/* petalinux@192.168.1.86:/ros2_ws/
+
+<span class="c1"># Launch doublevadd_publisher</span>
+$ <span class="nb">source</span> /usr/bin/ros_setup.bash  <span class="c1"># source the ROS 2 installation</span>
+
+$ . /ros2_ws/local_setup.bash     <span class="c1"># source the ROS 2 overlay workspace we just</span>
+                                <span class="c1"># created. Note it has been copied to the SD</span>
+                                <span class="c1"># card image while being created.</span>
+
+$ ros2 topic hz /vector --window <span class="m">10</span> <span class="p">&amp;</span>
+$ ros2 run doublevadd_publisher doublevadd_publisher
+
+...
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629656740</span>.225647854<span class="o">]</span> <span class="o">[</span>doublevadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 11&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629656740</span>.675023646<span class="o">]</span> <span class="o">[</span>doublevadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 12&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629656741</span>.124260679<span class="o">]</span> <span class="o">[</span>doublevadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 13&#39;</span>
+average rate: <span class="m">2</span>.226
+	min: <span class="m">0</span>.449s max: <span class="m">0</span>.449s std dev: <span class="m">0</span>.00011s window: <span class="m">10</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629656741</span>.573462323<span class="o">]</span> <span class="o">[</span>doublevadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 14&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629656742</span>.022713366<span class="o">]</span> <span class="o">[</span>doublevadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 15&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629656742</span>.471917079<span class="o">]</span> <span class="o">[</span>doublevadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 16&#39;</span>
+average rate: <span class="m">2</span>.226
+	min: <span class="m">0</span>.449s max: <span class="m">0</span>.449s std dev: <span class="m">0</span>.00011s window: <span class="m">10</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629656742</span>.921175382<span class="o">]</span> <span class="o">[</span>doublevadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 17&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629656743</span>.370423695<span class="o">]</span> <span class="o">[</span>doublevadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 18&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629656743</span>.819651828<span class="o">]</span> <span class="o">[</span>doublevadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 19&#39;</span>
+average rate: <span class="m">2</span>.226
+	min: <span class="m">0</span>.449s max: <span class="m">0</span>.449s std dev: <span class="m">0</span>.00010s window: <span class="m">10</span>
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629656744</span>.268874211<span class="o">]</span> <span class="o">[</span>doublevadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 20&#39;</span>
+...
+</pre></div>
+</div>
+<p>This new publisher achieves only <code class="docutils literal notranslate"><span class="pre">2.2</span> <span class="pre">Hz</span></code>, quite far from the <code class="docutils literal notranslate"><span class="pre">10</span> <span class="pre">Hz</span></code> targeted. Using hardware acceleration, future examples will demonstrate how to build a custom compute pipeline that offloads computations to a kernel. <em>If you wish to jump directly into hardware acceleration with <code class="docutils literal notranslate"><span class="pre">doublevadd_publisher</span></code>, head to: <a class="reference internal" href="3_offloading_ros2_publisher.html"><span class="doc">3. Offloading ROS 2 publisher</span></a></em>.</p>
+</div>
+<div class="section" id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="gzip-stdin-unexpected-end-of-file">
+<h3>gzip: stdin: unexpected end of file<a class="headerlink" href="#gzip-stdin-unexpected-end-of-file" title="Permalink to this headline">¶</a></h3>
+<p>See https://github.com/ros-acceleration/colcon-acceleration/issues/9.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+<!-- Atalwar: Moved the footer code to layout.html to resolve conflict with the Xilinx template -->
+</footer>
+
+        </div>
+      </div>
+
+
+	  <!-- Sphinx Page Footer block -->
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="1_hello_xilinx.html" class="btn btn-neutral float-right" title="1. Hello Xilinx" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="nodes.html" class="btn btn-neutral float-left" title="Accelerating ROS 2 Nodes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo" class="copyright">
+    <p class="footerinfo">
+      <span class="lastupdated">
+        Last updated on February 17, 2022.
+      </span>
+
+    </p>
+	<br>
+  </div>
+      </div>
+    </section>
+
+
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+   <script type="text/javascript">
+    jQuery(function() { Search.loadIndex("searchindex.js"); });
+  </script>
+
+  <script type="text/javascript" id="searchindexloader"></script>
+
+
+  
+  
+    
+  
+
+
+
+  <!--  Xilinx template footer block -->
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="xilinxExperienceFragments experiencefragment aem-GridColumn--default--none aem-GridColumn aem-GridColumn--offset--default--0 aem-GridColumn--default--16">
+					<div class="xf-content-height">
+						<div class="aem-Grid aem-Grid--16 aem-Grid--default--16 ">
+							<div class="footer parbase aem-GridColumn--default--none aem-GridColumn aem-GridColumn--offset--default--0 aem-GridColumn--default--16">
+								<noindex>
+                  <!-- make footer fixed - NileshP -->
+                  <style>
+                        .footer {
+                        position: fixed;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        }
+                  </style>
+                  <!-- make footer fixed NileshP-->
+									<footer>
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+													<div class="row">
+														<div class="footerSocial parbase">
+														
+															<div class="col-md-push-6 col-lg-push-6 col-md-6 col-lg-6">
+																<div class="lang-select dropup hidden-md hidden-lg">
+		<button data-toggle="dropdown">
+			<span class="fas fa-globe" aria-hidden="true"></span>
+			<span>
+				
+					English
+				</span>
+		<span class="far fa-angle-down" aria-hidden="true"></span>
+	</button>
+	<ul class="dropdown-menu">
+		<li>
+				<a target="_blank" href="https://japan.xilinx.com/" target="_self">
+					日本語
+				</a>
+			</li>
+		<li>
+				<a target="_blank" href="https://china.xilinx.com/" target="_self">
+					简体中文
+				</a>
+			</li>
+		</ul>
+	</div>
+																<ul class="list-inline pull-right social-menu">
+																	<li>
+																		<a target="_blank" href="https://www.linkedin.com/company/xilinx">
+																		<span class="linkedin icon"></span>
+																		<span class="sr-only">Connect on LinkedIn</span>
+																		</a>
+																	</li>
+																	<li>
+																		<a target="_blank" href="https://www.twitter.com/XilinxInc">
+																		<span class="twitter icon"></span>
+																		<span class="sr-only">Follow us on Twitter</span>
+																		</a>
+																	</li>
+																	<li>
+																		<a target="_blank" href="https://www.facebook.com/XilinxInc">
+																		<span class="facebook icon"></span>
+																		<span class="sr-only">Connect on Facebook</span>
+																		</a>
+																	</li>
+																	<li>
+																		<a target="_blank" href="https://www.youtube.com/XilinxInc">
+																		<span class="youtube icon"></span>
+																		<span class="sr-only">Watch us on YouTube</span>
+																		</a>
+																	</li>
+																	<li>
+																		<a target="_blank" href="https://www.xilinx.com/registration/subscriber-signup.html">
+																		<span class="newsletter icon"></span>
+																		<span class="sr-only">Subscribe to Newsletter</span>
+																		</a>
+																	</li>
+																</ul>
+																	<div class="lang-select dropup hidden-xs hidden-sm">
+	<button data-toggle="dropdown">
+		<span class="fas fa-globe" aria-hidden="true"></span>
+		<span>
+			
+				English
+			</span>
+		<span class="far fa-angle-down" aria-hidden="true"></span>
+	</button>
+	<ul class="dropdown-menu">
+		<li>
+				<a target="_blank" href="https://japan.xilinx.com/" target="_self">
+					日本語
+				</a>
+			</li>
+		<li>
+				<a target="_blank" href="https://china.xilinx.com/" target="_self">
+					简体中文
+				</a>
+			</li>
+		</ul>
+	</div>
+															</div>
+														</div>
+														<div class="col-md-pull-5 col-lg-pull-5 col-md-5 col-lg-5">
+															<span class="copyright">©2022 Advanced Micro Devices, Inc</span>
+														</div>
+
+													</div>
+													                    <div class="movethisrowtoleft row">
+                        <div class="col-xs-24">
+                            <ul class="sub-menu">
+                                <li><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a></li>
+                                <li><a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a></li>
+                                <li><a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a></li>
+                                <li><a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a></li>
+                                <li><a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a></li>
+                                <li><a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a></li>
+                                <li><a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a></li>
+								<li><a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a></li>
+                                <li><a href="#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></li>
+                            </ul>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+									</footer>
+								</noindex>
+							</div>
+						</div>
+					</div>
+				</div>
+<div class="backToTop parbase aem-GridColumn--default--none aem-GridColumn aem-GridColumn--offset--default--0 aem-GridColumn--default--16"><noindex>
+    <span data-component="backToTopButton" class="backToTopButton loaded">
+        <ul>
+            <li>
+                <a href="https://www.author.xilinx.com/xx/rebrand/amd/en-amd-xilinx-header-footer.html#top" class="btn top">
+                    <span class="fas fa-angle-up" aria-hidden="true"></span>
+                </a>
+            </li>
+        </ul>
+    </span>
+</noindex></div>
+			</div>
+		</div>
+
+
+		<script>window.CQ = window.CQ || {}</script>
+		<script src="https://static.cloud.coveo.com/searchui/v2.4382/js/CoveoJsSearch.Lazy.min.js"></script>
+		<script>
+			var underscoreSetup = function () {
+			  _.templateSettings.interpolate = /\{\{=([^-][\S\s]+?)\}\}/g;
+			  _.templateSettings.evaluate = /\{\{([^-=][\S\s]+?)\}\}/g;
+			  _.templateSettings.escape = /\{\{-([^=][\S\s]+?)\}\}/g;
+			}
+
+			underscoreSetup();
+		</script>
+	</body>
+</html>
