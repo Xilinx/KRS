@@ -485,7 +485,7 @@ cat <span class="s">&lt;&lt; &#39;EOF&#39; &gt; krs_humble.repos</span>
 <span class="s">EOF</span>
 
 <span class="c1">###################################################</span>
-<span class="c1"># 4. import repos of KRS beta release</span>
+<span class="c1"># 4. import repos of KRS 1.0 release</span>
 <span class="c1">###################################################</span>
 vcs import src --recursive &lt; krs_humble.repos  <span class="c1"># about 3 mins in an AMD Ryzen 5 PRO 4650G</span>
 
@@ -535,7 +535,7 @@ sudo apt-get -y install curl build-essential libssl-dev git wget <span class="se
 
 <span class="c1">###################################################</span>
 <span class="c1"># 2. create a new ROS 2 workspace with examples and</span>
-<span class="c1">#    firmware for KV260</span>
+<span class="c1">#    firmware for KR260</span>
 <span class="c1">###################################################</span>
 mkdir -p ~/krs_ws/src<span class="p">;</span> <span class="nb">cd</span> ~/krs_ws
 
@@ -593,7 +593,7 @@ cat <span class="s">&lt;&lt; &#39;EOF&#39; &gt; krs_humble.repos</span>
 <span class="s">EOF</span>
 
 <span class="c1">###################################################</span>
-<span class="c1"># 4. import repos of KRS beta release</span>
+<span class="c1"># 4. import repos of KRS 1.0 release</span>
 <span class="c1">###################################################</span>
 vcs import src --recursive &lt; krs_humble.repos  <span class="c1"># about 3 mins in an AMD Ryzen 5 PRO 4650G</span>
 
@@ -607,7 +607,14 @@ vcs import src --recursive &lt; krs_humble.repos  <span class="c1"># about 3 min
 <span class="c1"># packages. If one builds ROS 2 from the source the directory might</span>
 <span class="c1"># vary (e.g. ~/ros2_humble/ros2-linux).</span>
 <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/bin&quot;</span>:<span class="nv">$PATH</span>  <span class="c1"># FIXME: adjust path for CMake 3.5+</span>
-colcon build --merge-install  <span class="c1"># about 18 mins in an AMD Ryzen 5 PRO 4650G</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Next step is going to ask for the <em>sudo password</em>, make sure to enter it appropriately, otherwise the build
+will go on indefinitely.</p>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>colcon build --merge-install  <span class="c1"># about 18 mins in an AMD Ryzen 5 PRO 4650G</span>
 
 <span class="c1">###################################################</span>
 <span class="c1"># 6. source the overlay to enable all features</span>
@@ -618,7 +625,7 @@ colcon build --merge-install  <span class="c1"># about 18 mins in an AMD Ryzen 5
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Ubuntu 22.04 sysroot is not fully prepared for cross-compilation (but for native builds instead) and thereby, while invoking FindPython, it’s just picking the host resources, instead of the target/sysroot ones, which leads to ROS 2 packages relying on Python 3 getting a dependency against the host (which doesn’t exist), instead of against the sysroot.</p>
-<p>A <strong>workaround</strong> for this is symlinking the Python3 library of the host to the sysroot one, so that it gets picked while cross-compiling against the Ubuntu 22.04 sysroot (e.g. <cite>sudo ln -s /home/xilinx/ros2_ws/install/../acceleration/firmware/kv260/sysroots/aarch64-xilinx-linux/usr/lib/aarch64-linux-gnu/libpython3.10.so.1.0 /usr/lib/aarch64-linux-gnu/libpython3.10.so</cite>)</p>
+<p>A <strong>workaround</strong> for this is symlinking the Python3 library of the host to the sysroot one, so that it gets picked while cross-compiling against the Ubuntu 22.04 sysroot. The following should do: <cite>sudo ln -s ~/krs_ws/src/install/../acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/usr/lib/aarch64-linux-gnu/libpython3.10.so.1.0 /usr/lib/aarch64-linux-gnu/libpython3.10.so</cite>)</p>
 </div>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1">###################################################</span>
 <span class="c1"># 7.A cross-compile and generate ONLY CPU binaries</span>
@@ -638,7 +645,7 @@ colcon build --build-base<span class="o">=</span>build-kr260-ubuntu --install-ba
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>No accelerators produced with native (on-target) compilation</p>
-<p><strong>This path is helpful only for creating CPU binaries. It’s not possible to create accelerators on target</strong> (from within the KR/KV260 boards) because Vivado and Vitis tools have only x86 support and no aarch support is planned. Refer to the cross-compilation path for jointly creating binaries and accelerators.</p>
+<p><strong>This path is helpful only for creating CPU binaries. It’s not possible to create accelerators on target</strong> (from within the KR/KV260 boards) because Vivado and Vitis tools have only x86 support and no aarch64 support is planned. Refer to the cross-compilation path for jointly creating binaries and accelerators.</p>
 </div>
 <p>Native CPU compilation (<em>on target</em>, in the KR260 or KV260) is pretty straightforward and can be performed by:</p>
 <ol class="simple">
@@ -653,7 +660,7 @@ colcon build --build-base<span class="o">=</span>build-kr260-ubuntu --install-ba
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>No accelerators produced with native (on-target) compilation</p>
-<p><strong>This path is helpful only for creating CPU binaries. It’s not possible to create accelerators on QEMU</strong> (from within emulated rootfs’) because Vivado and Vitis tools have only x86 support and no aarch support is planned. Refer to the cross-compilation path for jointly creating binaries and accelerators.</p>
+<p><strong>This path is helpful only for creating CPU binaries. It’s not possible to create accelerators on QEMU</strong> (from within emulated rootfs’) because Vivado and Vitis tools have only x86 support and no aarch64 support is planned. Refer to the cross-compilation path for jointly creating binaries and accelerators.</p>
 </div>
 <p>CPU binaries can also be built (and tested) using hardware emulation through QEMU. In particular, the following provides a walkthrough on how to leverage Ubuntu 22.04 pre-built sysroot for KR260 to build the local development workspace:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1">###################################################</span>
@@ -734,7 +741,7 @@ cat <span class="s">&lt;&lt; &#39;EOF&#39; &gt; krs_humble.repos</span>
 <span class="s">EOF</span>
 
 <span class="c1">###################################################</span>
-<span class="c1"># 4. import repos of KRS beta release</span>
+<span class="c1"># 4. import repos of KRS 1.0 release</span>
 <span class="c1">###################################################</span>
 vcs import src --recursive &lt; krs_humble.repos  <span class="c1"># about 3 mins in an AMD Ryzen 5 PRO 4650G</span>
 
