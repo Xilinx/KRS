@@ -224,7 +224,7 @@
             
             
               <div class="version">
-                beta
+                1.0
               </div>
             
           
@@ -421,8 +421,8 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~/krs_ws  <span class="c1"># head to your KRS workspace</span>
 
 <span class="c1"># prepare the environment</span>
-$ <span class="nb">source</span> /tools/Xilinx/Vitis/2021.2/settings64.sh  <span class="c1"># source Xilinx tools</span>
-$ <span class="nb">source</span> /opt/ros/rolling/setup.bash  <span class="c1"># Sources system ROS 2 installation</span>
+$ <span class="nb">source</span> /tools/Xilinx/Vitis/2022.1/settings64.sh  <span class="c1"># source Xilinx tools</span>
+$ <span class="nb">source</span> /opt/ros/humble/setup.bash  <span class="c1"># Sources system ROS 2 installation</span>
 $ <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/bin&quot;</span>:<span class="nv">$PATH</span>  <span class="c1"># FIXME: adjust path for CMake 3.5+</span>
 
 <span class="c1"># build the workspace to deploy KRS components</span>
@@ -561,13 +561,13 @@ $ scp -r install-kv260/* petalinux@192.168.1.86:/ros2_ws/
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Launch Gazebo simulator in your workstation</span>
 <span class="c1">#  requires Gazebo installed and GUI-capabilities</span>
 $ <span class="nb">cd</span> ~/krs_ws  <span class="c1"># head to your KRS workspace</span>
-$ <span class="nb">source</span> /opt/ros/rolling/setup.bash  <span class="c1"># Sources system ROS 2 installation</span>
+$ <span class="nb">source</span> /opt/ros/humble/setup.bash  <span class="c1"># Sources system ROS 2 installation</span>
 $ colcon build --merge-install  <span class="c1"># build the workspace to deploy KRS components</span>
 $ <span class="nb">source</span> install/setup.bash  <span class="c1"># source the workspace as an overlay</span>
 $ ros2 launch perception_2nodes simulation.launch.py
 
 <span class="c1"># Launch the graph in the KV260 CPU (should be connected to the same local network)</span>
-$ <span class="nb">source</span> /opt/ros/rolling/setup.bash
+$ <span class="nb">source</span> /opt/ros/humble/setup.bash
 $ ros2 launch perception_2nodes trace_rectify_resize.launch.py
 </pre></div>
 </div>
@@ -609,7 +609,7 @@ $ ros2 launch perception_2nodes trace_rectify_resize.launch.py
 </tbody>
 </table><p>To launch the perception graph with FPGA offloading using the Vitis Vision Library:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Launch the graph in the KV260 CPU (should be connected to the same local network as the workstation)</span>
-$ <span class="nb">source</span> /opt/ros/rolling/setup.bash  <span class="c1"># enable ROS 2 overlays</span>
+$ <span class="nb">source</span> /opt/ros/humble/setup.bash  <span class="c1"># enable ROS 2 overlays</span>
 $ ros2 acceleration <span class="k">select</span> image_proc  <span class="c1"># select and load the accelerator</span>
 $ ros2 launch perception_2nodes trace_rectify_resize_fpga.launch.py  <span class="c1"># launch Nodes</span>
 </pre></div>
@@ -688,14 +688,14 @@ $ ros2 launch perception_2nodes trace_rectify_resize_fpga.launch.py  <span class
 </tbody>
 </table><p>To launch the <em>integrated</em> and <em>streamlined</em> approaches:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># integrated</span>
-$ <span class="nb">source</span> /opt/ros/rolling/setup.bash  <span class="c1"># enable ROS 2 overlays</span>
+$ <span class="nb">source</span> /opt/ros/humble/setup.bash  <span class="c1"># enable ROS 2 overlays</span>
 $ ros2 acceleration <span class="k">select</span> image_proc_integrated  <span class="c1"># select and load the accelerator</span>
 $ ros2 launch perception_2nodes trace_rectify_resize_fpga_integrated.launch.py  <span class="c1"># launch Nodes</span>
 </pre></div>
 </div>
 <p><img alt="../../_images/perception_graph_integrated.gif" src="../../_images/perception_graph_integrated.gif" /></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># streamlined</span>
-$ <span class="nb">source</span> /opt/ros/rolling/setup.bash  <span class="c1"># enable ROS 2 overlays</span>
+$ <span class="nb">source</span> /opt/ros/humble/setup.bash  <span class="c1"># enable ROS 2 overlays</span>
 $ ros2 acceleration <span class="k">select</span> image_proc_streamlined  <span class="c1"># select and load the accelerator</span>
 $ ros2 launch perception_2nodes trace_rectify_resize_fpga_streamlined.launch.py  <span class="c1"># launch Nodes</span>
 </pre></div>
@@ -789,7 +789,7 @@ $ ros2 launch perception_2nodes trace_rectify_resize_fpga_streamlined.launch.py 
   <div role="contentinfo" class="copyright">
     <p class="footerinfo">
       <span class="lastupdated">
-        Last updated on February 17, 2022.
+        Last updated on June 27, 2022.
       </span>
 
     </p>

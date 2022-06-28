@@ -224,7 +224,7 @@
             
             
               <div class="version">
-                beta
+                1.0
               </div>
             
           
@@ -399,8 +399,8 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~/krs_ws  <span class="c1"># head to your KRS workspace</span>
 
 <span class="c1"># prepare the environment</span>
-$ <span class="nb">source</span> /tools/Xilinx/Vitis/2021.2/settings64.sh  <span class="c1"># source Xilinx tools</span>
-$ <span class="nb">source</span> /opt/ros/rolling/setup.bash  <span class="c1"># Sources system ROS 2 installation</span>
+$ <span class="nb">source</span> /tools/Xilinx/Vitis/2022.1/settings64.sh  <span class="c1"># source Xilinx tools</span>
+$ <span class="nb">source</span> /opt/ros/humble/setup.bash  <span class="c1"># Sources system ROS 2 installation</span>
 $ <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/bin&quot;</span>:<span class="nv">$PATH</span>  <span class="c1"># FIXME: adjust path for CMake 3.5+</span>
 
 <span class="c1"># build the workspace</span>
@@ -522,7 +522,7 @@ $ ros2 run publisher_xilinx member_function_publisher  <span class="c1"># launch
 <h2>Launch <code class="docutils literal notranslate"><span class="pre">hello_xilinx</span></code> example in an emulated KV260<a class="headerlink" href="#launch-hello-xilinx-example-in-an-emulated-kv260" title="Permalink to this headline">¶</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>There’s no support for emulation (sw_emu or hw_emu) targets in KRS beta release.</p>
+<p>There’s no support for emulation (sw_emu or hw_emu) targets in KRS <cite>beta`or `1.0</cite> releases, refer to <cite>alpha</cite>.</p>
 </div>
 <p>First, let’s select the firmware for the target hardware, <a class="reference external" href="https://www.xilinx.com/products/som/kria/kv260-vision-starter-kit.html"><code class="docutils literal notranslate"><span class="pre">KV260</span></code></a>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ colcon acceleration <span class="k">select</span> kv260
@@ -778,7 +778,7 @@ $ ros2 run publisher_xilinx member_function_publisher  <span class="c1"># launch
   <div role="contentinfo" class="copyright">
     <p class="footerinfo">
       <span class="lastupdated">
-        Last updated on February 17, 2022.
+        Last updated on June 27, 2022.
       </span>
 
     </p>

@@ -224,7 +224,7 @@
             
             
               <div class="version">
-                beta
+                1.0
               </div>
             
           
@@ -505,7 +505,7 @@ xilinx-k26-starterkit-2020_2 login:
 <div class="section" id="how-do-i-configure-the-kv260-to-jtag-boot-mode">
 <h3>How do I configure the KV260 to JTAG boot mode?<a class="headerlink" href="#how-do-i-configure-the-kv260-to-jtag-boot-mode" title="Permalink to this headline">¶</a></h3>
 <p>The easiest way to do so is through a Tcl script and the Xilinx Software Commandline Tool (<code class="docutils literal notranslate"><span class="pre">xsct</span></code>). Connect the board to the computer via its USB/UART/JTAG FTDI adapter and power it on:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> /tools/Xilinx/Vitis/2021.2/settings64.sh  <span class="c1"># path might be different in your machine</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> /tools/Xilinx/Vitis/2022.1/settings64.sh  <span class="c1"># path might be different in your machine</span>
 cat <span class="s">&lt;&lt; &#39;EOF&#39; &gt; som_bootmode.tcl</span>
 
 <span class="s">proc boot_jtag { } {</span>
@@ -1991,7 +1991,7 @@ The part listed in datasheets is sometimes different from the one that can be us
   <div role="contentinfo" class="copyright">
     <p class="footerinfo">
       <span class="lastupdated">
-        Last updated on February 17, 2022.
+        Last updated on June 27, 2022.
       </span>
 
     </p>
