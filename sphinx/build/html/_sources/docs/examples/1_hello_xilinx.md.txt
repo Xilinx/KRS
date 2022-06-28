@@ -21,8 +21,8 @@ This example lets you experience KRS further, walking you through the process of
 $ cd ~/krs_ws  # head to your KRS workspace
 
 # prepare the environment
-$ source /tools/Xilinx/Vitis/2021.2/settings64.sh  # source Xilinx tools
-$ source /opt/ros/rolling/setup.bash  # Sources system ROS 2 installation
+$ source /tools/Xilinx/Vitis/2022.1/settings64.sh  # source Xilinx tools
+$ source /opt/ros/humble/setup.bash  # Sources system ROS 2 installation
 $ export PATH="/usr/bin":$PATH  # FIXME: adjust path for CMake 3.5+
 
 # build the workspace
@@ -160,7 +160,7 @@ $ ros2 run publisher_xilinx member_function_publisher  # launch the hello_xilinx
 ```eval_rst
 
 .. warning::
-    There's no support for emulation (sw_emu or hw_emu) targets in KRS beta release.
+    There's no support for emulation (sw_emu or hw_emu) targets in KRS `beta`or `1.0` releases, refer to `alpha`.
 ```
 
 

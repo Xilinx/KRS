@@ -22,9 +22,7 @@ It does so by tightly integrating itself with ROS (lingua franca amongst robotic
 
 .. admonition:: Beta Release
     
-    KRS is on **beta** release. Correspondingly, the documentation provided here is not intended for production environments and should be used only for evaluation purposes.
-
-    *Stay tuned for upcoming official releases*.
+    KRS is on **beta** release documentation is available at https://github.com/vmayoral/KRS/tree/beta.
 ```
 
 ![](imgs/krs.svg)

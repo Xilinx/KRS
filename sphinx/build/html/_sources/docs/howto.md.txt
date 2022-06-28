@@ -68,7 +68,7 @@ xilinx-k26-starterkit-2020_2 login:
 The easiest way to do so is through a Tcl script and the Xilinx Software Commandline Tool (`xsct`). Connect the board to the computer via its USB/UART/JTAG FTDI adapter and power it on:
 
 ```bash
-source /tools/Xilinx/Vitis/2021.2/settings64.sh  # path might be different in your machine
+source /tools/Xilinx/Vitis/2022.1/settings64.sh  # path might be different in your machine
 cat << 'EOF' > som_bootmode.tcl
 
 proc boot_jtag { } {
