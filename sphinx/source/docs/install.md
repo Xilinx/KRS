@@ -423,23 +423,53 @@ colcon build --merge-install  # about 20 mins in an AMD Ryzen 5 PRO 4650G,
 # NOTE: assumes to be executed from the root of the ROS 2 overlay workspace
 # (e.g. ~/krs_ws/)
 ###################################################
-sudo mount --rbind --make-rslave /dev ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/dev
-mkdir -p ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/ros2_ws/src; sudo mount --bind ~/krs_ws/src ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/ros2_ws/src
-sudo mount -t proc none ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/proc
-sudo mount -t sysfs none ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/sys
-sudo mount -t tmpfs none ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/tmp
-sudo mount -t tmpfs none ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/var/lib/apt
-sudo mount -t tmpfs none ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/var/cache/apt
-sudo mount -t tmpfs none ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/var/cache/apt
-sudo cp /etc/resolv.conf ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/etc/resolv.conf
+sudo mount --rbind --make-rslave /dev ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/dev
+mkdir -p ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/ros2_ws/src; sudo mount --bind ~/krs_ws/src ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/ros2_ws/src
+sudo mount -t proc none ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/proc
+sudo mount -t sysfs none ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/sys
+sudo mount -t tmpfs none ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/tmp
+sudo mount -t tmpfs none ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/var/lib/apt
+sudo mount -t tmpfs none ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/var/cache/apt
+sudo mount -t tmpfs none ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/var/cache/apt
+sudo cp /etc/resolv.conf ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/etc/resolv.conf
 
 # enter chroot
-sudo chroot ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/
+sudo chroot ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux
 
 ###################################################
 # 7. Build (in emulation) natively CPU binaries
 ###################################################
 source /opt/ros/humble/setup.bash  # Sources system ROS 2 installation.
+
+# add open robotics repo to .deb sources
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(source /etc/os-release && echo $UBUNTU_CODENAME) main" | tee /etc/apt/sources.list.d/ros2.list > /dev/null
+
+# install ROS build tools (colcon et al.)
+apt update && apt install -y \
+  build-essential \
+  cmake \
+  git \
+  python3-colcon-common-extensions \
+  python3-flake8 \
+  python3-flake8-blind-except \
+  python3-flake8-builtins \
+  python3-flake8-class-newline \
+  python3-flake8-comprehensions \
+  python3-flake8-deprecated \
+  python3-flake8-docstrings \
+  python3-flake8-import-order \
+  python3-flake8-quotes \
+  python3-pip \
+  python3-pytest \
+  python3-pytest-cov \
+  python3-pytest-repeat \
+  python3-pytest-rerunfailures \
+  python3-rosdep \
+  python3-setuptools \
+  python3-vcstool \
+  wget
+
+# build overlay workspace
 cd /ros2_ws; colcon build --merge-install
 
 ###################################################
@@ -454,17 +484,17 @@ ros2 run publisher_xilinx member_function_publisher
 exit  # inside of the emulation
 
 # back, in your development station
-sudo umount ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/proc
-sudo umount ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/sys
-sudo umount ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/tmp
-sudo umount ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/var/lib/apt
-sudo umount ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/dev/mqueue
-sudo umount ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/dev/hugepages
-sudo umount ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/dev/shm
-sudo umount ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/dev/pts
-sudo umount ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/dev
-sudo umount ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/ros2_ws/src
-sudo umount ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/var/cache/apt
+sudo umount ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/proc
+sudo umount ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/sys
+sudo umount ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/tmp
+sudo umount ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/var/lib/apt
+sudo umount ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/dev/mqueue
+sudo umount ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/dev/hugepages
+sudo umount ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/dev/shm
+sudo umount ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/dev/pts
+sudo umount ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/dev
+sudo umount ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/ros2_ws/src
+sudo umount ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/var/cache/apt
 
 ```
 
