@@ -12,6 +12,9 @@ repositories:
   firmware/acceleration_firmware_kv260:
     type: zip
     url: https://drive.google.com/file/d/1gzrGHB-J_fKNBmcGYhClXdWo6wGw8k43
+  firmware/acceleration_firmware_kr260:
+    type: zip
+    url: https://github.com/ros-acceleration/acceleration_firmware_kr260/releases/download/v1.0.0/acceleration_firmware_kr260.zip
 
   acceleration/adaptive_component:
     type: git

@@ -44,8 +44,6 @@ Below detail the installation and setup process of each one of the development p
 
 ```
 
-[![asciicast](https://asciinema.org/a/434953.svg)](https://asciinema.org/a/434953)
-
 <!--
 ###################################################
 # 3. Install KRS packages from the ROS buildfarm
@@ -143,7 +141,7 @@ vcs import src --recursive < krs_humble.repos  # about 3 mins in an AMD Ryzen 5 
 # 5. build the workspace and deploy firmware for hardware acceleration
 ###################################################
 source /tools/Xilinx/Vitis/2022.1/settings64.sh  # source Xilinx tools
-source /opt/ros/rolling/setup.bash  # Sources system ROS 2 installation.
+source /opt/ros/humble/setup.bash  # Sources system ROS 2 installation.
 
 # Note: The path above is valid if one installs ROS 2 from a pre-built debian
 # packages. If one builds ROS 2 from the source the directory might
@@ -163,3 +161,300 @@ Now's time to build and run some [examples](https://xilinx.github.io/KRS/sphinx/
 
 
 ## Ubuntu 22.04
+
+### Cross-compilation development
+
+Cross-compilation of ROS 2 workspaces allows to build both CPU binaries as well as accelerators thanks to KRS packages. This capabilities is demonstrated below for the KR260 using Ubuntu 22.04 OS:
+
+```shell
+###################################################
+# 0. install Vitis 2022.1 https://www.xilinx.com/support/download.html       
+#   and ROS 2 Rolling https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html
+#    we recommend the Desktop-Full flavour (ros-humble-desktop-full)
+###################################################
+
+###################################################
+# 1. install some dependencies you might be missing
+#
+# NOTE: gcc-multilib conflicts with Yocto/PetaLinux 2022.1 dependencies
+# so you can't have both paths simultaneously enabled in a single
+# development machine
+###################################################
+sudo apt-get -y install curl build-essential libssl-dev git wget \
+                          ocl-icd-* opencl-headers python3-vcstool \
+                          python3-colcon-common-extensions python3-colcon-mixin \
+                          kpartx u-boot-tools pv gcc-multilib
+
+###################################################
+# 2. create a new ROS 2 workspace with examples and
+#    firmware for KV260
+###################################################
+mkdir -p ~/krs_ws/src; cd ~/krs_ws
+
+###################################################
+# 3. Create file with KRS 1.0 additional repos
+###################################################
+cat << 'EOF' > krs_humble.repos
+repositories:  
+  perception/image_pipeline:
+    type: git
+    url: https://github.com/ros-acceleration/image_pipeline
+    version: ros2
+
+  tracing/tracetools_acceleration:
+    type: git
+    url: https://github.com/ros-acceleration/tracetools_acceleration
+    version: humble
+
+  firmware/acceleration_firmware_kr260:
+    type: zip
+    url: https://github.com/ros-acceleration/acceleration_firmware_kr260/releases/download/v1.0.0/acceleration_firmware_kr260.zip
+
+  acceleration/adaptive_component:
+    type: git
+    url: https://github.com/ros-acceleration/adaptive_component
+    version: humble
+  acceleration/ament_acceleration:
+    type: git
+    url: https://github.com/ros-acceleration/ament_acceleration
+    version: humble
+  acceleration/ament_vitis:
+    type: git
+    url: https://github.com/ros-acceleration/ament_vitis
+    version: humble
+  acceleration/colcon-hardware-acceleration:
+    type: git
+    url: https://github.com/colcon/colcon-hardware-acceleration
+    version: main
+  acceleration/ros2_kria:
+    type: git
+    url: https://github.com/ros-acceleration/ros2_kria
+    version: main
+  acceleration/ros2acceleration:
+    type: git
+    url: https://github.com/ros-acceleration/ros2acceleration
+    version: humble
+  acceleration/vitis_common:
+    type: git
+    url: https://github.com/ros-acceleration/vitis_common
+    version: humble
+  acceleration/acceleration_examples:
+    type: git
+    url: https://github.com/ros-acceleration/acceleration_examples
+    version: main
+EOF
+
+###################################################
+# 4. import repos of KRS beta release
+###################################################
+vcs import src --recursive < krs_humble.repos  # about 3 mins in an AMD Ryzen 5 PRO 4650G
+
+###################################################
+# 5. build the workspace and deploy firmware for hardware acceleration
+###################################################
+source /tools/Xilinx/Vitis/2022.1/settings64.sh  # source Xilinx tools
+source /opt/ros/humble/setup.bash  # Sources system ROS 2 installation.
+
+# Note: The path above is valid if one installs ROS 2 from a pre-built debian
+# packages. If one builds ROS 2 from the source the directory might
+# vary (e.g. ~/ros2_humble/ros2-linux).
+export PATH="/usr/bin":$PATH  # FIXME: adjust path for CMake 3.5+
+colcon build --merge-install  # about 18 mins in an AMD Ryzen 5 PRO 4650G
+
+###################################################
+# 6. source the overlay to enable all features
+###################################################
+source install/setup.bash
+
+
+###################################################
+# 7.A cross-compile and generate ONLY CPU binaries
+###################################################
+colcon build --build-base=build-kr260-ubuntu --install-base=install-kr260-ubuntu --merge-install --mixin kr260 --cmake-args -DNOKERNELS=true
+
+###################################################
+# 7.B cross-compile and generate CPU binaries and accelerators
+###################################################
+colcon build --build-base=build-kr260-ubuntu --install-base=install-kr260-ubuntu --merge-install --mixin kr260
+```
+
+Now that we've built binaries and accelerators, next's to run some of them in hardware. See [examples](https://xilinx.github.io/KRS/sphinx/build/html/docs/examples/0_ros2_publisher.html) but **note that Ubuntu 22.04 is targeting KR260 (and thereby the `--mixin kr260` should be used instead)**.
+
+### Native (on target) development
+
+```eval_rst
+.. warning:: No accelerators produced with native (on-target) compilation
+
+    **This path is helpful only for creating CPU binaries. It's not possible to create accelerators on target** (from within the KR/KV260 boards) because Vivado and Vitis tools have only x86 support and no aarch support is planned. Refer to the cross-compilation path for jointly creating binaries and accelerators.
+
+```
+
+Native CPU compilation (*on target*, in the KR260 or KV260) is pretty straightforward and can be performed by:
+
+1. Create an SD card with [Ubuntu 22.04 official image for KR260](https://ubuntu.com/download/amd-xilinx)
+2. Install ROS 2 Humble from .deb file inside KR260's Ubuntu 22.04 as indicated at https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html
+3. `scp` your ROS workspace into the embedded board and build it with colcon as if it was your development machine.
+
+Now that we've built binaries, next's to run them in hardware. See [examples](https://xilinx.github.io/KRS/sphinx/build/html/docs/examples/0_ros2_publisher.html).
+
+
+### QEMU (emulation) development
+
+```eval_rst
+.. warning:: No accelerators produced with native (on-target) compilation
+
+    **This path is helpful only for creating CPU binaries. It's not possible to create accelerators on QEMU** (from within emulated rootfs') because Vivado and Vitis tools have only x86 support and no aarch support is planned. Refer to the cross-compilation path for jointly creating binaries and accelerators.
+
+```
+
+CPU binaries can also be built (and tested) using hardware emulation through QEMU. In particular, the following provides a walkthrough on how to leverage Ubuntu 22.04 pre-built sysroot for KR260 to build the local development workspace:
+
+```shell
+###################################################
+# 0. install Vitis 2022.1 https://www.xilinx.com/support/download.html       
+#   and ROS 2 Rolling https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html
+#    we recommend the Desktop-Full flavour (ros-humble-desktop-full)
+###################################################
+
+###################################################
+# 1. install some dependencies you might be missing
+#
+# NOTE: gcc-multilib conflicts with Yocto/PetaLinux 2022.1 dependencies
+# so you can't have both paths simultaneously enabled in a single
+# development machine
+###################################################
+sudo apt-get -y install curl build-essential libssl-dev git wget \
+                          ocl-icd-* opencl-headers python3-vcstool \
+                          python3-colcon-common-extensions python3-colcon-mixin \
+                          kpartx u-boot-tools pv gcc-multilib
+
+###################################################
+# 2. create a new ROS 2 workspace with examples and
+#    firmware for KV260
+###################################################
+mkdir -p ~/krs_ws/src; cd ~/krs_ws
+
+###################################################
+# 3. Create file with KRS 1.0 additional repos
+###################################################
+cat << 'EOF' > krs_humble.repos
+repositories:  
+  perception/image_pipeline:
+    type: git
+    url: https://github.com/ros-acceleration/image_pipeline
+    version: ros2
+
+  tracing/tracetools_acceleration:
+    type: git
+    url: https://github.com/ros-acceleration/tracetools_acceleration
+    version: humble
+
+  firmware/acceleration_firmware_kr260:
+    type: zip
+    url: https://github.com/ros-acceleration/acceleration_firmware_kr260/releases/download/v1.0.0/acceleration_firmware_kr260.zip
+
+  acceleration/adaptive_component:
+    type: git
+    url: https://github.com/ros-acceleration/adaptive_component
+    version: humble
+  acceleration/ament_acceleration:
+    type: git
+    url: https://github.com/ros-acceleration/ament_acceleration
+    version: humble
+  acceleration/ament_vitis:
+    type: git
+    url: https://github.com/ros-acceleration/ament_vitis
+    version: humble
+  acceleration/colcon-hardware-acceleration:
+    type: git
+    url: https://github.com/colcon/colcon-hardware-acceleration
+    version: main
+  acceleration/ros2_kria:
+    type: git
+    url: https://github.com/ros-acceleration/ros2_kria
+    version: main
+  acceleration/ros2acceleration:
+    type: git
+    url: https://github.com/ros-acceleration/ros2acceleration
+    version: humble
+  acceleration/vitis_common:
+    type: git
+    url: https://github.com/ros-acceleration/vitis_common
+    version: humble
+  acceleration/acceleration_examples:
+    type: git
+    url: https://github.com/ros-acceleration/acceleration_examples
+    version: main
+EOF
+
+###################################################
+# 4. import repos of KRS beta release
+###################################################
+vcs import src --recursive < krs_humble.repos  # about 3 mins in an AMD Ryzen 5 PRO 4650G
+
+###################################################
+# 5. build the workspace and deploy firmware for hardware acceleration
+###################################################
+source /tools/Xilinx/Vitis/2022.1/settings64.sh  # source Xilinx tools
+source /opt/ros/humble/setup.bash  # Sources system ROS 2 installation.
+
+# Note: The path above is valid if one installs ROS 2 from a pre-built debian
+# packages. If one builds ROS 2 from the source the directory might
+# vary (e.g. ~/ros2_humble/ros2-linux).
+export PATH="/usr/bin":$PATH  # FIXME: adjust path for CMake 3.5+
+colcon build --merge-install  # about 20 mins in an AMD Ryzen 5 PRO 4650G,
+                              # mostly spent installing ROS 2 and deps. into
+                              # the sysroot
+
+###################################################
+# 6. Enter Ubuntu 22.04 jail while mounting ROS 2 overlay workspace sources for native builds
+#
+# NOTE: assumes to be executed from the root of the ROS 2 overlay workspace
+# (e.g. ~/krs_ws/)
+###################################################
+sudo mount --rbind --make-rslave /dev ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/dev
+mkdir -p ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/ros2_ws/src; sudo mount --bind ~/krs_ws/src ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/ros2_ws/src
+sudo mount -t proc none ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/proc
+sudo mount -t sysfs none ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/sys
+sudo mount -t tmpfs none ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/tmp
+sudo mount -t tmpfs none ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/var/lib/apt
+sudo mount -t tmpfs none ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/var/cache/apt
+sudo mount -t tmpfs none ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/var/cache/apt
+sudo cp /etc/resolv.conf ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/etc/resolv.conf
+
+# enter chroot
+sudo chroot ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/
+
+###################################################
+# 7. Build (in emulation) natively CPU binaries
+###################################################
+source /opt/ros/humble/setup.bash  # Sources system ROS 2 installation.
+cd /ros2_ws; colcon build --merge-install
+
+###################################################
+# 8. Run one of the packages
+###################################################
+source /ros2_ws/local_setup.bash
+ros2 run publisher_xilinx member_function_publisher
+
+###################################################
+# 8. Exit chroot and unmount things
+###################################################
+exit  # inside of the emulation
+
+# back, in your development station
+sudo umount ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/proc
+sudo umount ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/sys
+sudo umount ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/tmp
+sudo umount ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/var/lib/apt
+sudo umount ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/dev/mqueue
+sudo umount ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/dev/hugepages
+sudo umount ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/dev/shm
+sudo umount ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/dev/pts
+sudo umount ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/dev
+sudo umount ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/ros2_ws/src
+sudo umount ~/krs_ws/acceleration/firmware/kr260/aarch64-xilinx-linux/var/cache/apt
+
+```
+
+Now that we've built binaries, next's to run them in hardware. See [examples](https://xilinx.github.io/KRS/sphinx/build/html/docs/examples/0_ros2_publisher.html).
