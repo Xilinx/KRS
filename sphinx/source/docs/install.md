@@ -402,6 +402,17 @@ source /opt/ros/humble/setup.bash  # Sources system ROS 2 installation.
 # packages. If one builds ROS 2 from the source the directory might
 # vary (e.g. ~/ros2_humble/ros2-linux).
 export PATH="/usr/bin":$PATH  # FIXME: adjust path for CMake 3.5+
+```
+
+```eval_rst
+.. warning:: 
+
+    Next step is going to ask for the *sudo password*, make sure to enter it appropriately, otherwise the build
+    will go on indefinitely.
+```
+
+
+```shell
 colcon build --merge-install  # about 20 mins in an AMD Ryzen 5 PRO 4650G,
                               # mostly spent installing ROS 2 and deps. into
                               # the sysroot
