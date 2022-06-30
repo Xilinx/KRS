@@ -96,7 +96,7 @@ repositories:
 
   firmware/acceleration_firmware_kv260:
     type: zip
-    url: https://drive.google.com/file/d/1gzrGHB-J_fKNBmcGYhClXdWo6wGw8k43
+    url: https://www.xilinx.com/bin/public/openDownload?filename=acceleration_firmware_kv260.zip
 
   acceleration/adaptive_component:
     type: git
