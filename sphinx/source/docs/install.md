@@ -175,10 +175,6 @@ Cross-compilation of ROS 2 workspaces allows to build both CPU binaries as well 
 
 ###################################################
 # 1. install some dependencies you might be missing
-#
-# NOTE: gcc-multilib conflicts with Yocto/PetaLinux 2022.1 dependencies
-# so you can't have both paths simultaneously enabled in a single
-# development machine
 ###################################################
 sudo apt-get -y install curl build-essential libssl-dev git wget \
                           ocl-icd-* opencl-headers python3-vcstool \
