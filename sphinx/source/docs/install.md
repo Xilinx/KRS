@@ -179,7 +179,9 @@ Cross-compilation of ROS 2 workspaces allows to build both CPU binaries as well 
 sudo apt-get -y install curl build-essential libssl-dev git wget \
                           ocl-icd-* opencl-headers python3-vcstool \
                           python3-colcon-common-extensions python3-colcon-mixin \
-                          kpartx u-boot-tools pv gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+                          kpartx u-boot-tools pv gcc-aarch64-linux-gnu g++-aarch64-linux-gnu \
+                          ros-humble-camera-info-manager ros-humble-camera-info-manager-dbgsym \ 
+                          qemu-user-static
 
 ###################################################
 # 2. create a new ROS 2 workspace with examples and
