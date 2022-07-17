@@ -299,7 +299,7 @@ source install/setup.bash
 #   firmware ROS package (acceleration_firmware_kr260)
 ###################################################
 # fetch KV260 firmware
-cd <root-of-your-ROS-ws, e.g. ~/krs_ws>
+cd ~/krs_ws
 wget https://www.xilinx.com/bin/public/openDownload?filename=acceleration_firmware_kv260.zip -P src/firmware/acceleration_firmware_kv260
 unzip src/firmware/acceleration_firmware_kv260/openDownload\?filename\=acceleration_firmware_kv260.zip -d src/firmware/acceleration_firmware_kv260/
 
