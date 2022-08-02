@@ -450,6 +450,107 @@ The current solution for this issue is to discard the sd_card.img file and creat
     This might be related to the fact that p1 in the sd_card is filling and overloading p2.
 
 
+#### How do I resize a rootfs so that it occupies the whole SD card?
+
+```bash
+# Figure out which device we're targeting
+root@xilinx-k26-starterkit-2020_2:/# lsblk
+NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+...
+mtdblock15   31:15   0 29.7M  0 disk
+mmcblk0     179:0    0 14.9G  0 disk
+|-mmcblk0p1 179:1    0  538M  0 part /media/sd-mmcblk0p1
+`-mmcblk0p2 179:2    0    3G  0 part /media/sd-mmcblk0p2
+
+# Delete the existing partition and create a new one occupaying all the space
+root@xilinx-k26-starterkit-2020_2:/# fdisk /dev/mmcblk0
+
+Welcome to fdisk (util-linux 2.34).
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+
+Command (m for help): p
+Disk /dev/mmcblk0: 14.86 GiB, 15931539456 bytes, 31116288 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xda8f6bfa
+
+Device         Boot   Start     End Sectors  Size Id Type
+/dev/mmcblk0p1 *       2048 1103871 1101824  538M  c W95 FAT32 (LBA)
+/dev/mmcblk0p2      1103872 7419903 6316032    3G 83 Linux
+
+Command (m for help): d
+Partition number (1,2, default 2): 2
+
+Partition 2 has been deleted.
+
+Command (m for help): p
+Disk /dev/mmcblk0: 14.86 GiB, 15931539456 bytes, 31116288 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xda8f6bfa
+
+Device         Boot Start     End Sectors  Size Id Type
+/dev/mmcblk0p1 *     2048 1103871 1101824  538M  c W95 FAT32 (LBA)
+
+Command (m for help): n
+Partition type
+   p   primary (1 primary, 0 extended, 3 free)
+   e   extended (container for logical partitions)
+Select (default p): p
+Partition number (2-4, default 2): 2
+First sector (1103872-31116287, default 1103872):
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (1103872-31116287, default 31116287):
+
+Created a new partition 2 of type 'Linux' and of size 14.3 GiB.
+Partition #2 contains a ext4 signature.
+
+Do you want to remove the signature? [Y]es/[N]o: N
+
+Command (m for help): p
+
+Disk /dev/mmcblk0: 14.86 GiB, 15931539456 bytes, 31116288 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xda8f6bfa
+
+Device         Boot   Start      End  Sectors  Size Id Type
+/dev/mmcblk0p1 *       2048  1103871  1101824  538M  c W95 FAT32 (LBA)
+/dev/mmcblk0p2      1103872 31116287 30012416 14.3G 83 Linux
+
+Command (m for help): w
+The partition table has been altered.
+Syncing disks.
+
+# reboot, and then grow the file system
+reboot  # wait for the system to reboot
+root@xilinx-k26-starterkit-2020_2:~# resize2fs /dev/mmcblk0p2
+resize2fs 1.45.3 (14-Jul-2019)
+Filesystem at /dev/mmcblk0p2 is mounted on /; on-line resizing required
+old_desc_blocks = 1, new_desc_blocks = 2
+The filesystem on /dev/mmcblk0p2 is now 3751552 (4k) blocks long.
+
+# check the space
+root@xilinx-k26-starterkit-2020_2:~# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+devtmpfs        1.5G  4.0K  1.5G   1% /dev
+/dev/mmcblk0p2   15G  2.5G   11G  19% /
+tmpfs           2.0G  164K  2.0G   1% /run
+tmpfs           2.0G  212K  2.0G   1% /var/volatile
+/dev/mmcblk0p1  537M   46M  492M   9% /media/sd-mmcblk0p1
+```
+
+See [this link](https://elinux.org/RPi_Resize_Flash_Partitions) for more details.
+
+
+
 #### Extracting bitstream from xclbin file:
 
 ```bash
