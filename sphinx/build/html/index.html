@@ -6,7 +6,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 	<head>
 		<meta charset="utf-8">
-		
+		<meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 		<link rel="stylesheet" href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -56,6 +57,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
@@ -248,36 +250,36 @@
               
             
             
-              <p class="caption"><span class="caption-text">SOM</span></p>
+              <p class="caption" role="heading"><span class="caption-text">SOM</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/">Home</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/creating_applications/1.0/build/html/index.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/kria_som_ubuntu_support/build/html/index.html">Ubuntu Support</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/main/build/html/index.html">Vision AI Starter Kit Applications</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Introduction</span></p>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="docs/intro.html">Kria Robotics Stack (KRS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/install.html">Install KRS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/hardware.html">Hardware supported</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Features</span></p>
+<p class="caption" role="heading"><span class="caption-text">Features</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="docs/features/ros2centric.html">ROS 2-centric</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/features/realtime_ros2.html">Real-time ROS 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/features/accelerated_apps_ros2.html">ROS 2 Accelerated Apps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/features/contributing_ros2.html">Contributing back to ROS 2</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Examples</span></p>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="docs/examples/nodes.html">Accelerating ROS 2 Nodes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/examples/graphs.html">Accelerating ROS 2 Graphs</a></li>
 </ul>
-<p class="caption"><span class="caption-text">HowTo</span></p>
+<p class="caption" role="heading"><span class="caption-text">HowTo</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="docs/howto.html">HowTo and Troubleshooting</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Other</span></p>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="docs/other/definitions.html">Definitions</a></li>
 </ul>
@@ -351,13 +353,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="kria-robotics-stack-krs">
-<h1>Kria Robotics Stack (KRS)<a class="headerlink" href="#kria-robotics-stack-krs" title="Permalink to this headline">¶</a></h1>
-<div class="sidebar">
+  <section id="kria-robotics-stack-krs">
+<h1>Kria Robotics Stack (KRS)<a class="headerlink" href="#kria-robotics-stack-krs" title="Permalink to this heading">¶</a></h1>
+<aside class="sidebar">
 <p class="sidebar-title">Before you begin</p>
 <p>KRS builds on ROS 2.</p>
 <p>If you’re not familiar, before continuing, learn more about ROS 2 from its <a class="reference external" href="https://docs.ros.org/">official documentation</a>.</p>
-</div>
+</aside>
 <p>The <strong>Kria Robotics Stack (KRS)</strong> is a ROS 2 superset for industry, an integrated set of robot libraries and utilities to accelerate the development, maintenance and commercialization of industrial-grade robotic solutions while using <a class="reference external" href="https://www.xilinx.com/applications/adaptive-computing.html">adaptive computing</a>. KRS provides to ROS 2 users an easy and robust path to hardware acceleration. It allow ROS 2 roboticists to create custom secure compute architectures with higher productivity. KRS leverages Xilinx technology targeting the <a class="reference external" href="https://www.xilinx.com/products/som/kria.html">Kria SOM portfolio</a> to deliver low latency (real-fast), determinism (predictable), real-time (on-time), security and high throughput to robotics.</p>
 <p>It does so by tightly integrating itself with ROS (lingua franca amongst roboticists) and by leveraging a combination of modern C++ and High-Level Synthesis (HLS), together with reference development boards and design architectures roboticists can use to kick-start their projects. Altogether, KRS supports Kria SOMs with an accelerated path to production in robotics.</p>
 <div class="admonition-alpha-release admonition">
@@ -368,8 +370,8 @@
 <p class="admonition-title">Beta Release</p>
 <p>KRS is on <strong>beta</strong> release documentation is available at <a class="reference external" href="https://github.com/vmayoral/KRS/tree/beta">https://github.com/vmayoral/KRS/tree/beta</a>.</p>
 </div>
-<div class="figure align-default">
-<img alt="_images/krs.svg" src="_images/krs.svg" /></div>
+<figure class="align-default">
+<img alt="_images/krs.svg" src="_images/krs.svg" /></figure>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
@@ -382,7 +384,7 @@
 </div>
 <div class="toctree-wrapper compound">
 </div>
-</div>
+</section>
 
 
            </div>

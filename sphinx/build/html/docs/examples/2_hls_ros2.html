@@ -6,7 +6,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 	<head>
 		<meta charset="utf-8">
-		
+		<meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 		<link rel="stylesheet" href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -56,6 +57,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -249,27 +251,27 @@
               
             
             
-              <p class="caption"><span class="caption-text">SOM</span></p>
+              <p class="caption" role="heading"><span class="caption-text">SOM</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/">Home</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/creating_applications/1.0/build/html/index.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/kria_som_ubuntu_support/build/html/index.html">Ubuntu Support</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/main/build/html/index.html">Vision AI Starter Kit Applications</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Introduction</span></p>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Kria Robotics Stack (KRS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Install KRS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../hardware.html">Hardware supported</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Features</span></p>
+<p class="caption" role="heading"><span class="caption-text">Features</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../features/ros2centric.html">ROS 2-centric</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/realtime_ros2.html">Real-time ROS 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/accelerated_apps_ros2.html">ROS 2 Accelerated Apps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/contributing_ros2.html">Contributing back to ROS 2</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Examples</span></p>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="nodes.html">Accelerating ROS 2 Nodes</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="0_ros2_publisher.html">0. ROS 2 publisher</a></li>
@@ -291,11 +293,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="graphs.html">Accelerating ROS 2 Graphs</a></li>
 </ul>
-<p class="caption"><span class="caption-text">HowTo</span></p>
+<p class="caption" role="heading"><span class="caption-text">HowTo</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../howto.html">HowTo and Troubleshooting</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Other</span></p>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../other/definitions.html">Definitions</a></li>
 </ul>
@@ -371,8 +373,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="hls-in-ros-2">
-<h1>2. HLS in ROS 2<a class="headerlink" href="#hls-in-ros-2" title="Permalink to this headline">¶</a></h1>
+  <section id="hls-in-ros-2">
+<h1>2. HLS in ROS 2<a class="headerlink" href="#hls-in-ros-2" title="Permalink to this heading">¶</a></h1>
 <table border="1" class="docutils">
 <thead>
 <tr>
@@ -421,8 +423,8 @@
 <p class="admonition-title">Note</p>
 <p><a class="reference external" href="https://docs.ros.org/">Learn ROS 2</a> before trying this out first.</p>
 </div>
-<div class="section" id="prepare-the-environment-and-fetch-the-example">
-<h2>Prepare the environment and fetch the example<a class="headerlink" href="#prepare-the-environment-and-fetch-the-example" title="Permalink to this headline">¶</a></h2>
+<section id="prepare-the-environment-and-fetch-the-example">
+<h2>Prepare the environment and fetch the example<a class="headerlink" href="#prepare-the-environment-and-fetch-the-example" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~/krs_ws  <span class="c1"># head to your KRS workspace</span>
 
 <span class="c1"># prepare the environment</span>
@@ -437,9 +439,9 @@ $ colcon build --merge-install  <span class="c1"># about 2 mins</span>
 $ <span class="nb">source</span> install/setup.bash
 </pre></div>
 </div>
-</div>
-<div class="section" id="a-bit-of-background-on-hls-rtl-and-fpgas">
-<h2>A bit of background on HLS, RTL and FPGAs<a class="headerlink" href="#a-bit-of-background-on-hls-rtl-and-fpgas" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="a-bit-of-background-on-hls-rtl-and-fpgas">
+<h2>A bit of background on HLS, RTL and FPGAs<a class="headerlink" href="#a-bit-of-background-on-hls-rtl-and-fpgas" title="Permalink to this heading">¶</a></h2>
 <div class="admonition-about-c-simulation admonition">
 <p class="admonition-title">About C simulation</p>
 <p>HLS C Simulation performs a pre-synthesis validation and checks that that the C program correctly implements the required functionality. This allows you to compile, simulate, and debug the C/C++ algorithm. C simulation allows for the function to be synthesized (e.g. <cite>simple_adder</cite> above) to be validated with a test bench using C simulation. A C test bench includes a main() top-level function, that calls the function to be synthesized by the Vitis HLS project. The test bench can also include other functions.</p>
@@ -472,9 +474,9 @@ $ <span class="nb">source</span> install/setup.bash
 <li><p><strong>URAM</strong>: UltraRAM is a large, lightweight memory block intended to allow the replacement of off-board memories enabling better overall performance.</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="simple-adder1-a-quick-look-into-the-flow">
-<h2><code class="docutils literal notranslate"><span class="pre">simple_adder1</span></code>: a quick look into the flow<a class="headerlink" href="#simple-adder1-a-quick-look-into-the-flow" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="simple-adder1-a-quick-look-into-the-flow">
+<h2><code class="docutils literal notranslate"><span class="pre">simple_adder1</span></code>: a quick look into the flow<a class="headerlink" href="#simple-adder1-a-quick-look-into-the-flow" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/simple_adder/src/adder1.cpp"><code class="docutils literal notranslate"><span class="pre">simple_adder</span></code></a> is pretty straightforward:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">simple_adder</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">;</span><span class="w"></span>
@@ -853,8 +855,8 @@ Executing /home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder1.tcl
 <li><p>Besides the additional cycles required for the sole computation, the PS deals with tons of complex aspects that may very easily interrupt the computation, produce a switch of context and get back to the computation of <code class="docutils literal notranslate"><span class="pre">simple_adder</span></code> afterwards. Even in a somewhat ideal scenario, with a soft/firm real-time operating system running on the PS, the kernel can incur on delays of several tenths of microseconds.</p></li>
 <li><p>FPGAs offer a deterministic response which can be specially exploited when relying onits resources, e.g. while driving I/O directly. In adaptive SoCs, interfacing the Processing System (PS, the CPU), with the Programmable Logic (PL, the FPGA) has a time/cycle cost which should be considered. If the output of the function/kernel is to return to the PS,  one should account for the complexity of such function/kernel. In very simple examples like the <code class="docutils literal notranslate"><span class="pre">simple_adder</span></code> above, this cost of interfacing PS-PL is generally much bigger than the optimizations one could get and the determinism is essentially degraded due to the involvement of the CPU.</p></li>
 </ol>
-<div class="section" id="using-the-vitis-hls-gui">
-<h3>Using the Vitis HLS GUI<a class="headerlink" href="#using-the-vitis-hls-gui" title="Permalink to this headline">¶</a></h3>
+<section id="using-the-vitis-hls-gui">
+<h3>Using the Vitis HLS GUI<a class="headerlink" href="#using-the-vitis-hls-gui" title="Permalink to this heading">¶</a></h3>
 <p>The project files generated by ROS 2 CLI tools can also be opened with <code class="docutils literal notranslate"><span class="pre">vitis_hls</span></code> GUI by pointing to the new project folder created. Within the Vitis HLS GUI, the various reports generated can be inspected graphically:</p>
 <style>
 table th:first-of-type {
@@ -895,10 +897,10 @@ table th:nth-of-type(2) {
 </tbody>
 </table><p>The data that we just inspected through Vitis HLS GUI is available in reports which can be parsed and exposed in a CLI interface. KRS does exactly this. KRS provides a series of CLI verbs and subverbs that allow to fetch this information directly from the CLI allowing ROS developers to create their own development flows.</p>
 <p>Let’s now complicate a bit more the <code class="docutils literal notranslate"><span class="pre">simple_adder</span></code> function and see how faster clocks aren’t alwasy better. Specially, we show how FPGAs can be optimized to fit operations in less cycles delivering lower latencies.</p>
-</div>
-</div>
-<div class="section" id="simple-adder2-optimizing-fpga-synthesis-for-lower-latency-responses">
-<h2><code class="docutils literal notranslate"><span class="pre">simple_adder2</span></code>: optimizing FPGA synthesis for lower latency responses<a class="headerlink" href="#simple-adder2-optimizing-fpga-synthesis-for-lower-latency-responses" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="simple-adder2-optimizing-fpga-synthesis-for-lower-latency-responses">
+<h2><code class="docutils literal notranslate"><span class="pre">simple_adder2</span></code>: optimizing FPGA synthesis for lower latency responses<a class="headerlink" href="#simple-adder2-optimizing-fpga-synthesis-for-lower-latency-responses" title="Permalink to this heading">¶</a></h2>
 <p>The source code of <code class="docutils literal notranslate"><span class="pre">simple_adder2</span></code> will now be the following:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">simple_adder</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">;</span><span class="w"></span>
@@ -1119,26 +1121,26 @@ solution_4ns	<span class="m">4</span>.00	<span class="m">2</span>.016		<span cla
   margin-bottom: 0px;
 }
 
-</style><div class="figure align-default">
+</style><figure class="align-default">
 <a class="reference internal image-reference" href="../../_images/1.png"><img alt="../../_images/1.png" src="../../_images/1.png" style="height: 0px;" /></a>
-</div>
-<div class="figure align-default">
+</figure>
+<figure class="align-default">
 <a class="reference internal image-reference" href="../../_images/2.png"><img alt="../../_images/2.png" src="../../_images/2.png" style="height: 0px;" /></a>
-</div>
-<div class="figure align-default">
+</figure>
+<figure class="align-default">
 <a class="reference internal image-reference" href="../../_images/3.png"><img alt="../../_images/3.png" src="../../_images/3.png" style="height: 0px;" /></a>
-</div>
-<div class="figure align-default">
+</figure>
+<figure class="align-default">
 <a class="reference internal image-reference" href="../../_images/4.png"><img alt="../../_images/4.png" src="../../_images/4.png" style="height: 0px;" /></a>
-</div>
-<div class="figure align-default">
+</figure>
+<figure class="align-default">
 <a class="reference internal image-reference" href="../../_images/5.png"><img alt="../../_images/5.png" src="../../_images/5.png" style="height: 0px;" /></a>
-</div>
-<div class="figure align-default">
+</figure>
+<figure class="align-default">
 <a class="reference internal image-reference" href="../../_images/6.png"><img alt="../../_images/6.png" src="../../_images/6.png" style="height: 0px;" /></a>
-</div>
-</div>
-</div>
+</figure>
+</section>
+</section>
 
 
            </div>

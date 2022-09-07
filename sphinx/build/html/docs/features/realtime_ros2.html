@@ -6,7 +6,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 	<head>
 		<meta charset="utf-8">
-		
+		<meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 		<link rel="stylesheet" href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -56,6 +57,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -249,36 +251,36 @@
               
             
             
-              <p class="caption"><span class="caption-text">SOM</span></p>
+              <p class="caption" role="heading"><span class="caption-text">SOM</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/">Home</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/creating_applications/1.0/build/html/index.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/kria_som_ubuntu_support/build/html/index.html">Ubuntu Support</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/main/build/html/index.html">Vision AI Starter Kit Applications</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Introduction</span></p>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Kria Robotics Stack (KRS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Install KRS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../hardware.html">Hardware supported</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Features</span></p>
+<p class="caption" role="heading"><span class="caption-text">Features</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="ros2centric.html">ROS 2-centric</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Real-time ROS 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="accelerated_apps_ros2.html">ROS 2 Accelerated Apps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing_ros2.html">Contributing back to ROS 2</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Examples</span></p>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../examples/nodes.html">Accelerating ROS 2 Nodes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/graphs.html">Accelerating ROS 2 Graphs</a></li>
 </ul>
-<p class="caption"><span class="caption-text">HowTo</span></p>
+<p class="caption" role="heading"><span class="caption-text">HowTo</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../howto.html">HowTo and Troubleshooting</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Other</span></p>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../other/definitions.html">Definitions</a></li>
 </ul>
@@ -352,10 +354,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="real-time-ros-2">
-<h1>Real-time ROS 2<a class="headerlink" href="#real-time-ros-2" title="Permalink to this headline">¶</a></h1>
+  <section id="real-time-ros-2">
+<h1>Real-time ROS 2<a class="headerlink" href="#real-time-ros-2" title="Permalink to this heading">¶</a></h1>
 <p><img alt="../../_images/realtime.png" src="../../_images/realtime.png" /></p>
-<p>Real-time is an end-to-end characteristic of a robotic system. A ROS 2 application running in a scalar processor (i.e. a CPU) suffers from different sources of indeterminism. The picture above depicts these across the OSI stack. For a robot to respond in a deterministic manner while exchanging information inter-process, intra-process or intra-network while using ROS 2, all layers involved across the OSI stack must respond deterministically. It’s not possible to guarantee real-time in ROS 2 unless all overlayers <a class="footnote-reference brackets" href="#id4" id="id1">1</a>  (not to be mistaken with overlays workspaces <a class="footnote-reference brackets" href="#id6" id="id2">3</a> ) and underlayers <a class="footnote-reference brackets" href="#id5" id="id3">2</a> are equally time bounded. Correspondingly, <strong>for a real-time ROS 2 interaction, all of its layers must also be real-time</strong>. In the case of ROS 2 running in CPUs, for each one of these levels, the sources of indeterminism need to be addressed.</p>
+<p>Real-time is an end-to-end characteristic of a robotic system. A ROS 2 application running in a scalar processor (i.e. a CPU) suffers from different sources of indeterminism. The picture above depicts these across the OSI stack. For a robot to respond in a deterministic manner while exchanging information inter-process, intra-process or intra-network while using ROS 2, all layers involved across the OSI stack must respond deterministically. It’s not possible to guarantee real-time in ROS 2 unless all overlayers <a class="footnote-reference brackets" href="#id4" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>  (not to be mistaken with overlays workspaces <a class="footnote-reference brackets" href="#id6" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> ) and underlayers <a class="footnote-reference brackets" href="#id5" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> are equally time bounded. Correspondingly, <strong>for a real-time ROS 2 interaction, all of its layers must also be real-time</strong>. In the case of ROS 2 running in CPUs, for each one of these levels, the sources of indeterminism need to be addressed.</p>
 <!-- Footnotes --><p>FPGAs allow to design robot circuitry that provides deterministic responses. It is possible to design hard real-time robotic systems relying solely on the FPGA, however, when interfacing with ROS 2 often running on the scalar processors (CPUs), the determinism is often compromised. The goal of KRS is to provide mechanisms to mitigate all these indeterminism issues in the scalar processors through a modular approach. Customers can then prioritize and use selected modules to remove the desired sources of indeterminism, adapting time mitigations to each use case.</p>
 <p>In general, solutions to real-time problems in CPUs fall into two big categories: a) setting the correct priority in the corresponding abstraction and b) applying Quality of Service (QoS) techniques. Each layer has its own QoS methods. In OSI Layer 2 we have the well-known QoS techniques specified in the existing IEEE 802.1Q standards, and new techniques such as the Time Sensitive Networking (TSN) standards. For the Linux Network Stack (OSI Layers 3 and 4), traffic control allows to configure QoS methods. Similarly, from the Linux kernel all the way up to the application libraries, each layer needs to be configured for bounded maximum latencies in order for the robotic system to deliver real-time capabilities. The sections below analyze briefly the indeterminism sources one by one and provide a short discussion around the solutions integrated within KRS:</p>
 <style>
@@ -409,18 +411,21 @@ table th:nth-of-type(2) {
 </tbody>
 </table><p>In addition to mitigations for these problems, KRS also packs capabilities to facilitate creating systems for mixed criticality. The following figure shows two examples of how KRS extends <code class="docutils literal notranslate"><span class="pre">colcon</span></code> (through <code class="docutils literal notranslate"><span class="pre">colcon_acceleration</span></code>) to easily ❶ select a fully preemptible Linux kernel and ❷ a mixed critical setup in the same SoC involving the Xen hypervisor with three Virtual Machines (VMs).</p>
 <p><img alt="../../_images/mixedcriticality.png" src="../../_images/mixedcriticality.png" /></p>
-<dl class="footnote brackets">
-<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>ROS 2 overlayers refer to any ROS 2 package built on top of the ROS 2 core layers (rcl, rmw, and the corresponding communication middleware implementation adapters). Examples of ROS 2 overlayers include the navigation stack packages, the manipulation stack, the perception stack and similarly, any of the packages within the ROS 2 <a class="reference external" href="https://github.com/ros2/examples/">examples</a> meta-package.</p>
-</dd>
-<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
-<dd><p>ROS 2 underlayers refer to any ROS 2 package built below the ROS 2 core layers (rcl, rmw, and the corresponding communication middleware implementation adapters). The communication middleware implementation (e.g. DDS) is also considered part of the ROS 2 underlayers. Examples of ROS 2 underlayers include a DDS implementation, the networking stack, the Data Link Layer (e.g. Ethernet), etc.</p>
-</dd>
-<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id2">3</a></span></dt>
-<dd><p>A ROS 2 workspace is the folder inside which a series of ROS packages are developed and built. Keeping things in separate spaces helps development Workspaces in ROS 2 can be overlayed, in a waterfall-like mode. An overlay workspace allows to easily extend ROS 2 software across different spaces in a way that overlays can be built on top of another overlay, and any packages in a higher overlay will mask out packages in lower overlays. <em>Refer to</em> <a class="reference external" href="https://www.ros.org/reps/rep-0128.html/">REP-0128</a> <em>for more information about ROS workspaces and overlays. The concepts are framed for catkin and ROS, but equally applicable to colcon and ROS 2</em>.</p>
-</dd>
-</dl>
-</div>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id4" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>ROS 2 overlayers refer to any ROS 2 package built on top of the ROS 2 core layers (rcl, rmw, and the corresponding communication middleware implementation adapters). Examples of ROS 2 overlayers include the navigation stack packages, the manipulation stack, the perception stack and similarly, any of the packages within the ROS 2 <a class="reference external" href="https://github.com/ros2/examples/">examples</a> meta-package.</p>
+</aside>
+<aside class="footnote brackets" id="id5" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
+<p>ROS 2 underlayers refer to any ROS 2 package built below the ROS 2 core layers (rcl, rmw, and the corresponding communication middleware implementation adapters). The communication middleware implementation (e.g. DDS) is also considered part of the ROS 2 underlayers. Examples of ROS 2 underlayers include a DDS implementation, the networking stack, the Data Link Layer (e.g. Ethernet), etc.</p>
+</aside>
+<aside class="footnote brackets" id="id6" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">3</a><span class="fn-bracket">]</span></span>
+<p>A ROS 2 workspace is the folder inside which a series of ROS packages are developed and built. Keeping things in separate spaces helps development Workspaces in ROS 2 can be overlayed, in a waterfall-like mode. An overlay workspace allows to easily extend ROS 2 software across different spaces in a way that overlays can be built on top of another overlay, and any packages in a higher overlay will mask out packages in lower overlays. <em>Refer to</em> <a class="reference external" href="https://www.ros.org/reps/rep-0128.html/">REP-0128</a> <em>for more information about ROS workspaces and overlays. The concepts are framed for catkin and ROS, but equally applicable to colcon and ROS 2</em>.</p>
+</aside>
+</aside>
+</section>
 
 
            </div>

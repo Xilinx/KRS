@@ -6,7 +6,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 	<head>
 		<meta charset="utf-8">
-		
+		<meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 		<link rel="stylesheet" href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -56,6 +57,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -249,27 +251,27 @@
               
             
             
-              <p class="caption"><span class="caption-text">SOM</span></p>
+              <p class="caption" role="heading"><span class="caption-text">SOM</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/">Home</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/creating_applications/1.0/build/html/index.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/kria_som_ubuntu_support/build/html/index.html">Ubuntu Support</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/main/build/html/index.html">Vision AI Starter Kit Applications</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Introduction</span></p>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Kria Robotics Stack (KRS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Install KRS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../hardware.html">Hardware supported</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Features</span></p>
+<p class="caption" role="heading"><span class="caption-text">Features</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../features/ros2centric.html">ROS 2-centric</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/realtime_ros2.html">Real-time ROS 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/accelerated_apps_ros2.html">ROS 2 Accelerated Apps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/contributing_ros2.html">Contributing back to ROS 2</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Examples</span></p>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="nodes.html">Accelerating ROS 2 Nodes</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="0_ros2_publisher.html">0. ROS 2 publisher</a></li>
@@ -285,11 +287,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="graphs.html">Accelerating ROS 2 Graphs</a></li>
 </ul>
-<p class="caption"><span class="caption-text">HowTo</span></p>
+<p class="caption" role="heading"><span class="caption-text">HowTo</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../howto.html">HowTo and Troubleshooting</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Other</span></p>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../other/definitions.html">Definitions</a></li>
 </ul>
@@ -365,8 +367,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="accelerated-ros-2-publisher">
-<h1>4. Accelerated ROS 2 publisher<a class="headerlink" href="#accelerated-ros-2-publisher" title="Permalink to this headline">¶</a></h1>
+  <section id="accelerated-ros-2-publisher">
+<h1>4. Accelerated ROS 2 publisher<a class="headerlink" href="#accelerated-ros-2-publisher" title="Permalink to this heading">¶</a></h1>
 <table border="1" class="docutils">
 <thead>
 <tr>
@@ -388,14 +390,14 @@
 <td><a href="https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/accelerated_doublevadd_publisher/src/accelerated_doublevadd_publisher.cpp"><code>accelerated_doublevadd_publisher.cpp</code></a></td>
 </tr>
 </tbody>
-</table><div class="sidebar">
+</table><aside class="sidebar">
 <p class="sidebar-title">Before you begin</p>
 <p>This example builds on top of two prior ones:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="3_offloading_ros2_publisher.html">3. Offloading ROS 2 publisher - offloaded_doublevadd_publisher</a>, which offloads the <cite>vadd</cite> operation to the FPGA and leads to a deterministic vadd operation, yet insuficient overall publishing rate of <code class="code docutils literal notranslate"><span class="pre">1.935</span> <span class="pre">Hz</span></code>.</p></li>
 <li><p><a class="reference external" href="0_ros2_publisher.html">0. ROS 2 publisher - doublevadd_publisher</a>, which runs completely on the scalar quad-core Cortex-A53 Application Processing Units (APUs) of the KV260 and is only able to publish at <code class="code docutils literal notranslate"><span class="pre">2.2</span> <span class="pre">Hz</span></code>.</p></li>
 </ul>
-</div>
+</aside>
 <p>This example leverages KRS to offload and accelerate the <code class="docutils literal notranslate"><span class="pre">vadd</span></code> function operations to the FPGA, showing how easy it is for ROS package maintainers to extend their packages, include hardware acceleration and create deterministic kernels. The objective is to publish the resulting vector at 10 Hz.</p>
 <p>This example upgrades the previous offloading operation at <a class="reference internal" href="3_offloading_ros2_publisher.html"><span class="doc">3. Offloading ROS 2 publishe - offloaded_doublevadd_publisher</span></a>, and includes an optimization for the dataflow. This allows the publisher to improve its publishing rate from 2 Hz, up to 6 Hz. For that, the HLS <code class="docutils literal notranslate"><span class="pre">INTERFACE</span></code> pragma is used. The HLS INTERFACE specifies how RTL ports are created from the function definition during interface synthesis. Sharing ports helps save FPGA resources by eliminating AXI interfaces, but it can limit the performance of the kernel because all the memory transfers have to go through a single port. The <code class="docutils literal notranslate"><span class="pre">m_axi</span></code> port has  independent READ and WRITE channels, so with a single m_axi port, we can do reads and writes simultaneously but since the kernel (<code class="docutils literal notranslate"><span class="pre">vadd</span></code>) has two vectors from where its reading (simultaneously), we can optimize the dataflows by simply asking for an extra AXI interface.</p>
 <p>After this dataflow optimization in the kernel, the <code class="docutils literal notranslate"><span class="pre">accelerated_doublevadd_publisher</span></code> ROS 2 package is able to publish at 6 Hz. <em>For a faster kernel that meets the 10 Hz goal, refer to <a class="reference internal" href="5_faster_ros2_publisher.html"><span class="doc">5. Faster ROS 2 publisher</span></a></em>.</p>
@@ -407,8 +409,8 @@
 <p class="admonition-title">Note</p>
 <p><a class="reference external" href="https://docs.ros.org/">Learn ROS 2</a> before trying this out first.</p>
 </div>
-<div class="section" id="accelerated-doublevadd-publisher">
-<h2><code class="docutils literal notranslate"><span class="pre">accelerated_doublevadd_publisher</span></code><a class="headerlink" href="#accelerated-doublevadd-publisher" title="Permalink to this headline">¶</a></h2>
+<section id="accelerated-doublevadd-publisher">
+<h2><code class="docutils literal notranslate"><span class="pre">accelerated_doublevadd_publisher</span></code><a class="headerlink" href="#accelerated-doublevadd-publisher" title="Permalink to this heading">¶</a></h2>
 <p>Let’s take a look at the kernel source code this time:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
 <span class="cm">        ____  ____</span>
@@ -456,7 +458,7 @@
 <p>Note the aforementioned <code class="docutils literal notranslate"><span class="pre">INTERFACE</span></code> pragma as the only relevant change introduced, which specifies how RTL ports are created from the function definition during interface synthesis.</p>
 <div class="admonition-short-explanation-of-the-hls-interface-pragma admonition">
 <p class="admonition-title">Short explanation of the <cite>HLS INTERFACE</cite> pragma</p>
-<p>The parameters of the software functions defined in a HLS design are synthesized into ports in the RTL code <a class="footnote-reference brackets" href="#id3" id="id1">1</a> that group multiple signals to encapsulate the communication protocol between the HLS design and things external to the design.  The <code class="code docutils literal notranslate"><span class="pre">HLS</span> <span class="pre">INTERFACE</span></code> specifies how RTL ports are created from the function definition during interface synthesis <a class="footnote-reference brackets" href="#id4" id="id2">2</a>. Sharing ports helps save FPGA resources by eliminating AXI interfaces, but it can limit the performance of the kernel because all the memory transfers have to go through a single port. The <code class="code docutils literal notranslate"><span class="pre">m_axi</span></code> port has independent READ and WRITE channels, so with a single <code class="code docutils literal notranslate"><span class="pre">m_axi</span></code> port, we can do reads and writes simultaneously but since we have two vectors from where we’re reading (simultaneously), we can optimize the dataflows by simply asking for an extra AXI interface.</p>
+<p>The parameters of the software functions defined in a HLS design are synthesized into ports in the RTL code <a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> that group multiple signals to encapsulate the communication protocol between the HLS design and things external to the design.  The <code class="code docutils literal notranslate"><span class="pre">HLS</span> <span class="pre">INTERFACE</span></code> specifies how RTL ports are created from the function definition during interface synthesis <a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. Sharing ports helps save FPGA resources by eliminating AXI interfaces, but it can limit the performance of the kernel because all the memory transfers have to go through a single port. The <code class="code docutils literal notranslate"><span class="pre">m_axi</span></code> port has independent READ and WRITE channels, so with a single <code class="code docutils literal notranslate"><span class="pre">m_axi</span></code> port, we can do reads and writes simultaneously but since we have two vectors from where we’re reading (simultaneously), we can optimize the dataflows by simply asking for an extra AXI interface.</p>
 <p>Note the bandwidth and throughput of the kernel can be increased by creating multiple  ports, using different bundle names, to connect multiple memory banks but this cames at the cost of resources in the PL fabric.</p>
 <p>To understand this better, it’s important to also understand that in RTL design, input and output operations must be performed through a port in the design interface and typically operate using a specific I/O (input-output) protocol. The implementation of a function-level protocol is indicated in <code class="code docutils literal notranslate"><span class="pre">&lt;mode&gt;</span></code> after the <code class="code docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">INTERFACE</span> <span class="pre">&lt;mode&gt;</span></code>. In this case, the pragma is using the <code class="code docutils literal notranslate"><span class="pre">m_axi</span></code> mode which corresponds with all ports as an AXI4 interface. The complete syntax of the pragma is as follows:</p>
 <p><code class="code docutils literal notranslate"><span class="pre">#pragma</span> <span class="pre">HLS</span> <span class="pre">interface</span> <span class="pre">&lt;mode&gt;</span> <span class="pre">port=&lt;name&gt;</span> <span class="pre">bundle=&lt;string&gt;</span></code></p>
@@ -575,16 +577,18 @@ average rate: <span class="m">6</span>.662
 </div>
 <p>The optimizations in the dataflow introduced in the kernel via the use of the HLS <code class="docutils literal notranslate"><span class="pre">INTERFACE</span></code> pragma lead to a <code class="docutils literal notranslate"><span class="pre">6.3</span> <span class="pre">Hz</span></code> publishing rate, which is about 3 times better than what was obtained before, but still insuficient to meet the <code class="docutils literal notranslate"><span class="pre">10</span> <span class="pre">Hz</span></code> goal.</p>
 <p>Next, in <a class="reference internal" href="5_faster_ros2_publisher.html"><span class="doc">5. Faster ROS 2 publisher</span></a>, we’ll review an even faster kernel that meets the 10 Hz publishing goal, by optimizing both the dataflow (as in this example) and exploiting <code class="docutils literal notranslate"><span class="pre">vadd</span></code> parallelism (via loop unrolling).</p>
-<!-- references --><dl class="footnote brackets">
-<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Managing Interface Synthesis. Retrieved from <a class="reference external" href="https://www.xilinx.com/html_docs/xilinx2020_2/vitis_doc/managing_interface_synthesis.html#jro1585107736856">https://www.xilinx.com/html_docs/xilinx2020_2/vitis_doc/managing_interface_synthesis.html#jro1585107736856</a></p>
-</dd>
-<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd><p>pragma HLS interface. Retrieved from <a class="reference external" href="https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/hls_pragmas.html#jit1504034365862">https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/hls_pragmas.html#jit1504034365862</a>.</p>
-</dd>
-</dl>
-</div>
-</div>
+<!-- references --><aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id3" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Managing Interface Synthesis. Retrieved from <a class="reference external" href="https://www.xilinx.com/html_docs/xilinx2020_2/vitis_doc/managing_interface_synthesis.html#jro1585107736856">https://www.xilinx.com/html_docs/xilinx2020_2/vitis_doc/managing_interface_synthesis.html#jro1585107736856</a></p>
+</aside>
+<aside class="footnote brackets" id="id4" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>pragma HLS interface. Retrieved from <a class="reference external" href="https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/hls_pragmas.html#jit1504034365862">https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/hls_pragmas.html#jit1504034365862</a>.</p>
+</aside>
+</aside>
+</section>
+</section>
 
 
            </div>

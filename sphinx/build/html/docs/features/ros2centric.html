@@ -6,7 +6,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 	<head>
 		<meta charset="utf-8">
-		
+		<meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 		<link rel="stylesheet" href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -56,6 +57,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -249,20 +251,20 @@
               
             
             
-              <p class="caption"><span class="caption-text">SOM</span></p>
+              <p class="caption" role="heading"><span class="caption-text">SOM</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/">Home</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/creating_applications/1.0/build/html/index.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/kria_som_ubuntu_support/build/html/index.html">Ubuntu Support</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/main/build/html/index.html">Vision AI Starter Kit Applications</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Introduction</span></p>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Kria Robotics Stack (KRS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Install KRS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../hardware.html">Hardware supported</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Features</span></p>
+<p class="caption" role="heading"><span class="caption-text">Features</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">ROS 2-centric</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#pillar-i-extensions-to-ament-build-system">Pillar I - Extensions to ament build system</a></li>
@@ -274,16 +276,16 @@
 <li class="toctree-l1"><a class="reference internal" href="accelerated_apps_ros2.html">ROS 2 Accelerated Apps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing_ros2.html">Contributing back to ROS 2</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Examples</span></p>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../examples/nodes.html">Accelerating ROS 2 Nodes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/graphs.html">Accelerating ROS 2 Graphs</a></li>
 </ul>
-<p class="caption"><span class="caption-text">HowTo</span></p>
+<p class="caption" role="heading"><span class="caption-text">HowTo</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../howto.html">HowTo and Troubleshooting</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Other</span></p>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../other/definitions.html">Definitions</a></li>
 </ul>
@@ -357,13 +359,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="ros-2-centric">
-<h1>ROS 2-centric<a class="headerlink" href="#ros-2-centric" title="Permalink to this headline">¶</a></h1>
+  <section id="ros-2-centric">
+<h1>ROS 2-centric<a class="headerlink" href="#ros-2-centric" title="Permalink to this heading">¶</a></h1>
 <p><em>ROS is to roboticists what Linux is to most computer scientists and software developers</em>. It helps roboticists build robot applications. With ROS 2, the capabilities to produce robot behaviours become production ready, with the potential to impact many industries. Opposed to reinventing the wheel with new robotics platforms that overload the space with replicas or forks of libraries and/or similar robotics simulators, Xilinx’s approach with KRS meets the ROS robotics community interests and builds on top of ROS 2, together with its tightly connected robotics simulator, <a class="reference external" href="http://gazebosim.org/">Gazebo</a>.</p>
 <p><img alt="../../_images/buildsystem.svg" src="../../_images/buildsystem.svg" /></p>
 <p>To connect Xilinx’s hardware acceleration technology with the ROS 2 world in a way that encourages package maintainers to benefit from it, Xilinx has created a series of extensions to the ROS 2 build system (<code class="docutils literal notranslate"><span class="pre">ament</span></code>) and meta build tools (<code class="docutils literal notranslate"><span class="pre">colcon</span></code>) that minimize the effort required from ROS 2 package maintainers. This architecture is based on three pillars.</p>
-<div class="section" id="pillar-i-extensions-to-ament-build-system">
-<h2>Pillar I - Extensions to ament build system<a class="headerlink" href="#pillar-i-extensions-to-ament-build-system" title="Permalink to this headline">¶</a></h2>
+<section id="pillar-i-extensions-to-ament-build-system">
+<h2>Pillar I - Extensions to ament build system<a class="headerlink" href="#pillar-i-extensions-to-ament-build-system" title="Permalink to this heading">¶</a></h2>
 <p>The first pillar represents extensions of the <code class="docutils literal notranslate"><span class="pre">ament</span></code> ROS 2 build system. These CMake extensions help achieve the objective of simplifying the creation of acceleration kernels. By providing an experience and a syntax similar to other ROS 2 libraries targeting CPUs, maintainers will be able to integrate kernels into their packages easily. The <code class="docutils literal notranslate"><span class="pre">ament_acceleration</span></code> ROS 2 package abstracts the build system extensions from technology-specific frameworks and software platforms. This allows to easily support hardware acceleration across FPGAs and GPUs while using the same syntax, simplifying the work of maintainers. The code listing below provides an example that instructs the <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file of a ROS 2 package to build a <code class="docutils literal notranslate"><span class="pre">vadd</span></code> kernel with the corresponding sources and configuration:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">acceleration_kernel</span><span class="p">(</span>
       <span class="n">NAME</span> <span class="n">vadd</span>
@@ -391,9 +393,9 @@
 </div>
 <p>While <code class="docutils literal notranslate"><span class="pre">ament_acceleration</span></code> CMake macros are preferred and will be encouraged, maintainers are free to choose among the CMake macros available. After all, it’ll be hard to define a generic set of macros that fits all use cases across technologies.</p>
 <p>Through <code class="docutils literal notranslate"><span class="pre">ament_acceleration</span></code> and technology-specific specializations (like <code class="docutils literal notranslate"><span class="pre">ament_vitis</span></code>), the ROS 2 build system is automatically enhanced to support producing  acceleration kernel and related artifacts as part of the build process when invoking <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span></code>. To facilitate the work of maintainers, this additional functionality is configurable through <code class="docutils literal notranslate"><span class="pre">mixins</span></code> that can be added to the build step of a ROS 2 workspace, triggering all the hardware acceleration logic only when appropriate (e.g. when <code class="docutils literal notranslate"><span class="pre">--mixin</span> <span class="pre">kv260</span></code> is appended to the build effort, it’ll trigger the build of kernels targeting the KV260 hardware solution). For a reference implementation of these enhacements, refer to <a class="reference external" href="https://github.com/ros-acceleration/ament_vitis/"><code class="docutils literal notranslate"><span class="pre">ament_vitis</span></code></a>.</p>
-</div>
-<div class="section" id="pillar-ii-extensions-to-colcon-build-tools">
-<h2>Pillar II - Extensions to colcon build tools<a class="headerlink" href="#pillar-ii-extensions-to-colcon-build-tools" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="pillar-ii-extensions-to-colcon-build-tools">
+<h2>Pillar II - Extensions to colcon build tools<a class="headerlink" href="#pillar-ii-extensions-to-colcon-build-tools" title="Permalink to this heading">¶</a></h2>
 <p>The second pillar extends the <code class="docutils literal notranslate"><span class="pre">colcon</span></code> ROS 2 meta built tools to integrate hardware acceleration flows into the ROS 2 CLI tooling and allow to manage it. Examples of these extensions include emulation capabilities to speed-up the development process and/or facilitate it without access to the real hardware, or raw image production tools, which are convenient when packing together acceleration kernels for embedded targets. These extensions are implemented by the <a class="reference external" href="https://github.com/ros-acceleration/colcon_acceleration"><code class="docutils literal notranslate"><span class="pre">colcon_acceleration</span></code></a> ROS 2 package. On a preliminary implementation, these extensions are provided the following <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">acceleration</span></code> subverbs:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">colcon</span> <span class="n">acceleration</span> <span class="n">subverbs</span><span class="p">:</span>
       <span class="n">board</span>                 <span class="n">Report</span> <span class="n">the</span> <span class="n">board</span> <span class="n">supported</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">deployed</span> <span class="n">firmware</span>
@@ -479,14 +481,14 @@ table th:nth-of-type(3) {
 </tr>
 </tbody>
 </table><p>In turn, the list of subverbs will improve and grow to cover other technology solutions.</p>
-</div>
-<div class="section" id="pillar-iii-a-firmware-layer-for-portability">
-<h2>Pillar III - a firmware layer for portability<a class="headerlink" href="#pillar-iii-a-firmware-layer-for-portability" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="pillar-iii-a-firmware-layer-for-portability">
+<h2>Pillar III - a firmware layer for portability<a class="headerlink" href="#pillar-iii-a-firmware-layer-for-portability" title="Permalink to this heading">¶</a></h2>
 <p>The third pillar is firmware. Represented by the abstract <code class="docutils literal notranslate"><span class="pre">acceleration_firmware</span></code> package, it is meant to provide firmware artifacts for each supported technology so that the kernels can be compiled against them, simplifying the process for consumers and maintainers, and further aligning with the ROS typical development flow.</p>
 <p>Each ROS 2 workspace can have one or multiple firmware packages deployed. The selection of the active firmware in the workspace is performed by the <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">acceleration</span> <span class="pre">select</span></code> subverb (<a class="reference external" href="#pillar-ii-extensions-to-colcon-build-tools">pillarII</a>). To get a technology solution aligned with this ROS Enhancement Proposal’s (REP) architecture, each vendor should provide and maintain an <code class="docutils literal notranslate"><span class="pre">acceleration_firmware_&lt;solution&gt;</span></code> package specialization that delivers the corresponding artifacts in line with its supported categories_ and capabilities_. Firmware artifacts should be deployed at <code class="docutils literal notranslate"><span class="pre">&lt;ros2_workspace_path&gt;/acceleration/firmware/&lt;solution&gt;</span></code> and be ready to be used by the ROS 2 build system extensions at (<a class="reference external" href="#pillar-i-extensions-to-ament-build-system">pillarI</a>) . For a reference implementation of specialized vendor firmware package, see <a class="reference external" href="https://github.com/ros-acceleration/acceleration_firmware_kv260"><code class="docutils literal notranslate"><span class="pre">acceleration_firmware_kv260</span></code></a>.</p>
 <p>By splitting vendors across packages with a common front-end (<code class="docutils literal notranslate"><span class="pre">acceleration_firmware</span></code>), consumers and maintainers can easily switch between hardware acceleration solutions and benchmark their kernels across technologies.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

@@ -6,7 +6,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 	<head>
 		<meta charset="utf-8">
-		
+		<meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 		<link rel="stylesheet" href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -56,6 +57,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -249,36 +251,36 @@
               
             
             
-              <p class="caption"><span class="caption-text">SOM</span></p>
+              <p class="caption" role="heading"><span class="caption-text">SOM</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/">Home</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/creating_applications/1.0/build/html/index.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/kria_som_ubuntu_support/build/html/index.html">Ubuntu Support</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/main/build/html/index.html">Vision AI Starter Kit Applications</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Introduction</span></p>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Kria Robotics Stack (KRS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Install KRS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../hardware.html">Hardware supported</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Features</span></p>
+<p class="caption" role="heading"><span class="caption-text">Features</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="ros2centric.html">ROS 2-centric</a></li>
 <li class="toctree-l1"><a class="reference internal" href="realtime_ros2.html">Real-time ROS 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="accelerated_apps_ros2.html">ROS 2 Accelerated Apps</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing back to ROS 2</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Examples</span></p>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../examples/nodes.html">Accelerating ROS 2 Nodes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/graphs.html">Accelerating ROS 2 Graphs</a></li>
 </ul>
-<p class="caption"><span class="caption-text">HowTo</span></p>
+<p class="caption" role="heading"><span class="caption-text">HowTo</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../howto.html">HowTo and Troubleshooting</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Other</span></p>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../other/definitions.html">Definitions</a></li>
 </ul>
@@ -352,8 +354,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="contributing-back-to-ros-2">
-<h1>Contributing back to ROS 2<a class="headerlink" href="#contributing-back-to-ros-2" title="Permalink to this headline">¶</a></h1>
+  <section id="contributing-back-to-ros-2">
+<h1>Contributing back to ROS 2<a class="headerlink" href="#contributing-back-to-ros-2" title="Permalink to this heading">¶</a></h1>
 <p>Xilinx is a proud supporter of the ROS ecosystem, contributing to ROSCon and ROS-Industrial activities. While KRS focuses on <a class="reference external" href="https://www.xilinx.com/applications/adaptive-computing.html">adaptive computing</a>, as part of Xilinx commitment with ROS 2, the <a class="reference external" href="https://github.com/ros-acceleration">ROS 2 Hardware Acceleration Working Group (HAWG)</a> was created. With it, Xilinx is contributing back to the ROS 2 community and driving the creation, maintenance and testing of acceleration kernels on top of open standards (C++ and OpenCL) for optimized ROS 2 and Gazebo interactions over different compute substrates (including FPGAs and GPUs). The main driver behind this WG is summarized at the ROS Enhancement Proposal (REP) <em>“ROS 2 Hardware Acceleration Architecture and Conventions”</em>. In here, Xilinx describes the architectural pillars and conventions required to introduce hardware acceleration in ROS 2 in a scalable and technology-agnostic manner.</p>
 <p><img alt="https://avatars.githubusercontent.com/u/78302827?s=200&amp;v=4" src="https://avatars.githubusercontent.com/u/78302827?s=200&amp;v=4" /></p>
 <p>As specified on its <a class="reference external" href="https://discourse.ros.org/t/proposal-for-ros-2-hardware-acceleration-working-group-hawg/20112">community announcement</a>, the HAWG targets hardware acceleration in a) embedded (edge) devices, b) workstations, c) data centers and d) cloud. A roadmap with objectives is available in the <a class="reference external" href="https://github.com/ros-acceleration/community">community repository</a> of the Working Group, which Xilinx is driving and executing disclosing results as they become available.</p>
@@ -392,7 +394,7 @@
 <td><a href="https://discourse.ros.org/tag/wg-acceleration">wg-acceleration</a></td>
 </tr>
 </tbody>
-</table></div>
+</table></section>
 
 
            </div>

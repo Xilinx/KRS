@@ -6,7 +6,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 	<head>
 		<meta charset="utf-8">
-		
+		<meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 		<link rel="stylesheet" href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -56,6 +57,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -249,27 +251,27 @@
               
             
             
-              <p class="caption"><span class="caption-text">SOM</span></p>
+              <p class="caption" role="heading"><span class="caption-text">SOM</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/">Home</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/creating_applications/1.0/build/html/index.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/kria_som_ubuntu_support/build/html/index.html">Ubuntu Support</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/main/build/html/index.html">Vision AI Starter Kit Applications</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Introduction</span></p>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Kria Robotics Stack (KRS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Install KRS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../hardware.html">Hardware supported</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Features</span></p>
+<p class="caption" role="heading"><span class="caption-text">Features</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../features/ros2centric.html">ROS 2-centric</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/realtime_ros2.html">Real-time ROS 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/accelerated_apps_ros2.html">ROS 2 Accelerated Apps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/contributing_ros2.html">Contributing back to ROS 2</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Examples</span></p>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="nodes.html">Accelerating ROS 2 Nodes</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="0_ros2_publisher.html">0. ROS 2 publisher</a></li>
@@ -288,11 +290,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="graphs.html">Accelerating ROS 2 Graphs</a></li>
 </ul>
-<p class="caption"><span class="caption-text">HowTo</span></p>
+<p class="caption" role="heading"><span class="caption-text">HowTo</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../howto.html">HowTo and Troubleshooting</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Other</span></p>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../other/definitions.html">Definitions</a></li>
 </ul>
@@ -368,8 +370,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="hello-xilinx">
-<h1>1. Hello Xilinx<a class="headerlink" href="#hello-xilinx" title="Permalink to this headline">¶</a></h1>
+  <section id="hello-xilinx">
+<h1>1. Hello Xilinx<a class="headerlink" href="#hello-xilinx" title="Permalink to this heading">¶</a></h1>
 <table border="1" class="docutils">
 <thead>
 <tr>
@@ -469,8 +471,8 @@ $ <span class="nb">source</span> install/setup.bash
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<div class="section" id="launch-hello-xilinx-example-in-the-workstation">
-<h2>Launch <code class="docutils literal notranslate"><span class="pre">hello_xilinx</span></code> example in the workstation<a class="headerlink" href="#launch-hello-xilinx-example-in-the-workstation" title="Permalink to this headline">¶</a></h2>
+<section id="launch-hello-xilinx-example-in-the-workstation">
+<h2>Launch <code class="docutils literal notranslate"><span class="pre">hello_xilinx</span></code> example in the workstation<a class="headerlink" href="#launch-hello-xilinx-example-in-the-workstation" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">source</span> install/setup.bash  <span class="c1"># source the overlay workspace</span>
 $ ros2 run publisher_xilinx member_function_publisher
 <span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1618407842</span>.800443167<span class="o">]</span> <span class="o">[</span>minimal_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello, Xilinx! 0&#39;</span>
@@ -479,9 +481,9 @@ $ ros2 run publisher_xilinx member_function_publisher
 ...
 </pre></div>
 </div>
-</div>
-<div class="section" id="launch-hello-xilinx-example-in-the-kv260-hardware">
-<h2>Launch <code class="docutils literal notranslate"><span class="pre">hello_xilinx</span></code> example in the KV260 hardware<a class="headerlink" href="#launch-hello-xilinx-example-in-the-kv260-hardware" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="launch-hello-xilinx-example-in-the-kv260-hardware">
+<h2>Launch <code class="docutils literal notranslate"><span class="pre">hello_xilinx</span></code> example in the KV260 hardware<a class="headerlink" href="#launch-hello-xilinx-example-in-the-kv260-hardware" title="Permalink to this heading">¶</a></h2>
 <p>First, let’s select the firmware for the target hardware, <a class="reference external" href="https://www.xilinx.com/products/som/kria/kv260-vision-starter-kit.html"><code class="docutils literal notranslate"><span class="pre">KV260</span></code></a>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ colcon acceleration <span class="k">select</span> kv260
 </pre></div>
@@ -517,9 +519,9 @@ $ ros2 run publisher_xilinx member_function_publisher  <span class="c1"># launch
 ...
 </pre></div>
 </div>
-</div>
-<div class="section" id="launch-hello-xilinx-example-in-an-emulated-kv260">
-<h2>Launch <code class="docutils literal notranslate"><span class="pre">hello_xilinx</span></code> example in an emulated KV260<a class="headerlink" href="#launch-hello-xilinx-example-in-an-emulated-kv260" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="launch-hello-xilinx-example-in-an-emulated-kv260">
+<h2>Launch <code class="docutils literal notranslate"><span class="pre">hello_xilinx</span></code> example in an emulated KV260<a class="headerlink" href="#launch-hello-xilinx-example-in-an-emulated-kv260" title="Permalink to this heading">¶</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>There’s no support for emulation (sw_emu or hw_emu) targets in KRS <cite>beta`or `1.0</cite> releases, refer to <cite>alpha</cite>.</p>
@@ -700,9 +702,9 @@ $ ros2 run publisher_xilinx member_function_publisher  <span class="c1"># launch
 </pre></div>
 </div>
 <p>To exit the emulation, type <code class="docutils literal notranslate"><span class="pre">Ctrl-A</span> <span class="pre">x</span></code>.</p>
-</div>
-<div class="section" id="bonus-launch-hello-xilinx-example-in-emulation-with-another-firmware">
-<h2><strong>Bonus</strong>: Launch <code class="docutils literal notranslate"><span class="pre">hello_xilinx</span></code> example in emulation with another firmware<a class="headerlink" href="#bonus-launch-hello-xilinx-example-in-emulation-with-another-firmware" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="bonus-launch-hello-xilinx-example-in-emulation-with-another-firmware">
+<h2><strong>Bonus</strong>: Launch <code class="docutils literal notranslate"><span class="pre">hello_xilinx</span></code> example in emulation with another firmware<a class="headerlink" href="#bonus-launch-hello-xilinx-example-in-emulation-with-another-firmware" title="Permalink to this heading">¶</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>There’s no support for emulation (sw_emu or hw_emu) targets in KRS beta release.</p>
@@ -746,8 +748,8 @@ $ ros2 run publisher_xilinx member_function_publisher  <span class="c1"># launch
 <p class="admonition-title">Note</p>
 <p>You can also try the <cite>hw_emu</cite> target in the ZCU102.</p>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

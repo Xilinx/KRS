@@ -6,7 +6,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 	<head>
 		<meta charset="utf-8">
-		
+		<meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 		<link rel="stylesheet" href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -56,6 +57,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -249,27 +251,27 @@
               
             
             
-              <p class="caption"><span class="caption-text">SOM</span></p>
+              <p class="caption" role="heading"><span class="caption-text">SOM</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/">Home</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/creating_applications/1.0/build/html/index.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/kria_som_ubuntu_support/build/html/index.html">Ubuntu Support</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/main/build/html/index.html">Vision AI Starter Kit Applications</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Introduction</span></p>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Kria Robotics Stack (KRS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Install KRS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../hardware.html">Hardware supported</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Features</span></p>
+<p class="caption" role="heading"><span class="caption-text">Features</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../features/ros2centric.html">ROS 2-centric</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/realtime_ros2.html">Real-time ROS 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/accelerated_apps_ros2.html">ROS 2 Accelerated Apps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/contributing_ros2.html">Contributing back to ROS 2</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Examples</span></p>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="nodes.html">Accelerating ROS 2 Nodes</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="graphs.html">Accelerating ROS 2 Graphs</a><ul class="current">
@@ -289,11 +291,11 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">HowTo</span></p>
+<p class="caption" role="heading"><span class="caption-text">HowTo</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../howto.html">HowTo and Troubleshooting</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Other</span></p>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../other/definitions.html">Definitions</a></li>
 </ul>
@@ -369,8 +371,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="accelerating-a-perception-computational-graph">
-<h1>6. Accelerating a perception computational graph<a class="headerlink" href="#accelerating-a-perception-computational-graph" title="Permalink to this headline">¶</a></h1>
+  <section id="accelerating-a-perception-computational-graph">
+<h1>6. Accelerating a perception computational graph<a class="headerlink" href="#accelerating-a-perception-computational-graph" title="Permalink to this heading">¶</a></h1>
 <table border="1" class="docutils">
 <thead>
 <tr>
@@ -410,13 +412,13 @@
 <p class="admonition-title">Important</p>
 <p>The source code of the computational graph is available at <a class="reference external" href="https://github.com/ros-acceleration/acceleration_examples/tree/main/graphs/perception/perception_2nodes">perception_2nodes</a> package.</p>
 </div>
-<div class="section" id="the-perception-computational-graph">
-<h2>The perception computational graph<a class="headerlink" href="#the-perception-computational-graph" title="Permalink to this headline">¶</a></h2>
+<section id="the-perception-computational-graph">
+<h2>The perception computational graph<a class="headerlink" href="#the-perception-computational-graph" title="Permalink to this heading">¶</a></h2>
 <p>In this example, we trace, benchmark, and accelerate a subset of  <code class="docutils literal notranslate"><span class="pre">image_pipeline</span></code>, one of the most popular packages in the ROS 2 ecosystem, and a core piece of the ROS perception stack. We compose a simple computational graph consisting of two nodes, <em>resize</em> and <em>rectify</em>, as shown in the figure below. We then leverage KRS for hardware acceleration to benchmark, trace and accelerate our computational graph, comparing a CPU to an FPGA implementation.</p>
 <p><img alt="accelerating-ros2-perception" src="https://user-images.githubusercontent.com/1375246/155086310-4b86d491-5513-42e4-8cb8-b1d896dabfe0.png" /></p>
-</div>
-<div class="section" id="building-the-acceleration-kernels">
-<h2>Building the acceleration kernels<a class="headerlink" href="#building-the-acceleration-kernels" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="building-the-acceleration-kernels">
+<h2>Building the acceleration kernels<a class="headerlink" href="#building-the-acceleration-kernels" title="Permalink to this heading">¶</a></h2>
 <p>Before we provide a completely walkthrough, let’s build the acceleration kernels (you can leave it running in the background since it may take more than an hour):</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~/krs_ws  <span class="c1"># head to your KRS workspace</span>
 
@@ -445,15 +447,15 @@ $ colcon build --build-base<span class="o">=</span>build-kv260 --install-base<sp
 $ scp -r install-kv260/* petalinux@192.168.1.86:/ros2_ws/
 </pre></div>
 </div>
-</div>
-<div class="section" id="acceleration-of-a-perception-computational-graph-a-step-by-step-guide">
-<h2>Acceleration of a perception computational graph, a step by step guide<a class="headerlink" href="#acceleration-of-a-perception-computational-graph-a-step-by-step-guide" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="acceleration-of-a-perception-computational-graph-a-step-by-step-guide">
+<h2>Acceleration of a perception computational graph, a step by step guide<a class="headerlink" href="#acceleration-of-a-perception-computational-graph-a-step-by-step-guide" title="Permalink to this heading">¶</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>If you wish to learn about the ROS 2 methodology for hardware acceleration, refer to <a class="reference external" href="https://github.com/ros-infrastructure/rep/pull/324">REP-2008 Pull Request</a></p>
 </div>
-<div class="section" id="a-trace-computational-graph">
-<h3>A. Trace computational graph<a class="headerlink" href="#a-trace-computational-graph" title="Permalink to this headline">¶</a></h3>
+<section id="a-trace-computational-graph">
+<h3>A. Trace computational graph<a class="headerlink" href="#a-trace-computational-graph" title="Permalink to this heading">¶</a></h3>
 <p>The first step is to instrument and trace the ROS 2 computational with LTTng probes. Reusing <a class="reference external" href="https://arxiv.org/abs/2201.00393">past work and probes</a> allows us to easily get a grasp of the dataflow interactions within <code class="docutils literal notranslate"><span class="pre">rmw</span></code>, <code class="docutils literal notranslate"><span class="pre">rcl</span></code> and <code class="docutils literal notranslate"><span class="pre">rclcpp</span></code> ROS 2 layers. But to trace appropriately the complete computational graph, besides these tracepoints, we also need to instrument our userland code. Particularly, as depicted for the publication path in the figure below, we need to add instrumentation to the <code class="docutils literal notranslate"><span class="pre">image_pipeline</span></code> package and more specifically, to the ROS <em>Components</em> that we’re using.</p>
 <table border="1" class="docutils">
 <thead>
@@ -548,9 +550,9 @@ $ scp -r install-kv260/* petalinux@192.168.1.86:/ros2_ws/
 </table><p>This is illustrated in the Table above and implemented at https://github.com/ros-perception/image_pipeline/pull/717, including the instrumentation of <code class="docutils literal notranslate"><span class="pre">ResizeNode</span></code> and <code class="docutils literal notranslate"><span class="pre">RectifyNode</span></code> ROS 2 <em>Components</em>. Further instrumentation could be added to these <em>Components</em> if necessary, obtaining more granularity in the tracing efforts.</p>
 <p>Below, we depict the results obtained after instrumenting the complete ROS 2 computational graph being studied. A closer inspection shows in grey that the <strong>ROS 2 message-passing system across abstraction layers takes a considerable portion of the CPU</strong>. In comparison, <strong>in light red, taking only a small portion of each Node’s execution time</strong>, we depict the computations that interact with the data flowing across nodes. Both the core logic of each one of the Nodes (<em>rectify</em> and <em>resize</em> operations) as well as the ROS 2 message-passing <em>plumbing</em> will be subject to acceleration.</p>
 <p><img alt="instrumentation_new" src="https://user-images.githubusercontent.com/1375246/155088908-68ad0195-9f8e-4587-a7af-30d2e006b983.png" /></p>
-</div>
-<div class="section" id="b-benchmark-cpu-baseline">
-<h3><code class="docutils literal notranslate"><span class="pre">B.</span></code> Benchmark CPU baseline<a class="headerlink" href="#b-benchmark-cpu-baseline" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="b-benchmark-cpu-baseline">
+<h3><code class="docutils literal notranslate"><span class="pre">B.</span></code> Benchmark CPU baseline<a class="headerlink" href="#b-benchmark-cpu-baseline" title="Permalink to this heading">¶</a></h3>
 <p><img alt="hardware-acceleration-ros2-benchmark-cpu" src="https://user-images.githubusercontent.com/1375246/155089356-94c21e2e-84fe-4dfb-b9bc-39371ed51782.png" /></p>
 <p>After tracing the graph and obtaining a good understanding of the dataflow, we can proceed to produce a CPU baseline benchmark while running in the Xilinx Kria® KV260 Vision AI Starter Kit quad-core Processing System (the CPU).</p>
 <p>To generate the CPU baseline you can use the pre-cooked ROS 2 launch file which will launch both the tracing capabilities and the corresponding ROS 2 Nodes:</p>
@@ -572,12 +574,12 @@ $ ros2 launch perception_2nodes trace_rectify_resize.launch.py
 </pre></div>
 </div>
 <p><img alt="../../_images/perception_graph.gif" src="../../_images/perception_graph.gif" /></p>
-</div>
-<div class="section" id="c-hardware-acceleration">
-<h3><code class="docutils literal notranslate"><span class="pre">C.</span></code> Hardware acceleration<a class="headerlink" href="#c-hardware-acceleration" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="c-hardware-acceleration">
+<h3><code class="docutils literal notranslate"><span class="pre">C.</span></code> Hardware acceleration<a class="headerlink" href="#c-hardware-acceleration" title="Permalink to this heading">¶</a></h3>
 <p>The third step in the methodology for ROS 2 hardware acceleration is to introduce custom compute architectures by using specialized hardware (FPGAs or GPUs). This is done in two steps: first, creating acceleration kernels for individual ROS 2 <em>Nodes</em> and <em>Component</em> and second, accelerate the computational graph by tracing and optimize dataflow interactions. The whole process can take various iterations until results are satisfactory.</p>
-<div class="section" id="accelerate-ros-2-nodes-and-components">
-<h4>Accelerate ROS 2 Nodes and Components<a class="headerlink" href="#accelerate-ros-2-nodes-and-components" title="Permalink to this headline">¶</a></h4>
+<section id="accelerate-ros-2-nodes-and-components">
+<h4>Accelerate ROS 2 Nodes and Components<a class="headerlink" href="#accelerate-ros-2-nodes-and-components" title="Permalink to this heading">¶</a></h4>
 <p>We first accelerate the computations at each one of the graph nodes. <code class="docutils literal notranslate"><span class="pre">/rectify_node_fpga</span></code> and <code class="docutils literal notranslate"><span class="pre">/resize/resize_node_fpga</span></code> <em>Components</em> of the use case above are accelerated using Xilinx’s HLS, XRT and OpenCL targeting the Kria KV260. The changes in the ROS 2 <em>Components</em> of <code class="docutils literal notranslate"><span class="pre">image_pipeline</span></code> to leverage hardware acceleration in the FPGA are available in <a class="reference external" href="https://github.com/ros-acceleration/image_pipeline/blob/ros2/image_proc/src/rectify_fpga.cpp"><code class="docutils literal notranslate"><span class="pre">rectify_fpga</span></code></a> and <a class="reference external" href="https://github.com/ros-acceleration/image_pipeline/blob/ros2/image_proc/src/resize_fpga.cpp"><code class="docutils literal notranslate"><span class="pre">resize_fpga</span></code></a> respectively. Each one of the ROS 2 <em>Components</em> has an associated acceleration kernel that leverages the Vitis Vision Library, a computer vision library optimized for Xilinx silicon solutions and based on OpenCV APIs. Source code of the acceleration kernels is available <a class="reference external" href="https://github.com/ros-acceleration/image_pipeline/tree/ros2/image_proc/src/image_proc">here</a>.  It’s relevant to note how the code implementation of these accelerated <em>Components</em> and its kernels co-exists well with the rest of the ROS meta-package. Thanks to the work of the WG, building accelerators is abstracted away from the roboticists and takes no significant additional effort than the usual build of <code class="docutils literal notranslate"><span class="pre">image_pipeline</span></code>.</p>
 <p><img alt="hardware-acceleration-ros2-benchmark-cpu" src="https://user-images.githubusercontent.com/1375246/155089356-94c21e2e-84fe-4dfb-b9bc-39371ed51782.png" /></p>
 <p>Figure above depicts the results obtained after benchmarking these accelerated <em>Components</em> using the trace points. We observe an average 6.22% speedup in the total computation time of the perception pipeline after offloading perception tasks to the FPGA.</p>
@@ -615,9 +617,9 @@ $ ros2 launch perception_2nodes trace_rectify_resize_fpga.launch.py  <span class
 </pre></div>
 </div>
 <p><img alt="../../_images/perception_graph_fpga.gif" src="../../_images/perception_graph_fpga.gif" /></p>
-</div>
-<div class="section" id="accelerate-graph">
-<h4>Accelerate Graph<a class="headerlink" href="#accelerate-graph" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="accelerate-graph">
+<h4>Accelerate Graph<a class="headerlink" href="#accelerate-graph" title="Permalink to this heading">¶</a></h4>
 <p>As illustrated before through tracing, inter-Node exchanges using the ROS 2 message-passing system across its abstraction layers outweights other operations by far, regardless of the compute substrate. This confirms the CPU-centric approach in ROS, and hints about one important opportunity where hardware acceleration can hasten ROS 2 computational graphs. By optimizing inter-Node dataflows, ROS 2 intra-process and inter-process communications can be made more time efficient, leading to faster resolution of the graph computations and ultimately, to faster robots. This step is thereby focused on optimizing the dataflow within the computational graph and across ROS 2 Nodes and Components. Figures  below depict two attempts to accelerate the graph dataflow.</p>
 <table border="1" class="docutils">
 <thead>
@@ -701,10 +703,10 @@ $ ros2 launch perception_2nodes trace_rectify_resize_fpga_streamlined.launch.py 
 </pre></div>
 </div>
 <p><img alt="../../_images/perception_graph_streamlined.gif" src="../../_images/perception_graph_streamlined.gif" /></p>
-</div>
-</div>
-<div class="section" id="d-benchmark-acceleration">
-<h3><code class="docutils literal notranslate"><span class="pre">D.</span></code> Benchmark acceleration<a class="headerlink" href="#d-benchmark-acceleration" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="d-benchmark-acceleration">
+<h3><code class="docutils literal notranslate"><span class="pre">D.</span></code> Benchmark acceleration<a class="headerlink" href="#d-benchmark-acceleration" title="Permalink to this heading">¶</a></h3>
 <p><img alt="benchmarkstreams" src="https://user-images.githubusercontent.com/1375246/155090477-2d468361-337a-43c7-b1a3-0e1b2a588dba.png" /></p>
 <p>The last step in the methodology for ROS 2 hardware acceleration is to continuously benchmark the acceleration results after creating custom compute architectures and against the CPU baseline. Figures above presents results obtained iteratively while building custom hardware interfaces for the Xilinx Kria KV260 FPGA SoC.</p>
 <table border="1" class="docutils">
@@ -747,18 +749,18 @@ $ ros2 launch perception_2nodes trace_rectify_resize_fpga_streamlined.launch.py 
 <td>70.18 ms (<code>23.75</code>%)</td>
 </tr>
 </tbody>
-</table></div>
-</div>
-<div class="section" id="discussion">
-<h2>Discussion<a class="headerlink" href="#discussion" title="Permalink to this headline">¶</a></h2>
+</table></section>
+</section>
+<section id="discussion">
+<h2>Discussion<a class="headerlink" href="#discussion" title="Permalink to this heading">¶</a></h2>
 <p>The previous analysis shows for a simple perception robotics task how by leveraging the ROS 2 Hardware Acceleration open architecture and following the proposed methodology, we are able to use hardware acceleration easily, without changing the development flow, and while obtaining faster ROS 2 responses. We demonstrated how:</p>
 <ol class="simple">
 <li><p>pure perception FPGA offloading leads to a 6.22% speedup for our application,</p></li>
 <li><p>we also showed how re-architecting and integrating the ROS <em>Components</em> into a single FPGA-accelerated and optimized <em>Component</em> led to a 26.96% speedup. This <ins>comes at the cost of having to re-architect the ROS computational graph, merging Components as most appropriate, while breaking the ROS modularity and granularity assumptions conveyed in the default perception stack</ins>. To avoid doing so and lower the entry barrier for roboticists, finally,</p></li>
 <li><p>we <strong>design two new <em>Components</em> which offload perception tasks to the FPGA and leverage an AXI4-Stream interface to create an intra-FPGA ROS 2 Node communication queue</strong>. Using this queue, our new ROS <em>Components</em> deliver <em>faster dataflows and achieve an inter-Node performance speedup of 24.42%</em>. We believe that <ins>using this intra-FPGA ROS 2 Node communication queue, the acceleration speedup can also be exploited in subsequent Nodes of the computational graph dataflow, leading to an exponential acceleration gain</ins>. Best of all, our intra-FPGA ROS 2 Node communication queue aligns well with modern ROS 2 composition capabilities and allows ROS 2 <em>Components</em> and <em>Nodes</em> to exploit this communication pattern for inter- and intra-process ROS 2 communications.</p></li>
 </ol>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

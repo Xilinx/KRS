@@ -6,7 +6,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 	<head>
 		<meta charset="utf-8">
-		
+		<meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 		<link rel="stylesheet" href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -56,6 +57,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
@@ -249,27 +251,27 @@
               
             
             
-              <p class="caption"><span class="caption-text">SOM</span></p>
+              <p class="caption" role="heading"><span class="caption-text">SOM</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/">Home</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/creating_applications/1.0/build/html/index.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/kria_som_ubuntu_support/build/html/index.html">Ubuntu Support</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/main/build/html/index.html">Vision AI Starter Kit Applications</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Introduction</span></p>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Kria Robotics Stack (KRS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Install KRS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../hardware.html">Hardware supported</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Features</span></p>
+<p class="caption" role="heading"><span class="caption-text">Features</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../features/ros2centric.html">ROS 2-centric</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/realtime_ros2.html">Real-time ROS 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/accelerated_apps_ros2.html">ROS 2 Accelerated Apps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/contributing_ros2.html">Contributing back to ROS 2</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Examples</span></p>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="nodes.html">Accelerating ROS 2 Nodes</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">0. ROS 2 publisher</a><ul>
@@ -296,11 +298,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="graphs.html">Accelerating ROS 2 Graphs</a></li>
 </ul>
-<p class="caption"><span class="caption-text">HowTo</span></p>
+<p class="caption" role="heading"><span class="caption-text">HowTo</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../howto.html">HowTo and Troubleshooting</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Other</span></p>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../other/definitions.html">Definitions</a></li>
 </ul>
@@ -376,8 +378,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="ros-2-publisher">
-<h1>0. ROS 2 publisher<a class="headerlink" href="#ros-2-publisher" title="Permalink to this headline">¶</a></h1>
+  <section id="ros-2-publisher">
+<h1>0. ROS 2 publisher<a class="headerlink" href="#ros-2-publisher" title="Permalink to this heading">¶</a></h1>
 <table border="1" class="docutils">
 <thead>
 <tr>
@@ -413,10 +415,10 @@
 <p class="admonition-title">Note</p>
 <p><a class="reference external" href="https://docs.ros.org/">Learn ROS 2</a> before trying this out first.</p>
 </div>
-<div class="section" id="vadd-publisher">
-<h2><code class="docutils literal notranslate"><span class="pre">vadd_publisher</span></code><a class="headerlink" href="#vadd-publisher" title="Permalink to this headline">¶</a></h2>
-<!-- KRS aims to provide a ROS 2-centric experience (see [here](/features/ros2centric/) for more) and instead of using external tools to build ROS 2 workspaces, extensions to ROS 2 build system (`ament`) and ROS build tools (`colcon`) are implemented which facilitate the process. --><div class="section" id="prepare-the-environment-and-fetch-the-example">
-<h3>Prepare the environment and fetch the example<a class="headerlink" href="#prepare-the-environment-and-fetch-the-example" title="Permalink to this headline">¶</a></h3>
+<section id="vadd-publisher">
+<h2><code class="docutils literal notranslate"><span class="pre">vadd_publisher</span></code><a class="headerlink" href="#vadd-publisher" title="Permalink to this heading">¶</a></h2>
+<!-- KRS aims to provide a ROS 2-centric experience (see [here](/features/ros2centric/) for more) and instead of using external tools to build ROS 2 workspaces, extensions to ROS 2 build system (`ament`) and ROS build tools (`colcon`) are implemented which facilitate the process. --><section id="prepare-the-environment-and-fetch-the-example">
+<h3>Prepare the environment and fetch the example<a class="headerlink" href="#prepare-the-environment-and-fetch-the-example" title="Permalink to this heading">¶</a></h3>
 <p>We start by preparing the environment and fetching the source code of the example into our KRS workspace:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~/krs_ws  <span class="c1"># head to your KRS workspace</span>
 
@@ -432,9 +434,9 @@ $ colcon build --merge-install  <span class="c1"># about 4 mins</span>
 $ <span class="nb">source</span> install/setup.bash
 </pre></div>
 </div>
-</div>
-<div class="section" id="inspecting-the-ros-2-publisher">
-<h3>Inspecting the ROS 2 publisher<a class="headerlink" href="#inspecting-the-ros-2-publisher" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="inspecting-the-ros-2-publisher">
+<h3>Inspecting the ROS 2 publisher<a class="headerlink" href="#inspecting-the-ros-2-publisher" title="Permalink to this heading">¶</a></h3>
 <p>The publisher is a CPU-based average one. The source code of the publisher has been split between the <code class="docutils literal notranslate"><span class="pre">vadd</span></code> function (<a class="reference external" href="https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/vadd_publisher/src/vadd.cpp">vadd.cpp</a>) and the rest (<a class="reference external" href="https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/vadd_publisher/src/vadd_publisher.cpp">vadd_publisher.cpp</a>) for simplicity.
 The <code class="docutils literal notranslate"><span class="pre">vadd</span></code> (vector-add) function is as follows:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
@@ -474,9 +476,9 @@ The <code class="docutils literal notranslate"><span class="pre">vadd</span></co
 </pre></div>
 </div>
 <p>The <a class="reference external" href="https://www.xilinx.com/html_docs/xilinx2021_1/vitis_doc/hls_pragmas.html#sty1504034367099"><code class="docutils literal notranslate"><span class="pre">loop_tripcount</span></code></a> is for analysis only and the pragma doesn’t impact the function logic in any way. Instead, it allows HLS to identify how many iterations are expected in the loop to make time estimations. This will come handy if we want to run synthesis tests to estimate the timing it’ll take for this function to run on a dedicated circuit in the FPGA.</p>
-</div>
-<div class="section" id="building-creating-the-raw-image-and-running-in-hardware">
-<h3>Building, creating the raw image and running in hardware<a class="headerlink" href="#building-creating-the-raw-image-and-running-in-hardware" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="building-creating-the-raw-image-and-running-in-hardware">
+<h3>Building, creating the raw image and running in hardware<a class="headerlink" href="#building-creating-the-raw-image-and-running-in-hardware" title="Permalink to this heading">¶</a></h3>
 <p>Let’s build the example, create a raw SD card image and run it in the <a class="reference external" href="https://www.xilinx.com/products/som/kria/kv260-vision-starter-kit.html"><code class="docutils literal notranslate"><span class="pre">KV260</span></code></a> reference development platform. First, let’s select the firmware for the target hardware, KV260:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ colcon acceleration <span class="k">select</span> kv260
 </pre></div>
@@ -562,9 +564,9 @@ send-keys 'source /usr/bin/ros_setup.bash; . /ros2_ws/local_setup.bash; ros2 top
 EOF
 byobu -f vadd_publisher.conf attach
 ```
---></div>
-<div class="section" id="bonus-getting-a-time-intuition-of-a-vadd-acceleration-kernel">
-<h3>Bonus: Getting a time intuition of a <code class="docutils literal notranslate"><span class="pre">vadd</span></code> acceleration kernel<a class="headerlink" href="#bonus-getting-a-time-intuition-of-a-vadd-acceleration-kernel" title="Permalink to this headline">¶</a></h3>
+--></section>
+<section id="bonus-getting-a-time-intuition-of-a-vadd-acceleration-kernel">
+<h3>Bonus: Getting a time intuition of a <code class="docutils literal notranslate"><span class="pre">vadd</span></code> acceleration kernel<a class="headerlink" href="#bonus-getting-a-time-intuition-of-a-vadd-acceleration-kernel" title="Permalink to this heading">¶</a></h3>
 <p>What if instead of running the <code class="docutils literal notranslate"><span class="pre">vadd</span></code> in the scalar CPUs, we create a specific hardware circuit with the FPGA that runs this function? What’d would be the associated timing? In other words, a <em>robot chip</em> for the <code class="docutils literal notranslate"><span class="pre">vadd</span></code> computation.</p>
 <p>Though going all the way down to implementing the harware cirtuit for <code class="docutils literal notranslate"><span class="pre">vadd</span></code> is beyond the scope of this example, we can get a quick intuition with HLS capabilities integrated in KRS. Let’s get such intuition:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ colcon acceleration hls --run --synthesis-report vadd_publisher
@@ -655,10 +657,10 @@ Executing /home/xilinx/krs_ws/build-kv260/vadd_publisher/project_vadd_publisher.
 </pre></div>
 </div>
 <p>The output will show you that the <code class="docutils literal notranslate"><span class="pre">vadd</span></code> function with all its complexity can run with a <code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">ns</span></code> clock (we could ask for other clocks) in a total of <code class="docutils literal notranslate"><span class="pre">33.336</span> <span class="pre">us</span></code>. This result is <strong>completely deterministic</strong> from the vadd viewpoint, after all, the FPGA would create a specialized hardware cirtuit for the <code class="docutils literal notranslate"><span class="pre">vadd</span></code> computations. For what concerns vadd, there’s no more deterministic execution than this. This is just a brief introduction, <em>if you wish to learn more about HLS and KRS, head to the second example: <a class="reference internal" href="1_hello_xilinx.html"><span class="doc">1. Hello Xilinx</span></a></em>.</p>
-</div>
-</div>
-<div class="section" id="doublevadd-publisher">
-<h2><code class="docutils literal notranslate"><span class="pre">doublevadd_publisher</span></code><a class="headerlink" href="#doublevadd-publisher" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="doublevadd-publisher">
+<h2><code class="docutils literal notranslate"><span class="pre">doublevadd_publisher</span></code><a class="headerlink" href="#doublevadd-publisher" title="Permalink to this heading">¶</a></h2>
 <p>We’ve seen that as a simple ROS 2 package, <code class="docutils literal notranslate"><span class="pre">vadd_publisher</span></code> runs perfectly fine and meets the 10 Hz publishing objective. But what if the <code class="docutils literal notranslate"><span class="pre">vadd</span></code> has bigger vectors, or has operations that involve many more iterations? This second section explores this with a more computationally expensive publisher, the <code class="docutils literal notranslate"><span class="pre">doublevadd_publisher</span></code>. The source code of the new <code class="docutils literal notranslate"><span class="pre">vadd</span></code> function is presented below:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
 <span class="cm">        ____  ____</span>
@@ -739,15 +741,15 @@ average rate: <span class="m">2</span>.226
 </pre></div>
 </div>
 <p>This new publisher achieves only <code class="docutils literal notranslate"><span class="pre">2.2</span> <span class="pre">Hz</span></code>, quite far from the <code class="docutils literal notranslate"><span class="pre">10</span> <span class="pre">Hz</span></code> targeted. Using hardware acceleration, future examples will demonstrate how to build a custom compute pipeline that offloads computations to a kernel. <em>If you wish to jump directly into hardware acceleration with <code class="docutils literal notranslate"><span class="pre">doublevadd_publisher</span></code>, head to: <a class="reference internal" href="3_offloading_ros2_publisher.html"><span class="doc">3. Offloading ROS 2 publisher</span></a></em>.</p>
-</div>
-<div class="section" id="troubleshooting">
-<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="gzip-stdin-unexpected-end-of-file">
-<h3>gzip: stdin: unexpected end of file<a class="headerlink" href="#gzip-stdin-unexpected-end-of-file" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">¶</a></h2>
+<section id="gzip-stdin-unexpected-end-of-file">
+<h3>gzip: stdin: unexpected end of file<a class="headerlink" href="#gzip-stdin-unexpected-end-of-file" title="Permalink to this heading">¶</a></h3>
 <p>See https://github.com/ros-acceleration/colcon-acceleration/issues/9.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>

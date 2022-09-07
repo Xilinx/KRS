@@ -6,7 +6,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 	<head>
 		<meta charset="utf-8">
-		
+		<meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 		<link rel="stylesheet" href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -56,6 +57,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
@@ -250,27 +252,27 @@
               
             
             
-              <p class="caption"><span class="caption-text">SOM</span></p>
+              <p class="caption" role="heading"><span class="caption-text">SOM</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/">Home</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/creating_applications/1.0/build/html/index.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/kria_som_ubuntu_support/build/html/index.html">Ubuntu Support</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/main/build/html/index.html">Vision AI Starter Kit Applications</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Introduction</span></p>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Kria Robotics Stack (KRS)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Install KRS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../hardware.html">Hardware supported</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Features</span></p>
+<p class="caption" role="heading"><span class="caption-text">Features</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../features/ros2centric.html">ROS 2-centric</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/realtime_ros2.html">Real-time ROS 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/accelerated_apps_ros2.html">ROS 2 Accelerated Apps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/contributing_ros2.html">Contributing back to ROS 2</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Examples</span></p>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="nodes.html">Accelerating ROS 2 Nodes</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="0_ros2_publisher.html">0. ROS 2 publisher</a></li>
@@ -286,11 +288,11 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="graphs.html">Accelerating ROS 2 Graphs</a></li>
 </ul>
-<p class="caption"><span class="caption-text">HowTo</span></p>
+<p class="caption" role="heading"><span class="caption-text">HowTo</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../howto.html">HowTo and Troubleshooting</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Other</span></p>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../other/definitions.html">Definitions</a></li>
 </ul>
@@ -366,8 +368,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="faster-ros-2-publisher">
-<h1>5. Faster ROS 2 publisher<a class="headerlink" href="#faster-ros-2-publisher" title="Permalink to this headline">¶</a></h1>
+  <section id="faster-ros-2-publisher">
+<h1>5. Faster ROS 2 publisher<a class="headerlink" href="#faster-ros-2-publisher" title="Permalink to this heading">¶</a></h1>
 <table border="1" class="docutils">
 <thead>
 <tr>
@@ -389,7 +391,7 @@
 <td><a href="https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/faster_doublevadd_publisher/src/faster_doublevadd_publisher.cpp"><code>faster_doublevadd_publisher.cpp</code></a></td>
 </tr>
 </tbody>
-</table><div class="sidebar">
+</table><aside class="sidebar">
 <p class="sidebar-title">Before you begin</p>
 <p>Past examples of this series include:</p>
 <ul class="simple">
@@ -397,7 +399,7 @@
 <li><p><a class="reference external" href="3_offloading_ros2_publisher.html">3. Offloading ROS 2 publisher - offloaded_doublevadd_publisher</a>, which offloads the <cite>vadd</cite> operation to the FPGA and leads to a deterministic vadd operation, yet insuficient overall publishing rate of <code class="code docutils literal notranslate"><span class="pre">1.935</span> <span class="pre">Hz</span></code>.</p></li>
 <li><p><a class="reference external" href="0_ros2_publisher.html">0. ROS 2 publisher - doublevadd_publisher</a>, which runs completely on the scalar quad-core Cortex-A53 Application Processing Units (APUs) of the KV260 and is only able to publish at <code class="code docutils literal notranslate"><span class="pre">2.2</span> <span class="pre">Hz</span></code>.</p></li>
 </ul>
-</div>
+</aside>
 <p>This example is the last one of the <em>ROS 2 publisher series</em>. It features a trivial vector-add ROS 2 publisher, which adds two vector inputs in a loop, and tries to publish the result at 10 Hz. This example will leverage KRS to produce an acceleration kernel that a) optimizes the dataflow and b) leverages parallelism via loop unrolling to meet the initial goal established by the <code class="docutils literal notranslate"><span class="pre">doublevadd_publisher</span></code>.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="4_accelerated_ros2_publisher.html"><span class="doc">4. Accelerated ROS 2 publisher - offloaded_doublevadd_publisher</span></a>, which offloads and accelerates the <code class="docutils literal notranslate"><span class="pre">vadd</span></code> operation to the FPGA, optimizing the dataflow and leading to a deterministic vadd operation with an improved publishing rate of <code class="docutils literal notranslate"><span class="pre">6.3</span> <span class="pre">Hz</span></code>.</p></li>
@@ -412,8 +414,8 @@
 <p class="admonition-title">Note</p>
 <p><a class="reference external" href="https://docs.ros.org/">Learn ROS 2</a> before trying this out first.</p>
 </div>
-<div class="section" id="accelerated-doublevadd-publisher">
-<h2><code class="docutils literal notranslate"><span class="pre">accelerated_doublevadd_publisher</span></code><a class="headerlink" href="#accelerated-doublevadd-publisher" title="Permalink to this headline">¶</a></h2>
+<section id="accelerated-doublevadd-publisher">
+<h2><code class="docutils literal notranslate"><span class="pre">accelerated_doublevadd_publisher</span></code><a class="headerlink" href="#accelerated-doublevadd-publisher" title="Permalink to this heading">¶</a></h2>
 <p>Let’s take a look at the <a class="reference external" href="https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/faster_doublevadd_publisher/src/vadd.cpp">kernel source code</a> first:</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
 <span class="cm">        ____  ____</span>
@@ -559,8 +561,8 @@ average rate: <span class="m">10</span>.000
 ...
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>

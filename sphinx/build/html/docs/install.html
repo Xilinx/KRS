@@ -6,7 +6,8 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 	<head>
 		<meta charset="utf-8">
-		
+		<meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 		<link rel="stylesheet" href="https://static.cloud.coveo.com/searchui/v2.4382/css/CoveoFullSearch.css"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -56,6 +57,7 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
@@ -249,14 +251,14 @@
               
             
             
-              <p class="caption"><span class="caption-text">SOM</span></p>
+              <p class="caption" role="heading"><span class="caption-text">SOM</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/">Home</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/creating_applications/1.0/build/html/index.html">Application Development</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/kria_som_ubuntu_support/build/html/index.html">Ubuntu Support</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/main/build/html/index.html">Vision AI Starter Kit Applications</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Introduction</span></p>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Kria Robotics Stack (KRS)</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Install KRS</a><ul>
@@ -271,23 +273,23 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="hardware.html">Hardware supported</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Features</span></p>
+<p class="caption" role="heading"><span class="caption-text">Features</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="features/ros2centric.html">ROS 2-centric</a></li>
 <li class="toctree-l1"><a class="reference internal" href="features/realtime_ros2.html">Real-time ROS 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="features/accelerated_apps_ros2.html">ROS 2 Accelerated Apps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="features/contributing_ros2.html">Contributing back to ROS 2</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Examples</span></p>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="examples/nodes.html">Accelerating ROS 2 Nodes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/graphs.html">Accelerating ROS 2 Graphs</a></li>
 </ul>
-<p class="caption"><span class="caption-text">HowTo</span></p>
+<p class="caption" role="heading"><span class="caption-text">HowTo</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="howto.html">HowTo and Troubleshooting</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Other</span></p>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="other/definitions.html">Definitions</a></li>
 </ul>
@@ -361,8 +363,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="install-krs">
-<h1>Install KRS<a class="headerlink" href="#install-krs" title="Permalink to this headline">¶</a></h1>
+  <section id="install-krs">
+<h1>Install KRS<a class="headerlink" href="#install-krs" title="Permalink to this heading">¶</a></h1>
 <p>KRS <code class="docutils literal notranslate"><span class="pre">1.0</span></code> enables various robotic development paths:</p>
 <ul class="simple">
 <li><p><strong>Yocto/PetaLinux</strong>: An embedded cross-compilation-oriented path for creating production-grade OSs for robots. Leverages the Yocto project.</p></li>
@@ -389,8 +391,8 @@
 <p class="admonition-title">Ignition Gazebo vs Gazebo Classic</p>
 <p>ROS 2 Humble ships with Ignition Gazebo (renamed to “Gazebo”). Installing Gazebo Classic (Gazebo 11.0) is still possible but requires some manual work. Some of the examples below were developed with Gazebo Classic. In turn, examples might be rewritten with Ignition Gazebo (“Gazebo”) to facilitate the flows.</p>
 </div>
-<div class="section" id="yocto-petalinux">
-<h2>Yocto/PetaLinux<a class="headerlink" href="#yocto-petalinux" title="Permalink to this headline">¶</a></h2>
+<section id="yocto-petalinux">
+<h2>Yocto/PetaLinux<a class="headerlink" href="#yocto-petalinux" title="Permalink to this heading">¶</a></h2>
 <div class="admonition-yocto-petalinux-firmware-artifacts-download admonition">
 <p class="admonition-title">Yocto/PetaLinux firmware artifacts download</p>
 <p>Pre-built firmware artifacts for creating robot OSs using Yocto/PetaLinux are bigger than 2GB, which is the maximum size allowed by GitHub. The firmware artifacts have temporarily been uploaded to <a class="reference external" href="https://drive.google.com/file/d/1gzrGHB-J_fKNBmcGYhClXdWo6wGw8k43/view?usp=sharing">https://drive.google.com/file/d/1gzrGHB-J_fKNBmcGYhClXdWo6wGw8k43/view?usp=sharing</a> and need to be manually downloaded and deployed into the workspace src directory.</p>
@@ -509,11 +511,11 @@ colcon build --merge-install  <span class="c1"># about 4 mins in an AMD Ryzen 5 
 </div>
 <p>That’s pretty much it, you’ve got now KRS installed in the <code class="docutils literal notranslate"><span class="pre">krs_ws</span></code> ROS overlay workspace.  You could also reproduce the same steps over an existing ROS 2 workspace if you’d like to avoid creating a new, or simply reusing the source code elsewhere.</p>
 <p>Now’s time to build and run some <a class="reference external" href="https://xilinx.github.io/KRS/sphinx/build/html/docs/examples/0_ros2_publisher.html">examples</a>.</p>
-</div>
-<div class="section" id="ubuntu-22-04">
-<h2>Ubuntu 22.04<a class="headerlink" href="#ubuntu-22-04" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="cross-compilation-development">
-<h3>Cross-compilation development<a class="headerlink" href="#cross-compilation-development" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="ubuntu-22-04">
+<h2>Ubuntu 22.04<a class="headerlink" href="#ubuntu-22-04" title="Permalink to this heading">¶</a></h2>
+<section id="cross-compilation-development">
+<h3>Cross-compilation development<a class="headerlink" href="#cross-compilation-development" title="Permalink to this heading">¶</a></h3>
 <p>Cross-compilation of ROS 2 workspaces allows to build both CPU binaries as well as accelerators thanks to KRS packages. This capabilities is demonstrated below for the KR260 using Ubuntu 22.04 OS:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1">###################################################</span>
 <span class="c1"># 0. install Vitis 2022.1 https://www.xilinx.com/support/download.html       </span>
@@ -531,7 +533,8 @@ colcon build --merge-install  <span class="c1"># about 4 mins in an AMD Ryzen 5 
 sudo apt-get -y install curl build-essential libssl-dev git wget <span class="se">\</span>
                           ocl-icd-* opencl-headers python3-vcstool <span class="se">\</span>
                           python3-colcon-common-extensions python3-colcon-mixin <span class="se">\</span>
-                          kpartx u-boot-tools pv gcc-multilib gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+                          kpartx u-boot-tools pv gcc-multilib
+sudo apt-get -y install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
 
 <span class="c1">###################################################</span>
 <span class="c1"># 2. create a new ROS 2 workspace with examples and</span>
@@ -625,9 +628,29 @@ will go on indefinitely.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Ubuntu 22.04 sysroot is not fully prepared for cross-compilation (but for native builds instead) and thereby, while invoking FindPython, it’s just picking the host resources, instead of the target/sysroot ones, which leads to ROS 2 packages relying on Python 3 getting a dependency against the host (which doesn’t exist), instead of against the sysroot.</p>
-<p>A <strong>workaround</strong> for this is symlinking the Python3 library of the host to the sysroot one, so that it gets picked while cross-compiling against the Ubuntu 22.04 sysroot. The following should do: <cite>sudo ln -s ~/krs_ws/src/install/../acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/usr/lib/aarch64-linux-gnu/libpython3.10.so.1.0 /usr/lib/aarch64-linux-gnu/libpython3.10.so</cite>)</p>
+<p>A <strong>workaround</strong> for this is symlinking the Python3 library of the host to the sysroot one, so that it gets picked while cross-compiling against the Ubuntu 22.04 sysroot. The following should do: <cite>sudo ln -s ~/krs_ws/install/../acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/usr/lib/aarch64-linux-gnu/libpython3.10.so.1.0 /usr/lib/aarch64-linux-gnu/libpython3.10.so</cite>)</p>
 </div>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1">###################################################</span>
+<span class="c1"># 6.B workaround for KR260 additional firmware elements</span>
+<span class="c1">#   see https://github.com/Xilinx/KRS/issues/62#issue-1292007180</span>
+<span class="c1">#</span>
+<span class="c1"># TODO: remove this once these artifacts are added to KR260</span>
+<span class="c1">#   firmware ROS package (acceleration_firmware_kr260)</span>
+<span class="c1">###################################################</span>
+<span class="c1"># fetch KV260 firmware</span>
+<span class="nb">cd</span> ~/krs_ws
+wget https://www.xilinx.com/bin/public/openDownload?filename<span class="o">=</span>acceleration_firmware_kv260.zip -P src/firmware/acceleration_firmware_kv260
+unzip src/firmware/acceleration_firmware_kv260/openDownload<span class="se">\?</span>filename<span class="se">\=</span>acceleration_firmware_kv260.zip -d src/firmware/acceleration_firmware_kv260/
+
+<span class="c1"># deploy KV260 firmware</span>
+colcon build --merge-install --packages-select acceleration_firmware_kv260
+
+<span class="c1"># select KV260 firmware artifacts and re-build accelerators targeting KR260 build configuration</span>
+<span class="nb">source</span> install/setup.bash
+colcon acceleration <span class="k">select</span> kv260
+
+
+<span class="c1">###################################################</span>
 <span class="c1"># 7.A cross-compile and generate ONLY CPU binaries</span>
 <span class="c1">###################################################</span>
 colcon build --build-base<span class="o">=</span>build-kr260-ubuntu --install-base<span class="o">=</span>install-kr260-ubuntu --merge-install --mixin kr260 --cmake-args -DNOKERNELS<span class="o">=</span><span class="nb">true</span>
@@ -639,9 +662,9 @@ colcon build --build-base<span class="o">=</span>build-kr260-ubuntu --install-ba
 </pre></div>
 </div>
 <p>Now that we’ve built binaries and accelerators, next’s to run some of them in hardware. See <a class="reference external" href="https://xilinx.github.io/KRS/sphinx/build/html/docs/examples/0_ros2_publisher.html">examples</a> but <strong>note that Ubuntu 22.04 is targeting KR260 (and thereby the <code class="docutils literal notranslate"><span class="pre">--mixin</span> <span class="pre">kr260</span></code> should be used instead)</strong>.</p>
-</div>
-<div class="section" id="native-on-target-development">
-<h3>Native (on target) development<a class="headerlink" href="#native-on-target-development" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="native-on-target-development">
+<h3>Native (on target) development<a class="headerlink" href="#native-on-target-development" title="Permalink to this heading">¶</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>No accelerators produced with native (on-target) compilation</p>
@@ -654,9 +677,9 @@ colcon build --build-base<span class="o">=</span>build-kr260-ubuntu --install-ba
 <li><p><code class="docutils literal notranslate"><span class="pre">scp</span></code> your ROS workspace into the embedded board and build it with colcon as if it was your development machine.</p></li>
 </ol>
 <p>Now that we’ve built binaries, next’s to run them in hardware. See <a class="reference external" href="https://xilinx.github.io/KRS/sphinx/build/html/docs/examples/0_ros2_publisher.html">examples</a>.</p>
-</div>
-<div class="section" id="qemu-emulation-development">
-<h3>QEMU (emulation) development<a class="headerlink" href="#qemu-emulation-development" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="qemu-emulation-development">
+<h3>QEMU (emulation) development<a class="headerlink" href="#qemu-emulation-development" title="Permalink to this heading">¶</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>No accelerators produced with native (on-target) compilation</p>
@@ -848,9 +871,9 @@ sudo umount ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/v
 </pre></div>
 </div>
 <p>Now that we’ve built binaries, next’s to run them in hardware. See <a class="reference external" href="https://xilinx.github.io/KRS/sphinx/build/html/docs/examples/0_ros2_publisher.html">examples</a>.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>

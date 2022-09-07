@@ -183,7 +183,8 @@ Cross-compilation of ROS 2 workspaces allows to build both CPU binaries as well 
 sudo apt-get -y install curl build-essential libssl-dev git wget \
                           ocl-icd-* opencl-headers python3-vcstool \
                           python3-colcon-common-extensions python3-colcon-mixin \
-                          kpartx u-boot-tools pv gcc-multilib gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+                          kpartx u-boot-tools pv gcc-multilib
+sudo apt-get -y install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
 
 ###################################################
 # 2. create a new ROS 2 workspace with examples and
@@ -286,10 +287,30 @@ source install/setup.bash
 
     Ubuntu 22.04 sysroot is not fully prepared for cross-compilation (but for native builds instead) and thereby, while invoking FindPython, it's just picking the host resources, instead of the target/sysroot ones, which leads to ROS 2 packages relying on Python 3 getting a dependency against the host (which doesn't exist), instead of against the sysroot.
 
-    A **workaround** for this is symlinking the Python3 library of the host to the sysroot one, so that it gets picked while cross-compiling against the Ubuntu 22.04 sysroot. The following should do: `sudo ln -s ~/krs_ws/src/install/../acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/usr/lib/aarch64-linux-gnu/libpython3.10.so.1.0 /usr/lib/aarch64-linux-gnu/libpython3.10.so`)
+    A **workaround** for this is symlinking the Python3 library of the host to the sysroot one, so that it gets picked while cross-compiling against the Ubuntu 22.04 sysroot. The following should do: `sudo ln -s ~/krs_ws/install/../acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/usr/lib/aarch64-linux-gnu/libpython3.10.so.1.0 /usr/lib/aarch64-linux-gnu/libpython3.10.so`)
 ```
 
 ``` shell
+###################################################
+# 6.B workaround for KR260 additional firmware elements
+#   see https://github.com/Xilinx/KRS/issues/62#issue-1292007180
+#
+# TODO: remove this once these artifacts are added to KR260
+#   firmware ROS package (acceleration_firmware_kr260)
+###################################################
+# fetch KV260 firmware
+cd ~/krs_ws
+wget https://www.xilinx.com/bin/public/openDownload?filename=acceleration_firmware_kv260.zip -P src/firmware/acceleration_firmware_kv260
+unzip src/firmware/acceleration_firmware_kv260/openDownload\?filename\=acceleration_firmware_kv260.zip -d src/firmware/acceleration_firmware_kv260/
+
+# deploy KV260 firmware
+colcon build --merge-install --packages-select acceleration_firmware_kv260
+
+# select KV260 firmware artifacts and re-build accelerators targeting KR260 build configuration
+source install/setup.bash
+colcon acceleration select kv260
+
+
 ###################################################
 # 7.A cross-compile and generate ONLY CPU binaries
 ###################################################
