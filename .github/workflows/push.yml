@@ -17,7 +17,7 @@ jobs:
     - name: install sphinx and dependencies
       run: |
         python3 -m pip install --upgrade pip
-        pip3 install rst2pdf==0.98 recommonmark==0.7.1 sphinx_markdown_tables==0.0.15 sphinx==4.0.2 docutils==0.16
+        pip3 install rst2pdf==0.99 sphinx==5.1.1 recommonmark==0.7.1 sphinx-markdown-tables==0.0.17 docutils==0.19
 
     # Build
     - name: Build documentation
