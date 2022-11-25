@@ -114,7 +114,7 @@ $ source install/setup.bash
 $ colcon acceleration select kv260
 
 # build faster_doublevadd_publisher
-$ colcon build --build-base=build-kv260 --install-base=install-kv260 --merge-install --mixin kv260 --packages-select ament_acceleration ament_vitis vitis_common ros2acceleration faster_doublevadd_publisher
+$ colcon build --build-base=build-kv260 --install-base=install-kv260 --merge-install --mixin kv260 --packages-select ament_acceleration ament_vitis vitis_common ros2acceleration tracetools_acceleration faster_doublevadd_publisher
 
 # copy to KV260 rootfs, e.g.
 $ scp -r install-kv260/* petalinux@192.168.1.86:/ros2_ws/
