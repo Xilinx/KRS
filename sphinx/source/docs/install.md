@@ -28,18 +28,23 @@ Below detail the installation and setup process of each one of the development p
 
     ROS 2 Humble ships with Ignition Gazebo (renamed to "Gazebo"). Installing Gazebo Classic (Gazebo 11.0) is still possible but requires some manual work. Some of the examples below were developed with Gazebo Classic. In turn, examples might be rewritten with Ignition Gazebo ("Gazebo") to facilitate the flows.
 
+
 .. admonition:: DDS Recommendation
 
     We have done various experiments for the DDS selection and observed that Cyclone DDS provides more reliable and stable results, so we recommend you to use Cyclone DDS for connectivity. Use below commands to install and use cyclone DDS
-
-    #install cyclone DDS packages
-    sudo apt-get install ros-humble-rmw-cyclonedds-cpp ros-humble-cyclonedds* 
-
-    #Switch from other rmw to rmw_cyclonedds by specifying the environment variable.
-    export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
-    
 ```
 
+```shell
+###################################################
+# install cyclone DDS packages 
+###################################################
+sudo apt-get install ros-humble-rmw-cyclonedds-cpp ros-humble-cyclonedds* 
+
+###################################################
+# Switch from other rmw to rmw_cyclonedds by specifying the environment variable.
+###################################################
+export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+```
 
 
 ## Yocto/PetaLinux
