@@ -1,15 +1,17 @@
 name: Build documentation and deploy
 on: push
 
+permissions: read-all|write-all
+
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@main
 
     # Set up Python 3
     - name: Set up Python 3.9
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@main
       with:
         python-version: 3.9
 
