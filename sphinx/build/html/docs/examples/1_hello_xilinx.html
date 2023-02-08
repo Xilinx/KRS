@@ -398,18 +398,18 @@
 <p class="admonition-title">Note</p>
 <p><a class="reference external" href="https://docs.ros.org/">Learn ROS 2</a> before trying this out first.</p>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~/krs_ws  <span class="c1"># head to your KRS workspace</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/krs_ws<span class="w">  </span><span class="c1"># head to your KRS workspace</span>
 
 <span class="c1"># prepare the environment</span>
-$ <span class="nb">source</span> /tools/Xilinx/Vitis/2022.1/settings64.sh  <span class="c1"># source Xilinx tools</span>
-$ <span class="nb">source</span> /opt/ros/humble/setup.bash  <span class="c1"># Sources system ROS 2 installation</span>
-$ <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/bin&quot;</span>:<span class="nv">$PATH</span>  <span class="c1"># FIXME: adjust path for CMake 3.5+</span>
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/tools/Xilinx/Vitis/2022.1/settings64.sh<span class="w">  </span><span class="c1"># source Xilinx tools</span>
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash<span class="w">  </span><span class="c1"># Sources system ROS 2 installation</span>
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/bin&quot;</span>:<span class="nv">$PATH</span><span class="w">  </span><span class="c1"># FIXME: adjust path for CMake 3.5+</span>
 
 <span class="c1"># build the workspace</span>
-$ colcon build --merge-install  <span class="c1"># about 2 mins</span>
+$<span class="w"> </span>colcon<span class="w"> </span>build<span class="w"> </span>--merge-install<span class="w">  </span><span class="c1"># about 2 mins</span>
 
 <span class="c1"># source the workspace as an overlay</span>
-$ <span class="nb">source</span> install/setup.bash
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>install/setup.bash
 </pre></div>
 </div>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
@@ -423,61 +423,61 @@ $ <span class="nb">source</span> install/setup.bash
 <span class="cm">    \   \  /  \</span>
 <span class="cm">    \___\/\___\</span>
 
-<span class="cm">*/</span><span class="w"></span>
+<span class="cm">*/</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;functional&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;chrono&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;functional&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rclcpp/rclcpp.hpp&quot;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;std_msgs/msg/string.hpp&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rclcpp/rclcpp.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;std_msgs/msg/string.hpp&quot;</span>
 
-<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="o">::</span><span class="nn">chrono_literals</span><span class="p">;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="o">::</span><span class="nn">chrono_literals</span><span class="p">;</span>
 
 <span class="cm">/* This example creates a subclass of Node and uses std::bind() to register a</span>
-<span class="cm">* member function as a callback from the timer. */</span><span class="w"></span>
+<span class="cm">* member function as a callback from the timer. */</span>
 
-<span class="k">class</span><span class="w"> </span><span class="nc">MinimalPublisher</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="k">public</span><span class="o">:</span><span class="w"></span>
-<span class="n">MinimalPublisher</span><span class="p">()</span><span class="w"></span>
-<span class="o">:</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="s">&quot;minimal_publisher&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">count_</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">publisher_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_publisher</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;topic&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">timer_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_wall_timer</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="mi">500</span><span class="n">ms</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">MinimalPublisher</span><span class="o">::</span><span class="n">timer_callback</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">));</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MinimalPublisher</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span>
+<span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="n">MinimalPublisher</span><span class="p">()</span>
+<span class="o">:</span><span class="w"> </span><span class="n">Node</span><span class="p">(</span><span class="s">&quot;minimal_publisher&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">count_</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">publisher_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_publisher</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;topic&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<span class="w">    </span><span class="n">timer_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_wall_timer</span><span class="p">(</span>
+<span class="w">    </span><span class="mi">500</span><span class="n">ms</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">MinimalPublisher</span><span class="o">::</span><span class="n">timer_callback</span><span class="p">,</span><span class="w"> </span><span class="k">this</span><span class="p">));</span>
+<span class="p">}</span>
 
-<span class="k">private</span><span class="o">:</span><span class="w"></span>
-<span class="kt">void</span><span class="w"> </span><span class="n">timer_callback</span><span class="p">()</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="n">message</span><span class="p">.</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello, Xilinx! &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">count_</span><span class="o">++</span><span class="p">);</span><span class="w"></span>
-<span class="w">    </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;Publishing: &#39;%s&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span><span class="w"></span>
-<span class="w">    </span><span class="n">publisher_</span><span class="o">-&gt;</span><span class="n">publish</span><span class="p">(</span><span class="n">message</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="n">rclcpp</span><span class="o">::</span><span class="n">TimerBase</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">timer_</span><span class="p">;</span><span class="w"></span>
-<span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">publisher_</span><span class="p">;</span><span class="w"></span>
-<span class="kt">size_t</span><span class="w"> </span><span class="n">count_</span><span class="p">;</span><span class="w"></span>
-<span class="p">};</span><span class="w"></span>
+<span class="k">private</span><span class="o">:</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">timer_callback</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="p">();</span>
+<span class="w">    </span><span class="n">message</span><span class="p">.</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello, Xilinx! &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">count_</span><span class="o">++</span><span class="p">);</span>
+<span class="w">    </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="w"> </span><span class="s">&quot;Publishing: &#39;%s&#39;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+<span class="w">    </span><span class="n">publisher_</span><span class="o">-&gt;</span><span class="n">publish</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">rclcpp</span><span class="o">::</span><span class="n">TimerBase</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">timer_</span><span class="p">;</span>
+<span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span><span class="n">std_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">String</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">publisher_</span><span class="p">;</span>
+<span class="kt">size_t</span><span class="w"> </span><span class="n">count_</span><span class="p">;</span>
+<span class="p">};</span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span><span class="w"></span>
-<span class="p">{</span><span class="w"></span>
-<span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span><span class="w"></span>
-<span class="n">rclcpp</span><span class="o">::</span><span class="n">spin</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">MinimalPublisher</span><span class="o">&gt;</span><span class="p">());</span><span class="w"></span>
-<span class="n">rclcpp</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span><span class="w"></span>
-<span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+<span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span>
+<span class="n">rclcpp</span><span class="o">::</span><span class="n">spin</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">MinimalPublisher</span><span class="o">&gt;</span><span class="p">());</span>
+<span class="n">rclcpp</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span>
+<span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <section id="launch-hello-xilinx-example-in-the-workstation">
 <h2>Launch <code class="docutils literal notranslate"><span class="pre">hello_xilinx</span></code> example in the workstation<a class="headerlink" href="#launch-hello-xilinx-example-in-the-workstation" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">source</span> install/setup.bash  <span class="c1"># source the overlay workspace</span>
-$ ros2 run publisher_xilinx member_function_publisher
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1618407842</span>.800443167<span class="o">]</span> <span class="o">[</span>minimal_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello, Xilinx! 0&#39;</span>
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1618407843</span>.300407127<span class="o">]</span> <span class="o">[</span>minimal_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello, Xilinx! 1&#39;</span>
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1618407843</span>.800389187<span class="o">]</span> <span class="o">[</span>minimal_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello, Xilinx! 2&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>install/setup.bash<span class="w">  </span><span class="c1"># source the overlay workspace</span>
+$<span class="w"> </span>ros2<span class="w"> </span>run<span class="w"> </span>publisher_xilinx<span class="w"> </span>member_function_publisher
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1618407842</span>.800443167<span class="o">]</span><span class="w"> </span><span class="o">[</span>minimal_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;Hello, Xilinx! 0&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1618407843</span>.300407127<span class="o">]</span><span class="w"> </span><span class="o">[</span>minimal_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;Hello, Xilinx! 1&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1618407843</span>.800389187<span class="o">]</span><span class="w"> </span><span class="o">[</span>minimal_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;Hello, Xilinx! 2&#39;</span>
 ...
 </pre></div>
 </div>
@@ -485,37 +485,37 @@ $ ros2 run publisher_xilinx member_function_publisher
 <section id="launch-hello-xilinx-example-in-the-kv260-hardware">
 <h2>Launch <code class="docutils literal notranslate"><span class="pre">hello_xilinx</span></code> example in the KV260 hardware<a class="headerlink" href="#launch-hello-xilinx-example-in-the-kv260-hardware" title="Permalink to this heading">¶</a></h2>
 <p>First, let’s select the firmware for the target hardware, <a class="reference external" href="https://www.xilinx.com/products/som/kria/kv260-vision-starter-kit.html"><code class="docutils literal notranslate"><span class="pre">KV260</span></code></a>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ colcon acceleration <span class="k">select</span> kv260
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>colcon<span class="w"> </span>acceleration<span class="w"> </span><span class="k">select</span><span class="w"> </span>kv260
 </pre></div>
 </div>
 <p>To verify that we indeed that the right firmware selected, look for the one marked with a “*” at the end of its name:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ colcon acceleration list
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>colcon<span class="w"> </span>acceleration<span class="w"> </span>list
 kv260*
 </pre></div>
 </div>
 <p>Let’s now build the package targeting the KV260:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ colcon build --build-base<span class="o">=</span>build-kv260 --install-base<span class="o">=</span>install-kv260 --merge-install --mixin kv260 --packages-select publisher_xilinx
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>colcon<span class="w"> </span>build<span class="w"> </span>--build-base<span class="o">=</span>build-kv260<span class="w"> </span>--install-base<span class="o">=</span>install-kv260<span class="w"> </span>--merge-install<span class="w"> </span>--mixin<span class="w"> </span>kv260<span class="w"> </span>--packages-select<span class="w"> </span>publisher_xilinx
 </pre></div>
 </div>
 <p>Let’s now create a raw disk image for the SD card with PetaLinux’s rootfs, a vanilla Linux 5.4.0 kernel and the ROS 2 overlay workspace we’ve just created for the KV260:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ colcon acceleration linux vanilla --install-dir install-kv260
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>colcon<span class="w"> </span>acceleration<span class="w"> </span>linux<span class="w"> </span>vanilla<span class="w"> </span>--install-dir<span class="w"> </span>install-kv260
 </pre></div>
 </div>
 <p>We’re now ready to run it on hardware. For that, we need to flash the <code class="docutils literal notranslate"><span class="pre">~/krs_ws/acceleration/firmware/select/sd_card.img</span></code> file into the SD card. If you need help doing so, check out <a class="reference external" href="https://www.xilinx.com/products/som/kria/kv260-vision-starter-kit/kv260-getting-started/setting-up-the-sd-card-image.html">these instructions</a> for different OSs. <strong>Make sure to flash <code class="docutils literal notranslate"><span class="pre">~/krs_ws/acceleration/firmware/select/sd_card.img</span></code> we just generated, and not some other image</strong>.</p>
 <p>Once flashed, connect the board to the computer via its USB/UART/JTAG FTDI adapter and power it on. Then, launch your favority serial console (e.g. <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">tio</span> <span class="pre">/dev/ttyUSB1</span></code>). You should get to the following prompt where you can use the <code class="docutils literal notranslate"><span class="pre">petalinux</span></code> username and define your own password:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>PetaLinux <span class="m">2020</span>.2.2 xilinx-k26-starterkit-2020_2.2 ttyPS0
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>PetaLinux<span class="w"> </span><span class="m">2020</span>.2.2<span class="w"> </span>xilinx-k26-starterkit-2020_2.2<span class="w"> </span>ttyPS0
 
-xilinx-k26-starterkit-2020_2 login:
+xilinx-k26-starterkit-2020_2<span class="w"> </span>login:
 </pre></div>
 </div>
 <p>To launch the <code class="docutils literal notranslate"><span class="pre">hello_xilinx</span></code> package:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">source</span> /usr/bin/ros_setup.bash  <span class="c1"># source the ROS 2 installation</span>
-$ . /ros2_ws/local_setup.bash   <span class="c1"># source the ROS 2 overlay workspace</span>
-$ ros2 run publisher_xilinx member_function_publisher  <span class="c1"># launch the hello_xilinx example</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/usr/bin/ros_setup.bash<span class="w">  </span><span class="c1"># source the ROS 2 installation</span>
+$<span class="w"> </span>.<span class="w"> </span>/ros2_ws/local_setup.bash<span class="w">   </span><span class="c1"># source the ROS 2 overlay workspace</span>
+$<span class="w"> </span>ros2<span class="w"> </span>run<span class="w"> </span>publisher_xilinx<span class="w"> </span>member_function_publisher<span class="w">  </span><span class="c1"># launch the hello_xilinx example</span>
 
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1618478074</span>.116887661<span class="o">]</span> <span class="o">[</span>minimal_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello, Xilinx! 0&#39;</span>
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1618478074</span>.611878275<span class="o">]</span> <span class="o">[</span>minimal_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello, Xilinx! 1&#39;</span>
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1618478075</span>.112175121<span class="o">]</span> <span class="o">[</span>minimal_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello, Xilinx! 2&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1618478074</span>.116887661<span class="o">]</span><span class="w"> </span><span class="o">[</span>minimal_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;Hello, Xilinx! 0&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1618478074</span>.611878275<span class="o">]</span><span class="w"> </span><span class="o">[</span>minimal_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;Hello, Xilinx! 1&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1618478075</span>.112175121<span class="o">]</span><span class="w"> </span><span class="o">[</span>minimal_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;Hello, Xilinx! 2&#39;</span>
 ...
 </pre></div>
 </div>
@@ -527,19 +527,19 @@ $ ros2 run publisher_xilinx member_function_publisher  <span class="c1"># launch
 <p>There’s no support for emulation (sw_emu or hw_emu) targets in KRS <cite>beta`or `1.0</cite> releases, refer to <cite>alpha</cite>.</p>
 </div>
 <p>First, let’s select the firmware for the target hardware, <a class="reference external" href="https://www.xilinx.com/products/som/kria/kv260-vision-starter-kit.html"><code class="docutils literal notranslate"><span class="pre">KV260</span></code></a>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ colcon acceleration <span class="k">select</span> kv260
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>colcon<span class="w"> </span>acceleration<span class="w"> </span><span class="k">select</span><span class="w"> </span>kv260
 </pre></div>
 </div>
 <p>Build the package for the KV260:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ colcon build --build-base<span class="o">=</span>build-kv260 --install-base<span class="o">=</span>install-kv260 --merge-install --mixin kv260 --packages-select publisher_xilinx
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>colcon<span class="w"> </span>build<span class="w"> </span>--build-base<span class="o">=</span>build-kv260<span class="w"> </span>--install-base<span class="o">=</span>install-kv260<span class="w"> </span>--merge-install<span class="w"> </span>--mixin<span class="w"> </span>kv260<span class="w"> </span>--packages-select<span class="w"> </span>publisher_xilinx
 </pre></div>
 </div>
 <p>Create a raw disk image for the SD card with PetaLinux’s rootfs and a Linux 5.4.0 vanilla kernel:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ colcon acceleration linux vanilla
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>colcon<span class="w"> </span>acceleration<span class="w"> </span>linux<span class="w"> </span>vanilla
 </pre></div>
 </div>
 <p>Then use the <code class="docutils literal notranslate"><span class="pre">acceleration</span></code> extensions to the ROS 2 <code class="docutils literal notranslate"><span class="pre">colcon</span></code> meta-build system to launch an emulation:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ colcon acceleration emulation sw_emu install-kv260
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>colcon<span class="w"> </span>acceleration<span class="w"> </span>emulation<span class="w"> </span>sw_emu<span class="w"> </span>install-kv260
 </pre></div>
 </div>
 <p>This will trigger the emulation with a prompt like what follows:</p>
@@ -675,29 +675,29 @@ sh: can&#39;t access tty; job control turned off
 </pre></div>
 </div>
 <p>To finalize the boot on rootfs, introduce the following:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir /configfs
-mount -t configfs configfs /configfs
-<span class="nb">cd</span> /configfs/device-tree/overlays/
-mkdir full
-mkdir /lib/firmware/
-cp /boot/devicetree/zynqmp-sck-kv-g-qemu.dtbo /lib/firmware/.
-<span class="nb">echo</span> -n <span class="s2">&quot;zynqmp-sck-kv-g-qemu.dtbo&quot;</span> &gt; full/path
-<span class="nb">exec</span> /init
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>/configfs
+mount<span class="w"> </span>-t<span class="w"> </span>configfs<span class="w"> </span>configfs<span class="w"> </span>/configfs
+<span class="nb">cd</span><span class="w"> </span>/configfs/device-tree/overlays/
+mkdir<span class="w"> </span>full
+mkdir<span class="w"> </span>/lib/firmware/
+cp<span class="w"> </span>/boot/devicetree/zynqmp-sck-kv-g-qemu.dtbo<span class="w"> </span>/lib/firmware/.
+<span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;zynqmp-sck-kv-g-qemu.dtbo&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>full/path
+<span class="nb">exec</span><span class="w"> </span>/init
 </pre></div>
 </div>
 <p>This should bring you all the way down to the prompt:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>PetaLinux <span class="m">2020</span>.2.2 xilinx-k26-starterkit-2020_2.2 ttyPS0
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>PetaLinux<span class="w"> </span><span class="m">2020</span>.2.2<span class="w"> </span>xilinx-k26-starterkit-2020_2.2<span class="w"> </span>ttyPS0
 
-xilinx-k26-starterkit-2020_2 login:
+xilinx-k26-starterkit-2020_2<span class="w"> </span>login:
 </pre></div>
 </div>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">petalinux</span></code> username and pick you own password. Then, inside of the emulation, launch <code class="docutils literal notranslate"><span class="pre">hello_xilinx</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">source</span> /usr/bin/ros_setup.bash  <span class="c1"># source the ROS 2 installation</span>
-$ . /ros2_ws/local_setup.bash   <span class="c1"># source the ROS 2 overlay workspace</span>
-$ ros2 run publisher_xilinx member_function_publisher  <span class="c1"># launch the hello_xilinx example</span>
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1618478074</span>.116887661<span class="o">]</span> <span class="o">[</span>minimal_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello, Xilinx! 0&#39;</span>
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1618478074</span>.611878275<span class="o">]</span> <span class="o">[</span>minimal_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello, Xilinx! 1&#39;</span>
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1618478075</span>.112175121<span class="o">]</span> <span class="o">[</span>minimal_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello, Xilinx! 2&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/usr/bin/ros_setup.bash<span class="w">  </span><span class="c1"># source the ROS 2 installation</span>
+$<span class="w"> </span>.<span class="w"> </span>/ros2_ws/local_setup.bash<span class="w">   </span><span class="c1"># source the ROS 2 overlay workspace</span>
+$<span class="w"> </span>ros2<span class="w"> </span>run<span class="w"> </span>publisher_xilinx<span class="w"> </span>member_function_publisher<span class="w">  </span><span class="c1"># launch the hello_xilinx example</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1618478074</span>.116887661<span class="o">]</span><span class="w"> </span><span class="o">[</span>minimal_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;Hello, Xilinx! 0&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1618478074</span>.611878275<span class="o">]</span><span class="w"> </span><span class="o">[</span>minimal_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;Hello, Xilinx! 1&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1618478075</span>.112175121<span class="o">]</span><span class="w"> </span><span class="o">[</span>minimal_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;Hello, Xilinx! 2&#39;</span>
 ...
 </pre></div>
 </div>
@@ -711,35 +711,35 @@ $ ros2 run publisher_xilinx member_function_publisher  <span class="c1"># launch
 </div>
 <p>As introduced in <a class="reference internal" href="../features/ros2centric.html"><span class="doc">Features</span></a>, KRS is designed to be easily portable across boards. To demonstrate it, we’ll now fetch the firmware for another board capable of hardware acceleration and launch <code class="docutils literal notranslate"><span class="pre">hello_xilinx</span></code> in this board using emulation.
 Let’s start fetching the firmware:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> src <span class="o">&amp;&amp;</span> wget https://github.com/ros-acceleration/acceleration_firmware_zcu102/releases/download/0.6.0/acceleration_firmware_zcu102.zip <span class="o">&amp;&amp;</span> unzip acceleration_firmware_zcu102.zip <span class="o">&amp;&amp;</span> rm acceleration_firmware_zcu102.zip <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ..
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>src<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>wget<span class="w"> </span>https://github.com/ros-acceleration/acceleration_firmware_zcu102/releases/download/0.6.0/acceleration_firmware_zcu102.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>unzip<span class="w"> </span>acceleration_firmware_zcu102.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>acceleration_firmware_zcu102.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>..
 </pre></div>
 </div>
 <p>We then build the workspace to deploy the firmware:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># build the workspace</span>
-$ colcon build --merge-install  <span class="c1"># about 2 mins</span>
+$<span class="w"> </span>colcon<span class="w"> </span>build<span class="w"> </span>--merge-install<span class="w">  </span><span class="c1"># about 2 mins</span>
 </pre></div>
 </div>
 <p>Then, we select the firmware and build the workspace for the ZCU102:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ colcon acceleration <span class="k">select</span> zcu102
-$ colcon build --build-base<span class="o">=</span>build-zcu102 --install-base<span class="o">=</span>install-zcu102 --merge-install --mixin zcu102 --packages-select publisher_xilinx
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>colcon<span class="w"> </span>acceleration<span class="w"> </span><span class="k">select</span><span class="w"> </span>zcu102
+$<span class="w"> </span>colcon<span class="w"> </span>build<span class="w"> </span>--build-base<span class="o">=</span>build-zcu102<span class="w"> </span>--install-base<span class="o">=</span>install-zcu102<span class="w"> </span>--merge-install<span class="w"> </span>--mixin<span class="w"> </span>zcu102<span class="w"> </span>--packages-select<span class="w"> </span>publisher_xilinx
 </pre></div>
 </div>
 <p>We create new raw disk image for the SD card (using ZCU102’s firmware) with PetaLinux’s rootfs and a Linux 5.4.0 vanilla kernel:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ colcon acceleration linux vanilla --install-dir install-zcu102
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>colcon<span class="w"> </span>acceleration<span class="w"> </span>linux<span class="w"> </span>vanilla<span class="w"> </span>--install-dir<span class="w"> </span>install-zcu102
 </pre></div>
 </div>
 <p>Then use the <code class="docutils literal notranslate"><span class="pre">acceleration</span></code> extensions to the ROS 2 <code class="docutils literal notranslate"><span class="pre">colcon</span></code> meta-build system to launch an emulation:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ colcon acceleration emulation sw_emu --no-install
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>colcon<span class="w"> </span>acceleration<span class="w"> </span>emulation<span class="w"> </span>sw_emu<span class="w"> </span>--no-install
 </pre></div>
 </div>
 <p>The ZCU102 rootfs should login automatically with the <code class="docutils literal notranslate"><span class="pre">root</span></code> username.
 Inside of the emulation, launch <code class="docutils literal notranslate"><span class="pre">hello_xilinx</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">source</span> /usr/bin/ros_setup.bash  <span class="c1"># source the ROS 2 installation</span>
-$ . /ros2_ws/local_setup.bash   <span class="c1"># source the ROS 2 overlay workspace</span>
-$ ros2 run publisher_xilinx member_function_publisher  <span class="c1"># launch the hello_xilinx example</span>
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1618478074</span>.116887661<span class="o">]</span> <span class="o">[</span>minimal_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello, Xilinx! 0&#39;</span>
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1618478074</span>.611878275<span class="o">]</span> <span class="o">[</span>minimal_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello, Xilinx! 1&#39;</span>
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1618478075</span>.112175121<span class="o">]</span> <span class="o">[</span>minimal_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;Hello, Xilinx! 2&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/usr/bin/ros_setup.bash<span class="w">  </span><span class="c1"># source the ROS 2 installation</span>
+$<span class="w"> </span>.<span class="w"> </span>/ros2_ws/local_setup.bash<span class="w">   </span><span class="c1"># source the ROS 2 overlay workspace</span>
+$<span class="w"> </span>ros2<span class="w"> </span>run<span class="w"> </span>publisher_xilinx<span class="w"> </span>member_function_publisher<span class="w">  </span><span class="c1"># launch the hello_xilinx example</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1618478074</span>.116887661<span class="o">]</span><span class="w"> </span><span class="o">[</span>minimal_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;Hello, Xilinx! 0&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1618478074</span>.611878275<span class="o">]</span><span class="w"> </span><span class="o">[</span>minimal_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;Hello, Xilinx! 1&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1618478075</span>.112175121<span class="o">]</span><span class="w"> </span><span class="o">[</span>minimal_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;Hello, Xilinx! 2&#39;</span>
 ...
 </pre></div>
 </div>

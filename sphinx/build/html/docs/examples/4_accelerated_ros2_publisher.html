@@ -426,33 +426,33 @@
 <span class="cm">Inspired by the Vector-Add example.</span>
 <span class="cm">See https://github.com/Xilinx/Vitis-Tutorials/blob/master/Getting_Started/Vitis</span>
 
-<span class="cm">*/</span><span class="w"></span>
+<span class="cm">*/</span>
 
 <span class="cp">#define DATA_SIZE 4096</span>
 <span class="c1">// TRIPCOUNT identifier</span>
-<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">c_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DATA_SIZE</span><span class="p">;</span><span class="w"></span>
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">c_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DATA_SIZE</span><span class="p">;</span>
 
-<span class="k">extern</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">vadd</span><span class="p">(</span><span class="w"></span>
+<span class="k">extern</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">vadd</span><span class="p">(</span>
 <span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">in1</span><span class="p">,</span><span class="w">  </span><span class="c1">// Read-Only Vector 1</span>
 <span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">in2</span><span class="p">,</span><span class="w">  </span><span class="c1">// Read-Only Vector 2</span>
 <span class="w">            </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">,</span><span class="w">        </span><span class="c1">// Output Result</span>
 <span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="w">                  </span><span class="c1">// Size in integer</span>
-<span class="w">            </span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="cp">#pragma HLS INTERFACE m_axi port=in1 bundle=aximm1</span>
 <span class="cp">#pragma HLS INTERFACE m_axi port=in2 bundle=aximm2</span>
 <span class="cp">#pragma HLS INTERFACE m_axi port=out bundle=aximm1</span>
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// stupidly iterate over</span>
 <span class="w">                                          </span><span class="c1">// it to generate load</span>
 <span class="w">        </span><span class="cp">#pragma HLS loop_tripcount min = c_size max = c_size</span>
-<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="cp">#pragma HLS loop_tripcount min = c_size max = c_size</span>
-<span class="w">              </span><span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">in1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">in2</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"></span>
-<span class="w">            </span><span class="p">}</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="w">              </span><span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">in1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">in2</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Note the aforementioned <code class="docutils literal notranslate"><span class="pre">INTERFACE</span></code> pragma as the only relevant change introduced, which specifies how RTL ports are created from the function definition during interface synthesis.</p>
@@ -471,27 +471,27 @@
 <p>In other words, the pragmas below define the <code class="code docutils literal notranslate"><span class="pre">INTERFACE</span></code> standards for the RTL ports of the <code class="code docutils literal notranslate"><span class="pre">vadd</span></code> function.</p>
 </div>
 <p>Let’s build it:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~/krs_ws  <span class="c1"># head to your KRS workspace</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/krs_ws<span class="w">  </span><span class="c1"># head to your KRS workspace</span>
 
 <span class="c1"># prepare the environment</span>
-$ <span class="nb">source</span> /tools/Xilinx/Vitis/2022.1/settings64.sh  <span class="c1"># source Xilinx tools</span>
-$ <span class="nb">source</span> /opt/ros/humble/setup.bash  <span class="c1"># Sources system ROS 2 installation</span>
-$ <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/bin&quot;</span>:<span class="nv">$PATH</span>  <span class="c1"># FIXME: adjust path for CMake 3.5+</span>
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/tools/Xilinx/Vitis/2022.1/settings64.sh<span class="w">  </span><span class="c1"># source Xilinx tools</span>
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash<span class="w">  </span><span class="c1"># Sources system ROS 2 installation</span>
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/bin&quot;</span>:<span class="nv">$PATH</span><span class="w">  </span><span class="c1"># FIXME: adjust path for CMake 3.5+</span>
 
 <span class="c1"># build the workspace to deploy KRS components</span>
-$ colcon build --merge-install  <span class="c1"># about 2 mins</span>
+$<span class="w"> </span>colcon<span class="w"> </span>build<span class="w"> </span>--merge-install<span class="w">  </span><span class="c1"># about 2 mins</span>
 
 <span class="c1"># source the workspace as an overlay</span>
-$ <span class="nb">source</span> install/setup.bash
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>install/setup.bash
 
 <span class="c1"># select kv260 firmware (in case you&#39;ve been experimenting with something else)</span>
-$ colcon acceleration <span class="k">select</span> kv260
+$<span class="w"> </span>colcon<span class="w"> </span>acceleration<span class="w"> </span><span class="k">select</span><span class="w"> </span>kv260
 
 <span class="c1"># build accelerated_doublevadd_publisher</span>
-$ colcon build --build-base<span class="o">=</span>build-kv260 --install-base<span class="o">=</span>install-kv260 --merge-install --mixin kv260 --packages-select ament_acceleration ament_vitis vitis_common ros2acceleration accelerated_doublevadd_publisher
+$<span class="w"> </span>colcon<span class="w"> </span>build<span class="w"> </span>--build-base<span class="o">=</span>build-kv260<span class="w"> </span>--install-base<span class="o">=</span>install-kv260<span class="w"> </span>--merge-install<span class="w"> </span>--mixin<span class="w"> </span>kv260<span class="w"> </span>--packages-select<span class="w"> </span>ament_acceleration<span class="w"> </span>ament_vitis<span class="w"> </span>vitis_common<span class="w"> </span>ros2acceleration<span class="w"> </span>accelerated_doublevadd_publisher
 
 <span class="c1"># copy to KV260 rootfs, e.g.</span>
-$ scp -r install-kv260/* petalinux@192.168.1.86:/ros2_ws/
+$<span class="w"> </span>scp<span class="w"> </span>-r<span class="w"> </span>install-kv260/*<span class="w"> </span>petalinux@192.168.1.86:/ros2_ws/
 </pre></div>
 </div>
 <p>and run it:</p>
@@ -499,79 +499,79 @@ $ scp -r install-kv260/* petalinux@192.168.1.86:/ros2_ws/
 <p class="admonition-title">Warning</p>
 <p>Before you begin</p>
 <p>Due to a bug in the daemon client used underneath the ROS 2 CLI extensions, the following is likely to happen:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>xilinx-k26-starterkit-2020_2:/lib/firmware/xilinx# ros2 acceleration <span class="k">select</span> accelerated_doublevadd_publisher
-Removing accel /lib/firmware/xilinx/kv260-dp
-*** buffer overflow detected ***: dfx-mgr-client terminated
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>xilinx-k26-starterkit-2020_2:/lib/firmware/xilinx#<span class="w"> </span>ros2<span class="w"> </span>acceleration<span class="w"> </span><span class="k">select</span><span class="w"> </span>accelerated_doublevadd_publisher
+Removing<span class="w"> </span>accel<span class="w"> </span>/lib/firmware/xilinx/kv260-dp
+***<span class="w"> </span>buffer<span class="w"> </span>overflow<span class="w"> </span>detected<span class="w"> </span>***:<span class="w"> </span>dfx-mgr-client<span class="w"> </span>terminated
 </pre></div>
 </div>
 <p>This overflow is caused by a fixed buffer which is getting overflowed due to an accelerator name that’s longer than expected. <strong>This should be addressed in future firmware releases</strong>.</p>
 <p>For the time being, a quick patch involves changing the name of the accelerator manually and loading it with that different name. E.g.:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /lib/firmware/xilinx/
-mv accelerated_doublevadd_publisher shorter
-ros2 acceleration stop<span class="p">;</span> ros2 acceleration start
-ros2 acceleration <span class="k">select</span> shorter
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/lib/firmware/xilinx/
+mv<span class="w"> </span>accelerated_doublevadd_publisher<span class="w"> </span>shorter
+ros2<span class="w"> </span>acceleration<span class="w"> </span>stop<span class="p">;</span><span class="w"> </span>ros2<span class="w"> </span>acceleration<span class="w"> </span>start
+ros2<span class="w"> </span>acceleration<span class="w"> </span><span class="k">select</span><span class="w"> </span>shorter
 <span class="c1"># and then launch the ROS 2 package as usual</span>
 </pre></div>
 </div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo su
-$ <span class="nb">source</span> /usr/bin/ros_setup.bash  <span class="c1"># source the ROS 2 installation</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>su
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/usr/bin/ros_setup.bash<span class="w">  </span><span class="c1"># source the ROS 2 installation</span>
 
-$ . /ros2_ws/local_setup.bash     <span class="c1"># source the ROS 2 overlay workspace we just </span>
-                                  <span class="c1"># created. Note it has been copied to the SD </span>
-                                  <span class="c1"># card image while being created.</span>
+$<span class="w"> </span>.<span class="w"> </span>/ros2_ws/local_setup.bash<span class="w">     </span><span class="c1"># source the ROS 2 overlay workspace we just </span>
+<span class="w">                                  </span><span class="c1"># created. Note it has been copied to the SD </span>
+<span class="w">                                  </span><span class="c1"># card image while being created.</span>
 
 <span class="c1"># restart the daemon that manages the acceleration kernels</span>
-$ ros2 acceleration stop<span class="p">;</span> ros2 acceleration start
+$<span class="w"> </span>ros2<span class="w"> </span>acceleration<span class="w"> </span>stop<span class="p">;</span><span class="w"> </span>ros2<span class="w"> </span>acceleration<span class="w"> </span>start
 
 <span class="c1"># list the accelerators</span>
-$ ros2 acceleration list
-                                       Accelerator           Type    Active
-                  accelerated_doublevadd_publisher       XRT_FLAT         <span class="m">0</span>
-                                          kv260-dp       XRT_FLAT         <span class="m">1</span>
-                                              base       XRT_FLAT         <span class="m">0</span>
-                    offloaded_doublevadd_publisher       XRT_FLAT         <span class="m">0</span>
+$<span class="w"> </span>ros2<span class="w"> </span>acceleration<span class="w"> </span>list
+<span class="w">                                       </span>Accelerator<span class="w">           </span>Type<span class="w">    </span>Active
+<span class="w">                  </span>accelerated_doublevadd_publisher<span class="w">       </span>XRT_FLAT<span class="w">         </span><span class="m">0</span>
+<span class="w">                                          </span>kv260-dp<span class="w">       </span>XRT_FLAT<span class="w">         </span><span class="m">1</span>
+<span class="w">                                              </span>base<span class="w">       </span>XRT_FLAT<span class="w">         </span><span class="m">0</span>
+<span class="w">                    </span>offloaded_doublevadd_publisher<span class="w">       </span>XRT_FLAT<span class="w">         </span><span class="m">0</span>
 
 <span class="c1"># select the offloaded_doublevadd_publisher</span>
 <span class="c1"># NOTE: see troubleshooting note above, implement</span>
 <span class="c1">#       countermeasure if necessary</span>
-$ ros2 acceleration <span class="k">select</span> accelerated_doublevadd_publisher
+$<span class="w"> </span>ros2<span class="w"> </span>acceleration<span class="w"> </span><span class="k">select</span><span class="w"> </span>accelerated_doublevadd_publisher
 
 <span class="c1"># launch binary </span>
-$ <span class="nb">cd</span> /ros2_ws/lib/accelerated_doublevadd_publisher
-$ ros2 topic hz /vector_acceleration --window <span class="m">10</span> <span class="p">&amp;</span>
-$ ros2 run accelerated_doublevadd_publisher accelerated_doublevadd_publisher
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/ros2_ws/lib/accelerated_doublevadd_publisher
+$<span class="w"> </span>ros2<span class="w"> </span>topic<span class="w"> </span>hz<span class="w"> </span>/vector_acceleration<span class="w"> </span>--window<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="p">&amp;</span>
+$<span class="w"> </span>ros2<span class="w"> </span>run<span class="w"> </span>accelerated_doublevadd_publisher<span class="w"> </span>accelerated_doublevadd_publisher
 
-ros2 run faster_doublevadd_publisher faster_doublevadd_publisher
+ros2<span class="w"> </span>run<span class="w"> </span>faster_doublevadd_publisher<span class="w"> </span>faster_doublevadd_publisher
 
 ...
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629667329</span>.650547207<span class="o">]</span> <span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 9&#39;</span>
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629667329</span>.850627179<span class="o">]</span> <span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 10&#39;</span>
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629667329</span>.988200464<span class="o">]</span> <span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 11&#39;</span>
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629667330</span>.125859198<span class="o">]</span> <span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 12&#39;</span>
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629667330</span>.263443133<span class="o">]</span> <span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 13&#39;</span>
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629667330</span>.463512045<span class="o">]</span> <span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 14&#39;</span>
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629667330</span>.601060629<span class="o">]</span> <span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 15&#39;</span>
-average rate: <span class="m">6</span>.396
-	min: <span class="m">0</span>.137s max: <span class="m">0</span>.200s std dev: <span class="m">0</span>.02870s window: <span class="m">10</span>
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629667330</span>.738635863<span class="o">]</span> <span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 16&#39;</span>
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629667330</span>.876191868<span class="o">]</span> <span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 17&#39;</span>
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629667331</span>.076263260<span class="o">]</span> <span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 18&#39;</span>
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629667331</span>.213853284<span class="o">]</span> <span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 19&#39;</span>
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629667331</span>.351435218<span class="o">]</span> <span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 20&#39;</span>
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629667331</span>.488997143<span class="o">]</span> <span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 21&#39;</span>
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629667331</span>.689110265<span class="o">]</span> <span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 22&#39;</span>
-average rate: <span class="m">6</span>.397
-	min: <span class="m">0</span>.137s max: <span class="m">0</span>.200s std dev: <span class="m">0</span>.02871s window: <span class="m">10</span>
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629667331</span>.826752610<span class="o">]</span> <span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 23&#39;</span>
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629667331</span>.964359824<span class="o">]</span> <span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 24&#39;</span>
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629667332</span>.101934778<span class="o">]</span> <span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 25&#39;</span>
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629667332</span>.302034131<span class="o">]</span> <span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 26&#39;</span>
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629667332</span>.439673035<span class="o">]</span> <span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 27&#39;</span>
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629667332</span>.577249279<span class="o">]</span> <span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 28&#39;</span>
-<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span><span class="m">1629667332</span>.714848544<span class="o">]</span> <span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>: Publishing: <span class="s1">&#39;vadd finished, iteration: 29&#39;</span>
-average rate: <span class="m">6</span>.662
-	min: <span class="m">0</span>.138s max: <span class="m">0</span>.200s std dev: <span class="m">0</span>.02507s window: <span class="m">10</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1629667329</span>.650547207<span class="o">]</span><span class="w"> </span><span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;vadd finished, iteration: 9&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1629667329</span>.850627179<span class="o">]</span><span class="w"> </span><span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;vadd finished, iteration: 10&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1629667329</span>.988200464<span class="o">]</span><span class="w"> </span><span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;vadd finished, iteration: 11&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1629667330</span>.125859198<span class="o">]</span><span class="w"> </span><span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;vadd finished, iteration: 12&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1629667330</span>.263443133<span class="o">]</span><span class="w"> </span><span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;vadd finished, iteration: 13&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1629667330</span>.463512045<span class="o">]</span><span class="w"> </span><span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;vadd finished, iteration: 14&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1629667330</span>.601060629<span class="o">]</span><span class="w"> </span><span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;vadd finished, iteration: 15&#39;</span>
+average<span class="w"> </span>rate:<span class="w"> </span><span class="m">6</span>.396
+<span class="w">	</span>min:<span class="w"> </span><span class="m">0</span>.137s<span class="w"> </span>max:<span class="w"> </span><span class="m">0</span>.200s<span class="w"> </span>std<span class="w"> </span>dev:<span class="w"> </span><span class="m">0</span>.02870s<span class="w"> </span>window:<span class="w"> </span><span class="m">10</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1629667330</span>.738635863<span class="o">]</span><span class="w"> </span><span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;vadd finished, iteration: 16&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1629667330</span>.876191868<span class="o">]</span><span class="w"> </span><span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;vadd finished, iteration: 17&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1629667331</span>.076263260<span class="o">]</span><span class="w"> </span><span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;vadd finished, iteration: 18&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1629667331</span>.213853284<span class="o">]</span><span class="w"> </span><span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;vadd finished, iteration: 19&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1629667331</span>.351435218<span class="o">]</span><span class="w"> </span><span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;vadd finished, iteration: 20&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1629667331</span>.488997143<span class="o">]</span><span class="w"> </span><span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;vadd finished, iteration: 21&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1629667331</span>.689110265<span class="o">]</span><span class="w"> </span><span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;vadd finished, iteration: 22&#39;</span>
+average<span class="w"> </span>rate:<span class="w"> </span><span class="m">6</span>.397
+<span class="w">	</span>min:<span class="w"> </span><span class="m">0</span>.137s<span class="w"> </span>max:<span class="w"> </span><span class="m">0</span>.200s<span class="w"> </span>std<span class="w"> </span>dev:<span class="w"> </span><span class="m">0</span>.02871s<span class="w"> </span>window:<span class="w"> </span><span class="m">10</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1629667331</span>.826752610<span class="o">]</span><span class="w"> </span><span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;vadd finished, iteration: 23&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1629667331</span>.964359824<span class="o">]</span><span class="w"> </span><span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;vadd finished, iteration: 24&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1629667332</span>.101934778<span class="o">]</span><span class="w"> </span><span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;vadd finished, iteration: 25&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1629667332</span>.302034131<span class="o">]</span><span class="w"> </span><span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;vadd finished, iteration: 26&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1629667332</span>.439673035<span class="o">]</span><span class="w"> </span><span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;vadd finished, iteration: 27&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1629667332</span>.577249279<span class="o">]</span><span class="w"> </span><span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;vadd finished, iteration: 28&#39;</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">1629667332</span>.714848544<span class="o">]</span><span class="w"> </span><span class="o">[</span>accelerated_doublevadd_publisher<span class="o">]</span>:<span class="w"> </span>Publishing:<span class="w"> </span><span class="s1">&#39;vadd finished, iteration: 29&#39;</span>
+average<span class="w"> </span>rate:<span class="w"> </span><span class="m">6</span>.662
+<span class="w">	</span>min:<span class="w"> </span><span class="m">0</span>.138s<span class="w"> </span>max:<span class="w"> </span><span class="m">0</span>.200s<span class="w"> </span>std<span class="w"> </span>dev:<span class="w"> </span><span class="m">0</span>.02507s<span class="w"> </span>window:<span class="w"> </span><span class="m">10</span>
 ...
 </pre></div>
 </div>

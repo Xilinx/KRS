@@ -391,6 +391,21 @@
 <p class="admonition-title">Ignition Gazebo vs Gazebo Classic</p>
 <p>ROS 2 Humble ships with Ignition Gazebo (renamed to “Gazebo”). Installing Gazebo Classic (Gazebo 11.0) is still possible but requires some manual work. Some of the examples below were developed with Gazebo Classic. In turn, examples might be rewritten with Ignition Gazebo (“Gazebo”) to facilitate the flows.</p>
 </div>
+<div class="admonition-dds-recommendation admonition">
+<p class="admonition-title">DDS Recommendation</p>
+<p>We have done various experiments for the DDS selection and observed that Cyclone DDS provides more reliable and stable results, so we recommend you to use Cyclone DDS for connectivity. Use below commands to install and use cyclone DDS</p>
+</div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1">###################################################</span>
+<span class="c1"># install cyclone DDS packages </span>
+<span class="c1">###################################################</span>
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>ros-humble-rmw-cyclonedds-cpp<span class="w"> </span>ros-humble-cyclonedds*<span class="w"> </span>
+
+<span class="c1">###################################################</span>
+<span class="c1"># Switch from other rmw to rmw_cyclonedds by specifying the environment variable.</span>
+<span class="c1">###################################################</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">RMW_IMPLEMENTATION</span><span class="o">=</span>rmw_cyclonedds_cpp
+</pre></div>
+</div>
 <section id="yocto-petalinux">
 <h2>Yocto/PetaLinux<a class="headerlink" href="#yocto-petalinux" title="Permalink to this heading">¶</a></h2>
 <div class="admonition-yocto-petalinux-firmware-artifacts-download admonition">
@@ -422,21 +437,21 @@ sudo apt-get install -y \
 <span class="c1">###################################################</span>
 <span class="c1"># 1. install some dependencies you might be missing</span>
 <span class="c1">###################################################</span>
-sudo apt-get -y install curl build-essential libssl-dev git wget <span class="se">\</span>
-                          ocl-icd-* opencl-headers python3-vcstool <span class="se">\</span>
-                          python3-colcon-common-extensions python3-colcon-mixin <span class="se">\</span>
-                          kpartx u-boot-tools pv
+sudo<span class="w"> </span>apt-get<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>curl<span class="w"> </span>build-essential<span class="w"> </span>libssl-dev<span class="w"> </span>git<span class="w"> </span>wget<span class="w"> </span><span class="se">\</span>
+<span class="w">                          </span>ocl-icd-*<span class="w"> </span>opencl-headers<span class="w"> </span>python3-vcstool<span class="w"> </span><span class="se">\</span>
+<span class="w">                          </span>python3-colcon-common-extensions<span class="w"> </span>python3-colcon-mixin<span class="w"> </span><span class="se">\</span>
+<span class="w">                          </span>kpartx<span class="w"> </span>u-boot-tools<span class="w"> </span>pv
 
 <span class="c1">###################################################</span>
 <span class="c1"># 2. create a new ROS 2 workspace with examples and</span>
 <span class="c1">#    firmware for KV260</span>
 <span class="c1">###################################################</span>
-mkdir -p ~/krs_ws/src<span class="p">;</span> <span class="nb">cd</span> ~/krs_ws
+mkdir<span class="w"> </span>-p<span class="w"> </span>~/krs_ws/src<span class="p">;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/krs_ws
 
 <span class="c1">###################################################</span>
 <span class="c1"># 3. Create file with KRS 1.0 additional repos</span>
 <span class="c1">###################################################</span>
-cat <span class="s">&lt;&lt; &#39;EOF&#39; &gt; krs_humble.repos</span>
+cat<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39; &gt; krs_humble.repos</span>
 <span class="s">repositories:  </span>
 <span class="s">  perception/image_pipeline:</span>
 <span class="s">    type: git</span>
@@ -489,24 +504,24 @@ cat <span class="s">&lt;&lt; &#39;EOF&#39; &gt; krs_humble.repos</span>
 <span class="c1">###################################################</span>
 <span class="c1"># 4. import repos of KRS 1.0 release</span>
 <span class="c1">###################################################</span>
-vcs import src --recursive &lt; krs_humble.repos  <span class="c1"># about 3 mins in an AMD Ryzen 5 PRO 4650G</span>
+vcs<span class="w"> </span>import<span class="w"> </span>src<span class="w"> </span>--recursive<span class="w"> </span>&lt;<span class="w"> </span>krs_humble.repos<span class="w">  </span><span class="c1"># about 3 mins in an AMD Ryzen 5 PRO 4650G</span>
 
 <span class="c1">###################################################</span>
 <span class="c1"># 5. build the workspace and deploy firmware for hardware acceleration</span>
 <span class="c1">###################################################</span>
-<span class="nb">source</span> /tools/Xilinx/Vitis/2022.1/settings64.sh  <span class="c1"># source Xilinx tools</span>
-<span class="nb">source</span> /opt/ros/humble/setup.bash  <span class="c1"># Sources system ROS 2 installation.</span>
+<span class="nb">source</span><span class="w"> </span>/tools/Xilinx/Vitis/2022.1/settings64.sh<span class="w">  </span><span class="c1"># source Xilinx tools</span>
+<span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash<span class="w">  </span><span class="c1"># Sources system ROS 2 installation.</span>
 
 <span class="c1"># Note: The path above is valid if one installs ROS 2 from a pre-built debian</span>
 <span class="c1"># packages. If one builds ROS 2 from the source the directory might</span>
 <span class="c1"># vary (e.g. ~/ros2_humble/ros2-linux).</span>
-<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/bin&quot;</span>:<span class="nv">$PATH</span>  <span class="c1"># FIXME: adjust path for CMake 3.5+</span>
-colcon build --merge-install  <span class="c1"># about 4 mins in an AMD Ryzen 5 PRO 4650G</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/bin&quot;</span>:<span class="nv">$PATH</span><span class="w">  </span><span class="c1"># FIXME: adjust path for CMake 3.5+</span>
+colcon<span class="w"> </span>build<span class="w"> </span>--merge-install<span class="w">  </span><span class="c1"># about 4 mins in an AMD Ryzen 5 PRO 4650G</span>
 
 <span class="c1">###################################################</span>
 <span class="c1"># 6. source the overlay to enable all features</span>
 <span class="c1">###################################################</span>
-<span class="nb">source</span> install/setup.bash
+<span class="nb">source</span><span class="w"> </span>install/setup.bash
 </pre></div>
 </div>
 <p>That’s pretty much it, you’ve got now KRS installed in the <code class="docutils literal notranslate"><span class="pre">krs_ws</span></code> ROS overlay workspace.  You could also reproduce the same steps over an existing ROS 2 workspace if you’d like to avoid creating a new, or simply reusing the source code elsewhere.</p>
@@ -530,22 +545,22 @@ colcon build --merge-install  <span class="c1"># about 4 mins in an AMD Ryzen 5 
 <span class="c1"># so you can&#39;t have both paths simultaneously enabled in a single</span>
 <span class="c1"># development machine</span>
 <span class="c1">###################################################</span>
-sudo apt-get -y install curl build-essential libssl-dev git wget <span class="se">\</span>
-                          ocl-icd-* opencl-headers python3-vcstool <span class="se">\</span>
-                          python3-colcon-common-extensions python3-colcon-mixin <span class="se">\</span>
-                          kpartx u-boot-tools pv gcc-multilib
-sudo apt-get -y install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+sudo<span class="w"> </span>apt-get<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>curl<span class="w"> </span>build-essential<span class="w"> </span>libssl-dev<span class="w"> </span>git<span class="w"> </span>wget<span class="w"> </span><span class="se">\</span>
+<span class="w">                          </span>ocl-icd-*<span class="w"> </span>opencl-headers<span class="w"> </span>python3-vcstool<span class="w"> </span><span class="se">\</span>
+<span class="w">                          </span>python3-colcon-common-extensions<span class="w"> </span>python3-colcon-mixin<span class="w"> </span><span class="se">\</span>
+<span class="w">                          </span>kpartx<span class="w"> </span>u-boot-tools<span class="w"> </span>pv<span class="w"> </span>gcc-multilib
+sudo<span class="w"> </span>apt-get<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>gcc-aarch64-linux-gnu<span class="w"> </span>g++-aarch64-linux-gnu
 
 <span class="c1">###################################################</span>
 <span class="c1"># 2. create a new ROS 2 workspace with examples and</span>
 <span class="c1">#    firmware for KR260</span>
 <span class="c1">###################################################</span>
-mkdir -p ~/krs_ws/src<span class="p">;</span> <span class="nb">cd</span> ~/krs_ws
+mkdir<span class="w"> </span>-p<span class="w"> </span>~/krs_ws/src<span class="p">;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/krs_ws
 
 <span class="c1">###################################################</span>
 <span class="c1"># 3. Create file with KRS 1.0 additional repos</span>
 <span class="c1">###################################################</span>
-cat <span class="s">&lt;&lt; &#39;EOF&#39; &gt; krs_humble.repos</span>
+cat<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39; &gt; krs_humble.repos</span>
 <span class="s">repositories:  </span>
 <span class="s">  perception/image_pipeline:</span>
 <span class="s">    type: git</span>
@@ -598,18 +613,18 @@ cat <span class="s">&lt;&lt; &#39;EOF&#39; &gt; krs_humble.repos</span>
 <span class="c1">###################################################</span>
 <span class="c1"># 4. import repos of KRS 1.0 release</span>
 <span class="c1">###################################################</span>
-vcs import src --recursive &lt; krs_humble.repos  <span class="c1"># about 3 mins in an AMD Ryzen 5 PRO 4650G</span>
+vcs<span class="w"> </span>import<span class="w"> </span>src<span class="w"> </span>--recursive<span class="w"> </span>&lt;<span class="w"> </span>krs_humble.repos<span class="w">  </span><span class="c1"># about 3 mins in an AMD Ryzen 5 PRO 4650G</span>
 
 <span class="c1">###################################################</span>
 <span class="c1"># 5. build the workspace and deploy firmware for hardware acceleration</span>
 <span class="c1">###################################################</span>
-<span class="nb">source</span> /tools/Xilinx/Vitis/2022.1/settings64.sh  <span class="c1"># source Xilinx tools</span>
-<span class="nb">source</span> /opt/ros/humble/setup.bash  <span class="c1"># Sources system ROS 2 installation.</span>
+<span class="nb">source</span><span class="w"> </span>/tools/Xilinx/Vitis/2022.1/settings64.sh<span class="w">  </span><span class="c1"># source Xilinx tools</span>
+<span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash<span class="w">  </span><span class="c1"># Sources system ROS 2 installation.</span>
 
 <span class="c1"># Note: The path above is valid if one installs ROS 2 from a pre-built debian</span>
 <span class="c1"># packages. If one builds ROS 2 from the source the directory might</span>
 <span class="c1"># vary (e.g. ~/ros2_humble/ros2-linux).</span>
-<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/bin&quot;</span>:<span class="nv">$PATH</span>  <span class="c1"># FIXME: adjust path for CMake 3.5+</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/bin&quot;</span>:<span class="nv">$PATH</span><span class="w">  </span><span class="c1"># FIXME: adjust path for CMake 3.5+</span>
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -617,12 +632,12 @@ vcs import src --recursive &lt; krs_humble.repos  <span class="c1"># about 3 min
 <p>Next step is going to ask for the <em>sudo password</em>, make sure to enter it appropriately, otherwise the build
 will go on indefinitely.</p>
 </div>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>colcon build --merge-install  <span class="c1"># about 18 mins in an AMD Ryzen 5 PRO 4650G</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>colcon<span class="w"> </span>build<span class="w"> </span>--merge-install<span class="w">  </span><span class="c1"># about 18 mins in an AMD Ryzen 5 PRO 4650G</span>
 
 <span class="c1">###################################################</span>
 <span class="c1"># 6. source the overlay to enable all features</span>
 <span class="c1">###################################################</span>
-<span class="nb">source</span> install/setup.bash
+<span class="nb">source</span><span class="w"> </span>install/setup.bash
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -638,27 +653,27 @@ will go on indefinitely.</p>
 <span class="c1">#   firmware ROS package (acceleration_firmware_kr260)</span>
 <span class="c1">###################################################</span>
 <span class="c1"># fetch KV260 firmware</span>
-<span class="nb">cd</span> ~/krs_ws
-wget https://www.xilinx.com/bin/public/openDownload?filename<span class="o">=</span>acceleration_firmware_kv260.zip -P src/firmware/acceleration_firmware_kv260
-unzip src/firmware/acceleration_firmware_kv260/openDownload<span class="se">\?</span>filename<span class="se">\=</span>acceleration_firmware_kv260.zip -d src/firmware/acceleration_firmware_kv260/
+<span class="nb">cd</span><span class="w"> </span>~/krs_ws
+wget<span class="w"> </span>https://www.xilinx.com/bin/public/openDownload?filename<span class="o">=</span>acceleration_firmware_kv260.zip<span class="w"> </span>-P<span class="w"> </span>src/firmware/acceleration_firmware_kv260
+unzip<span class="w"> </span>src/firmware/acceleration_firmware_kv260/openDownload<span class="se">\?</span>filename<span class="se">\=</span>acceleration_firmware_kv260.zip<span class="w"> </span>-d<span class="w"> </span>src/firmware/acceleration_firmware_kv260/
 
 <span class="c1"># deploy KV260 firmware</span>
-colcon build --merge-install --packages-select acceleration_firmware_kv260
+colcon<span class="w"> </span>build<span class="w"> </span>--merge-install<span class="w"> </span>--packages-select<span class="w"> </span>acceleration_firmware_kv260
 
 <span class="c1"># select KV260 firmware artifacts and re-build accelerators targeting KR260 build configuration</span>
-<span class="nb">source</span> install/setup.bash
-colcon acceleration <span class="k">select</span> kv260
+<span class="nb">source</span><span class="w"> </span>install/setup.bash
+colcon<span class="w"> </span>acceleration<span class="w"> </span><span class="k">select</span><span class="w"> </span>kv260
 
 
 <span class="c1">###################################################</span>
 <span class="c1"># 7.A cross-compile and generate ONLY CPU binaries</span>
 <span class="c1">###################################################</span>
-colcon build --build-base<span class="o">=</span>build-kr260-ubuntu --install-base<span class="o">=</span>install-kr260-ubuntu --merge-install --mixin kr260 --cmake-args -DNOKERNELS<span class="o">=</span><span class="nb">true</span>
+colcon<span class="w"> </span>build<span class="w"> </span>--build-base<span class="o">=</span>build-kr260-ubuntu<span class="w"> </span>--install-base<span class="o">=</span>install-kr260-ubuntu<span class="w"> </span>--merge-install<span class="w"> </span>--mixin<span class="w"> </span>kr260<span class="w"> </span>--cmake-args<span class="w"> </span>-DNOKERNELS<span class="o">=</span><span class="nb">true</span>
 
 <span class="c1">###################################################</span>
 <span class="c1"># 7.B cross-compile and generate CPU binaries and accelerators</span>
 <span class="c1">###################################################</span>
-colcon build --build-base<span class="o">=</span>build-kr260-ubuntu --install-base<span class="o">=</span>install-kr260-ubuntu --merge-install --mixin kr260
+colcon<span class="w"> </span>build<span class="w"> </span>--build-base<span class="o">=</span>build-kr260-ubuntu<span class="w"> </span>--install-base<span class="o">=</span>install-kr260-ubuntu<span class="w"> </span>--merge-install<span class="w"> </span>--mixin<span class="w"> </span>kr260
 </pre></div>
 </div>
 <p>Now that we’ve built binaries and accelerators, next’s to run some of them in hardware. See <a class="reference external" href="https://xilinx.github.io/KRS/sphinx/build/html/docs/examples/0_ros2_publisher.html">examples</a> but <strong>note that Ubuntu 22.04 is targeting KR260 (and thereby the <code class="docutils literal notranslate"><span class="pre">--mixin</span> <span class="pre">kr260</span></code> should be used instead)</strong>.</p>
@@ -699,21 +714,21 @@ colcon build --build-base<span class="o">=</span>build-kr260-ubuntu --install-ba
 <span class="c1"># so you can&#39;t have both paths simultaneously enabled in a single</span>
 <span class="c1"># development machine</span>
 <span class="c1">###################################################</span>
-sudo apt-get -y install curl build-essential libssl-dev git wget <span class="se">\</span>
-                          ocl-icd-* opencl-headers python3-vcstool <span class="se">\</span>
-                          python3-colcon-common-extensions python3-colcon-mixin <span class="se">\</span>
-                          kpartx u-boot-tools pv gcc-multilib
+sudo<span class="w"> </span>apt-get<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>curl<span class="w"> </span>build-essential<span class="w"> </span>libssl-dev<span class="w"> </span>git<span class="w"> </span>wget<span class="w"> </span><span class="se">\</span>
+<span class="w">                          </span>ocl-icd-*<span class="w"> </span>opencl-headers<span class="w"> </span>python3-vcstool<span class="w"> </span><span class="se">\</span>
+<span class="w">                          </span>python3-colcon-common-extensions<span class="w"> </span>python3-colcon-mixin<span class="w"> </span><span class="se">\</span>
+<span class="w">                          </span>kpartx<span class="w"> </span>u-boot-tools<span class="w"> </span>pv<span class="w"> </span>gcc-multilib
 
 <span class="c1">###################################################</span>
 <span class="c1"># 2. create a new ROS 2 workspace with examples and</span>
 <span class="c1">#    firmware for KV260</span>
 <span class="c1">###################################################</span>
-mkdir -p ~/krs_ws/src<span class="p">;</span> <span class="nb">cd</span> ~/krs_ws
+mkdir<span class="w"> </span>-p<span class="w"> </span>~/krs_ws/src<span class="p">;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/krs_ws
 
 <span class="c1">###################################################</span>
 <span class="c1"># 3. Create file with KRS 1.0 additional repos</span>
 <span class="c1">###################################################</span>
-cat <span class="s">&lt;&lt; &#39;EOF&#39; &gt; krs_humble.repos</span>
+cat<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39; &gt; krs_humble.repos</span>
 <span class="s">repositories:  </span>
 <span class="s">  perception/image_pipeline:</span>
 <span class="s">    type: git</span>
@@ -766,18 +781,18 @@ cat <span class="s">&lt;&lt; &#39;EOF&#39; &gt; krs_humble.repos</span>
 <span class="c1">###################################################</span>
 <span class="c1"># 4. import repos of KRS 1.0 release</span>
 <span class="c1">###################################################</span>
-vcs import src --recursive &lt; krs_humble.repos  <span class="c1"># about 3 mins in an AMD Ryzen 5 PRO 4650G</span>
+vcs<span class="w"> </span>import<span class="w"> </span>src<span class="w"> </span>--recursive<span class="w"> </span>&lt;<span class="w"> </span>krs_humble.repos<span class="w">  </span><span class="c1"># about 3 mins in an AMD Ryzen 5 PRO 4650G</span>
 
 <span class="c1">###################################################</span>
 <span class="c1"># 5. build the workspace and deploy firmware for hardware acceleration</span>
 <span class="c1">###################################################</span>
-<span class="nb">source</span> /tools/Xilinx/Vitis/2022.1/settings64.sh  <span class="c1"># source Xilinx tools</span>
-<span class="nb">source</span> /opt/ros/humble/setup.bash  <span class="c1"># Sources system ROS 2 installation.</span>
+<span class="nb">source</span><span class="w"> </span>/tools/Xilinx/Vitis/2022.1/settings64.sh<span class="w">  </span><span class="c1"># source Xilinx tools</span>
+<span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash<span class="w">  </span><span class="c1"># Sources system ROS 2 installation.</span>
 
 <span class="c1"># Note: The path above is valid if one installs ROS 2 from a pre-built debian</span>
 <span class="c1"># packages. If one builds ROS 2 from the source the directory might</span>
 <span class="c1"># vary (e.g. ~/ros2_humble/ros2-linux).</span>
-<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/bin&quot;</span>:<span class="nv">$PATH</span>  <span class="c1"># FIXME: adjust path for CMake 3.5+</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/bin&quot;</span>:<span class="nv">$PATH</span><span class="w">  </span><span class="c1"># FIXME: adjust path for CMake 3.5+</span>
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -785,9 +800,9 @@ vcs import src --recursive &lt; krs_humble.repos  <span class="c1"># about 3 min
 <p>Next step is going to ask for the <em>sudo password</em>, make sure to enter it appropriately, otherwise the build
 will go on indefinitely.</p>
 </div>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>colcon build --merge-install  <span class="c1"># about 20 mins in an AMD Ryzen 5 PRO 4650G,</span>
-                              <span class="c1"># mostly spent installing ROS 2 and deps. into</span>
-                              <span class="c1"># the sysroot</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>colcon<span class="w"> </span>build<span class="w"> </span>--merge-install<span class="w">  </span><span class="c1"># about 20 mins in an AMD Ryzen 5 PRO 4650G,</span>
+<span class="w">                              </span><span class="c1"># mostly spent installing ROS 2 and deps. into</span>
+<span class="w">                              </span><span class="c1"># the sysroot</span>
 
 <span class="c1">###################################################</span>
 <span class="c1"># 6. Enter Ubuntu 22.04 jail while mounting ROS 2 overlay workspace sources for native builds</span>
@@ -795,79 +810,79 @@ will go on indefinitely.</p>
 <span class="c1"># NOTE: assumes to be executed from the root of the ROS 2 overlay workspace</span>
 <span class="c1"># (e.g. ~/krs_ws/)</span>
 <span class="c1">###################################################</span>
-sudo mount --rbind --make-rslave /dev ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/dev
-mkdir -p ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/ros2_ws/src<span class="p">;</span> sudo mount --bind ~/krs_ws/src ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/ros2_ws/src
-sudo mount -t proc none ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/proc
-sudo mount -t sysfs none ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/sys
-sudo mount -t tmpfs none ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/tmp
-sudo mount -t tmpfs none ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/var/lib/apt
-sudo mount -t tmpfs none ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/var/cache/apt
-sudo mount -t tmpfs none ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/var/cache/apt
-sudo cp /etc/resolv.conf ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/etc/resolv.conf
+sudo<span class="w"> </span>mount<span class="w"> </span>--rbind<span class="w"> </span>--make-rslave<span class="w"> </span>/dev<span class="w"> </span>~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/dev
+mkdir<span class="w"> </span>-p<span class="w"> </span>~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/ros2_ws/src<span class="p">;</span><span class="w"> </span>sudo<span class="w"> </span>mount<span class="w"> </span>--bind<span class="w"> </span>~/krs_ws/src<span class="w"> </span>~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/ros2_ws/src
+sudo<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> </span>proc<span class="w"> </span>none<span class="w"> </span>~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/proc
+sudo<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> </span>sysfs<span class="w"> </span>none<span class="w"> </span>~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/sys
+sudo<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> </span>tmpfs<span class="w"> </span>none<span class="w"> </span>~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/tmp
+sudo<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> </span>tmpfs<span class="w"> </span>none<span class="w"> </span>~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/var/lib/apt
+sudo<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> </span>tmpfs<span class="w"> </span>none<span class="w"> </span>~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/var/cache/apt
+sudo<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> </span>tmpfs<span class="w"> </span>none<span class="w"> </span>~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/var/cache/apt
+sudo<span class="w"> </span>cp<span class="w"> </span>/etc/resolv.conf<span class="w"> </span>~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/etc/resolv.conf
 
 <span class="c1"># enter chroot</span>
-sudo chroot ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux
+sudo<span class="w"> </span>chroot<span class="w"> </span>~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux
 
 <span class="c1">###################################################</span>
 <span class="c1"># 7. Build (in emulation) natively CPU binaries</span>
 <span class="c1">###################################################</span>
-<span class="nb">source</span> /opt/ros/humble/setup.bash  <span class="c1"># Sources system ROS 2 installation.</span>
+<span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash<span class="w">  </span><span class="c1"># Sources system ROS 2 installation.</span>
 
 <span class="c1"># add open robotics repo to .deb sources</span>
-<span class="nb">echo</span> <span class="s2">&quot;deb [arch=</span><span class="k">$(</span>dpkg --print-architecture<span class="k">)</span><span class="s2"> signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu </span><span class="k">$(</span><span class="nb">source</span> /etc/os-release <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="nv">$UBUNTU_CODENAME</span><span class="k">)</span><span class="s2"> main&quot;</span> <span class="p">|</span> tee /etc/apt/sources.list.d/ros2.list &gt; /dev/null
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;deb [arch=</span><span class="k">$(</span>dpkg<span class="w"> </span>--print-architecture<span class="k">)</span><span class="s2"> signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu </span><span class="k">$(</span><span class="nb">source</span><span class="w"> </span>/etc/os-release<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$UBUNTU_CODENAME</span><span class="k">)</span><span class="s2"> main&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/ros2.list<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
 
 <span class="c1"># install ROS build tools (colcon et al.)</span>
-apt update <span class="o">&amp;&amp;</span> apt install -y <span class="se">\</span>
-  build-essential <span class="se">\</span>
-  cmake <span class="se">\</span>
-  git <span class="se">\</span>
-  python3-colcon-common-extensions <span class="se">\</span>
-  python3-flake8 <span class="se">\</span>
-  python3-flake8-blind-except <span class="se">\</span>
-  python3-flake8-builtins <span class="se">\</span>
-  python3-flake8-class-newline <span class="se">\</span>
-  python3-flake8-comprehensions <span class="se">\</span>
-  python3-flake8-deprecated <span class="se">\</span>
-  python3-flake8-docstrings <span class="se">\</span>
-  python3-flake8-import-order <span class="se">\</span>
-  python3-flake8-quotes <span class="se">\</span>
-  python3-pip <span class="se">\</span>
-  python3-pytest <span class="se">\</span>
-  python3-pytest-cov <span class="se">\</span>
-  python3-pytest-repeat <span class="se">\</span>
-  python3-pytest-rerunfailures <span class="se">\</span>
-  python3-rosdep <span class="se">\</span>
-  python3-setuptools <span class="se">\</span>
-  python3-vcstool <span class="se">\</span>
-  wget
+apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>build-essential<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>cmake<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>git<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-colcon-common-extensions<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-flake8<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-flake8-blind-except<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-flake8-builtins<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-flake8-class-newline<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-flake8-comprehensions<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-flake8-deprecated<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-flake8-docstrings<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-flake8-import-order<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-flake8-quotes<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-pip<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-pytest<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-pytest-cov<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-pytest-repeat<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-pytest-rerunfailures<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-rosdep<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-setuptools<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>python3-vcstool<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>wget
 
 <span class="c1"># build overlay workspace</span>
-<span class="nb">cd</span> /ros2_ws
-colcon build --merge-install --packages-ignore acceleration_firmware_kr260 perception_3nodes
+<span class="nb">cd</span><span class="w"> </span>/ros2_ws
+colcon<span class="w"> </span>build<span class="w"> </span>--merge-install<span class="w"> </span>--packages-ignore<span class="w"> </span>acceleration_firmware_kr260<span class="w"> </span>perception_3nodes
 
 <span class="c1">###################################################</span>
 <span class="c1"># 8. Run one of the packages</span>
 <span class="c1">###################################################</span>
-<span class="nb">source</span> /ros2_ws/install/local_setup.bash
-ros2 run publisher_xilinx member_function_publisher
+<span class="nb">source</span><span class="w"> </span>/ros2_ws/install/local_setup.bash
+ros2<span class="w"> </span>run<span class="w"> </span>publisher_xilinx<span class="w"> </span>member_function_publisher
 
 <span class="c1">###################################################</span>
 <span class="c1"># 8. Exit chroot and unmount things</span>
 <span class="c1">###################################################</span>
-<span class="nb">exit</span>  <span class="c1"># inside of the emulation</span>
+<span class="nb">exit</span><span class="w">  </span><span class="c1"># inside of the emulation</span>
 
 <span class="c1"># back, in your development station</span>
-sudo umount ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/proc
-sudo umount ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/sys
-sudo umount ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/tmp
-sudo umount ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/var/lib/apt
-sudo umount ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/dev/mqueue
-sudo umount ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/dev/hugepages
-sudo umount ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/dev/shm
-sudo umount ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/dev/pts
-sudo umount ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/dev
-sudo umount ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/ros2_ws/src
-sudo umount ~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/var/cache/apt
+sudo<span class="w"> </span>umount<span class="w"> </span>~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/proc
+sudo<span class="w"> </span>umount<span class="w"> </span>~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/sys
+sudo<span class="w"> </span>umount<span class="w"> </span>~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/tmp
+sudo<span class="w"> </span>umount<span class="w"> </span>~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/var/lib/apt
+sudo<span class="w"> </span>umount<span class="w"> </span>~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/dev/mqueue
+sudo<span class="w"> </span>umount<span class="w"> </span>~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/dev/hugepages
+sudo<span class="w"> </span>umount<span class="w"> </span>~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/dev/shm
+sudo<span class="w"> </span>umount<span class="w"> </span>~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/dev/pts
+sudo<span class="w"> </span>umount<span class="w"> </span>~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/dev
+sudo<span class="w"> </span>umount<span class="w"> </span>~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/ros2_ws/src
+sudo<span class="w"> </span>umount<span class="w"> </span>~/krs_ws/acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/var/cache/apt
 </pre></div>
 </div>
 <p>Now that we’ve built binaries, next’s to run them in hardware. See <a class="reference external" href="https://xilinx.github.io/KRS/sphinx/build/html/docs/examples/0_ros2_publisher.html">examples</a>.</p>

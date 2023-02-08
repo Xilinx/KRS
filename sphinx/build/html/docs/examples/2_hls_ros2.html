@@ -425,18 +425,18 @@
 </div>
 <section id="prepare-the-environment-and-fetch-the-example">
 <h2>Prepare the environment and fetch the example<a class="headerlink" href="#prepare-the-environment-and-fetch-the-example" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~/krs_ws  <span class="c1"># head to your KRS workspace</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/krs_ws<span class="w">  </span><span class="c1"># head to your KRS workspace</span>
 
 <span class="c1"># prepare the environment</span>
-$ <span class="nb">source</span> /tools/Xilinx/Vitis/2022.1/settings64.sh  <span class="c1"># source Xilinx tools</span>
-$ <span class="nb">source</span> /opt/ros/humble/setup.bash  <span class="c1"># Sources system ROS 2 installation</span>
-$ <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/bin&quot;</span>:<span class="nv">$PATH</span>  <span class="c1"># FIXME: adjust path for CMake 3.5+</span>
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/tools/Xilinx/Vitis/2022.1/settings64.sh<span class="w">  </span><span class="c1"># source Xilinx tools</span>
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash<span class="w">  </span><span class="c1"># Sources system ROS 2 installation</span>
+$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/bin&quot;</span>:<span class="nv">$PATH</span><span class="w">  </span><span class="c1"># FIXME: adjust path for CMake 3.5+</span>
 
 <span class="c1"># build the workspace</span>
-$ colcon build --merge-install  <span class="c1"># about 2 mins</span>
+$<span class="w"> </span>colcon<span class="w"> </span>build<span class="w"> </span>--merge-install<span class="w">  </span><span class="c1"># about 2 mins</span>
 
 <span class="c1"># source the workspace as an overlay</span>
-$ <span class="nb">source</span> install/setup.bash
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>install/setup.bash
 </pre></div>
 </div>
 </section>
@@ -478,16 +478,16 @@ $ <span class="nb">source</span> install/setup.bash
 <section id="simple-adder1-a-quick-look-into-the-flow">
 <h2><code class="docutils literal notranslate"><span class="pre">simple_adder1</span></code>: a quick look into the flow<a class="headerlink" href="#simple-adder1-a-quick-look-into-the-flow" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference external" href="https://github.com/ros-acceleration/acceleration_examples/blob/main/nodes/simple_adder/src/adder1.cpp"><code class="docutils literal notranslate"><span class="pre">simple_adder</span></code></a> is pretty straightforward:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">simple_adder</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">c</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">simple_adder</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<span class="w">    </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>We can build this example packaged as a ROS package (though it doesn’t interact with the computational graph) as follows:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ colcon acceleration <span class="k">select</span> kv260  <span class="c1"># select the KV260 firmware</span>
-$ colcon build  --merge-install --build-base<span class="o">=</span>build-kv260 --install-base<span class="o">=</span>install-kv260 --mixin kv260 --packages-select simple_adder
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>colcon<span class="w"> </span>acceleration<span class="w"> </span><span class="k">select</span><span class="w"> </span>kv260<span class="w">  </span><span class="c1"># select the KV260 firmware</span>
+$<span class="w"> </span>colcon<span class="w"> </span>build<span class="w">  </span>--merge-install<span class="w"> </span>--build-base<span class="o">=</span>build-kv260<span class="w"> </span>--install-base<span class="o">=</span>install-kv260<span class="w"> </span>--mixin<span class="w"> </span>kv260<span class="w"> </span>--packages-select<span class="w"> </span>simple_adder
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">simple_adder</span></code> package uses the <code class="docutils literal notranslate"><span class="pre">vitis_hls_generate_tcl</span></code> macro on its CMakeLists.txt. This macro commands the build system (<code class="docutils literal notranslate"><span class="pre">ament</span></code>) that when the package is built it should generate a Tcl script for <code class="docutils literal notranslate"><span class="pre">simple_adder</span></code>. This Tcl script will allow architects with HLS experience to use the traditional HLS interface to further optimize and investigate the kernel through C simulation, synthesis, RTL simulation, etc.</p>
@@ -698,153 +698,153 @@ INFO: [Common 17-206] Exiting vitis_hls at Sat Jul 10 07:39:24 2021...
 </pre></div>
 </div>
 <p>With KRS, we can avoid using Tcl and use instead the ROS 2 extensions to <code class="docutils literal notranslate"><span class="pre">colcon</span></code> to easily perform C simulation, synthesis, implementation and more. Before running things, ROS 2 tools will dump the following status:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ colcon acceleration hls simple_adder
- Project:  project_simpleadder2
- Path:  /home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder2
- 	- Solution:  solution_4ns
- 		- C Simulation:               Not Run
- 		- C Synthesis:                Not Run
- 		- C/RTL Co-simulation:        Not Run
-		- Export:
- 			- IP Catalog:         Not Run
- 			- System Generator:   Not Run
- 			- Export Evaluation:  Not Run
- 	- Solution:  solution_10ns
- 		- C Simulation:               Not Run
- 		- C Synthesis:                Not Run
- 		- C/RTL Co-simulation:        Not Run
-		- Export:
- 			- IP Catalog:         Not Run
- 			- System Generator:   Not Run
- 			- Export Evaluation:  Not Run
- Project:  project_simpleadder1
- Path:  /home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder1
- 	- Solution:  solution_4ns
- 		- C Simulation:               Not Run
- 		- C Synthesis:                Not Run
- 		- C/RTL Co-simulation:        Not Run
-		- Export:
- 			- IP Catalog:         Not Run
- 			- System Generator:   Not Run
- 			- Export Evaluation:  Not Run
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>colcon<span class="w"> </span>acceleration<span class="w"> </span>hls<span class="w"> </span>simple_adder
+<span class="w"> </span>Project:<span class="w">  </span>project_simpleadder2
+<span class="w"> </span>Path:<span class="w">  </span>/home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder2
+<span class="w"> 	</span>-<span class="w"> </span>Solution:<span class="w">  </span>solution_4ns
+<span class="w"> 		</span>-<span class="w"> </span>C<span class="w"> </span>Simulation:<span class="w">               </span>Not<span class="w"> </span>Run
+<span class="w"> 		</span>-<span class="w"> </span>C<span class="w"> </span>Synthesis:<span class="w">                </span>Not<span class="w"> </span>Run
+<span class="w"> 		</span>-<span class="w"> </span>C/RTL<span class="w"> </span>Co-simulation:<span class="w">        </span>Not<span class="w"> </span>Run
+<span class="w">		</span>-<span class="w"> </span>Export:
+<span class="w"> 			</span>-<span class="w"> </span>IP<span class="w"> </span>Catalog:<span class="w">         </span>Not<span class="w"> </span>Run
+<span class="w"> 			</span>-<span class="w"> </span>System<span class="w"> </span>Generator:<span class="w">   </span>Not<span class="w"> </span>Run
+<span class="w"> 			</span>-<span class="w"> </span>Export<span class="w"> </span>Evaluation:<span class="w">  </span>Not<span class="w"> </span>Run
+<span class="w"> 	</span>-<span class="w"> </span>Solution:<span class="w">  </span>solution_10ns
+<span class="w"> 		</span>-<span class="w"> </span>C<span class="w"> </span>Simulation:<span class="w">               </span>Not<span class="w"> </span>Run
+<span class="w"> 		</span>-<span class="w"> </span>C<span class="w"> </span>Synthesis:<span class="w">                </span>Not<span class="w"> </span>Run
+<span class="w"> 		</span>-<span class="w"> </span>C/RTL<span class="w"> </span>Co-simulation:<span class="w">        </span>Not<span class="w"> </span>Run
+<span class="w">		</span>-<span class="w"> </span>Export:
+<span class="w"> 			</span>-<span class="w"> </span>IP<span class="w"> </span>Catalog:<span class="w">         </span>Not<span class="w"> </span>Run
+<span class="w"> 			</span>-<span class="w"> </span>System<span class="w"> </span>Generator:<span class="w">   </span>Not<span class="w"> </span>Run
+<span class="w"> 			</span>-<span class="w"> </span>Export<span class="w"> </span>Evaluation:<span class="w">  </span>Not<span class="w"> </span>Run
+<span class="w"> </span>Project:<span class="w">  </span>project_simpleadder1
+<span class="w"> </span>Path:<span class="w">  </span>/home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder1
+<span class="w"> 	</span>-<span class="w"> </span>Solution:<span class="w">  </span>solution_4ns
+<span class="w"> 		</span>-<span class="w"> </span>C<span class="w"> </span>Simulation:<span class="w">               </span>Not<span class="w"> </span>Run
+<span class="w"> 		</span>-<span class="w"> </span>C<span class="w"> </span>Synthesis:<span class="w">                </span>Not<span class="w"> </span>Run
+<span class="w"> 		</span>-<span class="w"> </span>C/RTL<span class="w"> </span>Co-simulation:<span class="w">        </span>Not<span class="w"> </span>Run
+<span class="w">		</span>-<span class="w"> </span>Export:
+<span class="w"> 			</span>-<span class="w"> </span>IP<span class="w"> </span>Catalog:<span class="w">         </span>Not<span class="w"> </span>Run
+<span class="w"> 			</span>-<span class="w"> </span>System<span class="w"> </span>Generator:<span class="w">   </span>Not<span class="w"> </span>Run
+<span class="w"> 			</span>-<span class="w"> </span>Export<span class="w"> </span>Evaluation:<span class="w">  </span>Not<span class="w"> </span>Run
 </pre></div>
 </div>
 <p>Let’s run it and get some results:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ colcon acceleration hls simple_adder --run
-Found Tcl script <span class="s2">&quot;project_simpleadder2.tcl&quot;</span> <span class="k">for</span> package: simple_adder
-Executing /home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder2.tcl
-Found Tcl script <span class="s2">&quot;project_simpleadder1.tcl&quot;</span> <span class="k">for</span> package: simple_adder
-Executing /home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder1.tcl
- Project:  project_simpleadder2
- Path:  /home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder2
- 	- Solution:  solution_4ns
- 		- C Simulation:               Pass
- 		- C Synthesis:                Run
- 		- C/RTL Co-simulation:        Not Run
-		- Export:
- 			- IP Catalog:         Not Run
- 			- System Generator:   Not Run
- 			- Export Evaluation:  Not Run
- 	- Solution:  solution_10ns
- 		- C Simulation:               Pass
- 		- C Synthesis:                Run
- 		- C/RTL Co-simulation:        Not Run
-		- Export:
- 			- IP Catalog:         Not Run
- 			- System Generator:   Not Run
- 			- Export Evaluation:  Not Run
- Project:  project_simpleadder1
- Path:  /home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder1
- 	- Solution:  solution_4ns
- 		- C Simulation:               Pass
- 		- C Synthesis:                Run
- 		- C/RTL Co-simulation:        Not Run
-		- Export:
- 			- IP Catalog:         Not Run
- 			- System Generator:   Not Run
- 			- Export Evaluation:  Not Run
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>colcon<span class="w"> </span>acceleration<span class="w"> </span>hls<span class="w"> </span>simple_adder<span class="w"> </span>--run
+Found<span class="w"> </span>Tcl<span class="w"> </span>script<span class="w"> </span><span class="s2">&quot;project_simpleadder2.tcl&quot;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>package:<span class="w"> </span>simple_adder
+Executing<span class="w"> </span>/home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder2.tcl
+Found<span class="w"> </span>Tcl<span class="w"> </span>script<span class="w"> </span><span class="s2">&quot;project_simpleadder1.tcl&quot;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>package:<span class="w"> </span>simple_adder
+Executing<span class="w"> </span>/home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder1.tcl
+<span class="w"> </span>Project:<span class="w">  </span>project_simpleadder2
+<span class="w"> </span>Path:<span class="w">  </span>/home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder2
+<span class="w"> 	</span>-<span class="w"> </span>Solution:<span class="w">  </span>solution_4ns
+<span class="w"> 		</span>-<span class="w"> </span>C<span class="w"> </span>Simulation:<span class="w">               </span>Pass
+<span class="w"> 		</span>-<span class="w"> </span>C<span class="w"> </span>Synthesis:<span class="w">                </span>Run
+<span class="w"> 		</span>-<span class="w"> </span>C/RTL<span class="w"> </span>Co-simulation:<span class="w">        </span>Not<span class="w"> </span>Run
+<span class="w">		</span>-<span class="w"> </span>Export:
+<span class="w"> 			</span>-<span class="w"> </span>IP<span class="w"> </span>Catalog:<span class="w">         </span>Not<span class="w"> </span>Run
+<span class="w"> 			</span>-<span class="w"> </span>System<span class="w"> </span>Generator:<span class="w">   </span>Not<span class="w"> </span>Run
+<span class="w"> 			</span>-<span class="w"> </span>Export<span class="w"> </span>Evaluation:<span class="w">  </span>Not<span class="w"> </span>Run
+<span class="w"> 	</span>-<span class="w"> </span>Solution:<span class="w">  </span>solution_10ns
+<span class="w"> 		</span>-<span class="w"> </span>C<span class="w"> </span>Simulation:<span class="w">               </span>Pass
+<span class="w"> 		</span>-<span class="w"> </span>C<span class="w"> </span>Synthesis:<span class="w">                </span>Run
+<span class="w"> 		</span>-<span class="w"> </span>C/RTL<span class="w"> </span>Co-simulation:<span class="w">        </span>Not<span class="w"> </span>Run
+<span class="w">		</span>-<span class="w"> </span>Export:
+<span class="w"> 			</span>-<span class="w"> </span>IP<span class="w"> </span>Catalog:<span class="w">         </span>Not<span class="w"> </span>Run
+<span class="w"> 			</span>-<span class="w"> </span>System<span class="w"> </span>Generator:<span class="w">   </span>Not<span class="w"> </span>Run
+<span class="w"> 			</span>-<span class="w"> </span>Export<span class="w"> </span>Evaluation:<span class="w">  </span>Not<span class="w"> </span>Run
+<span class="w"> </span>Project:<span class="w">  </span>project_simpleadder1
+<span class="w"> </span>Path:<span class="w">  </span>/home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder1
+<span class="w"> 	</span>-<span class="w"> </span>Solution:<span class="w">  </span>solution_4ns
+<span class="w"> 		</span>-<span class="w"> </span>C<span class="w"> </span>Simulation:<span class="w">               </span>Pass
+<span class="w"> 		</span>-<span class="w"> </span>C<span class="w"> </span>Synthesis:<span class="w">                </span>Run
+<span class="w"> 		</span>-<span class="w"> </span>C/RTL<span class="w"> </span>Co-simulation:<span class="w">        </span>Not<span class="w"> </span>Run
+<span class="w">		</span>-<span class="w"> </span>Export:
+<span class="w"> 			</span>-<span class="w"> </span>IP<span class="w"> </span>Catalog:<span class="w">         </span>Not<span class="w"> </span>Run
+<span class="w"> 			</span>-<span class="w"> </span>System<span class="w"> </span>Generator:<span class="w">   </span>Not<span class="w"> </span>Run
+<span class="w"> 			</span>-<span class="w"> </span>Export<span class="w"> </span>Evaluation:<span class="w">  </span>Not<span class="w"> </span>Run
 </pre></div>
 </div>
 <p>If we want to inspect the results from the CLI, we can add the <code class="docutils literal notranslate"><span class="pre">--synthesis-report</span></code> flag:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ colcon acceleration hls simple_adder --synthesis-report
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>colcon<span class="w"> </span>acceleration<span class="w"> </span>hls<span class="w"> </span>simple_adder<span class="w"> </span>--synthesis-report
 
 ...
 
-  Project:  project_simpleadder1
- Path:  /home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder1
- 	- Solution:  solution_4ns
- 		- C Simulation:               Pass
- 		- C Synthesis:                Run
- 		- C/RTL Co-simulation:        Not Run
-		- Export:
- 			- IP Catalog:         Not Run
- 			- System Generator:   Not Run
- 			- Export Evaluation:  Not Run
-		- Synthesis report: /home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder1/solution_4ns/syn/report/simple_adder_csynth.rpt
+<span class="w">  </span>Project:<span class="w">  </span>project_simpleadder1
+<span class="w"> </span>Path:<span class="w">  </span>/home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder1
+<span class="w"> 	</span>-<span class="w"> </span>Solution:<span class="w">  </span>solution_4ns
+<span class="w"> 		</span>-<span class="w"> </span>C<span class="w"> </span>Simulation:<span class="w">               </span>Pass
+<span class="w"> 		</span>-<span class="w"> </span>C<span class="w"> </span>Synthesis:<span class="w">                </span>Run
+<span class="w"> 		</span>-<span class="w"> </span>C/RTL<span class="w"> </span>Co-simulation:<span class="w">        </span>Not<span class="w"> </span>Run
+<span class="w">		</span>-<span class="w"> </span>Export:
+<span class="w"> 			</span>-<span class="w"> </span>IP<span class="w"> </span>Catalog:<span class="w">         </span>Not<span class="w"> </span>Run
+<span class="w"> 			</span>-<span class="w"> </span>System<span class="w"> </span>Generator:<span class="w">   </span>Not<span class="w"> </span>Run
+<span class="w"> 			</span>-<span class="w"> </span>Export<span class="w"> </span>Evaluation:<span class="w">  </span>Not<span class="w"> </span>Run
+<span class="w">		</span>-<span class="w"> </span>Synthesis<span class="w"> </span>report:<span class="w"> </span>/home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder1/solution_4ns/syn/report/simple_adder_csynth.rpt
 
 
-  			<span class="o">================================================================</span>
-  			<span class="o">==</span> Vitis HLS Report <span class="k">for</span> <span class="s1">&#39;simple_adder&#39;</span>
-  			<span class="o">================================================================</span>
-  			* Date:           Sun Aug <span class="m">22</span> <span class="m">15</span>:58:31 <span class="m">2021</span>
+<span class="w">  			</span><span class="o">================================================================</span>
+<span class="w">  			</span><span class="o">==</span><span class="w"> </span>Vitis<span class="w"> </span>HLS<span class="w"> </span>Report<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="s1">&#39;simple_adder&#39;</span>
+<span class="w">  			</span><span class="o">================================================================</span>
+<span class="w">  			</span>*<span class="w"> </span>Date:<span class="w">           </span>Sun<span class="w"> </span>Aug<span class="w"> </span><span class="m">22</span><span class="w"> </span><span class="m">15</span>:58:31<span class="w"> </span><span class="m">2021</span>
 
-  			* Version:        <span class="m">2020</span>.2.2 <span class="o">(</span>Build <span class="m">3118627</span> on Tue Feb  <span class="m">9</span> <span class="m">05</span>:13:49 MST <span class="m">2021</span><span class="o">)</span>
-  			* Project:        project_simpleadder1
-  			* Solution:       solution_4ns <span class="o">(</span>Vitis Kernel Flow Target<span class="o">)</span>
-  			* Product family: zynquplus
-  			* Target device:  xck26-sfvc784-2LV-c
-
-
-  			<span class="o">================================================================</span>
-  			<span class="o">==</span> Performance <span class="nv">Estimates</span>
-  			<span class="o">================================================================</span>
-  			+ Timing:
-  			    * Summary:
-  			    +--------+---------+----------+------------+
-  			    <span class="p">|</span>  Clock <span class="p">|</span>  Target <span class="p">|</span> Estimated<span class="p">|</span> Uncertainty<span class="p">|</span>
-  			    +--------+---------+----------+------------+
-  			    <span class="p">|</span>ap_clk  <span class="p">|</span>  <span class="m">4</span>.00 ns<span class="p">|</span>  <span class="m">2</span>.016 ns<span class="p">|</span>     <span class="m">1</span>.08 ns<span class="p">|</span>
-  			    +--------+---------+----------+------------+
-
-  			+ Latency:
-  			    * Summary:
-  			    +---------+---------+----------+----------+-----+-----+---------+
-  			    <span class="p">|</span>  Latency <span class="o">(</span>cycles<span class="o">)</span> <span class="p">|</span>  Latency <span class="o">(</span>absolute<span class="o">)</span> <span class="p">|</span>  Interval <span class="p">|</span> Pipeline<span class="p">|</span>
-  			    <span class="p">|</span>   min   <span class="p">|</span>   max   <span class="p">|</span>    min   <span class="p">|</span>    max   <span class="p">|</span> min <span class="p">|</span> max <span class="p">|</span>   Type  <span class="p">|</span>
-  			    +---------+---------+----------+----------+-----+-----+---------+
-  			    <span class="p">|</span>        <span class="m">0</span><span class="p">|</span>        <span class="m">0</span><span class="p">|</span>      <span class="m">0</span> ns<span class="p">|</span>      <span class="m">0</span> ns<span class="p">|</span>    <span class="m">1</span><span class="p">|</span>    <span class="m">1</span><span class="p">|</span>     none<span class="p">|</span>
-  			    +---------+---------+----------+----------+-----+-----+---------+
-
-  			    + Detail:
-  			        * Instance:
-  			        N/A
-
-  			        * Loop:
-  			        N/A
+<span class="w">  			</span>*<span class="w"> </span>Version:<span class="w">        </span><span class="m">2020</span>.2.2<span class="w"> </span><span class="o">(</span>Build<span class="w"> </span><span class="m">3118627</span><span class="w"> </span>on<span class="w"> </span>Tue<span class="w"> </span>Feb<span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">05</span>:13:49<span class="w"> </span>MST<span class="w"> </span><span class="m">2021</span><span class="o">)</span>
+<span class="w">  			</span>*<span class="w"> </span>Project:<span class="w">        </span>project_simpleadder1
+<span class="w">  			</span>*<span class="w"> </span>Solution:<span class="w">       </span>solution_4ns<span class="w"> </span><span class="o">(</span>Vitis<span class="w"> </span>Kernel<span class="w"> </span>Flow<span class="w"> </span>Target<span class="o">)</span>
+<span class="w">  			</span>*<span class="w"> </span>Product<span class="w"> </span>family:<span class="w"> </span>zynquplus
+<span class="w">  			</span>*<span class="w"> </span>Target<span class="w"> </span>device:<span class="w">  </span>xck26-sfvc784-2LV-c
 
 
+<span class="w">  			</span><span class="o">================================================================</span>
+<span class="w">  			</span><span class="o">==</span><span class="w"> </span>Performance<span class="w"> </span><span class="nv">Estimates</span>
+<span class="w">  			</span><span class="o">================================================================</span>
+<span class="w">  			</span>+<span class="w"> </span>Timing:
+<span class="w">  			    </span>*<span class="w"> </span>Summary:
+<span class="w">  			    </span>+--------+---------+----------+------------+
+<span class="w">  			    </span><span class="p">|</span><span class="w">  </span>Clock<span class="w"> </span><span class="p">|</span><span class="w">  </span>Target<span class="w"> </span><span class="p">|</span><span class="w"> </span>Estimated<span class="p">|</span><span class="w"> </span>Uncertainty<span class="p">|</span>
+<span class="w">  			    </span>+--------+---------+----------+------------+
+<span class="w">  			    </span><span class="p">|</span>ap_clk<span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="m">4</span>.00<span class="w"> </span>ns<span class="p">|</span><span class="w">  </span><span class="m">2</span>.016<span class="w"> </span>ns<span class="p">|</span><span class="w">     </span><span class="m">1</span>.08<span class="w"> </span>ns<span class="p">|</span>
+<span class="w">  			    </span>+--------+---------+----------+------------+
 
-  			<span class="o">================================================================</span>
-  			<span class="o">==</span> Utilization <span class="nv">Estimates</span>
-  			<span class="o">================================================================</span>
-  			* Summary:
-  			+-----------------+---------+------+--------+--------+-----+
-  			<span class="p">|</span>       Name      <span class="p">|</span> BRAM_18K<span class="p">|</span>  DSP <span class="p">|</span>   FF   <span class="p">|</span>   LUT  <span class="p">|</span> URAM<span class="p">|</span>
-  			+-----------------+---------+------+--------+--------+-----+
-  			<span class="p">|</span>DSP              <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       -<span class="p">|</span>       -<span class="p">|</span>    -<span class="p">|</span>
-  			<span class="p">|</span>Expression       <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       <span class="m">0</span><span class="p">|</span>      <span class="m">41</span><span class="p">|</span>    -<span class="p">|</span>
-  			<span class="p">|</span>FIFO             <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       -<span class="p">|</span>       -<span class="p">|</span>    -<span class="p">|</span>
-  			<span class="p">|</span>Instance         <span class="p">|</span>        <span class="m">0</span><span class="p">|</span>     -<span class="p">|</span>     <span class="m">144</span><span class="p">|</span>     <span class="m">232</span><span class="p">|</span>    -<span class="p">|</span>
-  			<span class="p">|</span>Memory           <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       -<span class="p">|</span>       -<span class="p">|</span>    -<span class="p">|</span>
-  			<span class="p">|</span>Multiplexer      <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       -<span class="p">|</span>      <span class="m">18</span><span class="p">|</span>    -<span class="p">|</span>
-  			<span class="p">|</span>Register         <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>      <span class="m">37</span><span class="p">|</span>       -<span class="p">|</span>    -<span class="p">|</span>
-  			+-----------------+---------+------+--------+--------+-----+
-  			<span class="p">|</span>Total            <span class="p">|</span>        <span class="m">0</span><span class="p">|</span>     <span class="m">0</span><span class="p">|</span>     <span class="m">181</span><span class="p">|</span>     <span class="m">291</span><span class="p">|</span>    <span class="m">0</span><span class="p">|</span>
-  			+-----------------+---------+------+--------+--------+-----+
-  			<span class="p">|</span>Available        <span class="p">|</span>      <span class="m">288</span><span class="p">|</span>  <span class="m">1248</span><span class="p">|</span>  <span class="m">234240</span><span class="p">|</span>  <span class="m">117120</span><span class="p">|</span>   <span class="m">64</span><span class="p">|</span>
-  			+-----------------+---------+------+--------+--------+-----+
-  			<span class="p">|</span>Utilization <span class="o">(</span>%<span class="o">)</span>  <span class="p">|</span>        <span class="m">0</span><span class="p">|</span>     <span class="m">0</span><span class="p">|</span>      ~0<span class="p">|</span>      ~0<span class="p">|</span>    <span class="m">0</span><span class="p">|</span>
-  			+-----------------+---------+------+--------+--------+-----+
+<span class="w">  			</span>+<span class="w"> </span>Latency:
+<span class="w">  			    </span>*<span class="w"> </span>Summary:
+<span class="w">  			    </span>+---------+---------+----------+----------+-----+-----+---------+
+<span class="w">  			    </span><span class="p">|</span><span class="w">  </span>Latency<span class="w"> </span><span class="o">(</span>cycles<span class="o">)</span><span class="w"> </span><span class="p">|</span><span class="w">  </span>Latency<span class="w"> </span><span class="o">(</span>absolute<span class="o">)</span><span class="w"> </span><span class="p">|</span><span class="w">  </span>Interval<span class="w"> </span><span class="p">|</span><span class="w"> </span>Pipeline<span class="p">|</span>
+<span class="w">  			    </span><span class="p">|</span><span class="w">   </span>min<span class="w">   </span><span class="p">|</span><span class="w">   </span>max<span class="w">   </span><span class="p">|</span><span class="w">    </span>min<span class="w">   </span><span class="p">|</span><span class="w">    </span>max<span class="w">   </span><span class="p">|</span><span class="w"> </span>min<span class="w"> </span><span class="p">|</span><span class="w"> </span>max<span class="w"> </span><span class="p">|</span><span class="w">   </span>Type<span class="w">  </span><span class="p">|</span>
+<span class="w">  			    </span>+---------+---------+----------+----------+-----+-----+---------+
+<span class="w">  			    </span><span class="p">|</span><span class="w">        </span><span class="m">0</span><span class="p">|</span><span class="w">        </span><span class="m">0</span><span class="p">|</span><span class="w">      </span><span class="m">0</span><span class="w"> </span>ns<span class="p">|</span><span class="w">      </span><span class="m">0</span><span class="w"> </span>ns<span class="p">|</span><span class="w">    </span><span class="m">1</span><span class="p">|</span><span class="w">    </span><span class="m">1</span><span class="p">|</span><span class="w">     </span>none<span class="p">|</span>
+<span class="w">  			    </span>+---------+---------+----------+----------+-----+-----+---------+
+
+<span class="w">  			    </span>+<span class="w"> </span>Detail:
+<span class="w">  			        </span>*<span class="w"> </span>Instance:
+<span class="w">  			        </span>N/A
+
+<span class="w">  			        </span>*<span class="w"> </span>Loop:
+<span class="w">  			        </span>N/A
+
+
+
+<span class="w">  			</span><span class="o">================================================================</span>
+<span class="w">  			</span><span class="o">==</span><span class="w"> </span>Utilization<span class="w"> </span><span class="nv">Estimates</span>
+<span class="w">  			</span><span class="o">================================================================</span>
+<span class="w">  			</span>*<span class="w"> </span>Summary:
+<span class="w">  			</span>+-----------------+---------+------+--------+--------+-----+
+<span class="w">  			</span><span class="p">|</span><span class="w">       </span>Name<span class="w">      </span><span class="p">|</span><span class="w"> </span>BRAM_18K<span class="p">|</span><span class="w">  </span>DSP<span class="w"> </span><span class="p">|</span><span class="w">   </span>FF<span class="w">   </span><span class="p">|</span><span class="w">   </span>LUT<span class="w">  </span><span class="p">|</span><span class="w"> </span>URAM<span class="p">|</span>
+<span class="w">  			</span>+-----------------+---------+------+--------+--------+-----+
+<span class="w">  			</span><span class="p">|</span>DSP<span class="w">              </span><span class="p">|</span><span class="w">        </span>-<span class="p">|</span><span class="w">     </span>-<span class="p">|</span><span class="w">       </span>-<span class="p">|</span><span class="w">       </span>-<span class="p">|</span><span class="w">    </span>-<span class="p">|</span>
+<span class="w">  			</span><span class="p">|</span>Expression<span class="w">       </span><span class="p">|</span><span class="w">        </span>-<span class="p">|</span><span class="w">     </span>-<span class="p">|</span><span class="w">       </span><span class="m">0</span><span class="p">|</span><span class="w">      </span><span class="m">41</span><span class="p">|</span><span class="w">    </span>-<span class="p">|</span>
+<span class="w">  			</span><span class="p">|</span>FIFO<span class="w">             </span><span class="p">|</span><span class="w">        </span>-<span class="p">|</span><span class="w">     </span>-<span class="p">|</span><span class="w">       </span>-<span class="p">|</span><span class="w">       </span>-<span class="p">|</span><span class="w">    </span>-<span class="p">|</span>
+<span class="w">  			</span><span class="p">|</span>Instance<span class="w">         </span><span class="p">|</span><span class="w">        </span><span class="m">0</span><span class="p">|</span><span class="w">     </span>-<span class="p">|</span><span class="w">     </span><span class="m">144</span><span class="p">|</span><span class="w">     </span><span class="m">232</span><span class="p">|</span><span class="w">    </span>-<span class="p">|</span>
+<span class="w">  			</span><span class="p">|</span>Memory<span class="w">           </span><span class="p">|</span><span class="w">        </span>-<span class="p">|</span><span class="w">     </span>-<span class="p">|</span><span class="w">       </span>-<span class="p">|</span><span class="w">       </span>-<span class="p">|</span><span class="w">    </span>-<span class="p">|</span>
+<span class="w">  			</span><span class="p">|</span>Multiplexer<span class="w">      </span><span class="p">|</span><span class="w">        </span>-<span class="p">|</span><span class="w">     </span>-<span class="p">|</span><span class="w">       </span>-<span class="p">|</span><span class="w">      </span><span class="m">18</span><span class="p">|</span><span class="w">    </span>-<span class="p">|</span>
+<span class="w">  			</span><span class="p">|</span>Register<span class="w">         </span><span class="p">|</span><span class="w">        </span>-<span class="p">|</span><span class="w">     </span>-<span class="p">|</span><span class="w">      </span><span class="m">37</span><span class="p">|</span><span class="w">       </span>-<span class="p">|</span><span class="w">    </span>-<span class="p">|</span>
+<span class="w">  			</span>+-----------------+---------+------+--------+--------+-----+
+<span class="w">  			</span><span class="p">|</span>Total<span class="w">            </span><span class="p">|</span><span class="w">        </span><span class="m">0</span><span class="p">|</span><span class="w">     </span><span class="m">0</span><span class="p">|</span><span class="w">     </span><span class="m">181</span><span class="p">|</span><span class="w">     </span><span class="m">291</span><span class="p">|</span><span class="w">    </span><span class="m">0</span><span class="p">|</span>
+<span class="w">  			</span>+-----------------+---------+------+--------+--------+-----+
+<span class="w">  			</span><span class="p">|</span>Available<span class="w">        </span><span class="p">|</span><span class="w">      </span><span class="m">288</span><span class="p">|</span><span class="w">  </span><span class="m">1248</span><span class="p">|</span><span class="w">  </span><span class="m">234240</span><span class="p">|</span><span class="w">  </span><span class="m">117120</span><span class="p">|</span><span class="w">   </span><span class="m">64</span><span class="p">|</span>
+<span class="w">  			</span>+-----------------+---------+------+--------+--------+-----+
+<span class="w">  			</span><span class="p">|</span>Utilization<span class="w"> </span><span class="o">(</span>%<span class="o">)</span><span class="w">  </span><span class="p">|</span><span class="w">        </span><span class="m">0</span><span class="p">|</span><span class="w">     </span><span class="m">0</span><span class="p">|</span><span class="w">      </span>~0<span class="p">|</span><span class="w">      </span>~0<span class="p">|</span><span class="w">    </span><span class="m">0</span><span class="p">|</span>
+<span class="w">  			</span>+-----------------+---------+------+--------+--------+-----+
 ...
 </pre></div>
 </div>
@@ -902,10 +902,10 @@ table th:nth-of-type(2) {
 <section id="simple-adder2-optimizing-fpga-synthesis-for-lower-latency-responses">
 <h2><code class="docutils literal notranslate"><span class="pre">simple_adder2</span></code>: optimizing FPGA synthesis for lower latency responses<a class="headerlink" href="#simple-adder2-optimizing-fpga-synthesis-for-lower-latency-responses" title="Permalink to this heading">¶</a></h2>
 <p>The source code of <code class="docutils literal notranslate"><span class="pre">simple_adder2</span></code> will now be the following:</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">simple_adder</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="o">*</span><span class="n">b</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">c</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">simple_adder</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<span class="w">    </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="o">*</span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
 <span class="p">}</span><span class="w">    </span>
 </pre></div>
 </div>
@@ -947,172 +947,172 @@ table th:nth-of-type(2) {
 </tr>
 </tbody>
 </table><p>Futher inspecting the solutions with <code class="docutils literal notranslate"><span class="pre">colcon</span></code> CLI extensions:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ colcon acceleration hls simple_adder --synthesis-report
- Project:  project_simpleadder2
- Path:  /home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder2
- 	- Solution:  solution_4ns
- 		- C Simulation:               Pass
- 		- C Synthesis:                Run
- 		- C/RTL Co-simulation:        Not Run
-		- Export:
- 			- IP Catalog:         Not Run
- 			- System Generator:   Not Run
- 			- Export Evaluation:  Not Run
-		- Synthesis report: /home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder2/solution_4ns/syn/report/simple_adder_csynth.rpt
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>colcon<span class="w"> </span>acceleration<span class="w"> </span>hls<span class="w"> </span>simple_adder<span class="w"> </span>--synthesis-report
+<span class="w"> </span>Project:<span class="w">  </span>project_simpleadder2
+<span class="w"> </span>Path:<span class="w">  </span>/home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder2
+<span class="w"> 	</span>-<span class="w"> </span>Solution:<span class="w">  </span>solution_4ns
+<span class="w"> 		</span>-<span class="w"> </span>C<span class="w"> </span>Simulation:<span class="w">               </span>Pass
+<span class="w"> 		</span>-<span class="w"> </span>C<span class="w"> </span>Synthesis:<span class="w">                </span>Run
+<span class="w"> 		</span>-<span class="w"> </span>C/RTL<span class="w"> </span>Co-simulation:<span class="w">        </span>Not<span class="w"> </span>Run
+<span class="w">		</span>-<span class="w"> </span>Export:
+<span class="w"> 			</span>-<span class="w"> </span>IP<span class="w"> </span>Catalog:<span class="w">         </span>Not<span class="w"> </span>Run
+<span class="w"> 			</span>-<span class="w"> </span>System<span class="w"> </span>Generator:<span class="w">   </span>Not<span class="w"> </span>Run
+<span class="w"> 			</span>-<span class="w"> </span>Export<span class="w"> </span>Evaluation:<span class="w">  </span>Not<span class="w"> </span>Run
+<span class="w">		</span>-<span class="w"> </span>Synthesis<span class="w"> </span>report:<span class="w"> </span>/home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder2/solution_4ns/syn/report/simple_adder_csynth.rpt
 
 
-  			<span class="o">================================================================</span>
-  			<span class="o">==</span> Vitis HLS Report <span class="k">for</span> <span class="s1">&#39;simple_adder&#39;</span>
-  			<span class="o">================================================================</span>
-  			* Date:           Sun Aug <span class="m">22</span> <span class="m">15</span>:58:17 <span class="m">2021</span>
+<span class="w">  			</span><span class="o">================================================================</span>
+<span class="w">  			</span><span class="o">==</span><span class="w"> </span>Vitis<span class="w"> </span>HLS<span class="w"> </span>Report<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="s1">&#39;simple_adder&#39;</span>
+<span class="w">  			</span><span class="o">================================================================</span>
+<span class="w">  			</span>*<span class="w"> </span>Date:<span class="w">           </span>Sun<span class="w"> </span>Aug<span class="w"> </span><span class="m">22</span><span class="w"> </span><span class="m">15</span>:58:17<span class="w"> </span><span class="m">2021</span>
 
-  			* Version:        <span class="m">2020</span>.2.2 <span class="o">(</span>Build <span class="m">3118627</span> on Tue Feb  <span class="m">9</span> <span class="m">05</span>:13:49 MST <span class="m">2021</span><span class="o">)</span>
-  			* Project:        project_simpleadder2
-  			* Solution:       solution_4ns <span class="o">(</span>Vitis Kernel Flow Target<span class="o">)</span>
-  			* Product family: zynquplus
-  			* Target device:  xck26-sfvc784-2LV-c
-
-
-  			<span class="o">================================================================</span>
-  			<span class="o">==</span> Performance <span class="nv">Estimates</span>
-  			<span class="o">================================================================</span>
-  			+ Timing:
-  			    * Summary:
-  			    +--------+---------+----------+------------+
-  			    <span class="p">|</span>  Clock <span class="p">|</span>  Target <span class="p">|</span> Estimated<span class="p">|</span> Uncertainty<span class="p">|</span>
-  			    +--------+---------+----------+------------+
-  			    <span class="p">|</span>ap_clk  <span class="p">|</span>  <span class="m">4</span>.00 ns<span class="p">|</span>  <span class="m">2</span>.365 ns<span class="p">|</span>     <span class="m">1</span>.08 ns<span class="p">|</span>
-  			    +--------+---------+----------+------------+
-
-  			+ Latency:
-  			    * Summary:
-  			    +---------+---------+-----------+-----------+-----+-----+---------+
-  			    <span class="p">|</span>  Latency <span class="o">(</span>cycles<span class="o">)</span> <span class="p">|</span>   Latency <span class="o">(</span>absolute<span class="o">)</span>  <span class="p">|</span>  Interval <span class="p">|</span> Pipeline<span class="p">|</span>
-  			    <span class="p">|</span>   min   <span class="p">|</span>   max   <span class="p">|</span>    min    <span class="p">|</span>    max    <span class="p">|</span> min <span class="p">|</span> max <span class="p">|</span>   Type  <span class="p">|</span>
-  			    +---------+---------+-----------+-----------+-----+-----+---------+
-  			    <span class="p">|</span>        <span class="m">5</span><span class="p">|</span>        <span class="m">5</span><span class="p">|</span>  <span class="m">20</span>.000 ns<span class="p">|</span>  <span class="m">20</span>.000 ns<span class="p">|</span>    <span class="m">6</span><span class="p">|</span>    <span class="m">6</span><span class="p">|</span>     none<span class="p">|</span>
-  			    +---------+---------+-----------+-----------+-----+-----+---------+
-
-  			    + Detail:
-  			        * Instance:
-  			        N/A
-
-  			        * Loop:
-  			        N/A
+<span class="w">  			</span>*<span class="w"> </span>Version:<span class="w">        </span><span class="m">2020</span>.2.2<span class="w"> </span><span class="o">(</span>Build<span class="w"> </span><span class="m">3118627</span><span class="w"> </span>on<span class="w"> </span>Tue<span class="w"> </span>Feb<span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">05</span>:13:49<span class="w"> </span>MST<span class="w"> </span><span class="m">2021</span><span class="o">)</span>
+<span class="w">  			</span>*<span class="w"> </span>Project:<span class="w">        </span>project_simpleadder2
+<span class="w">  			</span>*<span class="w"> </span>Solution:<span class="w">       </span>solution_4ns<span class="w"> </span><span class="o">(</span>Vitis<span class="w"> </span>Kernel<span class="w"> </span>Flow<span class="w"> </span>Target<span class="o">)</span>
+<span class="w">  			</span>*<span class="w"> </span>Product<span class="w"> </span>family:<span class="w"> </span>zynquplus
+<span class="w">  			</span>*<span class="w"> </span>Target<span class="w"> </span>device:<span class="w">  </span>xck26-sfvc784-2LV-c
 
 
+<span class="w">  			</span><span class="o">================================================================</span>
+<span class="w">  			</span><span class="o">==</span><span class="w"> </span>Performance<span class="w"> </span><span class="nv">Estimates</span>
+<span class="w">  			</span><span class="o">================================================================</span>
+<span class="w">  			</span>+<span class="w"> </span>Timing:
+<span class="w">  			    </span>*<span class="w"> </span>Summary:
+<span class="w">  			    </span>+--------+---------+----------+------------+
+<span class="w">  			    </span><span class="p">|</span><span class="w">  </span>Clock<span class="w"> </span><span class="p">|</span><span class="w">  </span>Target<span class="w"> </span><span class="p">|</span><span class="w"> </span>Estimated<span class="p">|</span><span class="w"> </span>Uncertainty<span class="p">|</span>
+<span class="w">  			    </span>+--------+---------+----------+------------+
+<span class="w">  			    </span><span class="p">|</span>ap_clk<span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="m">4</span>.00<span class="w"> </span>ns<span class="p">|</span><span class="w">  </span><span class="m">2</span>.365<span class="w"> </span>ns<span class="p">|</span><span class="w">     </span><span class="m">1</span>.08<span class="w"> </span>ns<span class="p">|</span>
+<span class="w">  			    </span>+--------+---------+----------+------------+
 
-  			<span class="o">================================================================</span>
-  			<span class="o">==</span> Utilization <span class="nv">Estimates</span>
-  			<span class="o">================================================================</span>
-  			* Summary:
-  			+-----------------+---------+------+--------+--------+-----+
-  			<span class="p">|</span>       Name      <span class="p">|</span> BRAM_18K<span class="p">|</span>  DSP <span class="p">|</span>   FF   <span class="p">|</span>   LUT  <span class="p">|</span> URAM<span class="p">|</span>
-  			+-----------------+---------+------+--------+--------+-----+
-  			<span class="p">|</span>DSP              <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       -<span class="p">|</span>       -<span class="p">|</span>    -<span class="p">|</span>
-  			<span class="p">|</span>Expression       <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       <span class="m">0</span><span class="p">|</span>      <span class="m">41</span><span class="p">|</span>    -<span class="p">|</span>
-  			<span class="p">|</span>FIFO             <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       -<span class="p">|</span>       -<span class="p">|</span>    -<span class="p">|</span>
-  			<span class="p">|</span>Instance         <span class="p">|</span>        <span class="m">0</span><span class="p">|</span>     <span class="m">0</span><span class="p">|</span>     <span class="m">639</span><span class="p">|</span>     <span class="m">379</span><span class="p">|</span>    -<span class="p">|</span>
-  			<span class="p">|</span>Memory           <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       -<span class="p">|</span>       -<span class="p">|</span>    -<span class="p">|</span>
-  			<span class="p">|</span>Multiplexer      <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       -<span class="p">|</span>      <span class="m">46</span><span class="p">|</span>    -<span class="p">|</span>
-  			<span class="p">|</span>Register         <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>     <span class="m">106</span><span class="p">|</span>       -<span class="p">|</span>    -<span class="p">|</span>
-  			+-----------------+---------+------+--------+--------+-----+
-  			<span class="p">|</span>Total            <span class="p">|</span>        <span class="m">0</span><span class="p">|</span>     <span class="m">0</span><span class="p">|</span>     <span class="m">745</span><span class="p">|</span>     <span class="m">466</span><span class="p">|</span>    <span class="m">0</span><span class="p">|</span>
-  			+-----------------+---------+------+--------+--------+-----+
-  			<span class="p">|</span>Available        <span class="p">|</span>      <span class="m">288</span><span class="p">|</span>  <span class="m">1248</span><span class="p">|</span>  <span class="m">234240</span><span class="p">|</span>  <span class="m">117120</span><span class="p">|</span>   <span class="m">64</span><span class="p">|</span>
-  			+-----------------+---------+------+--------+--------+-----+
-  			<span class="p">|</span>Utilization <span class="o">(</span>%<span class="o">)</span>  <span class="p">|</span>        <span class="m">0</span><span class="p">|</span>     <span class="m">0</span><span class="p">|</span>      ~0<span class="p">|</span>      ~0<span class="p">|</span>    <span class="m">0</span><span class="p">|</span>
-  			+-----------------+---------+------+--------+--------+-----+
+<span class="w">  			</span>+<span class="w"> </span>Latency:
+<span class="w">  			    </span>*<span class="w"> </span>Summary:
+<span class="w">  			    </span>+---------+---------+-----------+-----------+-----+-----+---------+
+<span class="w">  			    </span><span class="p">|</span><span class="w">  </span>Latency<span class="w"> </span><span class="o">(</span>cycles<span class="o">)</span><span class="w"> </span><span class="p">|</span><span class="w">   </span>Latency<span class="w"> </span><span class="o">(</span>absolute<span class="o">)</span><span class="w">  </span><span class="p">|</span><span class="w">  </span>Interval<span class="w"> </span><span class="p">|</span><span class="w"> </span>Pipeline<span class="p">|</span>
+<span class="w">  			    </span><span class="p">|</span><span class="w">   </span>min<span class="w">   </span><span class="p">|</span><span class="w">   </span>max<span class="w">   </span><span class="p">|</span><span class="w">    </span>min<span class="w">    </span><span class="p">|</span><span class="w">    </span>max<span class="w">    </span><span class="p">|</span><span class="w"> </span>min<span class="w"> </span><span class="p">|</span><span class="w"> </span>max<span class="w"> </span><span class="p">|</span><span class="w">   </span>Type<span class="w">  </span><span class="p">|</span>
+<span class="w">  			    </span>+---------+---------+-----------+-----------+-----+-----+---------+
+<span class="w">  			    </span><span class="p">|</span><span class="w">        </span><span class="m">5</span><span class="p">|</span><span class="w">        </span><span class="m">5</span><span class="p">|</span><span class="w">  </span><span class="m">20</span>.000<span class="w"> </span>ns<span class="p">|</span><span class="w">  </span><span class="m">20</span>.000<span class="w"> </span>ns<span class="p">|</span><span class="w">    </span><span class="m">6</span><span class="p">|</span><span class="w">    </span><span class="m">6</span><span class="p">|</span><span class="w">     </span>none<span class="p">|</span>
+<span class="w">  			    </span>+---------+---------+-----------+-----------+-----+-----+---------+
+
+<span class="w">  			    </span>+<span class="w"> </span>Detail:
+<span class="w">  			        </span>*<span class="w"> </span>Instance:
+<span class="w">  			        </span>N/A
+
+<span class="w">  			        </span>*<span class="w"> </span>Loop:
+<span class="w">  			        </span>N/A
+
+
+
+<span class="w">  			</span><span class="o">================================================================</span>
+<span class="w">  			</span><span class="o">==</span><span class="w"> </span>Utilization<span class="w"> </span><span class="nv">Estimates</span>
+<span class="w">  			</span><span class="o">================================================================</span>
+<span class="w">  			</span>*<span class="w"> </span>Summary:
+<span class="w">  			</span>+-----------------+---------+------+--------+--------+-----+
+<span class="w">  			</span><span class="p">|</span><span class="w">       </span>Name<span class="w">      </span><span class="p">|</span><span class="w"> </span>BRAM_18K<span class="p">|</span><span class="w">  </span>DSP<span class="w"> </span><span class="p">|</span><span class="w">   </span>FF<span class="w">   </span><span class="p">|</span><span class="w">   </span>LUT<span class="w">  </span><span class="p">|</span><span class="w"> </span>URAM<span class="p">|</span>
+<span class="w">  			</span>+-----------------+---------+------+--------+--------+-----+
+<span class="w">  			</span><span class="p">|</span>DSP<span class="w">              </span><span class="p">|</span><span class="w">        </span>-<span class="p">|</span><span class="w">     </span>-<span class="p">|</span><span class="w">       </span>-<span class="p">|</span><span class="w">       </span>-<span class="p">|</span><span class="w">    </span>-<span class="p">|</span>
+<span class="w">  			</span><span class="p">|</span>Expression<span class="w">       </span><span class="p">|</span><span class="w">        </span>-<span class="p">|</span><span class="w">     </span>-<span class="p">|</span><span class="w">       </span><span class="m">0</span><span class="p">|</span><span class="w">      </span><span class="m">41</span><span class="p">|</span><span class="w">    </span>-<span class="p">|</span>
+<span class="w">  			</span><span class="p">|</span>FIFO<span class="w">             </span><span class="p">|</span><span class="w">        </span>-<span class="p">|</span><span class="w">     </span>-<span class="p">|</span><span class="w">       </span>-<span class="p">|</span><span class="w">       </span>-<span class="p">|</span><span class="w">    </span>-<span class="p">|</span>
+<span class="w">  			</span><span class="p">|</span>Instance<span class="w">         </span><span class="p">|</span><span class="w">        </span><span class="m">0</span><span class="p">|</span><span class="w">     </span><span class="m">0</span><span class="p">|</span><span class="w">     </span><span class="m">639</span><span class="p">|</span><span class="w">     </span><span class="m">379</span><span class="p">|</span><span class="w">    </span>-<span class="p">|</span>
+<span class="w">  			</span><span class="p">|</span>Memory<span class="w">           </span><span class="p">|</span><span class="w">        </span>-<span class="p">|</span><span class="w">     </span>-<span class="p">|</span><span class="w">       </span>-<span class="p">|</span><span class="w">       </span>-<span class="p">|</span><span class="w">    </span>-<span class="p">|</span>
+<span class="w">  			</span><span class="p">|</span>Multiplexer<span class="w">      </span><span class="p">|</span><span class="w">        </span>-<span class="p">|</span><span class="w">     </span>-<span class="p">|</span><span class="w">       </span>-<span class="p">|</span><span class="w">      </span><span class="m">46</span><span class="p">|</span><span class="w">    </span>-<span class="p">|</span>
+<span class="w">  			</span><span class="p">|</span>Register<span class="w">         </span><span class="p">|</span><span class="w">        </span>-<span class="p">|</span><span class="w">     </span>-<span class="p">|</span><span class="w">     </span><span class="m">106</span><span class="p">|</span><span class="w">       </span>-<span class="p">|</span><span class="w">    </span>-<span class="p">|</span>
+<span class="w">  			</span>+-----------------+---------+------+--------+--------+-----+
+<span class="w">  			</span><span class="p">|</span>Total<span class="w">            </span><span class="p">|</span><span class="w">        </span><span class="m">0</span><span class="p">|</span><span class="w">     </span><span class="m">0</span><span class="p">|</span><span class="w">     </span><span class="m">745</span><span class="p">|</span><span class="w">     </span><span class="m">466</span><span class="p">|</span><span class="w">    </span><span class="m">0</span><span class="p">|</span>
+<span class="w">  			</span>+-----------------+---------+------+--------+--------+-----+
+<span class="w">  			</span><span class="p">|</span>Available<span class="w">        </span><span class="p">|</span><span class="w">      </span><span class="m">288</span><span class="p">|</span><span class="w">  </span><span class="m">1248</span><span class="p">|</span><span class="w">  </span><span class="m">234240</span><span class="p">|</span><span class="w">  </span><span class="m">117120</span><span class="p">|</span><span class="w">   </span><span class="m">64</span><span class="p">|</span>
+<span class="w">  			</span>+-----------------+---------+------+--------+--------+-----+
+<span class="w">  			</span><span class="p">|</span>Utilization<span class="w"> </span><span class="o">(</span>%<span class="o">)</span><span class="w">  </span><span class="p">|</span><span class="w">        </span><span class="m">0</span><span class="p">|</span><span class="w">     </span><span class="m">0</span><span class="p">|</span><span class="w">      </span>~0<span class="p">|</span><span class="w">      </span>~0<span class="p">|</span><span class="w">    </span><span class="m">0</span><span class="p">|</span>
+<span class="w">  			</span>+-----------------+---------+------+--------+--------+-----+
 
 ...
 
-  	- Solution:  solution_10ns
- 		- C Simulation:               Pass
- 		- C Synthesis:                Run
- 		- C/RTL Co-simulation:        Not Run
-		- Export:
- 			- IP Catalog:         Not Run
- 			- System Generator:   Not Run
- 			- Export Evaluation:  Not Run
-		- Synthesis report: /home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder2/solution_10ns/syn/report/simple_adder_csynth.rpt
+<span class="w">  	</span>-<span class="w"> </span>Solution:<span class="w">  </span>solution_10ns
+<span class="w"> 		</span>-<span class="w"> </span>C<span class="w"> </span>Simulation:<span class="w">               </span>Pass
+<span class="w"> 		</span>-<span class="w"> </span>C<span class="w"> </span>Synthesis:<span class="w">                </span>Run
+<span class="w"> 		</span>-<span class="w"> </span>C/RTL<span class="w"> </span>Co-simulation:<span class="w">        </span>Not<span class="w"> </span>Run
+<span class="w">		</span>-<span class="w"> </span>Export:
+<span class="w"> 			</span>-<span class="w"> </span>IP<span class="w"> </span>Catalog:<span class="w">         </span>Not<span class="w"> </span>Run
+<span class="w"> 			</span>-<span class="w"> </span>System<span class="w"> </span>Generator:<span class="w">   </span>Not<span class="w"> </span>Run
+<span class="w"> 			</span>-<span class="w"> </span>Export<span class="w"> </span>Evaluation:<span class="w">  </span>Not<span class="w"> </span>Run
+<span class="w">		</span>-<span class="w"> </span>Synthesis<span class="w"> </span>report:<span class="w"> </span>/home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder2/solution_10ns/syn/report/simple_adder_csynth.rpt
 
 
-  			<span class="o">================================================================</span>
-  			<span class="o">==</span> Vitis HLS Report <span class="k">for</span> <span class="s1">&#39;simple_adder&#39;</span>
-  			<span class="o">================================================================</span>
-  			* Date:           Sun Aug <span class="m">22</span> <span class="m">15</span>:58:23 <span class="m">2021</span>
+<span class="w">  			</span><span class="o">================================================================</span>
+<span class="w">  			</span><span class="o">==</span><span class="w"> </span>Vitis<span class="w"> </span>HLS<span class="w"> </span>Report<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="s1">&#39;simple_adder&#39;</span>
+<span class="w">  			</span><span class="o">================================================================</span>
+<span class="w">  			</span>*<span class="w"> </span>Date:<span class="w">           </span>Sun<span class="w"> </span>Aug<span class="w"> </span><span class="m">22</span><span class="w"> </span><span class="m">15</span>:58:23<span class="w"> </span><span class="m">2021</span>
 
-  			* Version:        <span class="m">2020</span>.2.2 <span class="o">(</span>Build <span class="m">3118627</span> on Tue Feb  <span class="m">9</span> <span class="m">05</span>:13:49 MST <span class="m">2021</span><span class="o">)</span>
-  			* Project:        project_simpleadder2
-  			* Solution:       solution_10ns <span class="o">(</span>Vitis Kernel Flow Target<span class="o">)</span>
-  			* Product family: zynquplus
-  			* Target device:  xck26-sfvc784-2LV-c
-
-
-  			<span class="o">================================================================</span>
-  			<span class="o">==</span> Performance <span class="nv">Estimates</span>
-  			<span class="o">================================================================</span>
-  			+ Timing:
-  			    * Summary:
-  			    +--------+----------+----------+------------+
-  			    <span class="p">|</span>  Clock <span class="p">|</span>  Target  <span class="p">|</span> Estimated<span class="p">|</span> Uncertainty<span class="p">|</span>
-  			    +--------+----------+----------+------------+
-  			    <span class="p">|</span>ap_clk  <span class="p">|</span>  <span class="m">10</span>.00 ns<span class="p">|</span>  <span class="m">5</span>.436 ns<span class="p">|</span>     <span class="m">2</span>.70 ns<span class="p">|</span>
-  			    +--------+----------+----------+------------+
-
-  			+ Latency:
-  			    * Summary:
-  			    +---------+---------+-----------+-----------+-----+-----+---------+
-  			    <span class="p">|</span>  Latency <span class="o">(</span>cycles<span class="o">)</span> <span class="p">|</span>   Latency <span class="o">(</span>absolute<span class="o">)</span>  <span class="p">|</span>  Interval <span class="p">|</span> Pipeline<span class="p">|</span>
-  			    <span class="p">|</span>   min   <span class="p">|</span>   max   <span class="p">|</span>    min    <span class="p">|</span>    max    <span class="p">|</span> min <span class="p">|</span> max <span class="p">|</span>   Type  <span class="p">|</span>
-  			    +---------+---------+-----------+-----------+-----+-----+---------+
-  			    <span class="p">|</span>        <span class="m">1</span><span class="p">|</span>        <span class="m">1</span><span class="p">|</span>  <span class="m">10</span>.000 ns<span class="p">|</span>  <span class="m">10</span>.000 ns<span class="p">|</span>    <span class="m">2</span><span class="p">|</span>    <span class="m">2</span><span class="p">|</span>     none<span class="p">|</span>
-  			    +---------+---------+-----------+-----------+-----+-----+---------+
-
-  			    + Detail:
-  			        * Instance:
-  			        N/A
-
-  			        * Loop:
-  			        N/A
+<span class="w">  			</span>*<span class="w"> </span>Version:<span class="w">        </span><span class="m">2020</span>.2.2<span class="w"> </span><span class="o">(</span>Build<span class="w"> </span><span class="m">3118627</span><span class="w"> </span>on<span class="w"> </span>Tue<span class="w"> </span>Feb<span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">05</span>:13:49<span class="w"> </span>MST<span class="w"> </span><span class="m">2021</span><span class="o">)</span>
+<span class="w">  			</span>*<span class="w"> </span>Project:<span class="w">        </span>project_simpleadder2
+<span class="w">  			</span>*<span class="w"> </span>Solution:<span class="w">       </span>solution_10ns<span class="w"> </span><span class="o">(</span>Vitis<span class="w"> </span>Kernel<span class="w"> </span>Flow<span class="w"> </span>Target<span class="o">)</span>
+<span class="w">  			</span>*<span class="w"> </span>Product<span class="w"> </span>family:<span class="w"> </span>zynquplus
+<span class="w">  			</span>*<span class="w"> </span>Target<span class="w"> </span>device:<span class="w">  </span>xck26-sfvc784-2LV-c
 
 
+<span class="w">  			</span><span class="o">================================================================</span>
+<span class="w">  			</span><span class="o">==</span><span class="w"> </span>Performance<span class="w"> </span><span class="nv">Estimates</span>
+<span class="w">  			</span><span class="o">================================================================</span>
+<span class="w">  			</span>+<span class="w"> </span>Timing:
+<span class="w">  			    </span>*<span class="w"> </span>Summary:
+<span class="w">  			    </span>+--------+----------+----------+------------+
+<span class="w">  			    </span><span class="p">|</span><span class="w">  </span>Clock<span class="w"> </span><span class="p">|</span><span class="w">  </span>Target<span class="w">  </span><span class="p">|</span><span class="w"> </span>Estimated<span class="p">|</span><span class="w"> </span>Uncertainty<span class="p">|</span>
+<span class="w">  			    </span>+--------+----------+----------+------------+
+<span class="w">  			    </span><span class="p">|</span>ap_clk<span class="w">  </span><span class="p">|</span><span class="w">  </span><span class="m">10</span>.00<span class="w"> </span>ns<span class="p">|</span><span class="w">  </span><span class="m">5</span>.436<span class="w"> </span>ns<span class="p">|</span><span class="w">     </span><span class="m">2</span>.70<span class="w"> </span>ns<span class="p">|</span>
+<span class="w">  			    </span>+--------+----------+----------+------------+
 
-  			<span class="o">================================================================</span>
-  			<span class="o">==</span> Utilization <span class="nv">Estimates</span>
-  			<span class="o">================================================================</span>
-  			* Summary:
-  			+-----------------+---------+------+--------+--------+-----+
-  			<span class="p">|</span>       Name      <span class="p">|</span> BRAM_18K<span class="p">|</span>  DSP <span class="p">|</span>   FF   <span class="p">|</span>   LUT  <span class="p">|</span> URAM<span class="p">|</span>
-  			+-----------------+---------+------+--------+--------+-----+
-  			<span class="p">|</span>DSP              <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       -<span class="p">|</span>       -<span class="p">|</span>    -<span class="p">|</span>
-  			<span class="p">|</span>Expression       <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       <span class="m">0</span><span class="p">|</span>      <span class="m">41</span><span class="p">|</span>    -<span class="p">|</span>
-  			<span class="p">|</span>FIFO             <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       -<span class="p">|</span>       -<span class="p">|</span>    -<span class="p">|</span>
-  			<span class="p">|</span>Instance         <span class="p">|</span>        <span class="m">0</span><span class="p">|</span>     <span class="m">0</span><span class="p">|</span>     <span class="m">144</span><span class="p">|</span>     <span class="m">292</span><span class="p">|</span>    -<span class="p">|</span>
-  			<span class="p">|</span>Memory           <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       -<span class="p">|</span>       -<span class="p">|</span>    -<span class="p">|</span>
-  			<span class="p">|</span>Multiplexer      <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>       -<span class="p">|</span>      <span class="m">32</span><span class="p">|</span>    -<span class="p">|</span>
-  			<span class="p">|</span>Register         <span class="p">|</span>        -<span class="p">|</span>     -<span class="p">|</span>      <span class="m">70</span><span class="p">|</span>       -<span class="p">|</span>    -<span class="p">|</span>
-  			+-----------------+---------+------+--------+--------+-----+
-  			<span class="p">|</span>Total            <span class="p">|</span>        <span class="m">0</span><span class="p">|</span>     <span class="m">0</span><span class="p">|</span>     <span class="m">214</span><span class="p">|</span>     <span class="m">365</span><span class="p">|</span>    <span class="m">0</span><span class="p">|</span>
-  			+-----------------+---------+------+--------+--------+-----+
-  			<span class="p">|</span>Available        <span class="p">|</span>      <span class="m">288</span><span class="p">|</span>  <span class="m">1248</span><span class="p">|</span>  <span class="m">234240</span><span class="p">|</span>  <span class="m">117120</span><span class="p">|</span>   <span class="m">64</span><span class="p">|</span>
-  			+-----------------+---------+------+--------+--------+-----+
-  			<span class="p">|</span>Utilization <span class="o">(</span>%<span class="o">)</span>  <span class="p">|</span>        <span class="m">0</span><span class="p">|</span>     <span class="m">0</span><span class="p">|</span>      ~0<span class="p">|</span>      ~0<span class="p">|</span>    <span class="m">0</span><span class="p">|</span>
-  			+-----------------+---------+------+--------+--------+-----+
+<span class="w">  			</span>+<span class="w"> </span>Latency:
+<span class="w">  			    </span>*<span class="w"> </span>Summary:
+<span class="w">  			    </span>+---------+---------+-----------+-----------+-----+-----+---------+
+<span class="w">  			    </span><span class="p">|</span><span class="w">  </span>Latency<span class="w"> </span><span class="o">(</span>cycles<span class="o">)</span><span class="w"> </span><span class="p">|</span><span class="w">   </span>Latency<span class="w"> </span><span class="o">(</span>absolute<span class="o">)</span><span class="w">  </span><span class="p">|</span><span class="w">  </span>Interval<span class="w"> </span><span class="p">|</span><span class="w"> </span>Pipeline<span class="p">|</span>
+<span class="w">  			    </span><span class="p">|</span><span class="w">   </span>min<span class="w">   </span><span class="p">|</span><span class="w">   </span>max<span class="w">   </span><span class="p">|</span><span class="w">    </span>min<span class="w">    </span><span class="p">|</span><span class="w">    </span>max<span class="w">    </span><span class="p">|</span><span class="w"> </span>min<span class="w"> </span><span class="p">|</span><span class="w"> </span>max<span class="w"> </span><span class="p">|</span><span class="w">   </span>Type<span class="w">  </span><span class="p">|</span>
+<span class="w">  			    </span>+---------+---------+-----------+-----------+-----+-----+---------+
+<span class="w">  			    </span><span class="p">|</span><span class="w">        </span><span class="m">1</span><span class="p">|</span><span class="w">        </span><span class="m">1</span><span class="p">|</span><span class="w">  </span><span class="m">10</span>.000<span class="w"> </span>ns<span class="p">|</span><span class="w">  </span><span class="m">10</span>.000<span class="w"> </span>ns<span class="p">|</span><span class="w">    </span><span class="m">2</span><span class="p">|</span><span class="w">    </span><span class="m">2</span><span class="p">|</span><span class="w">     </span>none<span class="p">|</span>
+<span class="w">  			    </span>+---------+---------+-----------+-----------+-----+-----+---------+
+
+<span class="w">  			    </span>+<span class="w"> </span>Detail:
+<span class="w">  			        </span>*<span class="w"> </span>Instance:
+<span class="w">  			        </span>N/A
+
+<span class="w">  			        </span>*<span class="w"> </span>Loop:
+<span class="w">  			        </span>N/A
+
+
+
+<span class="w">  			</span><span class="o">================================================================</span>
+<span class="w">  			</span><span class="o">==</span><span class="w"> </span>Utilization<span class="w"> </span><span class="nv">Estimates</span>
+<span class="w">  			</span><span class="o">================================================================</span>
+<span class="w">  			</span>*<span class="w"> </span>Summary:
+<span class="w">  			</span>+-----------------+---------+------+--------+--------+-----+
+<span class="w">  			</span><span class="p">|</span><span class="w">       </span>Name<span class="w">      </span><span class="p">|</span><span class="w"> </span>BRAM_18K<span class="p">|</span><span class="w">  </span>DSP<span class="w"> </span><span class="p">|</span><span class="w">   </span>FF<span class="w">   </span><span class="p">|</span><span class="w">   </span>LUT<span class="w">  </span><span class="p">|</span><span class="w"> </span>URAM<span class="p">|</span>
+<span class="w">  			</span>+-----------------+---------+------+--------+--------+-----+
+<span class="w">  			</span><span class="p">|</span>DSP<span class="w">              </span><span class="p">|</span><span class="w">        </span>-<span class="p">|</span><span class="w">     </span>-<span class="p">|</span><span class="w">       </span>-<span class="p">|</span><span class="w">       </span>-<span class="p">|</span><span class="w">    </span>-<span class="p">|</span>
+<span class="w">  			</span><span class="p">|</span>Expression<span class="w">       </span><span class="p">|</span><span class="w">        </span>-<span class="p">|</span><span class="w">     </span>-<span class="p">|</span><span class="w">       </span><span class="m">0</span><span class="p">|</span><span class="w">      </span><span class="m">41</span><span class="p">|</span><span class="w">    </span>-<span class="p">|</span>
+<span class="w">  			</span><span class="p">|</span>FIFO<span class="w">             </span><span class="p">|</span><span class="w">        </span>-<span class="p">|</span><span class="w">     </span>-<span class="p">|</span><span class="w">       </span>-<span class="p">|</span><span class="w">       </span>-<span class="p">|</span><span class="w">    </span>-<span class="p">|</span>
+<span class="w">  			</span><span class="p">|</span>Instance<span class="w">         </span><span class="p">|</span><span class="w">        </span><span class="m">0</span><span class="p">|</span><span class="w">     </span><span class="m">0</span><span class="p">|</span><span class="w">     </span><span class="m">144</span><span class="p">|</span><span class="w">     </span><span class="m">292</span><span class="p">|</span><span class="w">    </span>-<span class="p">|</span>
+<span class="w">  			</span><span class="p">|</span>Memory<span class="w">           </span><span class="p">|</span><span class="w">        </span>-<span class="p">|</span><span class="w">     </span>-<span class="p">|</span><span class="w">       </span>-<span class="p">|</span><span class="w">       </span>-<span class="p">|</span><span class="w">    </span>-<span class="p">|</span>
+<span class="w">  			</span><span class="p">|</span>Multiplexer<span class="w">      </span><span class="p">|</span><span class="w">        </span>-<span class="p">|</span><span class="w">     </span>-<span class="p">|</span><span class="w">       </span>-<span class="p">|</span><span class="w">      </span><span class="m">32</span><span class="p">|</span><span class="w">    </span>-<span class="p">|</span>
+<span class="w">  			</span><span class="p">|</span>Register<span class="w">         </span><span class="p">|</span><span class="w">        </span>-<span class="p">|</span><span class="w">     </span>-<span class="p">|</span><span class="w">      </span><span class="m">70</span><span class="p">|</span><span class="w">       </span>-<span class="p">|</span><span class="w">    </span>-<span class="p">|</span>
+<span class="w">  			</span>+-----------------+---------+------+--------+--------+-----+
+<span class="w">  			</span><span class="p">|</span>Total<span class="w">            </span><span class="p">|</span><span class="w">        </span><span class="m">0</span><span class="p">|</span><span class="w">     </span><span class="m">0</span><span class="p">|</span><span class="w">     </span><span class="m">214</span><span class="p">|</span><span class="w">     </span><span class="m">365</span><span class="p">|</span><span class="w">    </span><span class="m">0</span><span class="p">|</span>
+<span class="w">  			</span>+-----------------+---------+------+--------+--------+-----+
+<span class="w">  			</span><span class="p">|</span>Available<span class="w">        </span><span class="p">|</span><span class="w">      </span><span class="m">288</span><span class="p">|</span><span class="w">  </span><span class="m">1248</span><span class="p">|</span><span class="w">  </span><span class="m">234240</span><span class="p">|</span><span class="w">  </span><span class="m">117120</span><span class="p">|</span><span class="w">   </span><span class="m">64</span><span class="p">|</span>
+<span class="w">  			</span>+-----------------+---------+------+--------+--------+-----+
+<span class="w">  			</span><span class="p">|</span>Utilization<span class="w"> </span><span class="o">(</span>%<span class="o">)</span><span class="w">  </span><span class="p">|</span><span class="w">        </span><span class="m">0</span><span class="p">|</span><span class="w">     </span><span class="m">0</span><span class="p">|</span><span class="w">      </span>~0<span class="p">|</span><span class="w">      </span>~0<span class="p">|</span><span class="w">    </span><span class="m">0</span><span class="p">|</span>
+<span class="w">  			</span>+-----------------+---------+------+--------+--------+-----+
 
 ...
 </pre></div>
 </div>
 <p><strong>We observe how using a target <code class="docutils literal notranslate"><span class="pre">10</span> <span class="pre">ns</span></code> clock (which is slower than <code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">ns</span></code>) leads to a) the use of less LUT and FF resources and b) a lower latency (due to a smaller number of cycles required)</strong>. It’s pretty interesting to note that getting a higher frequency in the clock does not necesarily mean we’ll obtain a lower period for the function. This happens very clearly in this case.</p>
 <p><code class="docutils literal notranslate"><span class="pre">colcon</span></code> CLI tooling also allows to obtain a quick summary of all the solutions to evaluate time and use of resources:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ colcon acceleration hls simple_adder --summary
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>colcon<span class="w"> </span>acceleration<span class="w"> </span>hls<span class="w"> </span>simple_adder<span class="w"> </span>--summary
 <span class="c1"># /home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder2.tcl</span>
-Solution#	tar.clk	est.clk		latency_max	BRAM_18K	DSP	FF		LUT
-solution_10ns	<span class="m">10</span>.00	<span class="m">5</span>.436		<span class="m">10</span>.000		<span class="m">0</span> <span class="o">(</span><span class="m">0</span>%<span class="o">)</span>		<span class="m">0</span> <span class="o">(</span><span class="m">0</span>%<span class="o">)</span>	<span class="m">214</span> <span class="o">(</span>~0%<span class="o">)</span>	<span class="m">365</span> <span class="o">(</span>~0%<span class="o">)</span>
-solution_4ns	<span class="m">4</span>.00	<span class="m">2</span>.365		<span class="m">20</span>.000		<span class="m">0</span> <span class="o">(</span><span class="m">0</span>%<span class="o">)</span>		<span class="m">0</span> <span class="o">(</span><span class="m">0</span>%<span class="o">)</span>	<span class="m">745</span> <span class="o">(</span>~0%<span class="o">)</span>	<span class="m">466</span> <span class="o">(</span>~0%<span class="o">)</span>
+Solution#<span class="w">	</span>tar.clk<span class="w">	</span>est.clk<span class="w">		</span>latency_max<span class="w">	</span>BRAM_18K<span class="w">	</span>DSP<span class="w">	</span>FF<span class="w">		</span>LUT
+solution_10ns<span class="w">	</span><span class="m">10</span>.00<span class="w">	</span><span class="m">5</span>.436<span class="w">		</span><span class="m">10</span>.000<span class="w">		</span><span class="m">0</span><span class="w"> </span><span class="o">(</span><span class="m">0</span>%<span class="o">)</span><span class="w">		</span><span class="m">0</span><span class="w"> </span><span class="o">(</span><span class="m">0</span>%<span class="o">)</span><span class="w">	</span><span class="m">214</span><span class="w"> </span><span class="o">(</span>~0%<span class="o">)</span><span class="w">	</span><span class="m">365</span><span class="w"> </span><span class="o">(</span>~0%<span class="o">)</span>
+solution_4ns<span class="w">	</span><span class="m">4</span>.00<span class="w">	</span><span class="m">2</span>.365<span class="w">		</span><span class="m">20</span>.000<span class="w">		</span><span class="m">0</span><span class="w"> </span><span class="o">(</span><span class="m">0</span>%<span class="o">)</span><span class="w">		</span><span class="m">0</span><span class="w"> </span><span class="o">(</span><span class="m">0</span>%<span class="o">)</span><span class="w">	</span><span class="m">745</span><span class="w"> </span><span class="o">(</span>~0%<span class="o">)</span><span class="w">	</span><span class="m">466</span><span class="w"> </span><span class="o">(</span>~0%<span class="o">)</span>
 <span class="c1"># /home/xilinx/krs_ws/build-kv260/simple_adder/project_simpleadder1.tcl</span>
-Solution#	tar.clk	est.clk		latency_max	BRAM_18K	DSP	FF		LUT
-solution_4ns	<span class="m">4</span>.00	<span class="m">2</span>.016		<span class="m">0</span>		<span class="m">0</span> <span class="o">(</span><span class="m">0</span>%<span class="o">)</span>		<span class="m">0</span> <span class="o">(</span><span class="m">0</span>%<span class="o">)</span>	<span class="m">181</span> <span class="o">(</span>~0%<span class="o">)</span>	<span class="m">291</span> <span class="o">(</span>~0%<span class="o">)</span>
+Solution#<span class="w">	</span>tar.clk<span class="w">	</span>est.clk<span class="w">		</span>latency_max<span class="w">	</span>BRAM_18K<span class="w">	</span>DSP<span class="w">	</span>FF<span class="w">		</span>LUT
+solution_4ns<span class="w">	</span><span class="m">4</span>.00<span class="w">	</span><span class="m">2</span>.016<span class="w">		</span><span class="m">0</span><span class="w">		</span><span class="m">0</span><span class="w"> </span><span class="o">(</span><span class="m">0</span>%<span class="o">)</span><span class="w">		</span><span class="m">0</span><span class="w"> </span><span class="o">(</span><span class="m">0</span>%<span class="o">)</span><span class="w">	</span><span class="m">181</span><span class="w"> </span><span class="o">(</span>~0%<span class="o">)</span><span class="w">	</span><span class="m">291</span><span class="w"> </span><span class="o">(</span>~0%<span class="o">)</span>
 </pre></div>
 </div>
 <!-- Hack: copy images for tables --><style>
