@@ -1,6 +1,12 @@
-# Kria Robotics Stack (KRS)
+<h1 align="center">KRIA ROBOTICS STACK (KRS) DOCUMENTATION</h1>
 
-- **Introduction**
+## Introduction
+This repository contains the source code of KRS documentation which gets rendered to sphinx pages. To view complete documentation click on the link below.
+
+[KRS Landing Page](Xilinx.github.io/KRS/)
+
+## About KRS
+- **Introduction to KRS**
   - [Kria Robotics Stack (KRS)](#) (this page)
   - [Install KRS](sphinx/source/docs/install.md)
   - [Hardware supported](sphinx/source/docs/hardware.md)
