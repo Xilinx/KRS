@@ -378,7 +378,7 @@
 </div>
 <div class="admonition-dds-recommendation admonition">
 <p class="admonition-title">DDS Recommendation</p>
-<p>We have done various experiments for the DDS selection and observed that Cyclone DDS provides more reliable and stable results, so we recommend you to use Cyclone DDS for connectivity. Use below commands to install and use cyclone DDS</p>
+<p>We have done various experiments for the DDS selection and observed that Cyclone DDS provides more reliable and stable results, so we recommend you to use Cyclone DDS for connectivity. Use below commands to install and use cyclone DDS on target board. This step needs to be done on target board. Exporting  “RMW_IMPLEMENTATION” on host x86 machine may throw errors while cross compiling accelerators.</p>
 </div>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1">###################################################</span>
 <span class="c1"># install cyclone DDS packages </span>
@@ -524,11 +524,12 @@ colcon<span class="w"> </span>acceleration<span class="w"> </span><span class="k
 colcon<span class="w"> </span>build<span class="w"> </span>--build-base<span class="o">=</span>build-kr260-ubuntu<span class="w"> </span>--install-base<span class="o">=</span>install-kr260-ubuntu<span class="w"> </span>--merge-install<span class="w"> </span>--mixin<span class="w"> </span>kr260<span class="w"> </span>--cmake-args<span class="w"> </span>-DNOKERNELS<span class="o">=</span><span class="nb">true</span>
 
 <span class="c1">###################################################</span>
-<span class="c1"># 7.B cross-compile and generate CPU binaries and accelerators</span>
+<span class="c1"># 7.B cross-compile and generate CPU binaries and accelerators.</span>
 <span class="c1">###################################################</span>
-colcon<span class="w"> </span>build<span class="w"> </span>--build-base<span class="o">=</span>build-kr260-ubuntu<span class="w"> </span>--install-base<span class="o">=</span>install-kr260-ubuntu<span class="w"> </span>--merge-install<span class="w"> </span>--mixin<span class="w"> </span>kr260
+colcon<span class="w"> </span>build<span class="w"> </span>--executor<span class="w"> </span>sequential<span class="w"> </span>--build-base<span class="o">=</span>build-kr260-ubuntu<span class="w"> </span>--install-base<span class="o">=</span>install-kr260-ubuntu<span class="w"> </span>--merge-install<span class="w"> </span>--mixin<span class="w"> </span>kr260<span class="w"> </span>-DNOKERNELS<span class="o">=</span><span class="nb">false</span>
 </pre></div>
 </div>
+<p>Please note that building accelerators will take few hours, as it builds all the KRS packages that require hardware acceleration. Also, <b>”–executor sequential”</b> flag is to build the packages one by one. If your machine is powerful enough, you may skip the flag and colcon build system will build the packages parallely.</p>
 <p>Now that we’ve built binaries and accelerators, next’s to run some of them in hardware. See <a class="reference external" href="https://xilinx.github.io/KRS/sphinx/build/html/docs/examples/0_ros2_publisher.html">examples</a> but <strong>note that Ubuntu 22.04 is targeting KR260 (and thereby the <code class="docutils literal notranslate"><span class="pre">--mixin</span> <span class="pre">kr260</span></code> should be used instead)</strong>.</p>
 <br>
 <b>b. Native (on target) development</b><div class="admonition warning">
