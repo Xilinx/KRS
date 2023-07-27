@@ -19,7 +19,7 @@ Below detail the installation and setup process of each one of the development p
 
 .. admonition:: DDS Recommendation
 
-    We have done various experiments for the DDS selection and observed that Cyclone DDS provides more reliable and stable results, so we recommend you to use Cyclone DDS for connectivity. Use below commands to install and use cyclone DDS
+    We have done various experiments for the DDS selection and observed that Cyclone DDS provides more reliable and stable results, so we recommend you to use Cyclone DDS for connectivity. Use below commands to install and use cyclone DDS on target board. This step needs to be done on target board. Exporting  "RMW_IMPLEMENTATION" on host x86 machine may throw errors while cross compiling accelerators.
 ```
 
 ```shell
@@ -171,10 +171,11 @@ colcon acceleration select kr260
 colcon build --build-base=build-kr260-ubuntu --install-base=install-kr260-ubuntu --merge-install --mixin kr260 --cmake-args -DNOKERNELS=true
 
 ###################################################
-# 7.B cross-compile and generate CPU binaries and accelerators
+# 7.B cross-compile and generate CPU binaries and accelerators.
 ###################################################
-colcon build --build-base=build-kr260-ubuntu --install-base=install-kr260-ubuntu --merge-install --mixin kr260
+colcon build --executor sequential --build-base=build-kr260-ubuntu --install-base=install-kr260-ubuntu --merge-install --mixin kr260 -DNOKERNELS=false
 ```
+Please note that building accelerators will take few hours, as it builds all the KRS packages that require hardware acceleration. Also, <b>"--executor sequential"</b> flag is to build the packages one by one. If your machine is powerful enough, you may skip the flag and colcon build system will build the packages parallely.
 
 Now that we've built binaries and accelerators, next's to run some of them in hardware. See [examples](https://xilinx.github.io/KRS/sphinx/build/html/docs/examples/0_ros2_publisher.html) but **note that Ubuntu 22.04 is targeting KR260 (and thereby the `--mixin kr260` should be used instead)**.
 
