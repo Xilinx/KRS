@@ -158,6 +158,12 @@ source install/setup.bash
 ```
 - Cross compile for KR260
 
+```eval_rst
+.. warning:: 
+    Ubuntu 22.04 sysroot is not fully prepared for cross-compilation (but for native builds instead) and thereby, while invoking FindPython, it's just picking the host resources, instead of the target/sysroot ones, which leads to ROS 2 packages relying on Python 3 getting a dependency against the host (which doesn't exist), instead of against the sysroot.
+    A **workaround** for this is symlinking the Python3 library of the host to the sysroot one, so that it gets picked while cross-compiling against the Ubuntu 22.04 sysroot. The following should do: `sudo ln -s ~/krs_ws/install/../acceleration/firmware/kr260/sysroots/aarch64-xilinx-linux/usr/lib/aarch64-linux-gnu/libpython3.10.so.1.0 /usr/lib/aarch64-linux-gnu/libpython3.10.so`
+```
+
 ``` shell
 
 # select KR260 firmware artifacts and re-build accelerators targeting KR260 build configuration
