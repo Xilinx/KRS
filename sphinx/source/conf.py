@@ -24,14 +24,14 @@ sys.path.insert(0, os.path.abspath('docs'))
 # -- Project information -----------------------------------------------------
 
 project = 'KRS'
-copyright = '2021-2022, Xilinx, Inc.'
-author = 'Xilinx, Inc.'
+copyright = '2021-2023, dvanced Micro Devices, Inc'
+author = 'Advanced Micro Devices, Inc'
 
 # The short X.Y version
 version = '1.0'
 # The full version, including alpha/beta/rc tags
 release = '1.0'
-html_last_updated_fmt = 'June 27, 2022'
+html_last_updated_fmt = 'August 4, 2023'
 
 # -- General configuration ---------------------------------------------------
 
@@ -67,15 +67,15 @@ autosectionlabel_prefix_document = True
 
 # Configuration for rst2pdf
 pdf_documents = [('index', u'KRS', u'KRS GitHub Docs', u'Xilinx, Inc.'),]
-  # index - master document
+  # index - main document
   # rst2pdf - name of the file that will be created
   # Sample rst2pdf doc - title of the pdf
   # Your Name - author name in the pdf
 
 
 # Configure 'Edit on GitHub' extension
-edit_on_github_project = 'Xilinx/VVA'
-edit_on_github_branch = 'master'
+edit_on_github_project = ''
+edit_on_github_branch = ''
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -133,12 +133,17 @@ html_theme_path = ["./_themes"]
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
-# html_theme_options = {}
+html_logo = '_static/xilinx-header-logo.svg'
+html_theme_options = {
+    'logo_only': False,
+    'style_nav_header_background': 'black',
+}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+html_css_files = ['_static/custom.css']
 
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
