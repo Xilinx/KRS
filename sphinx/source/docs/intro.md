@@ -14,17 +14,6 @@ It does so by tightly integrating itself with ROS (lingua franca amongst robotic
 
 
 
-```eval_rst
-.. admonition:: Alpha Release
-
-    KRS **alpha** release documentation is available at https://github.com/vmayoral/KRS/tree/krs-alpha. 
-
-
-.. admonition:: Beta Release
-    
-    KRS is on **beta** release documentation is available at https://github.com/vmayoral/KRS/tree/beta.
-```
-
 ![](imgs/krs.svg)
 
 
@@ -52,7 +41,7 @@ table th:nth-of-type(3) {
 
 | action | quick peek | description |
 |--------|-------------|------------|
-| *install KRS* | [![asciicast](https://asciinema.org/a/434953.svg)](https://asciinema.org/a/434953) | Installing KRS is just about creating a ROS 2 workspace, fetching the `krs.repos` of the corresponding release (e.g. [alpha release](https://github.com/vmayoral/KRS/releases/tag/alpha)) and built it using the common ROS flow, with the option of leveraging ament and colcon extensions for additional hardware acceleration capabilities. |
+| *install KRS* | [![asciicast](https://asciinema.org/a/434953.svg)](https://asciinema.org/a/434953) | Installing KRS is just about creating a ROS 2 workspace, fetching the `krs.repos` of the corresponding release and built it using the common ROS flow, with the option of leveraging ament and colcon extensions for additional hardware acceleration capabilities. |
 | `select` | [![asciicast](https://asciinema.org/a/434781.svg)](https://asciinema.org/a/434781) | The `select` verb allows to easily select and configure a specific target firmware for hardware acceleration, and default to it while producing binaries and accelerators.  |
 | `list` | [![asciicast](https://asciinema.org/a/434781.svg)](https://asciinema.org/a/434781) | The `list` verb  allows to inspect the acceleration firmware available in the ROS workspace, marking with a `*` the currently selected option.  |
 | `linux` | [![asciicast](https://asciinema.org/a/scOognokU4wt0PW3E1N4F0jCe.svg)](https://asciinema.org/a/scOognokU4wt0PW3E1N4F0jCe) | The `linux` verb helps configure the Linux kernel in the raw SD card image produced by the firmware. E.g. `colcon acceleration linux vanilla` will produce a Linux vanilla kernel, whereas `colcon acceleration linux preempt_rt` will instead use a pre-built kernel and kernel modules for improved determinism (fully preemptible kernel). |
