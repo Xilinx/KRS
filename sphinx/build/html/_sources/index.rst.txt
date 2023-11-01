@@ -14,15 +14,6 @@ The **Kria Robotics Stack (KRS)** is a ROS 2 superset for industry, an integrate
 It does so by tightly integrating itself with ROS (lingua franca amongst roboticists) and by leveraging a combination of modern C++ and High-Level Synthesis (HLS), together with reference development boards and design architectures roboticists can use to kick-start their projects. Altogether, KRS supports Kria SOMs with an accelerated path to production in robotics.
 
 
-.. admonition:: Alpha Release
-
-    KRS **alpha** release documentation is available at https://github.com/vmayoral/KRS/tree/krs-alpha. 
-
-
-.. admonition:: Beta Release
-    
-    KRS is on **beta** release documentation is available at https://github.com/vmayoral/KRS/tree/beta.
-
 .. figure:: docs/imgs/krs.svg
 
 
@@ -33,9 +24,9 @@ It does so by tightly integrating itself with ROS (lingua franca amongst robotic
    :hidden:
 
    Home <https://xilinx.github.io/kria-apps-docs/>
-   Application Development <https://xilinx.github.io/kria-apps-docs/creating_applications/1.0/build/html/index.html>
+   Application Development <https://xilinx.github.io/kria-apps-docs/creating_applications/2022.1/build/html/index.html>
    Ubuntu Support <https://xilinx.github.io/kria-apps-docs/kria_som_ubuntu_support/build/html/index.html>
-   Vision AI Starter Kit Applications <https://xilinx.github.io/kria-apps-docs/main/build/html/index.html>
+   Robotics Starter Kit Applications <https://xilinx.github.io/kria-apps-docs/kr260/build/html/index.html>
 
 
 .. toctree::
