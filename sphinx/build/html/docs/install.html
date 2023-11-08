@@ -297,7 +297,7 @@ colcon<span class="w"> </span>build<span class="w"> </span>--build-base<span cla
 <span class="c1">###################################################</span>
 <span class="c1"># 7.B cross-compile and generate CPU binaries and accelerators.</span>
 <span class="c1">###################################################</span>
-colcon<span class="w"> </span>build<span class="w"> </span>--executor<span class="w"> </span>sequential<span class="w"> </span>--build-base<span class="o">=</span>build-kr260-ubuntu<span class="w"> </span>--install-base<span class="o">=</span>install-kr260-ubuntu<span class="w"> </span>--merge-install<span class="w"> </span>--mixin<span class="w"> </span>kr260<span class="w"> </span>-DNOKERNELS<span class="o">=</span><span class="nb">false</span>
+colcon<span class="w"> </span>build<span class="w"> </span>--executor<span class="w"> </span>sequential<span class="w"> </span>--event-handlers<span class="w"> </span>console_direct+<span class="w"> </span>--build-base<span class="o">=</span>build-kr260-ubuntu<span class="w"> </span>--install-base<span class="o">=</span>install-kr260-ubuntu<span class="w"> </span>--merge-install<span class="w"> </span>--mixin<span class="w"> </span>kr260<span class="w"> </span>--cmake-args<span class="w"> </span>-DNOKERNELS<span class="o">=</span><span class="nb">false</span>
 </pre></div>
 </div>
 <p>Please note that building accelerators will take few hours, as it builds all the KRS packages that require hardware acceleration. Also, <b>”–executor sequential”</b> flag is to build the packages one by one. If your machine is powerful enough, you may skip the flag and colcon build system will build the packages parallely.</p>
