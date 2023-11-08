@@ -179,7 +179,7 @@ colcon build --build-base=build-kr260-ubuntu --install-base=install-kr260-ubuntu
 ###################################################
 # 7.B cross-compile and generate CPU binaries and accelerators.
 ###################################################
-colcon build --executor sequential --build-base=build-kr260-ubuntu --install-base=install-kr260-ubuntu --merge-install --mixin kr260 -DNOKERNELS=false
+colcon build --executor sequential --event-handlers console_direct+ --build-base=build-kr260-ubuntu --install-base=install-kr260-ubuntu --merge-install --mixin kr260 --cmake-args -DNOKERNELS=false
 ```
 Please note that building accelerators will take few hours, as it builds all the KRS packages that require hardware acceleration. Also, <b>"--executor sequential"</b> flag is to build the packages one by one. If your machine is powerful enough, you may skip the flag and colcon build system will build the packages parallely.
 
