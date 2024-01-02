@@ -24,14 +24,14 @@ sys.path.insert(0, os.path.abspath('docs'))
 # -- Project information -----------------------------------------------------
 
 project = 'KRS'
-copyright = '2021-2023, dvanced Micro Devices, Inc'
+copyright = '2021-2024, dvanced Micro Devices, Inc'
 author = 'Advanced Micro Devices, Inc'
 
 # The short X.Y version
 version = '1.0'
 # The full version, including alpha/beta/rc tags
 release = '1.0'
-html_last_updated_fmt = 'August 4, 2023'
+html_last_updated_fmt = 'January 2, 2024'
 
 # -- General configuration ---------------------------------------------------
 
