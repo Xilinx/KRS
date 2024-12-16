@@ -72,8 +72,7 @@ Once we have good understanding of the above files and the dataflow, we can stit
 For easy understanding, we have created a simple example with ROS2 packages
 
 The architecture of the example is as below:
-
-![image](https://)
+![Accelerated_resize](https://github.com/user-attachments/assets/8aed27c0-a1bf-413a-b71a-ea26bd24bc13)
 
 
 It has two nodes, one of the node named "opencv_image_publisher" is publishing a "random_image" topic, which is an input to "AcceleratedResize" node which runs this resize algorithm on FPGA and spits out a "resize" image topic. Below is the folder structure of the  [accelerated resize example](https://github.com/ros-acceleration/acceleration_examples/tree/main/vitis_accelerated_examples/vitis_accelerated_resize)
@@ -189,9 +188,14 @@ cd ~/install-kr260-ubuntu/lib/vitis_accelerated_resize
 ./vitis_accelerated_resize
 
 ```
+You may see the output like below:
+<br>
+![execution_screenshot](https://github.com/user-attachments/assets/70622570-1ab5-4f48-aa41-fd420534ad7e)
 
-This will run the example and you can see the behaviour of applicaiton in rqt application
 
+This will run the example and you can see the behaviour of applicaiton in rqt tool
+
+![execution](https://github.com/user-attachments/assets/0075d8c3-a0a4-4be6-811b-7d090283a557)
 
 
 ## Stereo Block Matching
