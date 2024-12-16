@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+<!-- OneTrust Cookies Consent Notice start for xilinx.github.io -->
+
+<script src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" data-document-language="true" type="text/javascript" charset="UTF-8" data-domain-script="03af8d57-0a04-47a6-8f10-322fa00d8fc7" ></script>
+<script type="text/javascript">
+function OptanonWrapper() { }
+</script>
+<!-- OneTrust Cookies Consent Notice end for xilinx.github.io -->
+<!-- Google Tag Manager -->
+<script type="text/plain" class="optanon-category-C0002">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5RHQV7');</script>
+<!-- End Google Tag Manager -->
+  <title>How to use Vitis Accelerated Functions &mdash; KRS 1.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="HowTo and Troubleshooting" href="../howto.html" />
+    <link rel="prev" title="Vitis Accelerated Functions with ROS2" href="vitis_accelerated.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5RHQV7" height="0" width="0" style="display:none;visibility:hidden" class="optanon-category-C0002"></iframe></noscript>
+<!-- End Google Tag Manager --> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+            <a href="../../index.html" class="icon icon-home"> KRS
+            <img src="../../_static/xilinx-header-logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">SOM</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/">Home</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/creating_applications/2022.1/build/html/index.html">Application Development</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/kria_som_ubuntu_support/build/html/index.html">Ubuntu Support</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://xilinx.github.io/kria-apps-docs/kr260/build/html/index.html">Robotics Starter Kit Applications</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Kria Robotics Stack (KRS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Install KRS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware.html">Hardware supported</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Features</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../features/ros2centric.html">ROS 2-centric</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features/realtime_ros2.html">Real-time ROS 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features/accelerated_apps_ros2.html">ROS 2 Accelerated Apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features/contributing_ros2.html">Contributing back to ROS 2</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="nodes.html">Accelerating ROS 2 Nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphs.html">Accelerating ROS 2 Graphs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="vitis_accelerated.html">Vitis Accelerated Functions with ROS2</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">How to use Vitis Accelerated Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-vitis-vision-library-functions">Using Vitis Vision Library Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#understand-the-vitis-vision-library-structure">Understand the Vitis Vision Library structure</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#resize">Resize</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#understand-the-source-code-of-vitis-vision-resize-function">Understand the source code of Vitis Vision “Resize” function</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#understand-the-vitis-accelerated-resize-example">Understand the vitis_accelerated_resize example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-build-the-example">How to build the example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#execute-vitis-accelerated-resize-example">Execute Vitis Accelerated Resize example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#stereo-block-matching">Stereo Block Matching</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">HowTo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../howto.html">HowTo and Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../other/definitions.html">Definitions</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: black" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">KRS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="vitis_accelerated.html">Vitis Accelerated Functions with ROS2</a> &raquo;</li>
+      <li>How to use Vitis Accelerated Functions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/examples/vitis_accelerated_function.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="how-to-use-vitis-accelerated-functions">
+<h1>How to use Vitis Accelerated Functions<a class="headerlink" href="#how-to-use-vitis-accelerated-functions" title="Permalink to this heading">¶</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<p>AMD offers a wide variety of libraries named as <a class="reference external" href="https://github.com/Xilinx/Vitis_Libraries">Vitis™ Accelerated Libraries</a> which offers out-of-the-box acceleration for many applications. These libraries are pre optimized and open-source which are offered with <a class="reference external" href="https://www.amd.com/en/products/software/adaptive-socs-and-fpgas/vitis.html">Vitis™ Unified Software Platform</a>. The functions in the libraries include:
+<br></p>
+<ul class="simple">
+<li><p>Common Vitis accelerated-libraries for Math, Statistics, Linear Algebra, and DSP offer a set of core functionality for a wide range of diverse applications.</p></li>
+<li><p>Domain-specific Vitis accelerated libraries offer out-of-the-box acceleration for workloads like Vision and Image Processing, Quantitative Finance, Database, and Data Analytics, Data Compression and more.</p></li>
+</ul>
+<br><p>These examples here will showcase how you can utilize a wide variety of pre-optimized / accelerated functions from Vitis™ Accelerated Libraries on FPGA with ROS2 using KRS.</p>
+</section>
+<section id="using-vitis-vision-library-functions">
+<h2>Using Vitis Vision Library Functions<a class="headerlink" href="#using-vitis-vision-library-functions" title="Permalink to this heading">¶</a></h2>
+<p>The Vitis Vision library is a set of 90+ kernels, optimized for AMD™ FPGAs, AI Engine™, and SoCs, based on the OpenCV computer vision library. See <a class="reference external" href="https://github.com/Xilinx/Vitis_Libraries/tree/2022.1/vision">here</a> for more details. In KRS examples we will showcase how to integrate few of the functions and based on same workflow you can try to use any of the functions from the library based on your needs.</p>
+<section id="understand-the-vitis-vision-library-structure">
+<h3>Understand the Vitis Vision Library structure<a class="headerlink" href="#understand-the-vitis-vision-library-structure" title="Permalink to this heading">¶</a></h3>
+<p>The implementation of Vitis Vision functions is organized in three levels:</p>
+<ul class="simple">
+<li><p><strong>Level 1</strong>: Here the APIs are presented as HLS C++ classes and functions. These APIs mostly match their OpenCV counterparts. Level 1 functions and API are included by default in “vitis_common” package <a class="reference external" href="https://github.com/ros-acceleration/vitis_common/tree/humble/include">here</a>.</p></li>
+<li><p><strong>Level 2</strong>: This contains the OpenCL/<a class="reference external" href="https://xilinx.github.io/XRT/master/html/xrt_native_apis.html#">XRT</a> host-callable kernels and engines for various Vitis Vision functions. These functions are important, to understand how to call accelerated functions from host code. We will dive deeper in this later.</p></li>
+<li><p><strong>Level 3</strong>: This directory contains whole applications formed by stitching a pipeline of Vitis Vision functions. The host code shows how to call this multiple functions in OpenCL/XRT.</p></li>
+</ul>
+<p>First, visit the <a class="reference external" href="https://docs.amd.com/r/en-US/Vitis_Libraries/vision/api-reference.html_1_0">Vitis Vision Documentation</a> page and check if the function you want to accelerate is available in the list and meets your performance requirements as all the details are given in the documentation. If available, follow the steps similar to how we followed for below functions:</p>
+</section>
+</section>
+<section id="resize">
+<h2>Resize<a class="headerlink" href="#resize" title="Permalink to this heading">¶</a></h2>
+<p>Resize method is used to resize the source image to the size of the destination image. Different types of interpolation techniques can be used in resize function, namely: Nearest-neighbor, Bilinear, and Area interpolation. The type of interpolation can be passed as a template parameter to the API. The following enumeration types can be used to specify the interpolation type:</p>
+<ul class="simple">
+<li><p>XF_INTERPOLATION_NN - For Nearest-neighbor interpolation</p></li>
+<li><p>XF_INTERPOLATION_BILINEAR - For Bilinear interpolation</p></li>
+<li><p>XF_INTERPOLATION_AREA - For Area interpolation</p></li>
+</ul>
+<p>Here we have used one of the simplest example because the intent is to make you understand the flow of how you can utilize the accelerated functions with ROS2 using KRS and not getting into the complexities of Vitis Vision functions algorithms.</p>
+<section id="understand-the-source-code-of-vitis-vision-resize-function">
+<h3>Understand the source code of Vitis Vision “Resize” function<a class="headerlink" href="#understand-the-source-code-of-vitis-vision-resize-function" title="Permalink to this heading">¶</a></h3>
+<p>As mentioned earlier, Level 2 is important for us to understand on how to make use of HLS kernels in host code. So, let’s have a look at the L2 code of resize function <a class="reference external" href="https://github.com/Xilinx/Vitis_Libraries/tree/2022.1/vision/L2/examples/resize">here</a>.</p>
+<p>There are a few important files in the resize example folder. Let’s discuss it one by one</p>
+<ul class="simple">
+<li><p>“<strong>xf_resize_config.h</strong>” &amp; “<strong>build/xf_config_params.h</strong>” are the configuration files which allows user to configure the HLS kernel at compile time. The possible configrations are like what kind of interpolation required, performance levels like 1 Pixel per clock (PPC/NPC) or 8 PPC and many more configurations. So, it is important for developers to review these configuration and align it according to the application requirements.</p></li>
+<li><p>“<strong>xf_resize_accel.cpp</strong>” contains the HLS kernel code and this internally calls the L1 resize function. Check the function nomenclature becuase this function will be called from the host code. So, it is important to know the input and output parameters. In case of this resize function the API syntax is:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">    </span>void<span class="w"> </span>resize_accel<span class="o">(</span>ap_uint&lt;INPUT_PTR_WIDTH&gt;*<span class="w"> </span>img_inp,
+<span class="w">                  </span>ap_uint&lt;OUTPUT_PTR_WIDTH&gt;*<span class="w"> </span>img_out,
+<span class="w">                  </span>int<span class="w"> </span>rows_in,
+<span class="w">                  </span>int<span class="w"> </span>cols_in,
+<span class="w">                  </span>int<span class="w"> </span>rows_out,
+<span class="w">                  </span>int<span class="w"> </span>cols_out<span class="o">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>“<strong>xf_resize_tb.cpp</strong>”, is testbench which contains the host code and the entrypoint main function. This file contains the implementation of how to call the accelerated kernel function, resize_accel in our current example. User can choose OpenCL or XRT APIs for the execution and buffer management for HLS kernel.</p></li>
+</ul>
+<p>Once we have good understanding of the above files and the dataflow, we can stitch it together with ROS2 and we can use KRS for the workflow.</p>
+</section>
+<section id="understand-the-vitis-accelerated-resize-example">
+<h3>Understand the vitis_accelerated_resize example<a class="headerlink" href="#understand-the-vitis-accelerated-resize-example" title="Permalink to this heading">¶</a></h3>
+<p>For easy understanding, we have created a simple example with ROS2 packages</p>
+<p>The architecture of the example is as below:
+<img alt="Accelerated_resize" src="https://github.com/user-attachments/assets/8aed27c0-a1bf-413a-b71a-ea26bd24bc13" /></p>
+<p>It has two nodes, one of the node named “opencv_image_publisher” is publishing a “random_image” topic, which is an input to “AcceleratedResize” node which runs this resize algorithm on FPGA and spits out a “resize” image topic. Below is the folder structure of the  <a class="reference external" href="https://github.com/ros-acceleration/acceleration_examples/tree/main/vitis_accelerated_examples/vitis_accelerated_resize">accelerated resize example</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>├──<span class="w"> </span>cfg
+│<span class="w">   </span>└──<span class="w"> </span>kr260.cfg
+├──<span class="w"> </span>CMakeLists.txt
+├──<span class="w"> </span>include
+│<span class="w">   </span>├──<span class="w"> </span>minimalimagepublisher.hpp
+│<span class="w">   </span>├──<span class="w"> </span>resize_fpga.hpp
+│<span class="w">   </span>└──<span class="w"> </span>xf_resize_config.h
+├──<span class="w"> </span>package.xml
+└──<span class="w"> </span>src
+<span class="w">    </span>├──<span class="w"> </span>main.cpp
+<span class="w">    </span>├──<span class="w"> </span>resize_fpga.cpp
+<span class="w">    </span>└──<span class="w"> </span>xf_resize_accel.cpp
+</pre></div>
+</div>
+<p>Let’s understand role of each file one by one:</p>
+<ul class="simple">
+<li><p>“<strong>minimalimagepublisher.hpp</strong>”, this contains the implementation of “opencv_image_publisher” node and it generated a random RGB image. Code snipped of the implementation is below:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>class<span class="w"> </span>MinimalImagePublisher<span class="w"> </span>:<span class="w"> </span>public<span class="w"> </span>rclcpp::Node<span class="w"> </span><span class="o">{</span>
+public:
+<span class="w">  </span>MinimalImagePublisher<span class="o">()</span><span class="w"> </span>:<span class="w"> </span>Node<span class="o">(</span><span class="s2">&quot;opencv_image_publisher&quot;</span><span class="o">)</span>,<span class="w"> </span>count_<span class="o">(</span><span class="m">0</span><span class="o">)</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nv">publisher_</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span>this-&gt;create_publisher&lt;sensor_msgs::msg::Image&gt;<span class="o">(</span><span class="s2">&quot;random_image&quot;</span>,<span class="w"> </span><span class="m">10</span><span class="o">)</span><span class="p">;</span>
+<span class="w">    </span><span class="nv">timer_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>this-&gt;create_wall_timer<span class="o">(</span>
+<span class="w">        </span>500ms,<span class="w"> </span>std::bind<span class="o">(</span><span class="p">&amp;</span>MinimalImagePublisher::timer_callback,<span class="w"> </span>this<span class="o">))</span><span class="p">;</span>
+<span class="w">  </span><span class="o">}</span>
+
+private:
+<span class="w">  </span>void<span class="w"> </span>timer_callback<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span>//<span class="w"> </span>Create<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>640x480<span class="w"> </span>image
+<span class="w">    </span>cv::Mat<span class="w"> </span>my_image<span class="o">(</span>cv::Size<span class="o">(</span><span class="m">640</span>,<span class="w"> </span><span class="m">480</span><span class="o">)</span>,<span class="w"> </span>CV_8UC3<span class="o">)</span><span class="p">;</span>
+
+<span class="w">    </span>//<span class="w"> </span>Generate<span class="w"> </span>an<span class="w"> </span>image<span class="w"> </span>where<span class="w"> </span>each<span class="w"> </span>pixel<span class="w"> </span>is<span class="w"> </span>a<span class="w"> </span>random<span class="w"> </span>color
+<span class="w">    </span>cv::randu<span class="o">(</span>my_image,<span class="w"> </span>cv::Scalar<span class="o">(</span><span class="m">0</span>,<span class="w"> </span><span class="m">0</span>,<span class="w"> </span><span class="m">0</span><span class="o">)</span>,<span class="w"> </span>cv::Scalar<span class="o">(</span><span class="m">255</span>,<span class="w"> </span><span class="m">255</span>,<span class="w"> </span><span class="m">255</span><span class="o">))</span><span class="p">;</span>
+
+<span class="w">    </span>//<span class="w"> </span>Write<span class="w"> </span>message<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>sent.<span class="w"> </span>Member<span class="w"> </span><span class="k">function</span><span class="w"> </span>toImageMsg<span class="o">()</span><span class="w"> </span>converts<span class="w"> </span>a<span class="w"> </span>CvImage
+<span class="w">    </span>//<span class="w"> </span>into<span class="w"> </span>a<span class="w"> </span>ROS<span class="w"> </span>image<span class="w"> </span>message
+<span class="w">    </span><span class="nv">msg_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>cv_bridge::CvImage<span class="o">(</span>std_msgs::msg::Header<span class="o">()</span>,<span class="w"> </span><span class="s2">&quot;bgr8&quot;</span>,<span class="w"> </span>my_image<span class="o">)</span>
+<span class="w">               </span>.toImageMsg<span class="o">()</span><span class="p">;</span>
+
+<span class="w">    </span>//<span class="w"> </span>Publish<span class="w"> </span>the<span class="w"> </span>image<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>topic<span class="w"> </span>defined<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>publisher
+<span class="w">    </span>publisher_-&gt;publish<span class="o">(</span>*msg_.get<span class="o">())</span><span class="p">;</span>
+<span class="w">    </span>RCLCPP_INFO<span class="o">(</span>this-&gt;get_logger<span class="o">()</span>,<span class="w"> </span><span class="s2">&quot;Image %ld published&quot;</span>,<span class="w"> </span>count_<span class="o">)</span><span class="p">;</span>
+<span class="w">    </span>count_++<span class="p">;</span>
+<span class="w">  </span><span class="o">}</span>
+<span class="w">  </span>rclcpp::TimerBase::SharedPtr<span class="w"> </span>timer_<span class="p">;</span>
+<span class="w">  </span>sensor_msgs::msg::Image::SharedPtr<span class="w"> </span>msg_<span class="p">;</span>
+<span class="w">  </span>rclcpp::Publisher&lt;sensor_msgs::msg::Image&gt;::SharedPtr<span class="w"> </span>publisher_<span class="p">;</span>
+<span class="w">  </span>size_t<span class="w"> </span>count_<span class="p">;</span>
+<span class="o">}</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>“<strong>xf_resize_config.h</strong>”, this file is a combination of <strong>xf_resize_config.h</strong>” &amp; “<strong>build/xf_config_params.h</strong>” from the vitis vision L2 example.</p></li>
+<li><p>“<strong>xf_resize_accel.cpp</strong>”, this file contains the implementation of resize HLS kernel and is copied from the L2 resize example from vitis vision library. No change is done in this file.</p></li>
+<li><p>“<strong>resize_fpga.hpp</strong>” &amp; “<strong>resize_fpga.cpp</strong>”, contains the implementation of “AcceleratedResize” node and showcases how the HLS kernel (resize_accel) is called from the host application. You can refer this file for developing your own application.</p></li>
+<li><p>“<strong>main.cpp</strong>”, entrypoint of the appplicaiton and it spawns both the nodes.</p></li>
+</ul>
+</section>
+<section id="how-to-build-the-example">
+<h3>How to build the example<a class="headerlink" href="#how-to-build-the-example" title="Permalink to this heading">¶</a></h3>
+<p>If the KRS is built for Ubuntu workflow, use below commands on the host machine to build this example</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>install/setup.bash
+colcon<span class="w"> </span>acceleration<span class="w"> </span><span class="k">select</span><span class="w"> </span>kr260
+
+<span class="c1">###################################################</span>
+<span class="c1"># 7.A cross-compile and generate ONLY CPU binaries</span>
+<span class="c1">###################################################</span>
+colcon<span class="w"> </span>build<span class="w"> </span>--build-base<span class="o">=</span>build-kr260-ubuntu<span class="w"> </span>--install-base<span class="o">=</span>install-kr260-ubuntu<span class="w"> </span>--merge-install<span class="w"> </span>--mixin<span class="w"> </span>kr260<span class="w"> </span>--cmake-args<span class="w"> </span>-DNOKERNELS<span class="o">=</span><span class="nb">true</span><span class="w"> </span>--packages-select<span class="w"> </span>vitis_accelerated_resize
+
+<span class="c1">###################################################</span>
+<span class="c1"># 7.B cross-compile and generate CPU binaries and accelerators.</span>
+<span class="c1">###################################################</span>
+colcon<span class="w"> </span>build<span class="w"> </span>--executor<span class="w"> </span>sequential<span class="w"> </span>--event-handlers<span class="w"> </span>console_direct+<span class="w"> </span>--build-base<span class="o">=</span>build-kr260-ubuntu<span class="w"> </span>--install-base<span class="o">=</span>install-kr260-ubuntu<span class="w"> </span>--merge-install<span class="w"> </span>--mixin<span class="w"> </span>kr260<span class="w"> </span>--cmake-args<span class="w"> </span>-DNOKERNELS<span class="o">=</span><span class="nb">false</span><span class="w"> </span>--packages-select<span class="w"> </span>vitis_accelerated_resize
+</pre></div>
+</div>
+</section>
+<section id="execute-vitis-accelerated-resize-example">
+<h3>Execute Vitis Accelerated Resize example<a class="headerlink" href="#execute-vitis-accelerated-resize-example" title="Permalink to this heading">¶</a></h3>
+<p>Once the above command successfully build the example, the artifacts will be generated at “<em>…/krs_ws/install-kr260-ubuntu/lib/vitis_accelerated_resize</em>”.</p>
+<p>If you have KRS installed on the Kria board, you can copy “…/krs_ws/install-kr260-ubuntu/lib/vitis_accelerated_resize” folder from x86 host machine to Kria board at “/home/ubuntu” directory or else you may tar …/krs_ws/install-kr260-ubuntu and copy it to the home directory of Kria board.</p>
+<p>Run below commands on <strong>Kria board</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash
+<span class="nb">source</span><span class="w"> </span>~/install-kr260-ubuntu/local_setup.bash<span class="w"> </span><span class="c1"># Or source ~/krs_ws/install/setup.bash if krs is installed on the baord</span>
+
+cp<span class="w"> </span>-rf<span class="w"> </span><span class="s2">&quot;~/install-kr260-ubuntu/lib/vitis_accelerated_resize&quot;</span><span class="w"> </span>/lib/firmware/xilinx<span class="w"> </span><span class="c1"># Copy the required bitstream in firmware folder</span>
+
+sudo<span class="w"> </span>xmutil<span class="w"> </span>listapps<span class="w"> </span><span class="c1"># This will show the available bitstreams/overlays in firmware</span>
+
+sudo<span class="w"> </span>xmutil<span class="w"> </span>unloadapp<span class="w"> </span><span class="c1"># to unload existing overlay</span>
+
+sudo<span class="w"> </span>xmutil<span class="w"> </span>loadapp<span class="w"> </span>vitis_accelerated_resize
+
+<span class="nb">cd</span><span class="w"> </span>~/install-kr260-ubuntu/lib/vitis_accelerated_resize
+
+./vitis_accelerated_resize
+</pre></div>
+</div>
+<p>You may see the output like below:
+<br>
+<img alt="execution_screenshot" src="https://github.com/user-attachments/assets/70622570-1ab5-4f48-aa41-fd420534ad7e" /></p>
+<p>This will run the example and you can see the behaviour of applicaiton in rqt tool</p>
+<p><img alt="execution" src="https://github.com/user-attachments/assets/0075d8c3-a0a4-4be6-811b-7d090283a557" /></p>
+</section>
+</section>
+<section id="stereo-block-matching">
+<h2>Stereo Block Matching<a class="headerlink" href="#stereo-block-matching" title="Permalink to this heading">¶</a></h2>
+<p>TBD</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+				  
+				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="vitis_accelerated.html" class="btn btn-neutral float-left" title="Vitis Accelerated Functions with ROS2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../howto.html" class="btn btn-neutral float-right" title="HowTo and Troubleshooting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2024, dvanced Micro Devices, Inc.
+      <span class="lastupdated">Last updated on January 2, 2024.
+      </span></p>
+  </div>
+
+
+
+										<div class="aem-Grid aem-Grid--16">
+											<div class="aem-GridColumn aem-GridColumn--xxxlarge--none aem-GridColumn--xsmall--16 aem-GridColumn--offset--xsmall--0 aem-GridColumn--xlarge--none aem-GridColumn--xxlarge--none aem-GridColumn--default--none aem-GridColumn--offset--large--1 aem-GridColumn--xlarge--12 aem-GridColumn--offset--default--0 aem-GridColumn--xxlarge--10 aem-GridColumn--offset--xlarge--2 aem-GridColumn--offset--xxlarge--3 aem-GridColumn--offset--xxxlarge--4 aem-GridColumn--xsmall--none aem-GridColumn--large--none aem-GridColumn aem-GridColumn--large--14 aem-GridColumn--xxxlarge--8 aem-GridColumn--default--16">
+												<div class="container-fluid sub-footer">
+
+													                    <div class="row">
+                        <div class="col-xs-24">
+                          <p><a target="_blank" href="https://www.amd.com/en/corporate/copyright">Terms and Conditions</a> | <a target="_blank" href="https://www.amd.com/en/corporate/privacy">Privacy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/cookies">Cookie Policy</a> | <a target="_blank" href="https://www.amd.com/en/corporate/trademarks">Trademarks</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/statement-human-trafficking-forced-labor.pdf">Statement on Forced Labor</a> | <a target="_blank" href="https://www.amd.com/en/corporate/competition">Fair and Open Competition</a> | <a target="_blank" href="https://www.amd.com/system/files/documents/amd-uk-tax-strategy.pdf">UK Tax Strategy</a> | <a target="_blank" href="https://docs.xilinx.com/v/u/9x6YvZKuWyhJId7y7RQQKA">Inclusive Terminology</a> | <a href="#cookiessettings" class="ot-sdk-show-settings">Cookies Settings</a></p>
+                        </div>
+                    </div>
+												</div>
+											</div>
+										</div>
+										
+</br>
+
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+</body>
+</html>

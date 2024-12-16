@@ -19,7 +19,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-5RHQV7');</script>
 <!-- End Google Tag Manager -->
-  <title>ROS 2 Accelerated Apps &mdash; KRS 1.0 documentation</title>
+  <title>Vitis Accelerated Functions with ROS2 &mdash; KRS 1.0 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/_static/custom.css" type="text/css" />
@@ -35,8 +35,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Contributing back to ROS 2" href="contributing_ros2.html" />
-    <link rel="prev" title="Real-time ROS 2" href="realtime_ros2.html" /> 
+    <link rel="next" title="How to use Vitis Accelerated Functions" href="vitis_accelerated_function.html" />
+    <link rel="prev" title="6. Accelerating a perception computational graph" href="6_perception.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -76,17 +76,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li class="toctree-l1"><a class="reference internal" href="../hardware.html">Hardware supported</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Features</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="ros2centric.html">ROS 2-centric</a></li>
-<li class="toctree-l1"><a class="reference internal" href="realtime_ros2.html">Real-time ROS 2</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">ROS 2 Accelerated Apps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contributing_ros2.html">Contributing back to ROS 2</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../features/ros2centric.html">ROS 2-centric</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features/realtime_ros2.html">Real-time ROS 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features/accelerated_apps_ros2.html">ROS 2 Accelerated Apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features/contributing_ros2.html">Contributing back to ROS 2</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Examples</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../examples/nodes.html">Accelerating ROS 2 Nodes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../examples/graphs.html">Accelerating ROS 2 Graphs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../examples/vitis_accelerated.html">Vitis Accelerated Functions with ROS2</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="nodes.html">Accelerating ROS 2 Nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphs.html">Accelerating ROS 2 Graphs</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Vitis Accelerated Functions with ROS2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vitis_accelerated_function.html">How to use Vitis Accelerated Functions</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">HowTo</span></p>
 <ul>
@@ -111,9 +114,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>ROS 2 Accelerated Apps</li>
+      <li>Vitis Accelerated Functions with ROS2</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../../_sources/docs/features/accelerated_apps_ros2.md.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/docs/examples/vitis_accelerated.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -121,13 +124,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="ros-2-accelerated-apps">
-<h1>ROS 2 Accelerated Apps<a class="headerlink" href="#ros-2-accelerated-apps" title="Permalink to this heading">¶</a></h1>
-<p>The ROS ecosystem brings together a worldwide community of thousands of roboticists developing robot applications while using ROS 2 abstractions. In a way, ROS is the common API roboticists use when building robot behaviours. The reference Software Development Kit (SDK) in robotics. With the advent of mixed source technology ecosystems in robotics, in the ROS world, there are already various examples of companies providing value around open source packages, while contributing back to the community. Xilinx attempts to bring those capabilities to selected partners by introducing a mixed source ecosystem powered by KRS:</p>
-<p><img alt="../../_images/mixed.svg" src="../../_images/mixed.svg" /></p>
-<p>With KRS, we take a step further and propose a layer for commercialization of ROS 2 robot accelerated applications. By leveraging Xilinx experience using encryption and authentication to secure FPGA bitstreams, the <a class="reference external" href="https://www.xilinx.com/products/app-store.html">Xilinx App Store</a> proposes a managed, easy to use and secure infrastructure for digital rights management (DRM) whereto commercialize and discover global customers. Through the Xilinx App Store connection, KRS containerizes ROS 2 overlay workspaces into robot accelerated applications allowing selected partners to protect and monetize their accelerated ROS 2 packages.</p>
-<p><img alt="../../_images/apps.png" src="../../_images/apps.png" /></p>
-<p>Beyond extending the ROS 2 build system and tools, to faciliate the process of monetizing ROS 2 packages, KRS also facilitates additional tools and extensions to simplify the process of packaging ROS 2 overlay workspaces and shipping them into the Xilinx App Store. <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">acceleration</span> <span class="pre">package</span></code> subverb above shows one of such tools.</p>
+  <section id="vitis-accelerated-functions-with-ros2">
+<h1>Vitis Accelerated Functions with ROS2<a class="headerlink" href="#vitis-accelerated-functions-with-ros2" title="Permalink to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vitis_accelerated_function.html">How to use Vitis Accelerated Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vitis_accelerated_function.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vitis_accelerated_function.html#using-vitis-vision-library-functions">Using Vitis Vision Library Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vitis_accelerated_function.html#understand-the-vitis-vision-library-structure">Understand the Vitis Vision Library structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vitis_accelerated_function.html#resize">Resize</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="vitis_accelerated_function.html#understand-the-source-code-of-vitis-vision-resize-function">Understand the source code of Vitis Vision “Resize” function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vitis_accelerated_function.html#understand-the-vitis-accelerated-resize-example">Understand the vitis_accelerated_resize example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vitis_accelerated_function.html#how-to-build-the-example">How to build the example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="vitis_accelerated_function.html#execute-vitis-accelerated-resize-example">Execute Vitis Accelerated Resize example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="vitis_accelerated_function.html#stereo-block-matching">Stereo Block Matching</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </section>
 
 
@@ -136,8 +154,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           
 				  
 				  <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="realtime_ros2.html" class="btn btn-neutral float-left" title="Real-time ROS 2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="contributing_ros2.html" class="btn btn-neutral float-right" title="Contributing back to ROS 2" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="6_perception.html" class="btn btn-neutral float-left" title="6. Accelerating a perception computational graph" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vitis_accelerated_function.html" class="btn btn-neutral float-right" title="How to use Vitis Accelerated Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
