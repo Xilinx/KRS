@@ -243,7 +243,7 @@ Waiting for /dev/mmcblk0p2 to pop up (attempt 8)
 Waiting for /dev/mmcblk0p2 to pop up (attempt 9)
 Waiting for /dev/mmcblk0p2 to pop up (attempt 10)
 Device /dev/mmcblk0p2 not found
-ERROR: There&#39;s no &#39;/dev&#39; on rootfs.
+ERROR: There's no '/dev' on rootfs.
 </pre></div>
 </div>
 <p>To finalize the boot, manually type the following:</p>
@@ -253,7 +253,7 @@ mount<span class="w"> </span>-t<span class="w"> </span>configfs<span class="w"> 
 mkdir<span class="w"> </span>full
 mkdir<span class="w"> </span>/lib/firmware/
 cp<span class="w"> </span>/boot/devicetree/zynqmp-sck-kv-g-qemu.dtbo<span class="w"> </span>/lib/firmware/.
-<span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;zynqmp-sck-kv-g-qemu.dtbo&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>full/path
+<span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">"zynqmp-sck-kv-g-qemu.dtbo"</span><span class="w"> </span>&gt;<span class="w"> </span>full/path
 <span class="nb">exec</span><span class="w"> </span>/init
 </pre></div>
 </div>
@@ -275,13 +275,13 @@ xilinx-k26-starterkit-2020_2<span class="w"> </span>login:
 <h3>How do I configure the KV260 to JTAG boot mode?<a class="headerlink" href="#how-do-i-configure-the-kv260-to-jtag-boot-mode" title="Permalink to this heading">¶</a></h3>
 <p>The easiest way to do so is through a Tcl script and the Xilinx Software Commandline Tool (<code class="docutils literal notranslate"><span class="pre">xsct</span></code>). Connect the board to the computer via its USB/UART/JTAG FTDI adapter and power it on:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/tools/Xilinx/Vitis/2022.1/settings64.sh<span class="w">  </span><span class="c1"># path might be different in your machine</span>
-cat<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39; &gt; som_bootmode.tcl</span>
+cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; som_bootmode.tcl</span>
 
 <span class="s">proc boot_jtag { } {</span>
 <span class="s">############################</span>
 <span class="s"># Switch to JTAG boot mode #</span>
 <span class="s">############################</span>
-<span class="s">targets -set -nocase -filter {name =~ &quot;PSU&quot;}</span>
+<span class="s">targets -set -nocase -filter {name =~ "PSU"}</span>
 <span class="s">stop</span>
 <span class="s"># update multiboot to ZERO</span>
 <span class="s">mwr 0xffca0010 0x0</span>
@@ -356,7 +356,7 @@ INFO:<span class="w"> </span>To<span class="w"> </span>connect<span class="w"> <
 tcfchan#0
 xsct%<span class="w"> </span>ta
 xsct%<span class="w"> </span>boot_jtag
-no<span class="w"> </span>targets<span class="w"> </span>found<span class="w"> </span>with<span class="w"> </span><span class="s2">&quot;name =~ &quot;</span>PSU<span class="s2">&quot;&quot;</span>.<span class="w"> </span>available<span class="w"> </span>targets:<span class="w"> </span>none
+no<span class="w"> </span>targets<span class="w"> </span>found<span class="w"> </span>with<span class="w"> </span><span class="s2">"name =~ "</span>PSU<span class="s2">""</span>.<span class="w"> </span>available<span class="w"> </span>targets:<span class="w"> </span>none
 xsct%
 </pre></div>
 </div>
@@ -436,8 +436,8 @@ ERROR:<span class="w"> </span>Card<span class="w"> </span>index<span class="w"> 
 </div>
 <p>Edit <code class="docutils literal notranslate"><span class="pre">system.dts</span></code> and add the following:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                <span class="n">zyxclmm_drm</span> <span class="p">{</span>
-                        <span class="n">compatible</span> <span class="o">=</span> <span class="s2">&quot;xlnx,zocl&quot;</span><span class="p">;</span>
-                        <span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;okay&quot;</span><span class="p">;</span>
+                        <span class="n">compatible</span> <span class="o">=</span> <span class="s2">"xlnx,zocl"</span><span class="p">;</span>
+                        <span class="n">status</span> <span class="o">=</span> <span class="s2">"okay"</span><span class="p">;</span>
                 <span class="p">};</span>
 </pre></div>
 </div>
@@ -564,7 +564,7 @@ Device<span class="w">                                          </span>Boot<span
 </pre></div>
 </div>
 <p>To calculate them, multiple the <code class="docutils literal notranslate"><span class="pre">End</span></code> by the <code class="docutils literal notranslate"><span class="pre">Units</span></code>. For example, for the second partition:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="k">$(($(</span>fdisk<span class="w"> </span>-l<span class="w"> </span>/home/xilinx/ros2_ws/acceleration/firmware/xilinx/sd_card.img<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">&#39;img2&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="k">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">$(</span>fdisk<span class="w"> </span>-l<span class="w"> </span>/home/xilinx/ros2_ws/acceleration/firmware/xilinx/sd_card.img<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">&#39;Units&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $8}&#39;</span><span class="k">)))</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="k">$(($(</span>fdisk<span class="w"> </span>-l<span class="w"> </span>/home/xilinx/ros2_ws/acceleration/firmware/xilinx/sd_card.img<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">'img2'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">'{print $2}'</span><span class="k">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">$(</span>fdisk<span class="w"> </span>-l<span class="w"> </span>/home/xilinx/ros2_ws/acceleration/firmware/xilinx/sd_card.img<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">'Units'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">'{print $8}'</span><span class="k">)))</span>
 <span class="m">1024458752</span>
 </pre></div>
 </div>
@@ -596,7 +596,7 @@ mkdir<span class="w"> </span>-p<span class="w"> </span>/tmp/sdcard_img_p2<span c
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># mount sd card rootfs partition</span>
 sudo<span class="w"> </span>mount<span class="w"> </span>-o<span class="w"> </span>loop,offset<span class="o">=</span><span class="m">1024458752</span><span class="w"> </span>/home/xilinx/ros2_ws/acceleration/firmware/xilinx/sd_card.img<span class="w"> </span>/tmp/sdcard_img_p2
 <span class="c1"># create script, no variable expansion</span>
-cat<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39; &gt; mkinitramfs.sh</span>
+cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; mkinitramfs.sh</span>
 <span class="s">#!/bin/sh</span>
 
 <span class="s"># Copyright 2006 Rob Landley &lt;rob@landley.net&gt; and TimeSys Corporation.</span>
@@ -604,16 +604,16 @@ cat<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39; &gt; mkinitram
 
 <span class="s">if [ $# -ne 2 ]</span>
 <span class="s">then</span>
-<span class="s">    echo &quot;usage: mkinitramfs directory imagename.cpio.gz&quot;</span>
+<span class="s">    echo "usage: mkinitramfs directory imagename.cpio.gz"</span>
 <span class="s">    exit 1</span>
 <span class="s">fi</span>
 
-<span class="s">if [ -d &quot;$1&quot; ]</span>
+<span class="s">if [ -d "$1" ]</span>
 <span class="s">then</span>
-<span class="s">    echo &quot;creating $2 from $1&quot;</span>
-<span class="s">    (cd &quot;$1&quot;; find . | cpio -o -H newc | gzip) &gt; &quot;$2&quot;</span>
+<span class="s">    echo "creating $2 from $1"</span>
+<span class="s">    (cd "$1"; find . | cpio -o -H newc | gzip) &gt; "$2"</span>
 <span class="s">else</span>
-<span class="s">    echo &quot;First argument must be a directory&quot;</span>
+<span class="s">    echo "First argument must be a directory"</span>
 <span class="s">    exit 1</span>
 <span class="s">fi</span>
 <span class="s">EOF</span>
@@ -629,8 +629,8 @@ sudo<span class="w"> </span>./mkinitramfs.sh<span class="w"> </span>/tmp/sdcard_
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir -p /tmp/sdcard_img_p2 &amp;&amp; sudo mount -o loop,offset=1024458752 /home/xilinx/ros2_ws/acceleration/firmware/xilinx/sd_card.img /tmp/sdcard_img_p2
 [sudo] password for xilinx:
 NTFS signature is missing.
-Failed to mount &#39;/dev/loop1&#39;: Invalid argument
-The device &#39;/dev/loop1&#39; doesn&#39;t seem to have a valid NTFS.
+Failed to mount '/dev/loop1': Invalid argument
+The device '/dev/loop1' doesn't seem to have a valid NTFS.
 Maybe the wrong device is used? Or the whole disk instead of a
 partition (e.g. /dev/sda, not /dev/sda1)? Or the other way around?
 </pre></div>
@@ -660,13 +660,13 @@ This might be related to the fact that p1 in the sd_card is filling and overload
 </section>
 <section id="how-do-i-figure-out-version-of-a-kernel-binary">
 <h3>How do I figure out version of a kernel binary?<a class="headerlink" href="#how-do-i-figure-out-version-of-a-kernel-binary" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>strings<span class="w"> </span>Image<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;Linux version&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>strings<span class="w"> </span>Image<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">"Linux version"</span>
 Linux<span class="w"> </span>version<span class="w"> </span><span class="m">5</span>.4.0-xilinx-v2020.2<span class="w"> </span><span class="o">(</span>oe-user@oe-host<span class="o">)</span><span class="w"> </span><span class="o">(</span>gcc<span class="w"> </span>version<span class="w"> </span><span class="m">9</span>.2.0<span class="w"> </span><span class="o">(</span>GCC<span class="o">))</span><span class="w"> </span><span class="c1">#1 SMP Thu Jun 10 22:03:38 UTC 2021</span>
 Linux<span class="w"> </span>version<span class="w"> </span>%s<span class="w"> </span><span class="o">(</span>%s<span class="o">)</span>
 </pre></div>
 </div>
 <p>or more elaborated:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>strings<span class="w"> </span>Image<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;5\.[0123456789]\.[0123456789]&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;Linux version&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>strings<span class="w"> </span>Image<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">"5\.[0123456789]\.[0123456789]"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">"Linux version"</span>
 Linux<span class="w"> </span>version<span class="w"> </span><span class="m">5</span>.4.0-xilinx-v2020.2<span class="w"> </span><span class="o">(</span>oe-user@oe-host<span class="o">)</span><span class="w"> </span><span class="o">(</span>gcc<span class="w"> </span>version<span class="w"> </span><span class="m">9</span>.2.0<span class="w"> </span><span class="o">(</span>GCC<span class="o">))</span><span class="w"> </span><span class="c1">#1 SMP Thu Jun 10 22:03:38 UTC 2021</span>
 </pre></div>
 </div>
@@ -749,7 +749,7 @@ bootefi<span class="w"> </span>0xc00000
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ZynqMP&gt;<span class="w"> </span>tftpb<span class="w"> </span>0xC00000<span class="w"> </span>snp.efi
 Using<span class="w"> </span>ethernet@ff0e0000<span class="w"> </span>device
 TFTP<span class="w"> </span>from<span class="w"> </span>server<span class="w"> </span><span class="m">192</span>.168.1.33<span class="p">;</span><span class="w"> </span>our<span class="w"> </span>IP<span class="w"> </span>address<span class="w"> </span>is<span class="w"> </span><span class="m">192</span>.168.1.86
-Filename<span class="w"> </span><span class="s1">&#39;snp.efi&#39;</span>.
+Filename<span class="w"> </span><span class="s1">'snp.efi'</span>.
 Load<span class="w"> </span>address:<span class="w"> </span>0xc00000
 Loading:<span class="w"> </span><span class="c1">#######################################</span>
 <span class="w">	 </span><span class="m">3</span>.7<span class="w"> </span>MiB/s
@@ -780,7 +780,7 @@ cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; boot.source</span>
 <span class="s">load mmc 0:1 0xE00000 snp.efi</span>
 <span class="s">bootefi 0xE00000</span>
 <span class="s">EOF</span>
-mkimage<span class="w"> </span>-A<span class="w"> </span>arm<span class="w"> </span>-O<span class="w"> </span>linux<span class="w"> </span>-T<span class="w"> </span>script<span class="w"> </span>-C<span class="w"> </span>none<span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;u-boot commands&quot;</span><span class="w"> </span>-d<span class="w"> </span>boot.source<span class="w"> </span>boot.scr
+mkimage<span class="w"> </span>-A<span class="w"> </span>arm<span class="w"> </span>-O<span class="w"> </span>linux<span class="w"> </span>-T<span class="w"> </span>script<span class="w"> </span>-C<span class="w"> </span>none<span class="w"> </span>-n<span class="w"> </span><span class="s2">"u-boot commands"</span><span class="w"> </span>-d<span class="w"> </span>boot.source<span class="w"> </span>boot.scr
 <span class="c1"># copy to tftp directory and test it manually</span>
 cp<span class="w"> </span>boot.scr<span class="w"> </span>/srv/tftp
 
@@ -817,7 +817,7 @@ Hello<span class="w"> </span>world
 </section>
 <section id="i-can-t-boot-my-image-because-i-get-a-kernel-panic-like-the-following-one">
 <h3>I can’t boot my image because I get a kernel panic like the following one<a class="headerlink" href="#i-can-t-boot-my-image-because-i-get-a-kernel-panic-like-the-following-one" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span><span class="w">    </span><span class="m">4</span>.549695<span class="o">]</span><span class="w"> </span>cfg80211:<span class="w"> </span>Loaded<span class="w"> </span>X.509<span class="w"> </span>cert<span class="w"> </span><span class="s1">&#39;sforshee: 00b28ddf47aef9cea7&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span><span class="w">    </span><span class="m">4</span>.549695<span class="o">]</span><span class="w"> </span>cfg80211:<span class="w"> </span>Loaded<span class="w"> </span>X.509<span class="w"> </span>cert<span class="w"> </span><span class="s1">'sforshee: 00b28ddf47aef9cea7'</span>
 <span class="o">[</span><span class="w">    </span><span class="m">4</span>.550434<span class="o">]</span><span class="w"> </span>clk:<span class="w"> </span>Not<span class="w"> </span>disabling<span class="w"> </span>unused<span class="w"> </span>clocks
 <span class="o">[</span><span class="w">    </span><span class="m">4</span>.579404<span class="o">]</span><span class="w"> </span>ALSA<span class="w"> </span>device<span class="w"> </span>list:
 <span class="o">[</span><span class="w">    </span><span class="m">4</span>.579697<span class="o">]</span><span class="w">   </span>No<span class="w"> </span>soundcards<span class="w"> </span>found.
@@ -918,9 +918,9 @@ cp<span class="w"> </span>project-spec/configs/bblayers.conf<span class="w"> </s
 <span class="c1">#</span>
 
 petalinux-config<span class="w"> </span>--silentconfig<span class="w">  </span><span class="c1"># generate additional files</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;ROS_DISTRO = &quot;foxy&quot;&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>build/conf/bblayers.conf
+<span class="nb">echo</span><span class="w"> </span><span class="s1">'ROS_DISTRO = "foxy"'</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>build/conf/bblayers.conf
 
-<span class="c1"># NOTE: you might need to do what&#39;s described in:</span>
+<span class="c1"># NOTE: you might need to do what's described in:</span>
 <span class="c1">#  How do I deal with the following error: Could not inherit file classes/ros_distro_${ROS_DISTRO}.bbclass</span>
 
 petalinux-build<span class="w">  </span><span class="c1"># takes about 30 mins</span>
@@ -937,7 +937,7 @@ INFO:<span class="w"> </span>Sourcing<span class="w"> </span>build<span class="w
 <span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Generating<span class="w"> </span>workspace<span class="w"> </span>directory
 INFO:<span class="w"> </span>bitbake<span class="w"> </span>petalinux-image-minimal
 WARNING:<span class="w"> </span>Layer<span class="w"> </span>example<span class="w"> </span>should<span class="w"> </span><span class="nb">set</span><span class="w"> </span>LAYERSERIES_COMPAT_example<span class="w"> </span><span class="k">in</span><span class="w"> </span>its<span class="w"> </span>conf/layer.conf<span class="w"> </span>file<span class="w"> </span>to<span class="w"> </span>list<span class="w"> </span>the<span class="w"> </span>core<span class="w"> </span>layer<span class="w"> </span>names<span class="w"> </span>it<span class="w"> </span>is<span class="w"> </span>compatible<span class="w"> </span>with.
-WARNING:<span class="w"> </span>Host<span class="w"> </span>distribution<span class="w"> </span><span class="s2">&quot;ubuntu-20.04&quot;</span><span class="w"> </span>has<span class="w"> </span>not<span class="w"> </span>been<span class="w"> </span>validated<span class="w"> </span>with<span class="w"> </span>this<span class="w"> </span>version<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>build<span class="w"> </span>system<span class="p">;</span><span class="w"> </span>you<span class="w"> </span>may<span class="w"> </span>possibly<span class="w"> </span>experience<span class="w"> </span>unexpected<span class="w"> </span>failures.<span class="w"> </span>It<span class="w"> </span>is<span class="w"> </span>recommended<span class="w"> </span>that<span class="w"> </span>you<span class="w"> </span>use<span class="w"> </span>a<span class="w"> </span>tested<span class="w"> </span>distribution.
+WARNING:<span class="w"> </span>Host<span class="w"> </span>distribution<span class="w"> </span><span class="s2">"ubuntu-20.04"</span><span class="w"> </span>has<span class="w"> </span>not<span class="w"> </span>been<span class="w"> </span>validated<span class="w"> </span>with<span class="w"> </span>this<span class="w"> </span>version<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>build<span class="w"> </span>system<span class="p">;</span><span class="w"> </span>you<span class="w"> </span>may<span class="w"> </span>possibly<span class="w"> </span>experience<span class="w"> </span>unexpected<span class="w"> </span>failures.<span class="w"> </span>It<span class="w"> </span>is<span class="w"> </span>recommended<span class="w"> </span>that<span class="w"> </span>you<span class="w"> </span>use<span class="w"> </span>a<span class="w"> </span>tested<span class="w"> </span>distribution.
 ERROR:<span class="w"> </span>ParseError<span class="w"> </span>at<span class="w"> </span>/home/xilinx/xilinx-zcu102-2020.2/project-spec/meta-user/recipes-images/images/petalinux-image-ros2-basic.bb:6:<span class="w"> </span>Could<span class="w"> </span>not<span class="w"> </span>inherit<span class="w"> </span>file<span class="w"> </span>classes/ros_distro_<span class="si">${</span><span class="nv">ROS_DISTRO</span><span class="si">}</span>.bbclass40
 
 Summary:<span class="w"> </span>There<span class="w"> </span>were<span class="w"> </span><span class="m">2</span><span class="w"> </span>WARNING<span class="w"> </span>messages<span class="w"> </span>shown.
@@ -987,7 +987,7 @@ ERROR:<span class="w"> </span>Failed<span class="w"> </span>to<span class="w"> <
 </section>
 <section id="how-to-launch-a-quick-emulation-from-a-built-petalinux-yocto-project-using-a-tftp-directory-fetching-things-from-tftp">
 <h3>How to launch a quick emulation from a built PetaLinux/Yocto project using a TFTP directory (fetching things from TFTP):<a class="headerlink" href="#how-to-launch-a-quick-emulation-from-a-built-petalinux-yocto-project-using-a-tftp-directory-fetching-things-from-tftp" title="Permalink to this heading">¶</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>petalinux-boot<span class="w"> </span>--qemu<span class="w"> </span>--prebuilt<span class="w"> </span><span class="m">2</span><span class="w"> </span>--qemu-args<span class="w"> </span><span class="s2">&quot;-net nic -net nic -net nic -net nic -net user,tftp=images/linux/tftpboot,hostfwd=tcp:127.0.0.1:2222-10.0.2.15:22&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>petalinux-boot<span class="w"> </span>--qemu<span class="w"> </span>--prebuilt<span class="w"> </span><span class="m">2</span><span class="w"> </span>--qemu-args<span class="w"> </span><span class="s2">"-net nic -net nic -net nic -net nic -net user,tftp=images/linux/tftpboot,hostfwd=tcp:127.0.0.1:2222-10.0.2.15:22"</span>
 </pre></div>
 </div>
 </section>
@@ -1150,20 +1150,20 @@ petalinux-build
 <section id="how-do-i-create-a-dom0less-setup">
 <h3>How do I create a Dom0less setup?<a class="headerlink" href="#how-do-i-create-a-dom0less-setup" title="Permalink to this heading">¶</a></h3>
 <p>By default, VMs created with the Imagebuilder tool (e.g. <code class="docutils literal notranslate"><span class="pre">uboot-script-gen</span></code>) through configuration scripts are dom0less at the time of writing. For example, in the following piece, Dom1 is Dom0less:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">MEMORY_START</span><span class="o">=</span><span class="s2">&quot;0x0&quot;</span>
-<span class="nv">MEMORY_END</span><span class="o">=</span><span class="s2">&quot;0x80000000&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">MEMORY_START</span><span class="o">=</span><span class="s2">"0x0"</span>
+<span class="nv">MEMORY_END</span><span class="o">=</span><span class="s2">"0x80000000"</span>
 
-<span class="nv">DEVICE_TREE</span><span class="o">=</span><span class="s2">&quot;system.dtb&quot;</span>
-<span class="nv">XEN</span><span class="o">=</span><span class="s2">&quot;xen&quot;</span>
-<span class="nv">DOM0_KERNEL</span><span class="o">=</span><span class="s2">&quot;Image&quot;</span>
-<span class="nv">DOM0_RAMDISK</span><span class="o">=</span><span class="s2">&quot;initrd.cpio&quot;</span>
+<span class="nv">DEVICE_TREE</span><span class="o">=</span><span class="s2">"system.dtb"</span>
+<span class="nv">XEN</span><span class="o">=</span><span class="s2">"xen"</span>
+<span class="nv">DOM0_KERNEL</span><span class="o">=</span><span class="s2">"Image"</span>
+<span class="nv">DOM0_RAMDISK</span><span class="o">=</span><span class="s2">"initrd.cpio"</span>
 
 <span class="nv">NUM_DOMUS</span><span class="o">=</span><span class="m">1</span>
-DOMU_KERNEL<span class="o">[</span><span class="m">0</span><span class="o">]=</span><span class="s2">&quot;Image&quot;</span>
-DOMU_RAMDISK<span class="o">[</span><span class="m">0</span><span class="o">]=</span><span class="s2">&quot;initrd.cpio&quot;</span>
+DOMU_KERNEL<span class="o">[</span><span class="m">0</span><span class="o">]=</span><span class="s2">"Image"</span>
+DOMU_RAMDISK<span class="o">[</span><span class="m">0</span><span class="o">]=</span><span class="s2">"initrd.cpio"</span>
 
-<span class="nv">UBOOT_SOURCE</span><span class="o">=</span><span class="s2">&quot;boot.source&quot;</span>
-<span class="nv">UBOOT_SCRIPT</span><span class="o">=</span><span class="s2">&quot;boot.scr&quot;</span>
+<span class="nv">UBOOT_SOURCE</span><span class="o">=</span><span class="s2">"boot.source"</span>
+<span class="nv">UBOOT_SCRIPT</span><span class="o">=</span><span class="s2">"boot.scr"</span>
 </pre></div>
 </div>
 </section>
@@ -1173,9 +1173,9 @@ DOMU_RAMDISK<span class="o">[</span><span class="m">0</span><span class="o">]=</
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># create config file and launch VM</span>
 <span class="nb">cd</span><span class="w"> </span>/etc/xen
 cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; example-minimalistic.cfg</span>
-<span class="s">name = &quot;guest0&quot;</span>
-<span class="s">kernel = &quot;/media/sd-mmcblk0p1/Image&quot;</span>
-<span class="s">ramdisk = &quot;/media/sd-mmcblk0p1/initrd.cpio&quot;</span>
+<span class="s">name = "guest0"</span>
+<span class="s">kernel = "/media/sd-mmcblk0p1/Image"</span>
+<span class="s">ramdisk = "/media/sd-mmcblk0p1/initrd.cpio"</span>
 <span class="s">memory = 256</span>
 <span class="s">EOF</span>
 xl<span class="w"> </span>create<span class="w"> </span>-c<span class="w"> </span>example-minimalistic.cfg
@@ -1215,7 +1215,7 @@ libxl: error: libxl_domain.c:1405:libxl__get_domid: failed to get own domid (dom
 libxl: error: libxl_internal.c:421:libxl__lock_domain_userdata: Domain 2:cannot open lockfile /var/lib/xen/userdata-l.2.f10ed589-4870-40d0-a4cc-758e10e8c9e3.domain-userdata-lock, errno=2: No such file or directory
 libxl: error: libxl_domain.c:1131:domain_destroy_callback: Domain 2:Unable to destroy guest
 libxl: error: libxl_create.c:1826:domcreate_destruction_cb: Domain 2:unable to destroy domain following failed creation
-libxl: error: libxl_xshelp.c:201:libxl__xs_read_mandatory: xenstore read failed: `/libxl/2/type&#39;: No such file or directory
+libxl: error: libxl_xshelp.c:201:libxl__xs_read_mandatory: xenstore read failed: `/libxl/2/type': No such file or directory
 libxl: warning: libxl_dom.c:52:libxl__domain_type: unable to get domain type for domid=2, assuming HVM
 libxl: error: libxl_internal.c:421:libxl__lock_domain_userdata: Domain 2:cannot open lockfile /var/lib/xen/userdata-l.2.f10ed589-4870-40d0-a4cc-758e10e8c9e3.domain-userdata-lock, errno=2: No such file or directory
 libxl: error: libxl_domain.c:1131:domain_destroy_callback: Domain 2:Unable to destroy guest
@@ -1236,7 +1236,7 @@ reboot
 <h3>How do I deal with kernel errors while building Xen with PetaLinux?<a class="headerlink" href="#how-do-i-deal-with-kernel-errors-while-building-xen-with-petalinux" title="Permalink to this heading">¶</a></h3>
 <p>When facing the following error:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>NOTE: Setscene tasks completed
-ERROR: petalinux-image-minimal-1.0-r0 do_rootfs: Could not invoke dnf. Command &#39;/home/xilinx/xilinx-zcu102-2020.2/build/tmp/work/zcu102_zynqmp-xilinx-linux/petalinux-image-minimal/1.0-r0/recipe-sysroot-native/usr/bin/dnf -v --rpmverbosity=info -y -c /home/xilinx/xilinx-zcu102-2020.2/build/tmp/work/zcu102_zynqmp-xilinx-linux/petalinux-image-minimal/1.0-r0/rootfs/etc/dnf/dnf.conf --setopt=reposdir=/home/xilinx/xilinx-zcu102-2020.2/build/tmp/work/zcu102_zynqmp-xilinx-linux/petalinux-image-minimal/1.0-r0/rootfs/etc/yum.repos.d --installroot=/home/xilinx/xilinx-zcu102-2020.2/build/tmp/work/zcu102_zynqmp-xilinx-linux/petalinux-image-minimal/1.0-r0/rootfs --setopt=logdir=/home/xilinx/xilinx-zcu102-2020.2/build/tmp/work/zcu102_zynqmp-xilinx-linux/petalinux-image-minimal/1.0-r0/temp --repofrompath=oe-repo,/home/xilinx/xilinx-zcu102-2020.2/build/tmp/work/zcu102_zynqmp-xilinx-linux/petalinux-image-minimal/1.0-r0/oe-rootfs-repo --nogpgcheck install base-passwd bridge-utils byobu can-utils cyclonedds demo-nodes-cpp demo-nodes-cpp-rosnative demo-nodes-py ethtool examples-rclcpp-minimal-action-client examples-rclcpp-minimal-action-server examples-rclcpp-minimal-client examples-rclcpp-minimal-composition examples-rclcpp-minimal-publisher examples-rclcpp-minimal-service examples-rclcpp-minimal-subscriber examples-rclcpp-minimal-timer examples-rclcpp-multithreaded-executor examples-rclpy-executors examples-rclpy-minimal-action-client examples-rclpy-minimal-action-server examples-rclpy-minimal-client examples-rclpy-minimal-publisher examples-rclpy-minimal-service examples-rclpy-minimal-subscriber fpga-manager-script gdb libc6-utils haveged hellopm kernel-modules localedef mtd-utils opencl-clhpp opencl-clhpp-dev opencl-headers opencl-headers-dev openssh openssh-scp openssh-sftp-server openssh-ssh openssh-sshd packagegroup-core-boot packagegroup-core-ssh-openssh packagegroup-petalinux-xen packagegroup-petalinux-xrt pciutils python3-argcomplete rmw-cyclonedds-cpp ros-base rpm rt-tests run-postinsts shadow stress tcf-agent tmux udev-extraconf watchdog-init xrt xrt-dev zocl&#39; returned 1:
+ERROR: petalinux-image-minimal-1.0-r0 do_rootfs: Could not invoke dnf. Command '/home/xilinx/xilinx-zcu102-2020.2/build/tmp/work/zcu102_zynqmp-xilinx-linux/petalinux-image-minimal/1.0-r0/recipe-sysroot-native/usr/bin/dnf -v --rpmverbosity=info -y -c /home/xilinx/xilinx-zcu102-2020.2/build/tmp/work/zcu102_zynqmp-xilinx-linux/petalinux-image-minimal/1.0-r0/rootfs/etc/dnf/dnf.conf --setopt=reposdir=/home/xilinx/xilinx-zcu102-2020.2/build/tmp/work/zcu102_zynqmp-xilinx-linux/petalinux-image-minimal/1.0-r0/rootfs/etc/yum.repos.d --installroot=/home/xilinx/xilinx-zcu102-2020.2/build/tmp/work/zcu102_zynqmp-xilinx-linux/petalinux-image-minimal/1.0-r0/rootfs --setopt=logdir=/home/xilinx/xilinx-zcu102-2020.2/build/tmp/work/zcu102_zynqmp-xilinx-linux/petalinux-image-minimal/1.0-r0/temp --repofrompath=oe-repo,/home/xilinx/xilinx-zcu102-2020.2/build/tmp/work/zcu102_zynqmp-xilinx-linux/petalinux-image-minimal/1.0-r0/oe-rootfs-repo --nogpgcheck install base-passwd bridge-utils byobu can-utils cyclonedds demo-nodes-cpp demo-nodes-cpp-rosnative demo-nodes-py ethtool examples-rclcpp-minimal-action-client examples-rclcpp-minimal-action-server examples-rclcpp-minimal-client examples-rclcpp-minimal-composition examples-rclcpp-minimal-publisher examples-rclcpp-minimal-service examples-rclcpp-minimal-subscriber examples-rclcpp-minimal-timer examples-rclcpp-multithreaded-executor examples-rclpy-executors examples-rclpy-minimal-action-client examples-rclpy-minimal-action-server examples-rclpy-minimal-client examples-rclpy-minimal-publisher examples-rclpy-minimal-service examples-rclpy-minimal-subscriber fpga-manager-script gdb libc6-utils haveged hellopm kernel-modules localedef mtd-utils opencl-clhpp opencl-clhpp-dev opencl-headers opencl-headers-dev openssh openssh-scp openssh-sftp-server openssh-ssh openssh-sshd packagegroup-core-boot packagegroup-core-ssh-openssh packagegroup-petalinux-xen packagegroup-petalinux-xrt pciutils python3-argcomplete rmw-cyclonedds-cpp ros-base rpm rt-tests run-postinsts shadow stress tcf-agent tmux udev-extraconf watchdog-init xrt xrt-dev zocl' returned 1:
 DNF version: 4.2.2
 cachedir: /home/xilinx/xilinx-zcu102-2020.2/build/tmp/work/zcu102_zynqmp-xilinx-linux/petalinux-image-minimal/1.0-r0/rootfs/var/cache/dnf
 Added oe-repo repo from /home/xilinx/xilinx-zcu102-2020.2/build/tmp/work/zcu102_zynqmp-xilinx-linux/petalinux-image-minimal/1.0-r0/oe-rootfs-repo
@@ -1257,11 +1257,11 @@ Error:
   - nothing provides kernel-module-xen-gntdev needed by packagegroup-petalinux-xen-1.0-r0.noarch
   - nothing provides kernel-module-xen-netback needed by packagegroup-petalinux-xen-1.0-r0.noarch
   - nothing provides kernel-module-xen-wdt needed by packagegroup-petalinux-xen-1.0-r0.noarch
-(try to add &#39;--skip-broken&#39; to skip uninstallable packages or &#39;--nobest&#39; to use not only best candidate packages)
+(try to add '--skip-broken' to skip uninstallable packages or '--nobest' to use not only best candidate packages)
 
 ERROR: Logfile of failure stored in: /home/xilinx/xilinx-zcu102-2020.2/build/tmp/work/zcu102_zynqmp-xilinx-linux/petalinux-image-minimal/1.0-r0/temp/log.do_rootfs.1714208
-ERROR: Task (/home/xilinx/xilinx-zcu102-2020.2/components/yocto/layers/meta-petalinux/recipes-core/images/petalinux-image-minimal.bb:do_rootfs) failed with exit code &#39;1&#39;
-NOTE: Tasks Summary: Attempted 9800 tasks of which 9498 didn&#39;t need to be rerun and 1 failed.
+ERROR: Task (/home/xilinx/xilinx-zcu102-2020.2/components/yocto/layers/meta-petalinux/recipes-core/images/petalinux-image-minimal.bb:do_rootfs) failed with exit code '1'
+NOTE: Tasks Summary: Attempted 9800 tasks of which 9498 didn't need to be rerun and 1 failed.
 </pre></div>
 </div>
 </section>
@@ -1269,7 +1269,7 @@ NOTE: Tasks Summary: Attempted 9800 tasks of which 9498 didn&#39;t need to be re
 <h3>DomUs stored in SD partitions create a kernel panic when Launching<a class="headerlink" href="#domus-stored-in-sd-partitions-create-a-kernel-panic-when-launching" title="Permalink to this heading">¶</a></h3>
 <p>If you’re running Vitis <code class="docutils literal notranslate"><span class="pre">2020.2</span></code> or earlier and observe something like when creating DomUs:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>...
-<span class="o">[</span><span class="w">    </span><span class="m">3</span>.257786<span class="o">]</span><span class="w"> </span>cfg80211:<span class="w"> </span>Loaded<span class="w"> </span>X.509<span class="w"> </span>cert<span class="w"> </span><span class="s1">&#39;sforshee: 00b28ddf47aef9cea7&#39;</span>
+<span class="o">[</span><span class="w">    </span><span class="m">3</span>.257786<span class="o">]</span><span class="w"> </span>cfg80211:<span class="w"> </span>Loaded<span class="w"> </span>X.509<span class="w"> </span>cert<span class="w"> </span><span class="s1">'sforshee: 00b28ddf47aef9cea7'</span>
 <span class="o">[</span><span class="w">    </span><span class="m">3</span>.258491<span class="o">]</span><span class="w"> </span>ALSA<span class="w"> </span>device<span class="w"> </span>list:
 <span class="o">[</span><span class="w">    </span><span class="m">3</span>.258603<span class="o">]</span><span class="w">   </span>No<span class="w"> </span>soundcards<span class="w"> </span>found.
 <span class="o">[</span><span class="w">    </span><span class="m">3</span>.264081<span class="o">]</span><span class="w"> </span>platform<span class="w"> </span>regulatory.0:<span class="w"> </span>Direct<span class="w"> </span>firmware<span class="w"> </span>load<span class="w"> </span><span class="k">for</span><span class="w"> </span>regulatory.db<span class="w"> </span>failed<span class="w"> </span>with<span class="w"> </span>error<span class="w"> </span>-2
@@ -1408,7 +1408,7 @@ This flag persists so if you wish to change it afterwards and re-build kernels, 
 <h3>How do I handle device-mapper issues?<a class="headerlink" href="#how-do-i-handle-device-mapper-issues" title="Permalink to this heading">¶</a></h3>
 <p>KRS relies on imagebuilder which employs <code class="docutils literal notranslate"><span class="pre">/dev/mapper</span></code>. This Linux interface is a bit sensitive and if not disabled properly in past runs will lead into:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>colcon acceleration linux --install-dir install-kv260
-SECURITY WARNING: This class invokes explicitly a shell via the shell=True argument of the Python subprocess library, and uses admin privileges to manage raw disk images. It is the user&#39;s responsibility to ensure that all whitespace and metacharacters passed are quoted appropriately to avoid shell injection vulnerabilities.
+SECURITY WARNING: This class invokes explicitly a shell via the shell=True argument of the Python subprocess library, and uses admin privileges to manage raw disk images. It is the user's responsibility to ensure that all whitespace and metacharacters passed are quoted appropriately to avoid shell injection vulnerabilities.
 - Creating a new base image using /home/xilinx/ros2_ws/acceleration/firmware/xilinx/rootfs.cpio.gz ...
 - Detected previous sd_card.img raw image, moving to sd_card.img.old.
 device-mapper: create ioctl on diskimage  failed: Device or resource busy
@@ -1419,7 +1419,7 @@ Command failed.
 <p>To fix this:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>kpartx<span class="w"> </span>-d<span class="w"> </span>/dev/mapper/diskimage
 sudo<span class="w">  </span>dmsetup<span class="w"> </span>remove<span class="w"> </span>diskimage
-sudo<span class="w"> </span>losetup<span class="w"> </span>-d<span class="w"> </span><span class="k">$(($(</span>sudo<span class="w"> </span>losetup<span class="w"> </span>-f<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-s<span class="w"> </span><span class="s1">&#39;s*/dev/loop**&#39;</span><span class="k">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="k">))</span>
+sudo<span class="w"> </span>losetup<span class="w"> </span>-d<span class="w"> </span><span class="k">$(($(</span>sudo<span class="w"> </span>losetup<span class="w"> </span>-f<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-s<span class="w"> </span><span class="s1">'s*/dev/loop**'</span><span class="k">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="k">))</span>
 </pre></div>
 </div>
 <!-- where `$_loop_dev` is the loop device used (which you can figure out by substracting one to `sudo losetup -f`). --><p><strong>A simpler approach was implemented in KRS with <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">acceleration</span> <span class="pre">umount</span> <span class="pre">--fix</span></code></strong> which does exactly the same.</p>
@@ -1429,7 +1429,7 @@ sudo<span class="w"> </span>losetup<span class="w"> </span>-d<span class="w"> </
 <p>Consider the following error while building an acceleration kernel:</p>
 <p>!!! note
 This issue was first documented at https://forums.xilinx.com/t5/Kria-SOMs/Vitis-IDE-ERROR-v-60-602-Source-file-does-not-exist/m-p/1264669/highlight/true</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>INFO:<span class="w"> </span><span class="o">[</span>VPL<span class="w"> </span><span class="m">60</span>-839<span class="o">]</span><span class="w"> </span>Read<span class="w"> </span><span class="k">in</span><span class="w"> </span>kernel<span class="w"> </span>information<span class="w"> </span>from<span class="w"> </span>file<span class="w"> </span><span class="s1">&#39;/home/xilinx/ros2_ws/build-kv260/accelerated_vadd_publisher/_x/link/int/kernel_info.dat&#39;</span>.
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>INFO:<span class="w"> </span><span class="o">[</span>VPL<span class="w"> </span><span class="m">60</span>-839<span class="o">]</span><span class="w"> </span>Read<span class="w"> </span><span class="k">in</span><span class="w"> </span>kernel<span class="w"> </span>information<span class="w"> </span>from<span class="w"> </span>file<span class="w"> </span><span class="s1">'/home/xilinx/ros2_ws/build-kv260/accelerated_vadd_publisher/_x/link/int/kernel_info.dat'</span>.
 INFO:<span class="w"> </span><span class="o">[</span>VPL<span class="w"> </span><span class="m">60</span>-423<span class="o">]</span><span class="w">   </span>Target<span class="w"> </span>device:<span class="w"> </span>kv260_ispMipiRx_vcu_DP
 INFO:<span class="w"> </span><span class="o">[</span>VPL<span class="w"> </span><span class="m">60</span>-1032<span class="o">]</span><span class="w"> </span>Extracting<span class="w"> </span>hardware<span class="w"> </span>platform<span class="w"> </span>to<span class="w"> </span>/home/xilinx/ros2_ws/build-kv260/accelerated_vadd_publisher/_x/link/vivado/vpl/.local/hw_platform
 WARNING:<span class="w"> </span>/tools/Xilinx/Vitis/2020.2/tps/lnx64/jre9.0.4<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </span>exist.
@@ -1437,14 +1437,14 @@ WARNING:<span class="w"> </span>/tools/Xilinx/Vitis/2020.2/tps/lnx64/jre9.0.4<sp
 Creating<span class="w"> </span>Vivado<span class="w"> </span>project.
 <span class="o">[</span><span class="m">19</span>:52:10<span class="o">]</span><span class="w"> </span>Run<span class="w"> </span>vpl:<span class="w"> </span>Step<span class="w"> </span>create_project:<span class="w"> </span>Failed
 <span class="o">[</span><span class="m">19</span>:52:11<span class="o">]</span><span class="w"> </span>Run<span class="w"> </span>vpl:<span class="w"> </span>FINISHED.<span class="w"> </span>Run<span class="w"> </span>Status:<span class="w"> </span>create_project<span class="w"> </span>ERROR
-ERROR:<span class="w"> </span><span class="o">[</span>VPL<span class="w"> </span><span class="m">60</span>-773<span class="o">]</span><span class="w"> </span>In<span class="w"> </span><span class="s1">&#39;/home/xilinx/ros2_ws/build-kv260/accelerated_vadd_publisher/_x/link/vivado/vpl/runme.log&#39;</span>,<span class="w"> </span>caught<span class="w"> </span>Tcl<span class="w"> </span>error:<span class="w">  </span>ERROR:<span class="w"> </span><span class="o">[</span>Board<span class="w"> </span><span class="m">49</span>-71<span class="o">]</span><span class="w"> </span>The<span class="w"> </span>board_part<span class="w"> </span>definition<span class="w"> </span>was<span class="w"> </span>not<span class="w"> </span>found<span class="w"> </span><span class="k">for</span><span class="w"> </span>xilinx.com:kv260:part0:1.1.<span class="w"> </span>The<span class="w"> </span>project<span class="s1">&#39;s board_part property was not set, but the project&#39;</span>s<span class="w"> </span>part<span class="w"> </span>property<span class="w"> </span>was<span class="w"> </span><span class="nb">set</span><span class="w"> </span>to<span class="w"> </span>xck26-sfvc784-2LV-c.<span class="w"> </span>Valid<span class="w"> </span>board_part<span class="w"> </span>values<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>retrieved<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span><span class="s1">&#39;get_board_parts&#39;</span><span class="w"> </span>Tcl<span class="w"> </span>command.<span class="w"> </span>Check<span class="w"> </span><span class="k">if</span><span class="w"> </span>board.repoPaths<span class="w"> </span>parameter<span class="w"> </span>is<span class="w"> </span><span class="nb">set</span><span class="w"> </span>and<span class="w"> </span>the<span class="w"> </span>board_part<span class="w"> </span>is<span class="w"> </span>installed<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>tcl<span class="w"> </span>app<span class="w"> </span>store.
-ERROR:<span class="w"> </span><span class="o">[</span>VPL<span class="w"> </span><span class="m">60</span>-704<span class="o">]</span><span class="w"> </span>Integration<span class="w"> </span>error,<span class="w"> </span>Failed<span class="w"> </span>to<span class="w"> </span>rebuild<span class="w"> </span>a<span class="w"> </span>project<span class="w"> </span>required<span class="w"> </span><span class="k">for</span><span class="w"> </span>hardware<span class="w"> </span>synthesis.<span class="w"> </span>The<span class="w"> </span>project<span class="w"> </span>is<span class="w"> </span><span class="s1">&#39;prj&#39;</span>.<span class="w"> </span>The<span class="w"> </span>rebuild<span class="w"> </span>script<span class="w"> </span>is<span class="w"> </span><span class="s1">&#39;.local/hw_platform/prj/rebuild.tcl&#39;</span>.<span class="w"> </span>The<span class="w"> </span>rebuild<span class="w"> </span>script<span class="w"> </span>was<span class="w"> </span>delivered<span class="w"> </span>as<span class="w"> </span>part<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>hardware<span class="w"> </span>platform.<span class="w"> </span>Consult<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>hardware<span class="w"> </span>platform<span class="w"> </span>provider<span class="w"> </span>to<span class="w"> </span>investigate<span class="w"> </span>the<span class="w"> </span>rebuild<span class="w"> </span>script<span class="w"> </span>contents.<span class="w"> </span>An<span class="w"> </span>error<span class="w"> </span>stack<span class="w"> </span>with<span class="w"> </span><span class="k">function</span><span class="w"> </span>names<span class="w"> </span>and<span class="w"> </span>arguments<span class="w"> </span>may<span class="w"> </span>be<span class="w"> </span>available<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span><span class="s1">&#39;vivado.log&#39;</span>.
-ERROR:<span class="w"> </span><span class="o">[</span>VPL<span class="w"> </span><span class="m">60</span>-1328<span class="o">]</span><span class="w"> </span>Vpl<span class="w"> </span>run<span class="w"> </span><span class="s1">&#39;vpl&#39;</span><span class="w"> </span>failed
-WARNING:<span class="w"> </span><span class="o">[</span>VPL<span class="w"> </span><span class="m">60</span>-1142<span class="o">]</span><span class="w"> </span>Unable<span class="w"> </span>to<span class="w"> </span><span class="nb">read</span><span class="w"> </span>data<span class="w"> </span>from<span class="w"> </span><span class="s1">&#39;/home/xilinx/ros2_ws/build-kv260/accelerated_vadd_publisher/_x/link/vivado/vpl/output/generated_reports.log&#39;</span>,<span class="w"> </span>generated<span class="w"> </span>reports<span class="w"> </span>will<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>copied.
+ERROR:<span class="w"> </span><span class="o">[</span>VPL<span class="w"> </span><span class="m">60</span>-773<span class="o">]</span><span class="w"> </span>In<span class="w"> </span><span class="s1">'/home/xilinx/ros2_ws/build-kv260/accelerated_vadd_publisher/_x/link/vivado/vpl/runme.log'</span>,<span class="w"> </span>caught<span class="w"> </span>Tcl<span class="w"> </span>error:<span class="w">  </span>ERROR:<span class="w"> </span><span class="o">[</span>Board<span class="w"> </span><span class="m">49</span>-71<span class="o">]</span><span class="w"> </span>The<span class="w"> </span>board_part<span class="w"> </span>definition<span class="w"> </span>was<span class="w"> </span>not<span class="w"> </span>found<span class="w"> </span><span class="k">for</span><span class="w"> </span>xilinx.com:kv260:part0:1.1.<span class="w"> </span>The<span class="w"> </span>project<span class="s1">'s board_part property was not set, but the project'</span>s<span class="w"> </span>part<span class="w"> </span>property<span class="w"> </span>was<span class="w"> </span><span class="nb">set</span><span class="w"> </span>to<span class="w"> </span>xck26-sfvc784-2LV-c.<span class="w"> </span>Valid<span class="w"> </span>board_part<span class="w"> </span>values<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>retrieved<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span><span class="s1">'get_board_parts'</span><span class="w"> </span>Tcl<span class="w"> </span>command.<span class="w"> </span>Check<span class="w"> </span><span class="k">if</span><span class="w"> </span>board.repoPaths<span class="w"> </span>parameter<span class="w"> </span>is<span class="w"> </span><span class="nb">set</span><span class="w"> </span>and<span class="w"> </span>the<span class="w"> </span>board_part<span class="w"> </span>is<span class="w"> </span>installed<span class="w"> </span>from<span class="w"> </span>the<span class="w"> </span>tcl<span class="w"> </span>app<span class="w"> </span>store.
+ERROR:<span class="w"> </span><span class="o">[</span>VPL<span class="w"> </span><span class="m">60</span>-704<span class="o">]</span><span class="w"> </span>Integration<span class="w"> </span>error,<span class="w"> </span>Failed<span class="w"> </span>to<span class="w"> </span>rebuild<span class="w"> </span>a<span class="w"> </span>project<span class="w"> </span>required<span class="w"> </span><span class="k">for</span><span class="w"> </span>hardware<span class="w"> </span>synthesis.<span class="w"> </span>The<span class="w"> </span>project<span class="w"> </span>is<span class="w"> </span><span class="s1">'prj'</span>.<span class="w"> </span>The<span class="w"> </span>rebuild<span class="w"> </span>script<span class="w"> </span>is<span class="w"> </span><span class="s1">'.local/hw_platform/prj/rebuild.tcl'</span>.<span class="w"> </span>The<span class="w"> </span>rebuild<span class="w"> </span>script<span class="w"> </span>was<span class="w"> </span>delivered<span class="w"> </span>as<span class="w"> </span>part<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>hardware<span class="w"> </span>platform.<span class="w"> </span>Consult<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>hardware<span class="w"> </span>platform<span class="w"> </span>provider<span class="w"> </span>to<span class="w"> </span>investigate<span class="w"> </span>the<span class="w"> </span>rebuild<span class="w"> </span>script<span class="w"> </span>contents.<span class="w"> </span>An<span class="w"> </span>error<span class="w"> </span>stack<span class="w"> </span>with<span class="w"> </span><span class="k">function</span><span class="w"> </span>names<span class="w"> </span>and<span class="w"> </span>arguments<span class="w"> </span>may<span class="w"> </span>be<span class="w"> </span>available<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span><span class="s1">'vivado.log'</span>.
+ERROR:<span class="w"> </span><span class="o">[</span>VPL<span class="w"> </span><span class="m">60</span>-1328<span class="o">]</span><span class="w"> </span>Vpl<span class="w"> </span>run<span class="w"> </span><span class="s1">'vpl'</span><span class="w"> </span>failed
+WARNING:<span class="w"> </span><span class="o">[</span>VPL<span class="w"> </span><span class="m">60</span>-1142<span class="o">]</span><span class="w"> </span>Unable<span class="w"> </span>to<span class="w"> </span><span class="nb">read</span><span class="w"> </span>data<span class="w"> </span>from<span class="w"> </span><span class="s1">'/home/xilinx/ros2_ws/build-kv260/accelerated_vadd_publisher/_x/link/vivado/vpl/output/generated_reports.log'</span>,<span class="w"> </span>generated<span class="w"> </span>reports<span class="w"> </span>will<span class="w"> </span>not<span class="w"> </span>be<span class="w"> </span>copied.
 ERROR:<span class="w"> </span><span class="o">[</span>VPL<span class="w"> </span><span class="m">60</span>-806<span class="o">]</span><span class="w"> </span>Failed<span class="w"> </span>to<span class="w"> </span>finish<span class="w"> </span>platform<span class="w"> </span>linker
 INFO:<span class="w"> </span><span class="o">[</span>v++<span class="w"> </span><span class="m">60</span>-1442<span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="m">19</span>:52:11<span class="o">]</span><span class="w"> </span>Run<span class="w"> </span>run_link:<span class="w"> </span>Step<span class="w"> </span>vpl:<span class="w"> </span>Failed
 Time<span class="w"> </span><span class="o">(</span>s<span class="o">)</span>:<span class="w"> </span><span class="nv">cpu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">00</span>:00:05<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="nv">elapsed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">00</span>:00:15<span class="w"> </span>.<span class="w"> </span>Memory<span class="w"> </span><span class="o">(</span>MB<span class="o">)</span>:<span class="w"> </span><span class="nv">peak</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1574</span>.906<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="nv">gain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.000<span class="w"> </span><span class="p">;</span><span class="w"> </span>free<span class="w"> </span><span class="nv">physical</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1594</span><span class="w"> </span><span class="p">;</span><span class="w"> </span>free<span class="w"> </span><span class="nv">virtual</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20748</span>
-ERROR:<span class="w"> </span><span class="o">[</span>v++<span class="w"> </span><span class="m">60</span>-661<span class="o">]</span><span class="w"> </span>v++<span class="w"> </span>link<span class="w"> </span>run<span class="w"> </span><span class="s1">&#39;run_link&#39;</span><span class="w"> </span>failed
+ERROR:<span class="w"> </span><span class="o">[</span>v++<span class="w"> </span><span class="m">60</span>-661<span class="o">]</span><span class="w"> </span>v++<span class="w"> </span>link<span class="w"> </span>run<span class="w"> </span><span class="s1">'run_link'</span><span class="w"> </span>failed
 ERROR:<span class="w"> </span><span class="o">[</span>v++<span class="w"> </span><span class="m">60</span>-626<span class="o">]</span><span class="w"> </span>Kernel<span class="w"> </span>link<span class="w"> </span>failed<span class="w"> </span>to<span class="w"> </span><span class="nb">complete</span>
 ERROR:<span class="w"> </span><span class="o">[</span>v++<span class="w"> </span><span class="m">60</span>-703<span class="o">]</span><span class="w"> </span>Failed<span class="w"> </span>to<span class="w"> </span>finish<span class="w"> </span>linking
 INFO:<span class="w"> </span><span class="o">[</span>v++<span class="w"> </span><span class="m">60</span>-1653<span class="o">]</span><span class="w"> </span>Closing<span class="w"> </span>dispatch<span class="w"> </span>client.
@@ -1453,7 +1453,7 @@ INFO:<span class="w"> </span><span class="o">[</span>v++<span class="w"> </span>
 <p>In this case, Vivado’s not able to find the <code class="docutils literal notranslate"><span class="pre">xilinx.com:kv260:part0:1.1</span></code> board part. We can verify this manually through Vivado CLI:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vivado<span class="w"> </span>-mode<span class="w"> </span>tcl
 Vivado%<span class="w"> </span>get_board_parts<span class="w"> </span>xilinx.com:kv*
-WARNING:<span class="w"> </span><span class="o">[</span>Vivado<span class="w"> </span><span class="m">12</span>-4842<span class="o">]</span><span class="w"> </span>No<span class="w"> </span>board<span class="w"> </span>parts<span class="w"> </span>matched<span class="w"> </span><span class="s1">&#39;get_board_parts xilinx.com:kv*&#39;</span>.
+WARNING:<span class="w"> </span><span class="o">[</span>Vivado<span class="w"> </span><span class="m">12</span>-4842<span class="o">]</span><span class="w"> </span>No<span class="w"> </span>board<span class="w"> </span>parts<span class="w"> </span>matched<span class="w"> </span><span class="s1">'get_board_parts xilinx.com:kv*'</span>.
 </pre></div>
 </div>
 <p>!!! todo “Figure out if this can be automated via scripting”
@@ -1464,7 +1464,7 @@ This could likely be automated through Tcl or similar. Find out if time allows f
 <img alt="../_images/vivado3.png" src="../_images/vivado3.png" /></p>
 <p>And then add a script that gets them automatically:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a file that loads 2020.2.2 board files at vivado init</span>
-cat<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39; &gt; ~/.Xilinx/Vivado/Vivado_init.tcl</span>
+cat<span class="w"> </span><span class="s">&lt;&lt; 'EOF' &gt; ~/.Xilinx/Vivado/Vivado_init.tcl</span>
 <span class="s">set_param board.repoPaths {\</span>
 <span class="s">	/home/xilinx/.Xilinx/Vivado/2020.2.2/xhub/board_store/xilinx_board_store \</span>
 <span class="s">}</span>
@@ -1528,10 +1528,10 @@ sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>
 <p>Tracing is <strong>enabled by default in KRS</strong> provided <a class="reference external" href="https://lttng.org/docs/v2.11/">LTTng</a> (&gt;=2.11.1) is found installed in the file system and the <a class="reference external" href="https://gitlab.com/ros-tracing/ros2_tracing/-/tree/master#disabling-tracing"><code class="docutils literal notranslate"><span class="pre">TRACETOOLS_DISABLED</span></code></a> option is not set.</p>
 <p>To <strong>disable</strong>, either uninstall LTTng or pass the <code class="docutils literal notranslate"><span class="pre">-DTRACETOOLS_DISABLED=ON</span></code> CMake argument while building the ROS 2 workspace as follows:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># while building packages for the workstation</span>
-colcon<span class="w"> </span>build<span class="w"> </span>--merge-install<span class="w"> </span>--cmake-args<span class="w"> </span><span class="s2">&quot; -DTRACETOOLS_DISABLED=ON&quot;</span>
+colcon<span class="w"> </span>build<span class="w"> </span>--merge-install<span class="w"> </span>--cmake-args<span class="w"> </span><span class="s2">" -DTRACETOOLS_DISABLED=ON"</span>
 
 <span class="c1"># while building packages for embedded, e.g. KV260</span>
-colcon<span class="w"> </span>build<span class="w"> </span>--build-base<span class="o">=</span>build-kv260<span class="w"> </span>--install-base<span class="o">=</span>install-kv260<span class="w"> </span>--merge-install<span class="w"> </span>--mixin<span class="w"> </span>kv260<span class="w"> </span>--cmake-args<span class="w"> </span><span class="s2">&quot; -DTRACETOOLS_DISABLED=ON&quot;</span>
+colcon<span class="w"> </span>build<span class="w"> </span>--build-base<span class="o">=</span>build-kv260<span class="w"> </span>--install-base<span class="o">=</span>install-kv260<span class="w"> </span>--merge-install<span class="w"> </span>--mixin<span class="w"> </span>kv260<span class="w"> </span>--cmake-args<span class="w"> </span><span class="s2">" -DTRACETOOLS_DISABLED=ON"</span>
 </pre></div>
 </div>
 <!-- /////////////// --><!-- /////////////// --><!-- /////////////// --></section>

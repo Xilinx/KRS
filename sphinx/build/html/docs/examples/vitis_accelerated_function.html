@@ -222,9 +222,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>class<span class="w"> </span>MinimalImagePublisher<span class="w"> </span>:<span class="w"> </span>public<span class="w"> </span>rclcpp::Node<span class="w"> </span><span class="o">{</span>
 public:
-<span class="w">  </span>MinimalImagePublisher<span class="o">()</span><span class="w"> </span>:<span class="w"> </span>Node<span class="o">(</span><span class="s2">&quot;opencv_image_publisher&quot;</span><span class="o">)</span>,<span class="w"> </span>count_<span class="o">(</span><span class="m">0</span><span class="o">)</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>MinimalImagePublisher<span class="o">()</span><span class="w"> </span>:<span class="w"> </span>Node<span class="o">(</span><span class="s2">"opencv_image_publisher"</span><span class="o">)</span>,<span class="w"> </span>count_<span class="o">(</span><span class="m">0</span><span class="o">)</span><span class="w"> </span><span class="o">{</span>
 <span class="w">    </span><span class="nv">publisher_</span><span class="w"> </span><span class="o">=</span>
-<span class="w">        </span>this-&gt;create_publisher&lt;sensor_msgs::msg::Image&gt;<span class="o">(</span><span class="s2">&quot;random_image&quot;</span>,<span class="w"> </span><span class="m">10</span><span class="o">)</span><span class="p">;</span>
+<span class="w">        </span>this-&gt;create_publisher&lt;sensor_msgs::msg::Image&gt;<span class="o">(</span><span class="s2">"random_image"</span>,<span class="w"> </span><span class="m">10</span><span class="o">)</span><span class="p">;</span>
 <span class="w">    </span><span class="nv">timer_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>this-&gt;create_wall_timer<span class="o">(</span>
 <span class="w">        </span>500ms,<span class="w"> </span>std::bind<span class="o">(</span><span class="p">&amp;</span>MinimalImagePublisher::timer_callback,<span class="w"> </span>this<span class="o">))</span><span class="p">;</span>
 <span class="w">  </span><span class="o">}</span>
@@ -239,12 +239,12 @@ private:
 
 <span class="w">    </span>//<span class="w"> </span>Write<span class="w"> </span>message<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>sent.<span class="w"> </span>Member<span class="w"> </span><span class="k">function</span><span class="w"> </span>toImageMsg<span class="o">()</span><span class="w"> </span>converts<span class="w"> </span>a<span class="w"> </span>CvImage
 <span class="w">    </span>//<span class="w"> </span>into<span class="w"> </span>a<span class="w"> </span>ROS<span class="w"> </span>image<span class="w"> </span>message
-<span class="w">    </span><span class="nv">msg_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>cv_bridge::CvImage<span class="o">(</span>std_msgs::msg::Header<span class="o">()</span>,<span class="w"> </span><span class="s2">&quot;bgr8&quot;</span>,<span class="w"> </span>my_image<span class="o">)</span>
+<span class="w">    </span><span class="nv">msg_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>cv_bridge::CvImage<span class="o">(</span>std_msgs::msg::Header<span class="o">()</span>,<span class="w"> </span><span class="s2">"bgr8"</span>,<span class="w"> </span>my_image<span class="o">)</span>
 <span class="w">               </span>.toImageMsg<span class="o">()</span><span class="p">;</span>
 
 <span class="w">    </span>//<span class="w"> </span>Publish<span class="w"> </span>the<span class="w"> </span>image<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span>topic<span class="w"> </span>defined<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>publisher
 <span class="w">    </span>publisher_-&gt;publish<span class="o">(</span>*msg_.get<span class="o">())</span><span class="p">;</span>
-<span class="w">    </span>RCLCPP_INFO<span class="o">(</span>this-&gt;get_logger<span class="o">()</span>,<span class="w"> </span><span class="s2">&quot;Image %ld published&quot;</span>,<span class="w"> </span>count_<span class="o">)</span><span class="p">;</span>
+<span class="w">    </span>RCLCPP_INFO<span class="o">(</span>this-&gt;get_logger<span class="o">()</span>,<span class="w"> </span><span class="s2">"Image %ld published"</span>,<span class="w"> </span>count_<span class="o">)</span><span class="p">;</span>
 <span class="w">    </span>count_++<span class="p">;</span>
 <span class="w">  </span><span class="o">}</span>
 <span class="w">  </span>rclcpp::TimerBase::SharedPtr<span class="w"> </span>timer_<span class="p">;</span>
@@ -287,7 +287,7 @@ colcon<span class="w"> </span>build<span class="w"> </span>--executor<span class
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash
 <span class="nb">source</span><span class="w"> </span>~/install-kr260-ubuntu/local_setup.bash<span class="w"> </span><span class="c1"># Or source ~/krs_ws/install/setup.bash if krs is installed on the baord</span>
 
-cp<span class="w"> </span>-rf<span class="w"> </span><span class="s2">&quot;~/install-kr260-ubuntu/lib/vitis_accelerated_resize&quot;</span><span class="w"> </span>/lib/firmware/xilinx<span class="w"> </span><span class="c1"># Copy the required bitstream in firmware folder</span>
+cp<span class="w"> </span>-rf<span class="w"> </span><span class="s2">"~/install-kr260-ubuntu/lib/vitis_accelerated_resize"</span><span class="w"> </span>/lib/firmware/xilinx<span class="w"> </span><span class="c1"># Copy the required bitstream in firmware folder</span>
 
 sudo<span class="w"> </span>xmutil<span class="w"> </span>listapps<span class="w"> </span><span class="c1"># This will show the available bitstreams/overlays in firmware</span>
 
